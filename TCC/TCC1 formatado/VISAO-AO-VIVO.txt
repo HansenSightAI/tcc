@@ -1,0 +1,8 @@
+VISUALIZAÇÃO AO VIVO NO VS CODE
+
+1. Abra esta pasta no VS Code (Arquivo > Abrir Pasta).
+2. Abra tcc.tex ou um arquivo dentro de editaveis.
+3. Use Ctrl+Alt+V para abrir o PDF na aba ao lado; ou abra a paleta de comandos e escolha LaTeX Workshop: View LaTeX PDF.
+4. Edite o texto. O salvamento automático e o LaTeX Workshop recompilam e atualizam o PDF após as alterações.
+
+O arquivo principal é tcc.tex. Caso haja erro, consulte o painel de saída LaTeX Workshop; o PDF exibirá a última compilação bem-sucedida. O texto está em editaveis/introducao.tex.

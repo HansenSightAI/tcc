@@ -1,0 +1,27 @@
+% Arquivo principal: versão adaptada ao template FCTE/UnB.
+\input{fixos/pacotes}
+\input{fixos/comandos}
+\usepackage{fixos/customizacoes}
+\usepackage{longtable,booktabs,array,calc}
+
+\newcounter{none}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\ifpdf
+    \usepackage{cmap}
+\fi
+\input{editaveis/informacoes}
+\input{fixos/informacoes}
+\input{fixos/setup}
+\begin{document}
+\frenchspacing
+\imprimircapa
+\imprimirfolhaderosto*{\folhaderostoname}
+% Os demais elementos pré-textuais foram omitidos porque não constam da fonte.
+\input{fixos/indiceAutomatico}
+\textual
+\input{editaveis/introducao}
+\bookmarksetup{startatroot}
+\postextual
+\input{editaveis/referencias}
+\input{editaveis/notas}
+\end{document}
