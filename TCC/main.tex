@@ -1,0 +1,618 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Introdução --- versão revisada com GQM
+adaptado}\label{introduuxe7uxe3o-versuxe3o-revisada-com-gqm-adaptado}
+
+\textbf{TCC de Euller e Gabriel · 15/10/2026}
+
+Versão de trabalho baseada nas leituras fornecidas. A revisão da
+literatura está em andamento. O texto abaixo é uma proposta de redação;
+o contexto definido é o apoio à triagem de hanseníase na rede pública de
+saúde do Brasil. O GQM e a questão de pesquisa foram atualizados
+conforme a definição fornecida pela dupla. As notas editoriais ao final
+não integram a introdução.
+
+\subsection{1 Introdução}\label{introduuxe7uxe3o}
+
+Este capítulo apresenta o contexto da aplicação de modelos de visão
+computacional à identificação de manifestações dermatológicas associadas
+à hanseníase. São delimitados o problema de pesquisa, a questão
+norteadora e os objetivos do trabalho, considerando a avaliação de
+desempenho na identificação de padrões associados à hanseníase em
+imagens de pele, no contexto de apoio à triagem na rede pública de saúde
+do Brasil.
+
+\subsubsection{1.1 Contexto}\label{contexto}
+
+A hanseníase integra o grupo das doenças tropicais negligenciadas e
+constitui um desafio para a identificação oportuna de casos e o
+acompanhamento das pessoas afetadas. Em sua revisão da literatura,
+Fernandes et al.~(2024) destacam que o diagnóstico se baseia
+principalmente na avaliação clínica e que a semelhança com outras
+condições dermatológicas pode dificultar o reconhecimento da doença.
+Nesse contexto, a investigação de recursos computacionais de apoio à
+análise de manifestações cutâneas pode contribuir para ampliar as
+possibilidades de suporte aos profissionais de saúde, desde que sua
+avaliação considere as características da tarefa e da população de
+interesse.
+
+A análise automatizada de imagens dermatológicas tem sido investigada
+por meio de técnicas de aprendizado de máquina e aprendizado profundo.
+Fernandes et al.~(2024) identificaram 21 estudos sobre inteligência
+artificial no apoio ao diagnóstico da hanseníase e observaram que a
+maior parte utilizava imagens de lesões cutâneas e tarefas de
+classificação multiclasse. A inclusão da hanseníase em sistemas voltados
+a diferentes doenças indica que os resultados dessas propostas devem ser
+interpretados tanto em relação ao conjunto de classes quanto ao
+reconhecimento específico da doença.
+
+Entre os estudos experimentais, Jaikishore, Udutalapally e Das (2021)
+desenvolveram uma abordagem baseada em MobileNetV2 para classificar
+imagens de eczema, sarampo, hanseníase e pele saudável, incorporando o
+modelo a um protótipo Android. Yotsu et al.~(2023), por sua vez,
+avaliaram ResNet-50 e VGG-16 na classificação de cinco doenças tropicais
+negligenciadas com manifestações cutâneas. Em outra linha de
+investigação, Eita e Rizk (2025) propuseram um sistema baseado em YOLOv8
+para localizar e classificar lesões de diferentes condições, incluindo
+hanseníase, com uso de mapas de saliência para apoiar a interpretação
+das predições. Esses trabalhos ilustram abordagens distintas de análise
+de imagens, com diferentes requisitos de dados, saídas e procedimentos
+de avaliação.
+
+O campo também compreende tarefas relacionadas ao acompanhamento de
+manifestações e complicações da doença. Sanchez et al.~(2024)
+apresentaram o CO2Wounds-V2, um conjunto de fotografias de feridas
+crônicas de pacientes com hanseníase, acompanhado de experimentos de
+segmentação semântica. Nesse caso, a tarefa consiste em delimitar
+regiões de ferida nas imagens, e não em determinar se o paciente
+apresenta hanseníase. Essa distinção é necessária para organizar a
+literatura e evitar que medidas de segmentação sejam interpretadas como
+evidências de desempenho diagnóstico.
+
+A caracterização das populações representadas nos dados também integra a
+avaliação dos modelos. Yotsu et al.~(2023) utilizaram fotografias
+coletadas em Costa do Marfim e Gana, descrevendo a população como
+composta por pessoas de pele escura, com fototipos de Fitzpatrick IV ou
+superiores. O estudo oferece evidências diretamente relacionadas à
+análise de imagens de pele escura, mas não apresenta comparação de
+desempenho entre os diferentes fototipos. Eita e Rizk (2025) também
+reconhecem limitações na diversidade dos dados e apontam a ampliação da
+representação de pessoas com tons de pele mais escuros como uma direção
+de trabalho futuro.
+
+Esses estudos motivam a investigação de como o desempenho dos modelos é
+definido, mensurado e interpretado. Para o presente trabalho, a
+avaliação compreende os resultados preditivos relativos à tarefa, os
+procedimentos empregados para obtê-los e as evidências disponíveis sobre
+sua aplicação a novos dados e a diferentes grupos de tom de pele. A
+utilização futura em apoio à triagem na rede pública de saúde do Brasil
+constitui o contexto de interesse da pesquisa, sem que os resultados
+computacionais sejam, por si só, considerados demonstração de
+efetividade clínica.
+
+\subsubsection{1.2 Problema}\label{problema}
+
+A existência de modelos capazes de reconhecer padrões em imagens não
+estabelece, isoladamente, sua adequação à identificação de manifestações
+de hanseníase em uma população específica. Os estudos analisados
+apresentam diferenças nas tarefas, nas classes de interesse, na
+composição dos conjuntos de dados e nas métricas utilizadas. Classificar
+uma imagem entre doenças, localizar uma lesão e segmentar uma ferida
+produzem resultados com significados distintos. Consequentemente, uma
+comparação baseada apenas nos maiores valores publicados pode
+desconsiderar diferenças essenciais entre os experimentos (YOTSU et al.,
+2023; SANCHEZ et al., 2024; EITA; RIZK, 2025).
+
+Além disso, medidas agregadas podem não representar adequadamente o
+desempenho referente à hanseníase. No estudo de Yotsu et al.~(2023), a
+Task 2 apresentou acurácias globais de 77\% e 80\% nos dois cenários
+avaliados. Entretanto, a leitura da diagonal correspondente à hanseníase
+nas matrizes de confusão indica proporções de classificação correta de
+12\% e 13\%, respectivamente. Como as linhas representam a classe real,
+esses valores podem ser interpretados como sensibilidade por imagem para
+a classe hanseníase. O contraste evidencia a importância de examinar
+resultados específicos por doença, em vez de atribuir à hanseníase o
+desempenho global do sistema.
+
+A relação entre os resultados obtidos e os tons de pele constitui outra
+dimensão do problema. A presença de imagens de pele escura em um
+conjunto de dados não demonstra que o modelo apresente comportamento
+equivalente entre diferentes tons. No estudo de Yotsu et al.~(2023), a
+população é caracterizada por um intervalo de fototipos, mas não são
+fornecidos resultados separados por esses grupos. Já Eita e Rizk (2025)
+reconhecem limitações de representatividade e a necessidade de ampliar a
+diversidade dos dados. Essas observações sustentam a necessidade de
+examinar a caracterização populacional e a avaliação por grupos, sem
+permitir concluir, a partir dessas evidências isoladas, que todos os
+modelos tenham desempenho inferior em pele negra.
+
+Também permanece necessário distinguir a avaliação computacional da
+avaliação em contexto assistencial. O desenvolvimento de um aplicativo
+ou a obtenção de resultados em conjuntos de imagens não comprova sua
+contribuição para o atendimento em serviços de saúde. Enquanto
+Jaikishore, Udutalapally e Das (2021) apresentam um protótipo de
+aplicação móvel, Eita e Rizk (2025) situam os estudos prospectivos com
+dermatologistas entre as atividades futuras. Assim, a relevância dessas
+propostas para a rede pública exige considerar o alcance e os limites
+dos procedimentos de validação relatados.
+
+Diante desse cenário, o problema investigado consiste em compreender
+quais evidências e procedimentos permitem avaliar o desempenho de
+modelos de visão computacional na identificação de manifestações
+dermatológicas associadas à hanseníase, no contexto de apoio à triagem
+na rede pública de saúde do Brasil, considerando a tarefa realizada, as
+características dos dados e os limites de generalização dos resultados.
+A comparação entre tons de pele será examinada quando houver informações
+disponíveis, como uma dimensão complementar da avaliação. A revisão em
+andamento buscará sistematizar essas informações e identificar os
+aspectos que precisam ser considerados no planejamento de avaliações
+futuras.
+
+\subsubsection{1.3 GQM adaptado e questão de
+pesquisa}\label{gqm-adaptado-e-questuxe3o-de-pesquisa}
+
+O objetivo de análise foi organizado por meio de um GQM adaptado, que
+explicita o objeto, o propósito, o foco, o ponto de vista e o contexto
+da investigação. O quadro orienta a definição da questão de pesquisa e
+das medidas a serem extraídas dos estudos.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Característica
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Valor
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Analisar} & Modelos de visão computacional aplicados à
+identificação de manifestações dermatológicas. \\
+\textbf{Com o propósito de} & Avaliar o desempenho dos modelos aplicados
+à identificação de padrões em imagens de pele. \\
+\textbf{Com foco em} & Identificação de características patológicas de
+hanseníase. \\
+\textbf{Do ponto de vista de} & Pesquisadores das áreas de Engenharia de
+Software e da área da saúde. \\
+\textbf{No contexto de} & Apoio à triagem de hanseníase na rede pública
+de saúde do Brasil. \\
+\end{longtable}
+}
+
+A investigação é orientada pela seguinte questão:
+
+\begin{quote}
+Como avaliar o desempenho de modelos de visão computacional aplicados à
+identificação de padrões associados à hanseníase em imagens de pele, no
+contexto da rede pública de saúde do Brasil?
+\end{quote}
+
+Nesta etapa, a questão será abordada por meio da identificação e análise
+das evidências apresentadas na literatura. Serão examinadas as tarefas
+realizadas, os modelos empregados, as características dos conjuntos de
+dados, os procedimentos de avaliação, as métricas e os resultados, bem
+como as informações disponíveis sobre tons de pele e generalização. A
+ausência de avaliação por grupo será registrada como uma limitação das
+evidências disponíveis, sem ser tomada como demonstração de equidade ou
+de desigualdade de desempenho.
+
+\subsubsection{1.4 Objetivos}\label{objetivos}
+
+\paragraph{1.4.1 Objetivo geral}\label{objetivo-geral}
+
+Analisar a avaliação de desempenho de modelos de visão computacional
+aplicados à identificação de padrões associados à hanseníase em imagens
+de pele, a partir da síntese das evidências da literatura, visando
+fundamentar seu uso em apoio à triagem na rede pública de saúde do
+Brasil.
+
+\paragraph{1.4.2 Objetivos específicos}\label{objetivos-especuxedficos}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Caracterizar as tarefas, os modelos e as abordagens de visão
+  computacional empregados na análise de manifestações dermatológicas
+  associadas à hanseníase.
+\item
+  Identificar os conjuntos de dados utilizados, suas formas de aquisição
+  e anotação e as informações disponíveis sobre as populações e os tons
+  de pele representados.
+\item
+  Sistematizar os procedimentos de avaliação, as métricas e os
+  resultados reportados, distinguindo medidas globais, resultados
+  específicos de hanseníase e unidades de análise.
+\item
+  Examinar as evidências de generalização e de avaliação do desempenho
+  entre grupos de tom de pele, quando disponíveis.
+\item
+  Identificar limitações e lacunas que fundamentem o planejamento de uma
+  avaliação futura de modelos no contexto de apoio à triagem na rede
+  pública de saúde do Brasil.
+\end{enumerate}
+
+\subsubsection{1.5 Métricas e dimensões de avaliação do
+GQM}\label{muxe9tricas-e-dimensuxf5es-de-avaliauxe7uxe3o-do-gqm}
+
+As métricas serão extraídas conforme a tarefa e o protocolo de cada
+estudo. Não se exige que todos os artigos apresentem todas as medidas.
+Métricas ausentes serão registradas como não reportadas; cálculos
+adicionais somente serão realizados quando houver dados suficientes, com
+identificação explícita de que foram derivados nesta revisão.
+
+\paragraph{Resultados de
+classificação}\label{resultados-de-classificauxe7uxe3o}
+
+Para classificação binária, deve-se definir previamente o que constitui
+a classe positiva e o diagnóstico/rótulo de referência. Em modelos
+multiclasse, a hanseníase pode ser analisada como classe positiva frente
+às demais classes (um contra todos). As definições abaixo se referem à
+unidade avaliada --- por exemplo, imagem --- e não implicam
+automaticamente diagnóstico por paciente.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Resultado
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Significado
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{TP --- True Positive} & A unidade pertence à classe positiva
+segundo a referência e o modelo a classifica como positiva. \\
+\textbf{TN --- True Negative} & A unidade pertence à classe negativa
+segundo a referência e o modelo a classifica como negativa. \\
+\textbf{FP --- False Positive} & A unidade pertence à classe negativa
+segundo a referência, mas o modelo a classifica como positiva. \\
+\textbf{FN --- False Negative} & A unidade pertence à classe positiva
+segundo a referência, mas o modelo a classifica como negativa. \\
+\end{longtable}
+}
+
+A classe positiva pode representar hanseníase ou uma manifestação
+definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
+reconhecer uma ferida em paciente com hanseníase não equivale a
+diagnosticar a doença.
+
+\paragraph{Métricas relacionadas à questão de
+pesquisa}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dimensão do desempenho
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Métrica
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrição e operacionalização
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M1 & Classificação & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
+& Proporção de positivos corretamente identificados: \textbf{SEN = TP /
+(TP + FN)}. \\
+M2 & Classificação & \textbf{Especificidade --- Specificity (SPE)} &
+Proporção de negativos corretamente identificados: \textbf{SPE = TN /
+(TN + FP)}. \\
+M3 & Classificação & \textbf{Precisão --- Precision (PRE)} & Proporção
+de predições positivas que correspondem a positivos de referência:
+\textbf{PRE = TP / (TP + FP)}. \\
+M4 & Classificação & \textbf{F1-score} & Média harmônica entre precisão
+e sensibilidade, considerando o efeito de falsos positivos e falsos
+negativos: \textbf{F1 = 2 × PRE × SEN / (PRE + SEN)}, ou \textbf{2TP /
+(2TP + FP + FN)}. \\
+M5 & Classificação geral & \textbf{Acurácia --- Accuracy (ACC)} &
+Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
+(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
+acertos totais / unidades totais. \\
+M6 & Equidade do desempenho & \textbf{Diferença de desempenho entre
+grupos} & Comparação da mesma métrica entre grupos de tons de pele,
+quando disponível. Para dois grupos A e B: \textbf{Δ = métrica(A) −
+métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
+grupos, condições de avaliação e incerteza, quando reportados. \\
+M7 & Generalização & \textbf{Variação de desempenho entre datasets} &
+Comparação da mesma métrica entre avaliações em dados de distribuição
+semelhante à de treinamento e dados de distribuição diferente:
+\textbf{gap = métrica(ID) − métrica(OOD)}, quando o desenho permitir.
+Registrar se houve adaptação ou retreinamento e se tarefa/classes são
+comparáveis. \\
+M8 & Segmentação / sobreposição espacial & \textbf{Intersection over
+Union (IoU)} & Interseção dividida pela união das regiões prevista P e
+de referência G: \textbf{IoU = área(P ∩ G) / área(P ∪ G)}. Em máscaras
+binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
+FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
+classes. \\
+M9 & Detecção / segmentação por instância & \textbf{Mean Average
+Precision (mAP)} & Média dos valores de AP das classes consideradas; AP
+resume a curva precisão--recall segundo a convenção do benchmark.
+Registrar o critério de correspondência e o limiar de IoU: por exemplo,
+\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
+AP de máscaras. \\
+\end{longtable}
+}
+
+\textbf{IoU e mAP não são métricas exclusivas de segmentação.} Em
+detecção, IoU mede sobreposição de caixas e pode determinar a
+correspondência entre predição e referência; mAP resume o desempenho das
+detecções. Na segmentação semântica, IoU/mIoU mede sobreposição de
+máscaras por classe. Na segmentação por instância, também se utiliza
+AP/mAP calculada sobre máscaras. A documentação de avaliação COCO
+explicita essa distinção entre caixas e máscaras (COCO, s.d.).
+
+\textbf{Critérios de interpretação:} registrar se a unidade é paciente,
+imagem, objeto ou pixel; separar resultados específicos de hanseníase de
+médias globais; identificar médias macro, micro ou ponderadas; registrar
+denominadores nulos como indefinidos ou conforme a convenção explicitada
+no estudo. Diferenças entre métricas expressas em porcentagem devem ser
+apresentadas em pontos percentuais. M6 e M7 são dimensões de comparação,
+não métricas únicas universalmente definidas. Desempenhos de modelos
+diferentes em bases diferentes não isolam o efeito da mudança de
+distribuição.
+
+O conjunto de métricas funciona como orientação para extração, não como
+lista fechada. Medidas adicionais reportadas pelos artigos, como MCC,
+devem ser registradas com sua definição e contexto. A análise de
+equidade não será restrição de elegibilidade dos artigos e não será
+presumida quando não houver resultados por grupo.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Notas para revisão com os orientadores --- fora do texto do
+capítulo}\label{notas-para-revisuxe3o-com-os-orientadores-fora-do-texto-do-capuxedtulo}
+
+\subsection{Estrutura adotada e relação com os
+exemplos}\label{estrutura-adotada-e-relauxe7uxe3o-com-os-exemplos}
+
+Os três TCCs fornecidos organizam suas introduções em torno de contexto,
+problema, questão de pesquisa, objetivos, organização/estrutura do
+trabalho e cronograma. Esta versão desenvolve contexto, problema, GQM,
+questão de pesquisa, objetivos e métricas. As métricas podem ser
+deslocadas para o capítulo metodológico na organização final. A
+organização dos capítulos e o cronograma devem refletir o planejamento
+efetivamente aprovado, sem importar atividades experimentais dos
+exemplos.
+
+Os exemplos foram utilizados como referência de organização, não como
+fontes científicas sobre hanseníase ou visão computacional. Não se
+reproduziu o conteúdo temático desses trabalhos.
+
+\subsection{Pontos que precisam de
+decisão}\label{pontos-que-precisam-de-decisuxe3o}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Recorte territorial definido:} Brasil, no contexto da rede
+  pública de saúde. Isso não implica que todos os estudos devam ser
+  brasileiros ou que já exista validação local. Fundamentar
+  posteriormente as particularidades do cenário brasileiro com fontes
+  pertinentes.
+\item
+  \textbf{Escopo da questão:} ``como avaliar'' pode orientar uma
+  proposta de avaliação mais ampla; a revisão responde inicialmente
+  ``como os modelos têm sido avaliados''. Alinhar com os professores se
+  a RQ central pertence ao TCC completo e as oito perguntas orientam a
+  extração da revisão.
+\item
+  \textbf{Tons de pele:} o escopo passa a abranger imagens de pele em
+  geral. A avaliação entre tons permanece em M6, quando houver
+  evidências, sem restringir a questão central a pele negra. Fitzpatrick
+  não equivale a identidade racial; origem geográfica não determina tom
+  de pele.
+\item
+  \textbf{Contribuição do TCC 1:} a versão propõe síntese da literatura
+  e fundamentação de avaliação futura. Não promete execução
+  experimental, validação clínica ou aplicativo concluído nesta etapa.
+\item
+  \textbf{Fundamentação clínica:} para aprofundar definições, sinais
+  diagnósticos ou epidemiologia, consultar fontes primárias/oficiais.
+  Esta versão se limita ao contexto apresentado nos artigos e evita
+  estatísticas epidemiológicas atuais não verificadas.
+\item
+  \textbf{Lacuna provisória:} as leituras permitem apontar questões de
+  avaliação e relato. Não escrever que ``não existem estudos'' ou que a
+  revisão já demonstrou uma lacuna definitiva enquanto a seleção e a
+  extração não terminarem.
+\end{itemize}
+
+\subsection{Mapa das afirmações e das
+fontes}\label{mapa-das-afirmauxe7uxf5es-e-das-fontes}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Parte da redação
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Base consultada
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Onde conferir
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Limite da afirmação
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dificuldades de reconhecimento e panorama de IA & Fernandes et
+al.~(2024) & PDF pp.~1--2 & Contextualização da revisão, sem números
+atuais de prevalência \\
+21 estudos e predominância de classificação multiclasse & Fernandes et
+al.~(2024) & Resumo, p.~1 & Não significa 21 estudos elegíveis para o
+protocolo de vocês \\
+MobileNetV2 e protótipo Android & Jaikishore et al.~(2021) &
+Resumo/Introdução, p.~1 & Protótipo não equivale a validação clínica;
+não afirmar estadiamento validado da hanseníase \\
+CNNs e população de pele escura & Yotsu et al.~(2023) & pp.~3--5 & Dados
+africanos não demonstram validação na rede pública brasileira \\
+Resultados específicos de hanseníase & Yotsu et al.~(2023) & pp.~6--7,
+Task 2/Figura 1 & 12\%/13\% são leitura da matriz por classe; não
+misturar com Task 1 \\
+Segmentação de feridas & Sanchez et al.~(2024) & pp.~1 e 4--5 do PDF &
+Não é diagnóstico da hanseníase \\
+YOLO e explicabilidade & Eita e Rizk (2025) & pp.~4--9 & Mapas de
+saliência não comprovam validade clínica \\
+Diversidade limitada e validação prospectiva futura & Eita e Rizk (2025)
+& p.~16, seções 6.4 e 7 & Não demonstra diferença quantitativa por tom
+de pele \\
+\end{longtable}
+}
+
+Ahikpa e Himabindu (2025) foi identificado como revisão, e não como
+experimento próprio. Pode apoiar o referencial e os trabalhos
+relacionados; nesta introdução, priorizaram-se a revisão sistemática de
+Fernandes e os estudos primários fornecidos. Isso evita atribuir aos
+revisores resultados que pertencem aos estudos citados.
+
+\subsection{Situação do repositório
+consultado}\label{situauxe7uxe3o-do-reposituxf3rio-consultado}
+
+Consulta à branch \texttt{master} de \texttt{HansenSightAI/tcc}, em
+14/10/2026. O arquivo \texttt{Monografia/editaveis/introducao.tex} ainda
+contém uma introdução sobre análise de shaders em dispositivos móveis. O
+arquivo \texttt{Monografia/bibliografia.bib} contém referências do mesmo
+modelo de computação gráfica. Esta redação é um rascunho independente
+para revisão; não foi aplicada ao repositório.
+
+Caminhos consultados:
+
+\begin{itemize}
+\tightlist
+\item
+  https://github.com/HansenSightAI/tcc/blob/master/Monografia/editaveis/introducao.tex
+\item
+  https://github.com/HansenSightAI/tcc/blob/master/Monografia/bibliografia.bib
+\end{itemize}
+
+Na integração, substituir o texto do modelo pela versão aprovada e
+acrescentar as referências abaixo. Antes de remover referências antigas,
+verificar se ainda são citadas em outros capítulos do modelo.
+
+\section{Referências utilizadas na
+redação}\label{referuxeancias-utilizadas-na-redauxe7uxe3o}
+
+FERNANDES, Jacks Renan Neves; TELES, Ariel Soares; FERNANDES, Thayaná
+Ribeiro Silva; LIMA, Lucas Daniel Batista; BALHARA, Surjeet; GUPTA,
+Nishu; TEIXEIRA, Silmar. Artificial Intelligence on Diagnostic Aid of
+Leprosy: A Systematic Literature Review. \emph{Journal of Clinical
+Medicine}, v. 13, n.~1, artigo 180, 2024. DOI:
+https://doi.org/10.3390/jcm13010180. \textbf{Nota editorial:} o PDF
+informa publicação online em 28/12/2023, mas sua referência e volume são
+de 2024; adotou-se o ano bibliográfico de 2024.
+
+JAIKISHORE, Chathura N.; UDUTALAPALLY, Venkanna; DAS, Debanjan. AI
+Driven Edge Device for Screening Skin Lesion and Its Severity in
+Peripheral Communities. In: \emph{2021 IEEE 18th India Council
+International Conference (INDICON)}. IEEE, 2021. p.~1--6. DOI:
+https://doi.org/10.1109/INDICON52576.2021.9691666.
+
+YOTSU, Rie R.; DING, Zhengming; HAMM, Jihun; BLANTON, Ronald E. Deep
+learning for AI-based diagnosis of skin-related neglected tropical
+diseases: A pilot study. \emph{PLOS Neglected Tropical Diseases}, v. 17,
+n.~8, e0011230, 2023. DOI: https://doi.org/10.1371/journal.pntd.0011230.
+
+SANCHEZ, Karen; HINOJOSA, Carlos; MIELES, Olinto; ZHAO, Chen; GHANEM,
+Bernard; ARGUELLO, Henry. CO2Wounds-V2: Extended Chronic Wounds Dataset
+from Leprosy Patients. In: \emph{2024 IEEE International Conference on
+Image Processing (ICIP)}. IEEE, 2024. p.~69--75. DOI:
+https://doi.org/10.1109/ICIP51287.2024.10647641.
+
+EITA, Mohammad A.; RIZK, Hamada. A trustworthy and explainable deep
+learning framework for skin lesion detection in smart dermatology.
+\emph{Engineering Applications of Artificial Intelligence}, v. 159,
+artigo 111594, 2025. DOI:
+https://doi.org/10.1016/j.engappai.2025.111594.
+
+COCO. \emph{Detection Evaluation}. Documentação técnica do benchmark.
+Disponível em: https://cocodataset.org/dataset/detection-eval.htm.
+Acesso em: 15 out. 2026. Fonte complementar para interpretação de IoU e
+AP/mAP em caixas e máscaras; não é estudo incluído na revisão de
+hanseníase.
+
+\end{document}
