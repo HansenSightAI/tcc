@@ -1,0 +1,46 @@
+# LaTeX auxiliary and temporary files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.bcf
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.dvi
+*.ps
+*.xdv
+*.glo
+*.gls
+*.glg
+*.ist
+*.acn
+*.acr
+*.alg
+*.pyg
+*.loe
+
+# Auto-converted figures
+*-eps-converted-to.pdf
+
+# Editor & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
