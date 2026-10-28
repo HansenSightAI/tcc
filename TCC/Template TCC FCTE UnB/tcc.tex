@@ -1,0 +1,55 @@
+% Não esqueça de definir este arquivo como o principal
+% Atualizado a partir do arquivo do prof. Edson Alves
+% Anteriormente publicado em: https://www.overleaf.com/latex/templates/template-tcc-latex-unb-fga/cfmfvnphbjkx
+% Edição por Alan Müller - FCTE, 2025
+
+\input{fixos/pacotes}
+\input{fixos/comandos}
+\usepackage{fixos/customizacoes}
+\ifpdf
+    \usepackage{cmap}
+\fi
+
+\input{editaveis/informacoes}
+\input{fixos/informacoes}
+\input{fixos/setup}
+
+\begin{document}
+
+\frenchspacing 
+\imprimircapa
+\imprimirfolhaderosto*
+
+\input{fixos/fichaCatalografica}
+\input{editaveis/errata}
+\input{fixos/folhaDeAprovacao}
+\input{editaveis/dedicatoria}
+\input{editaveis/agradecimentos}
+\input{editaveis/epigrafe}
+\input{editaveis/resumo}
+\input{editaveis/abstract}
+\input{fixos/listasAutomaticas}
+\input{editaveis/abreviaturas}
+\input{editaveis/simbolos}
+\input{fixos/indiceAutomatico}
+
+\textual
+
+\input{editaveis/introducao}
+\input{editaveis/aspectosgerais}
+\input{editaveis/consideracoes}
+%\input{editaveis/textoepostexto}
+\input{editaveis/elementosdotexto}
+\input{editaveis/elementosdopostexto}
+
+\bookmarksetup{startatroot} 
+
+\postextual
+
+\bibliography{bibliografia} 
+\input{editaveis/apendices}
+\input{editaveis/anexos}
+\printindex
+
+\end{document}
+
