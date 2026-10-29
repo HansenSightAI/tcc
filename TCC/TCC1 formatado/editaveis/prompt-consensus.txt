@@ -1,0 +1,73 @@
+find articles for the following components of my systematic research.  
+main research Question:  
+How can we evaluate the performance of computer vision models applied to identifying patterns associated with leprosy in skin images, within the context of the Brazilian public health system?  
+secondary questions:  
+What computer vision techniques are used to identify dermatological manifestations associated with leprosy?  
+What datasets and populations are used in the development and evaluation of these models?  
+What methods and procedures are used to evaluate the performance of these models, and what results are reported?  
+What metrics are used to evaluate the performance of these models, and what results are reported?  
+How does the performance of the models vary between different groups or skin tones?  
+What artificial intelligence models and approaches are used to identify dermatological manifestations associated with leprosy?  
+How is the generalization capacity of the models evaluated, especially when using datasets different from those used in training?  
+In what type of publication venue was the article published? (journal, conference)
+
+PICOC:  
+Keyword and Synonyms  
+Population:  
+Computer Vision  
+artificial intelligence  
+CNN  
+convolutional neural network*  
+deep learning  
+machine learning  
+neural network*  
+Context:  
+leprosy  
+Hansen disease  
+hanseniasis  
+Hansen's disease  
+skin lesion classification  
+skin lesion segmentation
+
+Intervention:  
+Machine Learning Models  
+Attention U-Net  
+capsule network*  
+ConvNeXt*  
+DenseNet*  
+EfficientNet*  
+MedSAM  
+multi-task learning  
+ResNet*  
+ResUNet  
+SAM3  
+Segment Anything Model  
+self-supervised learning  
+semi-supervised learning  
+supervised learning  
+Swin Transformer*  
+transfer learning  
+U-Net  
+UNet  
+unsupervised learning  
+Vision Transformer*  
+ViT
+
+Outcome:  
+performance  
+accuracy  
+AUC  
+classification  
+detection  
+diagnosis  
+evaluation  
+F1 score  
+F1-score  
+identification  
+precision  
+recall  
+recognition  
+ROC-AUC  
+segmentation  
+sensitivity  
+specificity
