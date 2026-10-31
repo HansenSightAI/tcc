@@ -1,0 +1,219 @@
+% !TeX root = ../tcc.tex
+\chapter{Referencial teórico}
+\label{cap:referencial-teorico}
+
+Neste capítulo são apresentados os conceitos que fundamentam a investigação.
+Inicialmente, são abordadas a pesquisa empírica em engenharia de software
+e a revisão sistemática da literatura. Em seguida, são apresentados aspectos
+da hanseníase, da aplicação de aprendizado de máquina a imagens de pele e
+das medidas usadas na avaliação dos modelos.
+
+\section{Pesquisa empírica em engenharia de software}
+
+A pesquisa empírica utiliza observações e dados para investigar fenômenos,
+avaliar propostas e fundamentar conclusões. Na engenharia de software, as
+estratégias empíricas incluem experimentos, estudos de caso e estudos
+secundários de literatura, cada qual com objetivos e procedimentos próprios
+\cite{wohlin2024}. A escolha entre essas estratégias depende da questão
+investigada e das evidências necessárias para respondê-la.
+
+Um experimento controlado envolve a definição de fatores, tratamentos e
+medidas para investigar seus efeitos sob condições estabelecidas. Já uma
+revisão sistemática é um estudo secundário, no qual as evidências de outros
+trabalhos são identificadas e analisadas a partir de um processo documentado
+\cite[p. 51--56]{wohlin2024}. Neste TCC, a revisão busca reunir informações
+sobre avaliações de modelos; sua realização não constitui, por si só, um
+experimento controlado ou uma validação clínica.
+
+\subsection{Revisão sistemática da literatura}
+
+Uma revisão sistemática parte de questões de pesquisa e de um protocolo
+que orienta a busca, a seleção, a avaliação e a síntese dos estudos. Entre
+os elementos a registrar estão as fontes e estratégias de busca, os critérios
+de seleção e os procedimentos de extração de dados
+\cite{kitchenham2007,wohlin2024}. A descrição dessas decisões permite
+examinar o alcance e as limitações do conjunto de estudos identificado.
+
+No presente trabalho, a revisão é empregada para compreender como modelos
+aplicados a imagens de pele relacionadas à hanseníase são avaliados. O
+protocolo e o andamento de sua execução são apresentados no
+Capítulo~\ref{cap:revisao-literatura}.
+
+\section{Hanseníase e identificação de manifestações cutâneas}
+
+A hanseníase pode apresentar manifestações na pele e comprometimento de
+nervos periféricos. Segundo a \citeonline{oms2018hanseniase}, entre os
+sinais usados para o diagnóstico estão a perda de sensibilidade em uma
+mancha cutânea, alterações em nervos periféricos associadas à perda de
+sensibilidade e a presença de bacilos em exame de esfregaço cutâneo.
+Portanto, uma fotografia de pele representa somente parte das informações
+consideradas na avaliação clínica.
+
+No contexto desta pesquisa, a análise computacional de imagens é tratada
+como possível apoio à triagem. Seu desempenho em uma base de imagens não
+demonstra, isoladamente, que o sistema possa estabelecer um diagnóstico ou
+melhorar o atendimento em um serviço de saúde. Por isso, é necessário
+relacionar os resultados reportados à tarefa realizada, aos dados utilizados
+e à forma de validação \cite{fernandes2024}.
+
+\section{Aprendizado de máquina e visão computacional}
+
+A visão computacional compreende métodos capazes de extrair e analisar
+informações de imagens. No aprendizado de máquina, modelos são ajustados a
+partir de dados para executar uma tarefa; no aprendizado profundo, redes com
+múltiplas camadas aprendem representações em diferentes níveis. Redes
+neurais convolucionais são uma das abordagens empregadas na análise de
+imagens \cite{lecun2015deep}.
+
+As aplicações à hanseníase diferem quanto à tarefa e ao resultado produzido.
+Na classificação, o modelo atribui uma categoria à imagem; na detecção,
+identifica e localiza objetos ou lesões; na segmentação, associa regiões ou
+pixels a classes de interesse. Essas saídas respondem a perguntas diferentes
+e devem ser avaliadas com medidas apropriadas à tarefa
+\cite{yotsu2023,eita2025,sanchez2024}.
+
+Por exemplo, \citeonline{yotsu2023} investigaram a classificação de doenças
+tropicais com manifestações cutâneas, enquanto \citeonline{sanchez2024}
+estudaram a segmentação de feridas em imagens de pessoas com hanseníase.
+Delimitar uma ferida e identificar a doença em uma imagem são objetivos
+distintos; assim, um resultado de segmentação não deve ser apresentado como
+medida de diagnóstico da hanseníase.
+
+\section{Métricas e dimensões de avaliação}\label{muxe9tricas-e-dimensuxf5es-de-avaliauxe7uxe3o-do-gqm}
+
+As métricas serão extraídas conforme a tarefa e o protocolo de cada
+estudo. Não se exige que todos os artigos apresentem todas as medidas.
+Métricas ausentes serão registradas como não reportadas; cálculos
+adicionais somente serão realizados quando houver dados suficientes, com
+identificação explícita de que foram derivados nesta revisão.
+
+\subsection{Resultados de
+classificação}\label{resultados-de-classificauxe7uxe3o}
+
+Para classificação binária, deve-se definir previamente o que constitui
+a classe positiva e o diagnóstico/rótulo de referência. Em modelos
+multiclasse, a hanseníase pode ser analisada como classe positiva frente
+às demais classes (um contra todos). As definições abaixo se referem à
+unidade avaliada --- por exemplo, imagem --- e não implicam
+automaticamente diagnóstico por paciente.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Resultado
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Significado
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{TP --- True Positive} & A unidade pertence à classe positiva
+segundo a referência e o modelo a classifica como positiva. \\
+\textbf{TN --- True Negative} & A unidade pertence à classe negativa
+segundo a referência e o modelo a classifica como negativa. \\
+\textbf{FP --- False Positive} & A unidade pertence à classe negativa
+segundo a referência, mas o modelo a classifica como positiva. \\
+\textbf{FN --- False Negative} & A unidade pertence à classe positiva
+segundo a referência, mas o modelo a classifica como negativa. \\
+\end{longtable}
+}
+
+A classe positiva pode representar hanseníase ou uma manifestação
+definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
+reconhecer uma ferida em paciente com hanseníase não equivale a
+diagnosticar a doença.
+
+\subsection{Métricas relacionadas à questão de
+pesquisa}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dimensão do desempenho
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Métrica
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrição e operacionalização
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M1 & Classificação & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
+& Proporção de positivos corretamente identificados: \textbf{SEN = TP /
+(TP + FN)}. \\
+M2 & Classificação & \textbf{Especificidade --- Specificity (SPE)} &
+Proporção de negativos corretamente identificados: \textbf{SPE = TN /
+(TN + FP)}. \\
+M3 & Classificação & \textbf{Precisão --- Precision (PRE)} & Proporção
+de predições positivas que correspondem a positivos de referência:
+\textbf{PRE = TP / (TP + FP)}. \\
+M4 & Classificação & \textbf{F1-score} & Média harmônica entre precisão
+e sensibilidade, considerando o efeito de falsos positivos e falsos
+negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
+(2TP + FP + FN)}. \\
+M5 & Classificação geral & \textbf{Acurácia --- Accuracy (ACC)} &
+Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
+(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
+acertos totais / unidades totais. \\
+M6 & Equidade do desempenho & \textbf{Diferença de desempenho entre
+grupos} & Comparação da mesma métrica entre grupos de tons de pele,
+quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
+métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
+grupos, condições de avaliação e incerteza, quando reportados. \\
+M7 & Generalização & \textbf{Variação de desempenho entre datasets} &
+Comparação da mesma métrica entre avaliações em dados de distribuição
+semelhante à de treinamento e dados de distribuição diferente:
+\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
+Registrar se houve adaptação ou retreinamento e se tarefa/classes são
+comparáveis. \\
+M8 & Segmentação / sobreposição espacial & \textbf{Intersection over
+Union (IoU)} & Interseção dividida pela união das regiões prevista P e
+de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
+binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
+FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
+classes. \\
+M9 & Detecção / segmentação por instância & \textbf{Mean Average
+Precision (mAP)} & Média dos valores de AP das classes consideradas; AP
+resume a curva precisão--recall segundo a convenção do benchmark.
+Registrar o critério de correspondência e o limiar de IoU: por exemplo,
+\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
+AP de máscaras. \\
+\end{longtable}
+}
+
+\textbf{IoU e mAP não são métricas exclusivas de segmentação.} Em
+detecção, IoU mede sobreposição de caixas e pode determinar a
+correspondência entre predição e referência; mAP resume o desempenho das
+detecções. Na segmentação semântica, IoU/mIoU mede sobreposição de
+máscaras por classe. Na segmentação por instância, também se utiliza
+AP/mAP calculada sobre máscaras. A documentação de avaliação COCO
+explicita essa distinção entre caixas e máscaras \cite{coco}.
+
+\textbf{Critérios de interpretação:} registrar se a unidade é paciente,
+imagem, objeto ou pixel; separar resultados específicos de hanseníase de
+médias globais; identificar médias macro, micro ou ponderadas; registrar
+denominadores nulos como indefinidos ou conforme a convenção explicitada
+no estudo. Diferenças entre métricas expressas em porcentagem devem ser
+apresentadas em pontos percentuais. M6 e M7 são dimensões de comparação,
+não métricas únicas universalmente definidas. Desempenhos de modelos
+diferentes em bases diferentes não isolam o efeito da mudança de
+distribuição.
+
+O conjunto de métricas funciona como orientação para extração, não como
+lista fechada. Medidas adicionais reportadas pelos artigos, como MCC,
+devem ser registradas com sua definição e contexto. A análise de
+equidade não será restrição de elegibilidade dos artigos e não será
+presumida quando não houver resultados por grupo.
+
