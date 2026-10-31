@@ -49,6 +49,24 @@ separado de comparação. As perguntas e a relação completa de termos,
 incluindo sinônimos e asteriscos, são reproduzidas no
 Apêndice~\ref{ap:prompt-consensus}.
 
+A Figura~\ref{fig:pico-pai} apresenta a representação PICO de
+\citeonline{pai2004}, originalmente voltada à formulação de questões
+clínicas. Nela, \textit{patient}, \textit{intervention}, \textit{comparison}
+e \textit{outcome} correspondem, respectivamente, a paciente ou população,
+intervenção, comparação e resultado. O PICOC acrescenta o contexto a esses
+componentes. No procedimento deste trabalho, o \textit{prompt} utilizou
+população, intervenção, contexto e resultado, sem campo específico de
+comparação; a figura apresenta o modelo conceitual PICO e não afirma que
+uma busca booleana exatamente igual à ilustrada foi executada.
+
+\begin{figure}[htbp]
+\centering
+\caption{Representação dos componentes PICO para uma estratégia de busca}
+\label{fig:pico-pai}
+\includegraphics[width=0.68\textwidth]{figuras/pico-pai-2004.png}
+\fonte{Reproduzido de \citeonline[p. 89, Figura 3]{pai2004}.}
+\end{figure}
+
 \subsection{Consultas apresentadas pelo Consensus}
 
 Na busca de 25 de setembro de 2026, o Consensus apresentou uma sequência
@@ -225,6 +243,35 @@ Assim, não se deve representar a diferença de 92 como 92 exclusões.
 Os 26 registros com situação de inclusão na triagem constituem o conjunto
 encaminhado à leitura integral, conforme o registro consolidado; esse
 estado não comprova a elegibilidade definitiva após a leitura completa.
+
+A Figura~\ref{fig:fluxo-triagem} sintetiza as quantidades descritas nesta
+seção. A indicação de 12 registros removidos corresponde à diferença entre
+130 e 118, ainda sujeita à reconciliação das fontes de identificação. O
+resultado da leitura integral e o conjunto definitivo permanecem pendentes.
+
+\begin{figure}[htbp]
+\centering
+\caption{Fluxo de identificação e triagem dos estudos}
+\label{fig:fluxo-triagem}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=2pt,align=center,text width=3.6cm,minimum height=1.0cm,inner sep=5pt,font=\small},
+  wide/.style={box,text width=7.6cm},
+  arrow/.style={-{Stealth[length=2.3mm]},thick}
+]
+\node[wide] (identified) {Registros informados: 130\\(Consensus: 100; Claude: 30)};
+\node[wide,below=1.5cm of identified] (screened) {Registros após deduplicação: 118\\para triagem por título e resumo};
+\draw[arrow] (identified) -- node[right=3mm,align=left,font=\scriptsize,text width=4cm] {12 registros: diferença\\calculada; a conciliar} (screened);
+\node[box,below=1.15cm of screened,xshift=-4.3cm] (excluded) {Excluídos\\91 registros};
+\node[box,below=1.15cm of screened] (included) {Incluídos na triagem\\26 registros};
+\node[box,below=1.15cm of screened,xshift=4.3cm] (maybe) {Decisão\\intermediária\\1 registro};
+\draw[arrow] (screened.south) -- ++(0,-0.45) -| (excluded.north);
+\draw[arrow] (screened.south) -- (included.north);
+\draw[arrow] (screened.south) -- ++(0,-0.45) -| (maybe.north);
+\node[box,below=0.85cm of included] (fulltext) {Leitura integral\\e inclusão final\\pendentes};
+\draw[arrow] (included) -- (fulltext);
+\end{tikzpicture}
+\fonte{Elaboração própria a partir dos resultados registrados no Evidentia e do histórico da busca.}
+\end{figure}
 
 \begin{table}[htb]
 \centering
