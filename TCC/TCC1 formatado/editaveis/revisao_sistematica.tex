@@ -35,6 +35,8 @@ investigação foi detalhada nas seguintes questões secundárias:
 \item Em que tipo de veículo o artigo foi publicado, como periódico ou conferência?
 \end{enumerate}
 
+\section{Estruturação da estratégia de busca}
+
 Para estruturar a solicitação de busca, foram utilizados os componentes
 registrados como população, contexto, intervenção e resultado do PICOC.
 A população foi representada por termos de visão computacional,
@@ -46,34 +48,6 @@ identificação. O \textit{prompt} preservado não apresenta um campo
 separado de comparação. As perguntas e a relação completa de termos,
 incluindo sinônimos e asteriscos, são reproduzidas no
 Apêndice~\ref{ap:prompt-consensus}.
-
-\section{Realização da busca e seleção dos artigos}
-\subsection{Busca e identificação dos registros}
-
-O protocolo da revisão foi organizado no Evidentia a partir da questão de
-pesquisa e dos componentes do PICOC. Esses elementos foram utilizados em
-uma solicitação em inglês ao Consensus, sem a inclusão dos critérios de
-seleção no texto do \textit{prompt}. Em 25 de setembro de 2026, a
-ferramenta retornou uma lista de 100 referências, das quais 98 tinham DOI
-informado. Foi registrada também uma busca complementar por meio do Claude, da qual
-foram reunidas 30 referências. A data, o \textit{prompt}, o modelo, a configuração e a lista completa
-dessa busca complementar ainda precisam ser confirmados. Embora o protocolo
-também registre a Scopus como fonte, não há comprovação de uma busca separada
-nessa base na etapa descrita.
-
-As duas listas somaram 130 registros e,
-após a remoção de duplicatas, permaneceram 118 para triagem. A diferença
-entre esses totais corresponde a 12 registros removidos; entretanto, os
-pares considerados duplicados e o procedimento usado para identificá-los
-ainda não foram integralmente documentados. O conjunto bibliográfico disponível contém 129 entradas. Na comparação
-com os 118 registros triados, onze entradas não aparecem no conjunto de triagem e apresentam o mesmo DOI de outras entradas nele
-representadas. Essa comparação permite identificar 11 pares de
-registros com DOI coincidente, mas não identifica um eventual décimo
-segundo registro removido nem comprova, isoladamente, quando cada par
-foi deduplicado. A diferença entre as 129 entradas identificadas e os
-130 registros informados no relato permanece a esclarecer. Os
-indicadores internos apresentados pelo Consensus não foram tratados
-como quantidades auditadas de estudos únicos examinados pelos pesquisadores.
 
 \subsection{Consultas apresentadas pelo Consensus}
 
@@ -117,6 +91,35 @@ busca também foi ampliada para temas relacionados, como dermatologia geral,
 equidade, saúde móvel, microscopia, histopatologia e diretrizes de relato;
 nessas condições, a presença de uma referência na saída da ferramenta não
 significa que ela atende aos critérios da revisão.
+
+
+\section{Realização da busca e seleção dos artigos}
+\subsection{Busca e identificação dos registros}
+
+O protocolo da revisão foi organizado no Evidentia a partir da questão de
+pesquisa e dos componentes do PICOC. Esses elementos foram utilizados em
+uma solicitação em inglês ao Consensus, sem a inclusão dos critérios de
+seleção no texto do \textit{prompt}. Em 25 de setembro de 2026, a
+ferramenta retornou uma lista de 100 referências, das quais 98 tinham DOI
+informado. Foi registrada também uma busca complementar por meio do Claude, da qual
+foram reunidas 30 referências. A data, o \textit{prompt}, o modelo, a configuração e a lista completa
+dessa busca complementar ainda precisam ser confirmados. Embora o protocolo
+também registre a Scopus como fonte, não há comprovação de uma busca separada
+nessa base na etapa descrita.
+
+As duas listas somaram 130 registros e,
+após a remoção de duplicatas, permaneceram 118 para triagem. A diferença
+entre esses totais corresponde a 12 registros removidos; entretanto, os
+pares considerados duplicados e o procedimento usado para identificá-los
+ainda não foram integralmente documentados. O conjunto bibliográfico disponível contém 129 entradas. Na comparação
+com os 118 registros triados, onze entradas não aparecem no conjunto de triagem e apresentam o mesmo DOI de outras entradas nele
+representadas. Essa comparação permite identificar 11 pares de
+registros com DOI coincidente, mas não identifica um eventual décimo
+segundo registro removido nem comprova, isoladamente, quando cada par
+foi deduplicado. A diferença entre as 129 entradas identificadas e os
+130 registros informados no relato permanece a esclarecer. Os
+indicadores internos apresentados pelo Consensus não foram tratados
+como quantidades auditadas de estudos únicos examinados pelos pesquisadores.
 
 \subsection{Critérios de seleção}
 
@@ -268,7 +271,7 @@ situação intermediária. A quantidade incluída após a avaliação integral
 ainda não foi confirmada.
 
 
-\section{Extração e síntese das evidências}
+\subsection{Extração e síntese das evidências}
 
 Conforme \citeonline[p. 55--56]{wohlin2024}, o formulário de extração
 deve ser orientado pelas questões de pesquisa e permitir o registro das
@@ -291,3 +294,82 @@ interpretada como demonstração de equidade. A análise da aplicabilidade ao
 contexto brasileiro não equivale a uma validação clínica. Até a conclusão
 da leitura completa e da extração, a seleção e os resultados permanecem
 provisórios.
+
+\section{Resultados da revisão}
+\label{sec:resultados-revisao}
+
+Esta seção organiza a apresentação das evidências de acordo com as
+questões secundárias da revisão. As observações a seguir retomam as
+leituras já discutidas na introdução e identificam o que deverá ser
+verificado na extração. Elas não representam uma síntese concluída dos
+26 registros incluídos na triagem: a leitura integral e o preenchimento
+do formulário ainda são necessários para confirmar o conjunto de estudos
+e responder às questões de forma abrangente.
+
+\subsection{Quais técnicas de visão computacional são utilizadas?}
+
+As leituras iniciais ilustram o emprego de redes de aprendizado profundo
+em tarefas distintas. \citeonline{yotsu2023} investigaram a classificação
+de doenças com manifestações cutâneas; \citeonline{sanchez2024}, a
+segmentação de feridas; e \citeonline{eita2025}, a localização e
+classificação de lesões. A extração deverá identificar as técnicas e
+distinguir as tarefas em cada estudo selecionado.
+
+\subsection{Quais conjuntos de dados e populações são utilizados?}
+
+A caracterização dos dados inclui a origem das imagens, a população, as
+condições de aquisição e a quantidade de imagens disponíveis. Nos estudos
+já examinados, \citeonline{yotsu2023} descrevem fotografias obtidas na
+Costa do Marfim e em Gana, enquanto \citeonline{sanchez2024} apresentam
+fotografias de feridas crônicas de pacientes com hanseníase. As demais
+características e a comparação entre estudos dependem da extração.
+
+\subsection{Quais métodos e procedimentos de avaliação são empregados?}
+
+A análise deverá registrar os procedimentos de separação dos dados,
+validação e comparação dos modelos, conforme forem apresentados em cada
+artigo. Também será identificada a unidade de análise, como imagem,
+paciente, objeto ou pixel. A descrição desses procedimentos ainda precisa
+ser completada para o conjunto selecionado.
+
+\subsection{Quais métricas e resultados são reportados?}
+
+As medidas devem ser interpretadas de acordo com a tarefa executada. A
+acurácia global em uma classificação multiclasse, por exemplo, não
+representa necessariamente a sensibilidade para hanseníase. A análise das
+matrizes de confusão apresentadas por \citeonline{yotsu2023} ilustra essa
+distinção. As métricas consideradas na extração são apresentadas no
+Capítulo~\ref{cap:referencial-teorico}; sua frequência e seus resultados
+na revisão ainda serão apurados.
+
+\subsection{Como o desempenho varia entre grupos ou tons de pele?}
+
+A presença de imagens de diferentes tons de pele não demonstra, por si só,
+equivalência de desempenho entre grupos. Em \citeonline{yotsu2023}, a
+população das imagens é descrita, mas não são apresentados resultados
+separados por fototipo. A revisão registrará comparações por grupo quando
+houver informação suficiente; a ausência desses dados não permite concluir
+que há equidade ou desigualdade de desempenho.
+
+\subsection{Quais modelos e abordagens de inteligência artificial são empregados?}
+
+Entre os trabalhos discutidos inicialmente estão MobileNetV2
+\cite{jaikishore2021}, ResNet-50 e VGG-16 \cite{yotsu2023}, além de
+YOLOv8 \cite{eita2025}. Esses exemplos demonstram a diversidade de
+abordagens, mas não constituem uma contagem dos modelos encontrados no
+conjunto final da revisão.
+
+\subsection{Como a generalização dos modelos é avaliada?}
+
+A análise de generalização deverá identificar se os autores avaliaram os
+modelos em dados diferentes daqueles usados no treinamento e em quais
+condições ocorreu essa avaliação. As evidências e limitações relativas à
+generalização ainda precisam ser extraídas dos estudos selecionados.
+
+\subsection{Em quais veículos os estudos são publicados?}
+
+A classificação do veículo será registrada para cada estudo durante a
+extração. Entre as leituras inicialmente utilizadas há publicações em
+periódicos, como \citeonline{yotsu2023}, e em conferências, como
+\citeonline{jaikishore2021}. A distribuição dos veículos no conjunto
+final ainda não foi determinada.

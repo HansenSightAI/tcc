@@ -8,7 +8,7 @@ e a revisão sistemática da literatura. Em seguida, são apresentados aspectos
 da hanseníase, da aplicação de aprendizado de máquina a imagens de pele e
 das medidas usadas na avaliação dos modelos.
 
-\section{Pesquisa empírica em engenharia de software}
+\section{Experimentação na engenharia de software}
 
 A pesquisa empírica utiliza observações e dados para investigar fenômenos,
 avaliar propostas e fundamentar conclusões. Na engenharia de software, as
@@ -24,6 +24,57 @@ trabalhos são identificadas e analisadas a partir de um processo documentado
 \cite[p. 51--56]{wohlin2024}. Neste TCC, a revisão busca reunir informações
 sobre avaliações de modelos; sua realização não constitui, por si só, um
 experimento controlado ou uma validação clínica.
+
+\subsection{Experimento}
+
+Um experimento é empregado para investigar questões por meio de observações
+sob condições planejadas. Sua definição envolve, entre outros elementos, o
+objeto estudado, os tratamentos ou fatores considerados e as medidas usadas
+para observar seus efeitos. A organização do processo contribui para que
+as condições da investigação e os limites de interpretação sejam
+explicitados \cite[p. 79--82]{wohlin2024}. Esses conceitos são apresentados
+como fundamentação para o trabalho e não indicam que um experimento já
+foi executado.
+
+\subsubsection{Definição do escopo}
+
+A definição do escopo delimita o objeto, o propósito, o foco de qualidade,
+a perspectiva e o contexto do estudo. Esses elementos orientam a pergunta
+que se pretende responder e as decisões das etapas seguintes. O GQM
+adaptado apresentado na introdução explicita esses componentes para o
+objetivo desta pesquisa \cite[p. 80]{wohlin2024}.
+
+\subsubsection{Planejamento}
+
+No planejamento são especificados o contexto da investigação, as variáveis,
+as hipóteses quando aplicáveis, o desenho e os instrumentos de medição.
+Também são examinadas possíveis ameaças à validade. Em uma avaliação de
+modelos de visão computacional, essas decisões poderiam envolver a
+caracterização dos dados, a definição das tarefas e a escolha das métricas;
+o desenho efetivo de uma avaliação futura ainda depende dos resultados da
+revisão \cite[p. 80--82]{wohlin2024}.
+
+\subsubsection{Operação}
+
+A operação corresponde à preparação e à execução do procedimento
+planejado, incluindo a coleta e a verificação dos dados produzidos. Seu
+registro permite relacionar os resultados às condições em que foram
+obtidos. Nesta etapa do TCC, a operação de um experimento com modelos não
+foi estabelecida \cite{wohlin2024}.
+
+\subsubsection{Análise e interpretação}
+
+Após a obtenção dos dados, a análise organiza as medidas e examina os
+resultados em relação às questões formuladas. A interpretação deve
+considerar as características dos dados e as ameaças à validade, evitando
+estender conclusões além das condições de avaliação \cite{wohlin2024}.
+
+\subsubsection{Apresentação e documentação}
+
+O relato reúne o objetivo, o procedimento, as medidas, os resultados e as
+limitações, permitindo que outras pessoas compreendam e examinem o estudo.
+A documentação também dá suporte à comparação com investigações posteriores
+\cite{wohlin2024}.
 
 \subsection{Revisão sistemática da literatura}
 
@@ -56,7 +107,9 @@ melhorar o atendimento em um serviço de saúde. Por isso, é necessário
 relacionar os resultados reportados à tarefa realizada, aos dados utilizados
 e à forma de validação \cite{fernandes2024}.
 
-\section{Aprendizado de máquina e visão computacional}
+\section{Inteligência artificial e visão computacional}
+
+\subsection{Aprendizado de máquina e aprendizado profundo}
 
 A visão computacional compreende métodos capazes de extrair e analisar
 informações de imagens. No aprendizado de máquina, modelos são ajustados a
@@ -64,6 +117,8 @@ partir de dados para executar uma tarefa; no aprendizado profundo, redes com
 múltiplas camadas aprendem representações em diferentes níveis. Redes
 neurais convolucionais são uma das abordagens empregadas na análise de
 imagens \cite{lecun2015deep}.
+
+\subsection{Tarefas de análise de imagens}
 
 As aplicações à hanseníase diferem quanto à tarefa e ao resultado produzido.
 Na classificação, o modelo atribui uma categoria à imagem; na detecção,
@@ -217,3 +272,21 @@ devem ser registradas com sua definição e contexto. A análise de
 equidade não será restrição de elegibilidade dos artigos e não será
 presumida quando não houver resultados por grupo.
 
+
+\section{Avaliação e generalização dos modelos}
+
+A avaliação de um modelo depende do desenho do estudo e da relação entre
+os dados usados no desenvolvimento e aqueles usados na avaliação. Além do
+valor de uma métrica, é necessário identificar o conjunto avaliado, a unidade
+de análise e as classes consideradas. Em uma aplicação multiclasse, por
+exemplo, uma medida global não descreve necessariamente o desempenho para
+cada doença \cite{yotsu2023}.
+
+A generalização diz respeito ao comportamento do modelo em dados diferentes
+dos utilizados no seu desenvolvimento. Evidências obtidas em uma população
+ou conjunto específico devem ser interpretadas considerando suas condições
+de aquisição e composição. Para a análise por tons de pele, é necessário
+verificar se as características dos grupos são descritas e se as medidas
+são apresentadas separadamente; a simples presença de um grupo nas imagens
+não demonstra desempenho equivalente entre grupos \cite{yotsu2023,eita2025}.
+Esses aspectos orientam a extração das evidências na revisão.
