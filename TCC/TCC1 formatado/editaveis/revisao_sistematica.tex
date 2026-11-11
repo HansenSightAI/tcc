@@ -470,10 +470,10 @@ de cada exclusão.
 \draw[arrow] (screened.south) -- ++(0,-0.45) -| (excluded.north);
 \draw[arrow] (screened.south) -- (included.north);
 
-\node[box,text width=3.8cm,below=1.5cm of included] (fulltext) {Leitura integral\\e extração\\25 estudos incluídos};
-\node[box,text width=4.6cm,below=1.5cm of included,xshift=4.8cm] (not_extracted) {1 selecionado e não extraído\\[2pt]Exclusão em texto completo};
+\node[box,text width=3.8cm,below=1.3cm of included] (fulltext) {Leitura integral\\e extração\\25 estudos incluídos};
+\node[box,text width=4.6cm,right=0.9cm of fulltext] (not_extracted) {1 selecionado e não extraído\\[2pt]Exclusão em texto completo};
 \draw[arrow] (included.south) -- (fulltext.north);
-\draw[arrow] (included.south) -- ++(0,-0.65) -| (not_extracted.north);
+\draw[arrow] (fulltext.east) -- (not_extracted.west);
 \end{tikzpicture}
 \fonte{Autores.}
 \end{figure}
