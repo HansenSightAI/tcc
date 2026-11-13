@@ -619,20 +619,18 @@ conversão para escala de cinza acompanhada de limiarização automática de Ots
 \estudo{E07}. Observa-se ainda o recurso frequente ao recorte manual
 da lesão (\textit{cropping}) e à anonimização por mascaramento seletivo \estudo{E04,E25}.
 
-Para a tarefa de segmentação, a literatura divide-se entre abordagens semânticas profundas
-e métodos heurísticos clássicos. Enquanto estudos de feridas crônicas e sequelas neuropáticas
-utilizam arquiteturas baseadas em U-Net, DeepLabV3+ e SegNet para mapear bordas e classificar
-tecidos de granulação, esfacelo e necrose \estudo{E21,E22}, trabalhos voltados
-a lesões cutâneas ativas empregam agrupamento por \textit{Fuzzy C-Means} otimizado pelo
-algoritmo do vaga-lume (\textit{Firefly Algorithm}) \estudo{E18}; operações morfológicas de
-dilatação e erosão aparecem em \estudo{E07}.
+Na segmentação de feridas crônicas, \estudo{E21} avaliou DeepLabV3, DeepLabV3+, U-Net e FPN,
+enquanto \estudo{E22} empregou uma U-Net modificada. A tarefa avaliada delimita
+a ferida em relação ao fundo. Em sistemas de classificação de lesões, a delimitação
+da região de interesse foi realizada com U-Net em \estudo{E06}, com limiarização e
+morfologia em \estudo{E07} e com \textit{Fuzzy C-Means} otimizado pelo algoritmo do
+vaga-lume em \estudo{E18}.
 
 Na etapa de extração e classificação, coexistem métodos tradicionais e modelos profundos.
 Um estudo exploratório aplica descritores manuais de textura, como \textit{Local Binary Patterns}
 (LBP) e \textit{Weber Local Descriptor} (WLD), fusionados a um classificador SVM multinível
 \estudo{E25}, e a revisão \estudo{E12} relata, entre os estudos que revisa, o uso de SVM e de
-\textit{Random Forest}. Contudo, o aprendizado profundo
-consolida-se como a abordagem hegemônica: destacam-se redes convolucionais como ResNet-50
+\textit{Random Forest}. Entre os modelos de aprendizado profundo, destacam-se redes convolucionais como ResNet-50
 \estudo{E05,E13}, VGG-16 \estudo{E05,E19}, MobileNetV2 \estudo{E24} e Inception \estudo{E13}. Observa-se também a adoção
 de sistemas em cascata de dois estágios para diferenciação hierárquica entre dermatoses
 tropicais negligenciadas \estudo{E04,E15} e a conversão de um modelo leve (MobileNetV2) para TensorFlow Lite, executado
@@ -1078,71 +1076,121 @@ base (RQ5) e quantos reportam desempenho por tom nos textos principais (RQ6).
 
 \subsection{Quais modelos e abordagens de inteligência artificial são empregados?}
 
-A análise qualitativa e quantitativa dos 25 estudos incluídos revela uma expressiva evolução metodológica nas arquiteturas computacionais aplicadas ao enfrentamento da hanseníase e demais dermatoses negligenciadas. Em vez de uma única solução hegemônica, identifica-se a coexistência de abordagens clássicas de aprendizado de máquina supervisionado e arquiteturas profundas de ponta, categorizadas em seis grandes famílias:
+Dos 25 estudos incluídos, 15 desenvolveram e avaliaram modelos, e \estudo{E04} avaliou independentemente um classificador existente. As frequências usam esses 16 estudos. As seis revisões, as duas perspectivas e o protocolo contribuem para a síntese narrativa. Cada publicação conta uma vez por modelo ou componente usado diretamente, incluindo comparadores testados e componentes de configurações avaliadas. Uma publicação pode contribuir para várias linhas.
 
-\begin{enumerate}
-	\item \textbf{Redes Neurais Convolucionais Profundas com Transferência de Aprendizado:} Constituem a espinha dorsal da maioria dos estudos de classificação baseados em fotografias clínicas. Destacam-se a ResNet-50 \estudo{E05,E13}, a VGG-16 \estudo{E05,E19}, a Inception-v4 \estudo{E13} e a DenseNet-121 \estudo{E15}. No projeto global da Organização Mundial da Saúde (\textit{WHO Skin NTDs App}), a DenseNet-121 pré-treinada atua em um esquema hierárquico em cascata de dois estágios: o primeiro discrimina se a imagem corresponde a uma dermatose negligenciada e o segundo classifica a lesão entre 12 categorias específicas de NTDs cutâneas \estudo{E04,E11,E15}.
+A Tabela~\ref{tab:tarefas-ia} vincula as tarefas e as etapas dos sistemas aos estudos. O sistema de \estudo{E22} também descreve um classificador após a segmentação, com métricas apresentadas para o sistema. Em \estudo{E24}, o treino relatado para a classificação de gravidade abrange eczema e sarampo. A classificação de doenças desse estudo inclui hanseníase.
 
-	\item \textbf{Arquiteturas Otimizadas para Dispositivos Periféricos (\textit{Edge Computing} e Aplicações Móveis):} Visando viabilizar a triagem em comunidades periféricas, a MobileNetV2 foi ajustada e convertida para TensorFlow Lite, resultando em um modelo de cerca de 14 MB executado em aplicativo Android \estudo{E24}, em linha com o que o editorial \estudo{E20} discute sobre aplicações móveis de inteligência artificial no ponto de atendimento.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Tarefas e etapas dos sistemas por estudo}
+\label{tab:tarefas-ia}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{7.4cm}>{\raggedright\arraybackslash}p{6.3cm}@{}}
+\toprule
+\textbf{Tarefa ou etapa} & \textbf{Estudos} \\
+\midrule
+Classificação de doenças em imagens cutâneas & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25} \\
+Classificação em microfotografias histopatológicas & \estudo{E08} \\
+Detecção por caixas delimitadoras e classificação das lesões localizadas & \estudo{E23} \\
+Segmentação binária de ferida e fundo & \estudo{E21,E22} \\
+Delimitação da região de interesse como etapa da classificação & \estudo{E06,E07,E18} \\
+Classificação após a segmentação como etapa do sistema & \estudo{E22} \\
+Classificação de gravidade para eczema e sarampo & \estudo{E24} \\
+\bottomrule
+\end{tabular}
+\fonte{Autores, a partir dos estudos incluídos.}
+\end{table}
 
-	\item \textbf{Modelos Dedicados e Aprendizado com Poucos Exemplos (\textit{Few-Shot Learning}):} Para contornar a escassez crônica de dados primários rotulados, foram desenvolvidas arquiteturas sob medida, como a \textit{LeprosyNet} \estudo{E14}, baseada em quatro camadas convolucionais com blocos de normalização em lote (\textit{batch normalization}) e otimizador Adam. Complementarmente, \estudo{E17} aplicou uma rede siamesa com aprendizado por pares, camada de norma L2 e perda contrastiva (\textit{few-shot learning}), demonstrando capacidade preditiva promissora mesmo quando treinada em coleção clínica de tamanho muito restrito.
+A Tabela~\ref{tab:abordagens-ia} e a Figura~\ref{fig:abordagens-ia} apresentam as abordagens. Cada estudo pode integrar várias categorias, inclusive pelo uso de comparadores testados. A abordagem híbrida exige que as técnicas coexistam na mesma configuração. O aprendizado profundo é contabilizado quando há evidência da profundidade da rede. A transferência de aprendizado foi usada, por exemplo, em \estudo{E05,E19,E24}, e o aprendizado com poucos exemplos em \estudo{E17}.
 
-	\item \textbf{Arquiteturas de Segmentação Semântica e Mecanismos de Atenção:} Para a mensuração objetiva de úlceras plantares e lesões atróficas hansênicas, destacam-se o \textit{framework} CO-WinF, baseado em U-Net com atenção guiada por gradiente (\textit{gradient-driven attention}) \estudo{E22}, e a DeepLabV3+ aplicada à segmentação binária entre ferida e fundo \estudo{E21}. Na segmentação baseada em agrupamento adaptativo, \estudo{E18} integrou algoritmos de \textit{Fuzzy C-Means} otimizados pelo algoritmo do vaga-lume (\textit{Firefly Algorithm}).
-
-	\item \textbf{Modelos Clássicos e Otimização Heurística:} Máquinas de Vetores de Suporte (SVM) combinadas com algoritmos de otimização bioinspirados, como o algoritmo do Buraco Negro (\textit{Black Hole Algorithm}) \estudo{E07}, Random Forest e XGBoost continuam sendo empregados com sucesso em conjuntos de dados tabulares, descritores histopatológicos de biópsias \estudo{E08} e na extração combinada de atributos texturais manuais com LBP (\textit{Local Binary Patterns}) e WLD (\textit{Weber Local Descriptor}) \estudo{E25}.
-
-	\item \textbf{Modelos Multimodais e Inteligência Artificial Confiável (\textit{Explainable AI}):} Reconhecendo os limites do diagnóstico estritamente visual, a iniciativa AI4Leprosy \estudo{E13} desenvolveu modelos híbridos que combinam extratores convolucionais profundos com regressores logísticos penalizados (\textit{elastic-net}) alimentados por variáveis clínicas e anamnese do paciente. Quanto à explicabilidade, \estudo{E23} associou mapas de saliência (\textit{saliency maps}) a um detector YOLOv8n de lesões cutâneas, e a revisão de \estudo{E16} discute mapas de saliência, Grad-CAM e pontuações de confiança como técnicas para interpretar as decisões do modelo em peles escuras.
-\end{enumerate}
-
-A Figura~\ref{fig:pie-modelos} resume visualmente a distribuição proporcional das famílias e abordagens de inteligência artificial identificadas entre os 25 estudos analisados, evidenciando a predominância de modelos de aprendizagem profunda baseados em convoluções.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Abordagens de IA identificadas nos estudos com avaliação de modelos}
+\label{tab:abordagens-ia}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{5.0cm}c>{\raggedright\arraybackslash}p{4.3cm}@{}}
+\toprule
+\textbf{Abordagem} & \textbf{Definição nesta análise} & \textbf{n/16} & \textbf{Estudos} \\
+\midrule
+Aprendizado profundo & Uso ou avaliação de redes profundas & 14/16 & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25} \\
+Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo & 8/16 & \estudo{E06,E07,E08,E13,E17,E18,E22,E25} \\
+Abordagem híbrida & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 5/16 & \estudo{E06,E13,E17,E18,E22} \\
+Poucos exemplos & Estratégia \textit{few-shot} documentada & 1/16 & \estudo{E17} \\
+\bottomrule
+\end{tabular}
+\fonte{Autores, a partir dos estudos incluídos.}
+\end{table}
 
 \begin{figure}[htbp]
-	\centering
-	\caption{Distribuição proporcional das famílias de modelos de inteligência artificial nos 25 estudos}
-	\label{fig:pie-modelos}
-	\begin{tikzpicture}
-		\definecolor{corCNN}{RGB}{31, 78, 121}
-		\definecolor{corRev}{RGB}{58, 137, 201}
-		\definecolor{corSeg}{RGB}{46, 139, 87}
-		\definecolor{corEdge}{RGB}{220, 140, 40}
-		\definecolor{corTrad}{RGB}{178, 34, 34}
-
-		% Slices: 44% (158.4 deg), 20% (72 deg), 12% (43.2 deg), 12% (43.2 deg), 12% (43.2 deg)
-		\begin{scope}[shift={(-2.8, 0)}]
-			\filldraw[fill=corCNN, draw=white, thick] (0,0) -- (0:2.1) arc (0:158.4:2.1) -- cycle;
-			\filldraw[fill=corRev, draw=white, thick] (0,0) -- (158.4:2.1) arc (158.4:230.4:2.1) -- cycle;
-			\filldraw[fill=corSeg, draw=white, thick] (0,0) -- (230.4:2.1) arc (230.4:273.6:2.1) -- cycle;
-			\filldraw[fill=corEdge, draw=white, thick] (0,0) -- (273.6:2.1) arc (273.6:316.8:2.1) -- cycle;
-			\filldraw[fill=corTrad, draw=white, thick] (0,0) -- (316.8:2.1) arc (316.8:360:2.1) -- cycle;
-
-			% Percentagens limpas e legíveis dentro de cada fatia
-			\node at (79.2:1.35) [text=white, font=\bfseries\small] {44\%};
-			\node at (194.4:1.35) [text=white, font=\bfseries\small] {20\%};
-			\node at (252:1.45) [text=white, font=\bfseries\footnotesize] {12\%};
-			\node at (295.2:1.45) [text=white, font=\bfseries\footnotesize] {12\%};
-			\node at (338.4:1.45) [text=white, font=\bfseries\footnotesize] {12\%};
-		\end{scope}
-
-		% Legenda externa limpa e perfeitamente legível à direita
-		\begin{scope}[shift={(0.3, 1.25)}]
-			\fill[corCNN] (0, 0) rectangle (0.35, 0.22);
-			\node[right, font=\footnotesize] at (0.45, 0.11) {CNNs Profundas / \textit{Transfer Learning} (44\%)};
-
-			\fill[corRev] (0, -0.55) rectangle (0.35, -0.33);
-			\node[right, font=\footnotesize] at (0.45, -0.44) {Revisões Sistemáticas e Metodológicas (20\%)};
-
-			\fill[corSeg] (0, -1.10) rectangle (0.35, -0.88);
-			\node[right, font=\footnotesize] at (0.45, -0.99) {Segmentação Semântica de Feridas (12\%)};
-
-			\fill[corEdge] (0, -1.65) rectangle (0.35, -1.43);
-			\node[right, font=\footnotesize] at (0.45, -1.54) {\textit{Edge AI} e \textit{Few-Shot Learning} (12\%)};
-
-			\fill[corTrad] (0, -2.20) rectangle (0.35, -1.98);
-			\node[right, font=\footnotesize] at (0.45, -2.09) {Classificadores Tradicionais / Heurísticas (12\%)};
-		\end{scope}
-	\end{tikzpicture}
-	\fonte{Autores.}
+\centering
+\caption{Quantidade de estudos por abordagem de IA}
+\label{fig:abordagens-ia}
+\begin{tikzpicture}[x=0.39cm,y=0.70cm]
+\draw[->] (0,0) -- (16.7,0) node[right,font=\footnotesize] {Estudos};
+\foreach \x in {0,4,8,12,16} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
+\foreach \y/\n/\rotulo in {4/14/Aprendizado profundo,3/8/Aprendizado tradicional,2/5/Abordagem híbrida,1/1/Poucos exemplos} {
+\fill[blue!65!black] (0,\y-0.25) rectangle (\n,\y+0.25);
+\node[left,font=\footnotesize] at (0,\y) {\rotulo};
+\node[right,font=\footnotesize] at (\n,\y) {\n};}
+\end{tikzpicture}
+\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
+
+A Tabela~\ref{tab:modelos-resumo} apresenta os itens com pelo menos três ocorrências. O inventário auditado está na Tabela~\ref{tab:frequencia-modelos}, no Apêndice~\ref{apend:inventario-modelos}. A frequência mede o uso por publicação. A linha de U-Net inclui a adaptação de \estudo{E22}, a de ResNet-101 inclui seu uso como extrator ou codificador, e a de SVM reúne a variante multinível e a configuração otimizada por buraco negro.
+
+\begin{table}[htbp]
+\centering
+\caption{Modelos e componentes com maior ocorrência nos estudos analisados}
+\label{tab:modelos-resumo}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+\textbf{Modelo ou componente} & \textbf{Estudos (n/16)} & \textbf{Identificadores} \\
+\midrule
+Random Forest & 4/16 & \estudo{E06,E08,E13,E18} \\
+SVM / Multi-SVM & 4/16 & \estudo{E06,E07,E08,E25} \\
+ResNet-101 & 3/16 & \estudo{E06,E21,E25} \\
+VGG-16 & 3/16 & \estudo{E05,E19,E24} \\
+U-Net, incluindo adaptação & 3/16 & \estudo{E06,E21,E22} \\
+ANN, arquitetura não especificada & 3/16 & \estudo{E06,E07,E08} \\
+\bottomrule
+\end{tabular}
+\fonte{Autores, a partir dos estudos incluídos.}
+\end{table}
+
+A Figura~\ref{fig:ocorrencias-modelos} compara a quantidade de estudos para os mesmos modelos ou componentes da Tabela~\ref{tab:modelos-resumo}. Um estudo pode contribuir para mais de uma barra; o comprimento da barra não representa frequência exclusiva nem desempenho.
+
+\begin{figure}[htbp]
+\centering
+\caption{Quantidade de estudos por modelo ou componente selecionado}
+\label{fig:ocorrencias-modelos}
+\begin{tikzpicture}[x=1.0cm,y=0.65cm]
+\draw[->] (0,0) -- (5.2,0) node[right,font=\footnotesize] {Estudos};
+\foreach \x in {0,1,2,3,4,5} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
+\foreach \y/\n/\rotulo in {6/4/Random Forest,5/4/SVM e Multi-SVM,4/3/ResNet-101,3/3/VGG-16,2/3/U-Net incluindo adaptação,1/3/ANN não especificada} {
+\fill[teal!70!black] (0,\y-0.25) rectangle (\n,\y+0.25);
+\node[left,font=\footnotesize] at (0,\y) {\rotulo};
+\node[right,font=\footnotesize] at (\n,\y) {\n};}
+\end{tikzpicture}
+\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
+\end{figure}
+
+Entre os classificadores tradicionais, \estudo{E07} utilizou SVM otimizada, \estudo{E25} empregou Multi-SVM com descritores de textura e \estudo{E08} avaliou, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas. O XGBoost aparece entre os comparadores de \estudo{E13} e no classificador do sistema de \estudo{E22}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \estudo{E07} e a SVM citada na conclusão de \estudo{E19}.
+
+Em \estudo{E13}, as configurações multimodais testadas combinaram a saída do modelo de imagens com a saída do modelo de características clínicas da lesão, dados do paciente ou ambos. A regressão logística elastic-net selecionada para o modelo final usa a saída do modelo de características clínicas da lesão e dados do paciente. Em \estudo{E17}, o protocolo de aquisição incluiu câmera, polarização e smartphone. O agrupamento de Ward formou subclasses para o experimento, e a rede siamesa operou sobre pares de imagens. A fusão dos modos de captura na entrada da rede fica indeterminada.
+
+Quanto à atenção, \estudo{E21} avaliou o encoder Transformer SegFormer em configurações de U-Net e FPN. Em \estudo{E22}, o MEPS usa atenção guiada pelo gradiente para a segmentação, e o HSTFC pondera por atenção a fusão de atributos profundos e manuais antes da classificação. \estudo{E23} relata autoatenção no detector comparador baseado em ViT. Os mapas de saliência do YOLOv8n são um recurso de explicabilidade. A implementação da cabeça Transformer atribuída ao YOLOv9t permanece incerta. Essas configurações documentam candidatos à análise experimental posterior.
+
+A CNN avaliada em \estudo{E04} é o classificador do segundo estágio do aplicativo da OMS, com arquitetura específica não informada. \estudo{E15} descreve uma implementação com DenseNet-121, triagem binária e classificação entre 12 DTNs no segundo estágio.
+
+As revisões \estudo{E01,E02,E09,E12} sintetizam aplicações de classificadores tradicionais, redes profundas e combinações de técnicas. Os estudos primários correspondentes documentam ResNet-50 e VGG-16 \estudo{E05}, a LeprosyNet \estudo{E14}, a rede siamesa com aprendizado com poucos exemplos \estudo{E17} e as combinações avaliadas pelo AI4Leprosy \estudo{E13}. As contagens atribuem essas ocorrências aos estudos que realizaram as avaliações.
+
+Além das aplicações com imagens, as revisões \estudo{E09,E10} relatam estudos que aplicam classificadores, como Random Forest e SVM, a dados de vigilância e respostas a questionários. Tais aplicações ampliam o panorama da inteligência artificial na hanseníase, mas se distinguem dos modelos de visão computacional que analisam imagens.
+
+No campo da explicabilidade, a revisão \estudo{E16} discute mapas de saliência, Grad-CAM, mapas de atenção e escores de confiança como recursos para interpretar ou apresentar as decisões dos modelos, e não como classificadores independentes. Parte da literatura reunida nessa revisão aborda condições dermatológicas além da hanseníase; por isso, seus achados não devem ser transferidos automaticamente para essa doença.
+
+As perspectivas \estudo{E03,E20} discutem a inteligência artificial como apoio à triagem e à decisão clínica, bem como desafios de representatividade dos dados, privacidade e supervisão humana. Em \estudo{E20}, ressalta-se a importância da história clínica, do exame físico e de testes laboratoriais para a confirmação diagnóstica; como possibilidade futura, menciona-se o uso de imagens multiespectrais ou térmicas, sem avaliação própria dessas modalidades.
+
+\estudo{E11} propõe avaliar prospectivamente a versão beta do aplicativo da OMS. O protocolo descreve duas CNNs em cascata, com arquitetura específica indeterminada. A primeira distingue 24 condições comuns e um grupo de 12 DTNs cutâneas. A segunda diferencia as 12 DTNs desse grupo. A árvore de decisão offline para sintomas é outro recurso do aplicativo. O artigo apresenta o plano de avaliação.
 
 \subsection{Como a generalização dos modelos é avaliada?}
 
@@ -1153,7 +1201,7 @@ A avaliação crítica da generalização dos modelos representa um dos achados 
 
 	\item \textbf{Vazamento de Dados por Falta de Separação Estrita por Paciente:} A partição aleatória no nível de imagem (\textit{image-level split}), em vez de uma separação estrita por paciente (\textit{patient-level split}), é um risco de vazamento que não pode ser descartado: entre os 15 estudos que desenvolvem e avaliam um modelo, 13 não informam a unidade da separação (Tabela~\ref{tab:procedimentos-avaliacao}). Quando imagens de diferentes ângulos ou aproximações da mesma lesão pertencem simultaneamente aos conjuntos de treinamento e teste, o modelo decora artefatos de fundo e texturas superficiais do indivíduo, inflando artificialmente as métricas de acurácia.
 
-	\item \textbf{Validação Externa Independente do Aplicativo da OMS:} A única validação externa independente de um modelo pré-treinado reportada nos estudos incluídos foi conduzida por \estudo{E04} com um banco de imagens clínicas de hanseníase coletadas entre 1996 e 2024. Ao submeter 423 imagens analisadas de um conjunto inicialmente composto por 439 imagens de 208 casos de hanseníase ao aplicativo da Organização Mundial da Saúde \estudo{E15}, o classificador alcançou sensibilidade Top-5 de 84,9\% (359 de 423 imagens). A sensibilidade Top-1 foi de 46,9\% nas lesões clássicas e de 30,4\% nas lesões reacionais ou atípicas, calculadas por subconjunto, sem valor global reportado, o que mostra que o resultado depende do número de predições consideradas.
+	\item \textbf{Validação Externa Independente do Aplicativo da OMS:} A única validação externa independente de um modelo pré-treinado reportada nos estudos incluídos foi conduzida por \estudo{E04} com um banco de imagens clínicas de hanseníase coletadas entre 1996 e 2024. Ao submeter 423 imagens analisadas de um conjunto inicialmente composto por 439 imagens de 208 casos de hanseníase ao classificador de segundo estágio do aplicativo da OMS descrito no próprio estudo, os autores obtiveram sensibilidade Top-5 de 84,9\% (359 de 423 imagens). A sensibilidade Top-1 foi de 46,9\% nas lesões clássicas e de 30,4\% nas lesões reacionais ou atípicas, calculadas por subconjunto, sem valor global reportado, o que mostra que o resultado depende do número de predições consideradas.
 
 	\item \textbf{Contribuição das Imagens e das Informações Clínicas (AI4Leprosy):} Em um único estudo \estudo{E13}, no teste com 40 pacientes, os modelos construídos só com as informações do paciente ou com as saídas do Modelo 2 (atributos clínicos da lesão) tiveram AUC superior a 90\%, enquanto as saídas do modelo de imagens, isoladas, tiveram AUC próxima de 70\%; para a floresta aleatória e o XGBoost, os autores relatam pouco benefício em acrescentar as saídas dos Modelos 1 e 2 às informações do paciente. A acurácia de 66,6\% do modelo de imagens vem de validação cruzada nos 182 pacientes de desenvolvimento, e a de 90\% do modelo final vem do teste de 40 pacientes; os procedimentos são distintos e os valores não são comparáveis diretamente. Por se tratar de um único estudo, com 40 pacientes de teste, não é possível concluir sobre um limite de desempenho da generalização fotográfica.
 
