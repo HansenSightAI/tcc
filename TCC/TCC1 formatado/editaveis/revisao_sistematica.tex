@@ -650,38 +650,50 @@ atenção primária à saúde.
 \subsection{Quais conjuntos de dados e populações são utilizados?}
 \label{subsec:rq2-datasets}
 
-A caracterização dos conjuntos de dados nos 25 estudos incluídos evidencia um volume
-acumulado superior a 89.000 imagens, divididas entre grandes iniciativas institucionais
-globais e conjuntos clínicos especializados desenvolvidos em centros de referência
-de países endêmicos.
+A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos estudos com dados, identificando a origem quando descrita e distinguindo imagens, pacientes e outras unidades. O inventário por estudo, com população, disponibilidade e localização da evidência, encontra-se no Apêndice~\ref{apend:inventario-datasets}. As revisões e perspectivas não são consideradas novas coletas; o protocolo \estudo{E11} prevê a coleta, mas não apresenta resultados.
 
-No cenário internacional, destaca-se o repositório organizado no âmbito da Organização
-Mundial da Saúde (OMS) para o aplicativo WHO Skin NTDs \estudo{E15}, que reúne 74.806
-imagens (5.760 de doenças tropicais negligenciadas cutâneas, 16.577 de outras doenças de pele,
-do \textit{Fitzpatrick 17k}, 2.469 de pele sã, recortadas de imagens dessas doenças, e 50.000
-imagens que não são de pele, selecionadas do ImageNet).
-Em contraste com bases genéricas, os estudos primários concentram-se em coletas clínicas
-locais realizadas nos principais polos endêmicos mundiais:
-\begin{itemize}
-	\item \textbf{Brasil:} destaca-se a base pública \textit{AI4Leprosy} \estudo{E13},
-	      composta por 1.226 fotografias padronizadas em múltiplas escalas (panorâmica, close e borda)
-	      de 222 pacientes atendidos na Fundação Oswaldo Cruz (Fiocruz/RJ), além do banco de imagens
-	      clínicas usado na validação externa independente do aplicativo da OMS \estudo{E04}, com
-	      423 imagens de 208 casos de hanseníase confirmados, coletadas por especialistas entre 1996 e 2024.
-	\item \textbf{Índia:} conjuntos expressivos são reportados no \textit{Sivananda Rehabilitation Home}
-	      \estudo{E17}, com 1.931 fotografias multimodais (luz convencional, polarizada e dispositivos
-	      móveis) de 151 pacientes, e no banco \textit{JUCMATER/Skindb.v1} \estudo{E25}, contendo
-	      876 imagens de 141 indivíduos da \textit{School of Tropical Medicine} de Calcutá.
-	\item \textbf{África Subsaariana:} coletas de campo na Costa do Marfim e em Gana \estudo{E05}
-	      totalizam 1.709 imagens de 506 pacientes, obtidas em condições de campo e em clínicas rurais, enquanto coletas em
-	      Camarões \estudo{E07} reúnem 1.054 imagens focadas na diferenciação entre hanseníase,
-	      úlcera de Burúli e leishmaniose cutânea.
-	\item \textbf{América Latina e feridas crônicas:} o conjunto aberto \textit{Co2Wounds-V2}
-	      \estudo{E21,E22} contribui com 764 imagens de úlceras crônicas plantares e
-	      sequelas neuropáticas de 96 pacientes colombianos, enquanto um estudo colombiano de histopatologia
-	      reúne 106 lâminas coradas por hematoxilina e eosina (55 pacientes e 51 controles), com 640 microfotografias
-	      \estudo{E08}.
-\end{itemize}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.7cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{7.0cm}@{}}
+\caption[Conjuntos de dados utilizados nos estudos]{Conjuntos de dados utilizados diretamente nos estudos com dados}\label{tab:datasets-sintese}\\
+\toprule
+\textbf{Estudo e conjunto} & \textbf{Origem} & \textbf{Amostra descrita}\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:datasets-sintese} (continuação)}}\\
+\toprule
+\textbf{Estudo e conjunto} & \textbf{Origem} & \textbf{Amostra descrita}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\estudo{E04} Conjunto externo & Curadoria UFES--OMS; coleta não localizada & 439 imagens iniciais de 208 casos; 423 imagens analisadas após exclusões.\\
+\estudo{E05} Coleção clínica & Costa do Marfim e Gana & 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes com hanseníase.\\
+\estudo{E06} Coleção clínica e fontes on-line & Instituições e repositórios; país não localizado & 220 imagens iniciais e 450 imagens de hanseníase após aumento; pacientes não localizados.\\
+\estudo{E07} Coleção clínica & Camarões & 1.054 imagens; pacientes e lesões distintas não informados.\\
+\estudo{E08} Histopatologia & Instituto Colombiano de Medicina Tropical/Universidad CES & 106 lâminas (55 de pacientes com hanseníase e 51 de controles); 640 microfotografias.\\
+\estudo{E13} AI4Leprosy & Fiocruz, Brasil & 1.226 imagens e 582 lesões de 222 pacientes nos resultados; resumo informa 1.229 imagens e 585 conjuntos de metadados.\\
+\estudo{E14} DermNet e web & Fontes on-line & Quantidades de imagens e pacientes não localizadas.\\
+\estudo{E15} WHO Skin NTDs & OMS e parceiros; Fitzpatrick 17k e ImageNet & 74.806 imagens ou recortes de diferentes categorias; pacientes não localizados.\\
+\estudo{E17} Coleção Sivananda & Telangana, Índia & 1.931 imagens de 396 lesões em 151 pacientes.\\
+\estudo{E18} Coleção clínica e fontes on-line & Hospitais e fontes secundárias; país não localizado & 220 imagens iniciais e 450 imagens após processamento; pacientes não localizados.\\
+\estudo{E19} Base curada & Kaggle; origem da população não localizada & Total informado de 1.476 imagens; divisão 1.476/62/62 não conciliada.\\
+\estudo{E21,E22} Co2Wounds-V2 & Sanatorio de Contratación, Colômbia, conforme \estudo{E21} & 764 imagens de 96 pacientes, reutilizadas em \estudo{E22}; \estudo{E21} também menciona 746 após curadoria.\\
+\estudo{E23} Fredrick e HAM10000 & Roboflow & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.\\
+\estudo{E24} Coleção da web & DermNet NZ e outras fontes abertas & 1.524 imagens; artigo apresenta divergência na distribuição por classe.\\
+\estudo{E25} JUCMATER: Skindb.v1 & School of Tropical Medicine, Calcutá, Índia & 876 imagens de 141 pacientes.\\
+\end{longtable}
+\endgroup
+\fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes e páginas no Apêndice~\ref{apend:inventario-datasets}.}
+
+A base de \estudo{E04} foi curada de modo independente no contexto de acordo entre a UFES e a OMS. O artigo informa 208 casos para o conjunto inicial, mas não explicita o número de casos únicos restante após a exclusão de 16 imagens. Em \estudo{E13}, os resultados descrevem imagens e lesões de pessoas com suspeita de hanseníase e outras condições dermatológicas; o artigo descreve acesso aos dados mediante registro e validação. Em \estudo{E21}, a coleta ocorreu na Colômbia, e o mesmo Co2Wounds-V2 é utilizado em \estudo{E22}. Os autores de \estudo{E21} relatam tanto 764 imagens na versão descrita quanto 746 após curadoria, sem esclarecer no texto consultado como os números se relacionam.
+
+O conjunto do aplicativo da OMS \estudo{E15} inclui 5.760 imagens de doenças tropicais negligenciadas cutâneas, 16.577 de outras doenças de pele do \textit{Fitzpatrick 17k}, 2.469 recortes de pele sã e 50.000 imagens que não são de pele do ImageNet. Esses recortes, as bases reutilizadas e a possível sobreposição entre estudos impedem interpretar uma soma dos valores reportados como total de imagens ou pacientes únicos. As diferenças entre imagens originais, amostras aumentadas, pacientes, lesões e anotações devem ser preservadas ao comparar os estudos.
 
 Quanto às manifestações dermatológicas, os conjuntos contemplam o espectro clínico completo da
 doença: manchas hipocrômicas com alteração de sensibilidade, placas eritematosas infiltradas
@@ -761,8 +773,7 @@ Outro achado é a escassez de avaliação em base distinta da usada no desenvolv
 15 estudos, apenas um testa o modelo também em outra base \estudo{E23}, e os outros 14 avaliam o
 modelo somente na própria base. Fora dessa contagem, a exceção mais relevante no conjunto selecionado é a
 validação externa independente conduzida por \estudo{E04}, que submeteu o classificador
-pré-treinado da OMS a uma avaliação retrospectiva com 423 imagens de 208 casos de hanseníase de um banco de imagens
-clínicas coletadas entre 1996 e 2024.
+pré-treinado da OMS a uma avaliação retrospectiva com 423 imagens analisadas de um banco inicialmente composto por 439 imagens de 208 casos de hanseníase, coletadas entre 1996 e 2024. O número de casos únicos remanescentes após as exclusões não foi informado.
 
 \subsection{Quais métricas e resultados são reportados?}
 \label{subsec:rq4-metricas}
@@ -1142,7 +1153,7 @@ A avaliação crítica da generalização dos modelos representa um dos achados 
 
 	\item \textbf{Vazamento de Dados por Falta de Separação Estrita por Paciente:} A partição aleatória no nível de imagem (\textit{image-level split}), em vez de uma separação estrita por paciente (\textit{patient-level split}), é um risco de vazamento que não pode ser descartado: entre os 15 estudos que desenvolvem e avaliam um modelo, 13 não informam a unidade da separação (Tabela~\ref{tab:procedimentos-avaliacao}). Quando imagens de diferentes ângulos ou aproximações da mesma lesão pertencem simultaneamente aos conjuntos de treinamento e teste, o modelo decora artefatos de fundo e texturas superficiais do indivíduo, inflando artificialmente as métricas de acurácia.
 
-	\item \textbf{Validação Externa Independente do Aplicativo da OMS:} A única validação externa independente de um modelo pré-treinado reportada nos estudos incluídos foi conduzida por \estudo{E04} com um banco de imagens clínicas de hanseníase coletadas entre 1996 e 2024. Ao submeter 423 imagens de 208 casos de hanseníase ao aplicativo da Organização Mundial da Saúde \estudo{E15}, o classificador alcançou sensibilidade Top-5 de 84,9\% (359 de 423 imagens). A sensibilidade Top-1 foi de 46,9\% nas lesões clássicas e de 30,4\% nas lesões reacionais ou atípicas, calculadas por subconjunto, sem valor global reportado, o que mostra que o resultado depende do número de predições consideradas.
+	\item \textbf{Validação Externa Independente do Aplicativo da OMS:} A única validação externa independente de um modelo pré-treinado reportada nos estudos incluídos foi conduzida por \estudo{E04} com um banco de imagens clínicas de hanseníase coletadas entre 1996 e 2024. Ao submeter 423 imagens analisadas de um conjunto inicialmente composto por 439 imagens de 208 casos de hanseníase ao aplicativo da Organização Mundial da Saúde \estudo{E15}, o classificador alcançou sensibilidade Top-5 de 84,9\% (359 de 423 imagens). A sensibilidade Top-1 foi de 46,9\% nas lesões clássicas e de 30,4\% nas lesões reacionais ou atípicas, calculadas por subconjunto, sem valor global reportado, o que mostra que o resultado depende do número de predições consideradas.
 
 	\item \textbf{Contribuição das Imagens e das Informações Clínicas (AI4Leprosy):} Em um único estudo \estudo{E13}, no teste com 40 pacientes, os modelos construídos só com as informações do paciente ou com as saídas do Modelo 2 (atributos clínicos da lesão) tiveram AUC superior a 90\%, enquanto as saídas do modelo de imagens, isoladas, tiveram AUC próxima de 70\%; para a floresta aleatória e o XGBoost, os autores relatam pouco benefício em acrescentar as saídas dos Modelos 1 e 2 às informações do paciente. A acurácia de 66,6\% do modelo de imagens vem de validação cruzada nos 182 pacientes de desenvolvimento, e a de 90\% do modelo final vem do teste de 40 pacientes; os procedimentos são distintos e os valores não são comparáveis diretamente. Por se tratar de um único estudo, com 40 pacientes de teste, não é possível concluir sobre um limite de desempenho da generalização fotográfica.
 

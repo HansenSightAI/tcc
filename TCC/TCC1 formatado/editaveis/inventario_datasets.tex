@@ -1,0 +1,77 @@
+% Inventário de datasets da issue 28; fonte de trabalho: analises/issue-28-matriz-conferencia.md.
+\chapter{Inventário dos conjuntos de dados e populações}
+\label{apend:inventario-datasets}
+
+O inventário relaciona cada estudo incluído ao conjunto de dados utilizado diretamente ou indica a ausência de amostra própria. A referência à página corresponde à posição no PDF consultado; os identificadores remetem à Tabela~\ref{tab:estudos-incluidos}. ``Não localizado'' indica que o dado não foi encontrado na consulta ao texto principal, sem afirmar que inexista. A disponibilidade é aquela declarada nas fontes e pode mudar. Imagens, pacientes, lesões, lâminas e anotações são unidades distintas.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{9.0cm}>{\raggedright\arraybackslash}p{2.1cm}@{}}
+\caption[Inventário dos datasets por estudo]{Inventário dos datasets e populações por estudo incluído}\label{tab:inventario-datasets}\\
+\toprule
+\textbf{Estudo e dataset} & \textbf{Origem, uso, amostra e disponibilidade} & \textbf{Fonte no PDF}\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:inventario-datasets} (continuação)}}\\
+\toprule
+\textbf{Estudo e dataset} & \textbf{Origem, uso, amostra e disponibilidade} & \textbf{Fonte no PDF}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\estudo{E01}: Revisão sistemática & Síntese de estudos de IA em hanseníase; sem coleta primária. Não se aplica à amostra própria. Bases citadas não são atribuídas como dados próprios. & pp. 1--3 \\
+\estudo{E02}: Revisão sistemática & Síntese de trabalhos sobre IA no cuidado da hanseníase; sem coleta primária. Não se aplica à amostra própria. Bases citadas são estudos secundários; não somar. & pp. 1--3 \\
+\estudo{E03}: Perspectiva & Discussão sobre uso de IA na hanseníase; sem coleta primária. Não se aplica. Não se aplica à amostra própria. & p. 1 \\
+\estudo{E04}: Conjunto externo sem nome & Curadoria independente UFES--OMS; avaliação externa de imagens de casos confirmados de hanseníase; país de coleta não explicitado. 439 imagens de 208 casos no conjunto inicial; 423 imagens analisadas após exclusão de 16; casos remanescentes e lesões únicas não informados. Idade, sexo e fototipo por imagem; acesso mediante solicitação ao autor. & pp. 1, 3--4, 6; Tabela 1 \\
+\estudo{E05}: Coleção clínica sem nome & Costa do Marfim e Gana; treino e teste em hanseníase, úlcera de Buruli, micetoma, escabiose e bouba. 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes de hanseníase; lesões distintas não informadas. Autores descrevem fototipo IV ou superior sem distribuição; acesso institucional controlado. & pp. 1, 3--5; Tabela 1 \\
+\estudo{E06}: Coleção clínica e fontes on-line & Hospitais, instituições de hanseníase e repositórios; país de coleta não localizado; classificação de hanseníase e pele normal. 220 imagens iniciais; 450 imagens de hanseníase após aumento/reapresentação; total de controles, pacientes e lesões únicas não localizado. Diversidade de cor mencionada sem distribuição; dados mediante solicitação razoável. & pp. 4, 15; seção Data Availability \\
+\estudo{E07}: Coleção clínica sem nome & Camarões; colaboradores em Akonolinga; hanseníase, úlcera de Buruli e leishmaniose cutânea. 1.054 imagens: 372, 420 e 262 por condição; pacientes e lesões distintas não informados. Demografia e fototipo não informados; imagens por solicitação, características extraídas e código no GitHub. & pp. 4, 9--10; seção 2.1 \\
+\estudo{E08}: Conjunto histopatológico sem nome & Instituto Colombiano de Medicina Tropical/Universidad CES; hanseníase e controles de pele saudável; treinamento e validação. 106 lâminas: 55 de pacientes com hanseníase e 51 de controles; 640 microfotografias (322 e 318). Distribuição demográfica, fototipo e condições de acesso não localizados. & pp. 1--2; Materials and Methods \\
+\estudo{E09}: Revisão narrativa & Síntese de estudos sobre IA e hanseníase; sem coleta primária. Não se aplica à amostra própria. Bases citadas não são atribuídas como dados próprios. & p. 1 \\
+\estudo{E10}: Revisão sistemática & Síntese de estudos sobre saúde digital e hanseníase; sem coleta primária. Não se aplica à amostra própria. Bases citadas não são atribuídas como dados próprios. & pp. 1--2 \\
+\estudo{E11}: Coleta planejada no Senegal & Protocolo de avaliação do aplicativo da OMS; coleta prospectiva em Thiès. Meta de aproximadamente 800 imagens, não resultado; pacientes e lesões ainda não observados no protocolo. Acesso futuro mediante solicitação segundo o protocolo; não é uma base já coletada. & pp. 1, 4, 8; Sample Size \\
+\estudo{E12}: Revisão de literatura & Revisão de aplicações de aprendizado de máquina na hanseníase. Não se aplica à amostra própria. Bases descritas pertencem aos estudos revisados. & pp. 1--2 \\
+\estudo{E13}: AI4Leprosy & Fiocruz, Rio de Janeiro; desenvolvimento e teste interno com lesões suspeitas e outras dermatoses. Resultados: 1.226 imagens e 582 lesões de 222 pacientes; resumo: 1.229 imagens e 585 conjuntos de metadados. Distribuição numérica de fototipo não informada no texto principal; artigo descreve acesso mediante registro e validação. & pp. 1, 3--5, 8; Fig. 1 \\
+\estudo{E14}: DermNet NZ e imagens da web & Conjunto curado para classificação de hanseníase versus não hanseníase; treino e teste. Quantidade total de imagens, pacientes e lesões únicas não localizada. Demografia e fototipo não localizados; DermNet/Kaggle e web citados como origem, acesso ao conjunto curado não localizado. & p. 2; seção III \\
+\estudo{E15}: WHO Skin NTDs — imagens de DTNs & Imagens de DTNs cutâneas provenientes da OMS e de instituições parceiras; desenvolvimento e avaliação do classificador. 5.760 imagens; número de pacientes e de lesões distintas não localizado. A distribuição de tons é apresentada para 4.418 imagens de treino; acesso direto às imagens não localizado. & pp. 6, 8; Materials and Methods e Tabela 3 \\
+\estudo{E15}: Fitzpatrick 17k — outras doenças & Atlas dermatológicos DermaAmin e Atlas Dermatologico; imagens de outras doenças cutâneas, excluídas as DTNs. 16.577 imagens; pacientes e lesões distintas não localizados. Acesso ao subconjunto utilizado não localizado; a fonte é identificada no artigo. & p. 6; Materials and Methods \\
+\estudo{E15}: Recortes de pele saudável & Recortes de regiões saudáveis produzidos a partir das imagens de DTNs cutâneas. 2.469 recortes; número de imagens e pacientes originais correspondentes não localizado. São derivados de outra parcela da base e não equivalem a novos pacientes; acesso não localizado. & p. 6; Materials and Methods \\
+\estudo{E15}: ImageNet — imagens não cutâneas & Imagens do ImageNet selecionadas para a categoria de conteúdo sem pele. 50.000 imagens não cutâneas; pacientes e lesões não se aplicam. Acesso ao subconjunto exato não localizado no artigo. & p. 6; Materials and Methods \\
+\estudo{E16}: Revisão narrativa & Síntese de IA explicável e DTNs cutâneas em tons de pele escuros; sem coleta primária. Não se aplica à amostra própria. Bases citadas não são atribuídas como dados próprios. & p. 1 \\
+\estudo{E17}: Coleção Sivananda Rehabilitation Home & Hyderabad/Telangana, Índia; lesões de hanseníase e condições semelhantes; desenvolvimento e teste. 1.931 imagens de 396 lesões, sendo 368 de hanseníase e 28 de outras condições, em 151 pacientes. Idade e sexo sem distribuição numérica localizada; acesso das imagens não localizado. & pp. 1, 3, 6; Materials and Methods \\
+\estudo{E18}: Coleção clínica e fontes on-line & Hospitais e fontes secundárias; país de coleta não localizado; hanseníase e pele normal. 220 imagens iniciais; 450 imagens de hanseníase após processamento/anotação, conforme o artigo; pacientes, controles e lesões únicas não localizados. Diversidade de cor mencionada sem distribuição; dados mediante solicitação razoável. & pp. 5, 16; Data Availability \\
+\estudo{E19}: Base curada Kaggle & Imagens de hanseníase tuberculoide; origem populacional não localizada; treino, validação e teste. Artigo informa 1.476 imagens no total, mas também 1.476 para treino, 62 para validação e 62 para teste; relação não esclarecida. Pacientes, lesões distintas e demografia não localizados; artigo aponta Kaggle. & p. 3; seção Dataset \\
+\estudo{E20}: Perspectiva & Discussão sobre IA para DTNs cutâneas; sem coleta primária. Não se aplica à amostra própria. Bases citadas não são atribuídas como dados próprios. & pp. 1--3 \\
+\estudo{E21}: Co2Wounds-V2 & Sanatorio de Contratación, Colômbia; imagens de feridas crônicas em pessoas com hanseníase; criação e benchmark. 764 imagens e 96 pacientes; texto de curadoria também relata 746; 607 anotadas; número de feridas únicas não localizado. 18 mulheres e 78 homens; idade média 75,5 $\pm$ 9,9 anos; Mendeley Data, versão 2. & pp. 1--2; seções 2.1--2.2 \\
+\estudo{E22}: Co2Wounds-V2 & Mesmo dataset de E21; avaliação de processamento e segmentação de feridas crônicas. 764 imagens de 96 pacientes; 485 treino, 122 validação e 157 teste; não somar a E21. 18 mulheres e 78 homens; idade média 75,5 $\pm$ 9,9 anos; artigo aponta Mendeley Data. & pp. 7--8, 10--11; Tabelas 1--2 \\
+\estudo{E23}: Fredrick Skin Disease Dataset & Roboflow; detecção de seis condições de pele, incluindo hanseníase; treinamento e avaliação. 1.101 imagens; 643 anotações de hanseníase; pacientes e lesões distintas não localizados. Origem geográfica e distribuição demográfica não localizadas; base descrita como pública. & pp. 4--5; seção 4 e Tabela 1 \\
+\estudo{E23}: HAM10000 Skin Diseases Detection & Roboflow; teste entre bases de lesões cutâneas. Número de imagens efetivamente testadas e pacientes não localizado no artigo. Distribuição demográfica e origem da amostra analisada não localizadas; base descrita como pública. & p. 12; seção 6.2.3 \\
+\estudo{E24}: Conjunto curado da web & Fontes abertas incluindo DermNet NZ e IEEE DataPort; eczema, sarampo, hanseníase e pele normal. 1.524 imagens; Tabela III: 51 sarampo, 1.235 eczema, 157 hanseníase e 81 pele normal; parágrafo próximo diverge em duas classes. Pacientes, lesões distintas e demografia não localizados; acesso ao conjunto curado não localizado. & pp. 4--5; seção Dataset e Tabela III \\
+\estudo{E25}: JUCMATER: Skindb.v1 & School of Tropical Medicine, Calcutá, Índia; hanseníase, vitiligo, pitiríase versicolor e pele normal; treino e teste. 876 imagens de 141 pacientes; 262 imagens de hanseníase; número de lesões distintas não informado. Fototipo e distribuição demográfica não localizados; acesso para pesquisa mediante solicitação. & pp. 3, 8, 12; Data availability \\
+\end{longtable}
+\endgroup
+\fonte{Elaboração própria a partir dos textos principais dos estudos incluídos. As condições de acesso são as descritas nas fontes consultadas.}
+
+As contagens de \estudo{E21,E22} referem-se ao mesmo conjunto e não devem ser somadas. Nos estudos \estudo{E06,E18}, descrições semelhantes não bastam para estabelecer se as imagens são integralmente as mesmas. A relação entre os quantitativos divergentes de \estudo{E13,E19,E21,E24} não foi esclarecida nas fontes examinadas. O protocolo \estudo{E11} contém uma meta de coleta, não uma amostra observada.
+
+\section{Endereços e condições de acesso aos conjuntos}
+
+Os endereços a seguir foram confrontados com as referências dos estudos e com as páginas dos provedores quando acessíveis em 13 de novembro de 2026. Um endereço da base de origem não identifica necessariamente as imagens selecionadas, a versão ou a partição utilizada pelos autores. As condições de acesso podem mudar.
+
+\begin{itemize}
+    \item \textbf{AI4Leprosy} \estudo{E13}: o artigo indica o identificador \url{https://doi.org/10.35078/1PSIEL} para o repositório e informa acesso mediante registro e validação. O destino do identificador não pôde ser aberto nesta consulta; sua disponibilidade atual não foi confirmada.
+    \item \textbf{Co2Wounds-V2} \estudo{E21,E22}: ambos os artigos apontam a versão 2 em \url{https://data.mendeley.com/datasets/s2w7rjwz49/2}. A página descreve 607 imagens anotadas e 157 não anotadas; a relação entre as 746 e 764 imagens mencionadas em \estudo{E21} permanece a esclarecer.
+    \item \textbf{Fitzpatrick 17k} \estudo{E15}: repositório dos autores em \url{https://github.com/mattgroh/fitzpatrick17k}, com anotações e referências às imagens originais. A lista do subconjunto efetivamente empregado pela OMS não foi localizada.
+    \item \textbf{ImageNet} \estudo{E15}: página geral de acesso em \url{https://www.image-net.org/download-images.php}; o artigo não identifica uma lista recuperável das 50.000 imagens selecionadas para a classe não cutânea.
+    \item \textbf{Fredrick Skin Disease Dataset} \estudo{E23}: o próprio artigo indica \url{https://universe.roboflow.com/fredrick-gk-wpenz/skin-disease-hwlrn}. A página consultada descreve 1.101 imagens e seis classes, como no artigo; o conteúdo efetivamente processado deve ser conferido na versão disponibilizada.
+    \item \textbf{Skin\_Diases\_Detection, referido como HAM10000} \estudo{E23}: o artigo referencia \url{https://universe.roboflow.com/universitas-dian-nuswantoro-u3s2y/skin_diases_detection}. A página foi identificada na indexação do provedor, mas sua abertura direta não foi possível nesta consulta; não foi confirmada a versão usada no teste. Esse endereço não deve ser confundido automaticamente com a versão integral original de HAM10000.
+    \item \textbf{DermNet} \estudo{E14,E24}: o atlas citado está em \url{https://dermnetnz.org/}. Trata-se de uma fonte de imagens, não de um endereço confirmado para as coleções finais curadas em cada estudo.
+    \item \textbf{Coleção de Camarões} \estudo{E07}: o artigo aponta \url{https://github.com/dodo12/MTNskin-Diagnosis} para as características extraídas. As imagens originais são disponibilizadas pelos autores mediante solicitação; o repositório de características não equivale ao conjunto de fotografias.
+\end{itemize}
+
+Para o conjunto externo ligado à UFES \estudo{E04}, a coleção de \estudo{E05}, os conjuntos de \estudo{E06,E18} e o JUCMATER: Skindb.v1 \estudo{E25}, os artigos indicam solicitação aos responsáveis, sem endereço público confirmado para as imagens. Nos demais conjuntos, inclusive a coleção de \estudo{E17}, a base de \estudo{E19} e os recortes usados em \estudo{E15}, não foi localizado um endereço verificável para a amostra exata. Em \estudo{E24}, a página do IEEE DataPort com nome semelhante foi localizada, mas o endereço impresso no artigo diverge e não permitiu confirmar que ela identifica a versão efetivamente utilizada.
