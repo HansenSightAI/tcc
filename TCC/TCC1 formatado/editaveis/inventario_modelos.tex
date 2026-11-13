@@ -1,0 +1,70 @@
+% Frequências conferidas em analises/issue-29-matriz-modelos.md.
+\chapter{Frequência dos modelos e componentes identificados}
+\label{apend:inventario-modelos}
+A tabela reúne modelos e componentes empregados nos 16 estudos com avaliação direta, incluindo comparadores testados, classificadores, segmentadores e extratores de atributos. Cada estudo contribui uma vez por item e pode aparecer em várias linhas. As versões não especificadas aparecem em linhas próprias. A matriz de conferência dos autores registra a função e a fonte de cada item.
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{7.5cm}cp{4.5cm}@{}}
+\caption{Modelos e componentes avaliados por estudo}\label{tab:frequencia-modelos}\\
+\toprule
+\textbf{Modelo ou componente} & \textbf{n} & \textbf{Estudos}\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Tabela~\ref{tab:frequencia-modelos} (continuação)}}\\
+\toprule
+\textbf{Modelo ou componente} & \textbf{n} & \textbf{Estudos}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{continua na próxima página}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Random Forest & 4 & \estudo{E06,E08,E13,E18} \\
+SVM / Multi-SVM & 4 & \estudo{E06,E07,E08,E25} \\
+ANN (não especificada) & 3 & \estudo{E06,E07,E08} \\
+ResNet-101 & 3 & \estudo{E06,E21,E25} \\
+U-Net (inclui adaptação) & 3 & \estudo{E06,E21,E22} \\
+VGG-16 & 3 & \estudo{E05,E19,E24} \\
+AlexNet & 2 & \estudo{E14,E18} \\
+DenseNet-121 & 2 & \estudo{E15,E25} \\
+Inception V3 & 2 & \estudo{E17,E24} \\
+k-NN & 2 & \estudo{E06,E07} \\
+Regressão logística (inclui elastic-net) & 2 & \estudo{E08,E13} \\
+ResNet-50 & 2 & \estudo{E05,E13} \\
+Árvore de decisão & 2 & \estudo{E06,E08} \\
+XGBoost & 2 & \estudo{E13,E22} \\
+CNN do aplicativo da OMS (segundo estágio) & 1 & \estudo{E04} \\
+CNN extratora do HSTFC (arquitetura não especificada) & 1 & \estudo{E22} \\
+CO-WinF & 1 & \estudo{E22} \\
+DeepLabV3 & 1 & \estudo{E21} \\
+DeepLabV3+ & 1 & \estudo{E21} \\
+EfficientNet (versão não especificada) & 1 & \estudo{E21} \\
+EfficientNet-B0 & 1 & \estudo{E19} \\
+Faster R-CNN & 1 & \estudo{E23} \\
+FPN & 1 & \estudo{E21} \\
+Fuzzy C-Means com Firefly & 1 & \estudo{E18} \\
+GoogLeNet & 1 & \estudo{E25} \\
+Inception-v4 & 1 & \estudo{E13} \\
+LeprosyNet & 1 & \estudo{E14} \\
+MobileNet (versão não especificada) & 1 & \estudo{E25} \\
+MobileNet v1 & 1 & \estudo{E19} \\
+MobileNetV2 & 1 & \estudo{E24} \\
+Naive Bayes & 1 & \estudo{E06} \\
+Rede siamesa & 1 & \estudo{E17} \\
+ResNet (versão não especificada) & 1 & \estudo{E14} \\
+ResNet-152 & 1 & \estudo{E25} \\
+ResNeXt-50 & 1 & \estudo{E21} \\
+RetinaNet & 1 & \estudo{E23} \\
+SegFormer & 1 & \estudo{E21} \\
+Vision Transformer & 1 & \estudo{E23} \\
+Vizinho mais próximo (1-NN) & 1 & \estudo{E17} \\
+Xception (versão não especificada) & 1 & \estudo{E24} \\
+Xception v1 & 1 & \estudo{E19} \\
+YOLOv10n & 1 & \estudo{E23} \\
+YOLOv8n & 1 & \estudo{E23} \\
+YOLOv9t & 1 & \estudo{E23} \\
+\end{longtable}
+\fonte{Autores, a partir dos estudos incluídos.}
+\endgroup
