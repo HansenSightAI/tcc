@@ -4,7 +4,7 @@ Consulta em 13/11/2026. O vínculo entre endereço e estudo foi confrontado com 
 
 | Estudo / conjunto | Endereço | Conferência e limite |
 |---|---|---|
-| E13 AI4Leprosy | https://doi.org/10.35078/1PSIEL | DOI indicado pelo artigo, p. 3. O DOI não abriu na ferramenta de consulta; identidade atribuída pelo artigo, funcionamento atual e arquivos não verificados. A publicação descreve registro e validação. |
+| E13 AI4Leprosy | https://doi.org/10.35078/1PSIEL | DOI indicado pelo artigo, p. 3. Página Arca Dados acessada no navegador: identifica o artigo de Barbieri, lista 1.456 arquivos na versão 1.10 e oferece solicitação de acesso. A contagem de arquivos do repositório não equivale automaticamente à amostra do artigo. |
 | E21/E22 Co2Wounds-V2 | https://data.mendeley.com/datasets/s2w7rjwz49/2 | Link explicitamente indicado nos dois artigos. Página aberta: versão 2, 607 imagens anotadas + 157 não anotadas; relação 746/764 pendente. |
 | E15 Fitzpatrick 17k | https://github.com/mattgroh/fitzpatrick17k | Nome e 16.577 imagens correspondem à base citada; repositório dos autores disponibiliza anotações e links originais, alguns quebrados. Não estabelece o subconjunto exato usado em E15. |
 | E15 ImageNet | https://www.image-net.org/download-images.php | Repositório geral confirmado; não identifica as 50.000 imagens específicas selecionadas em E15. |

@@ -677,13 +677,13 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 \estudo{E06} Coleção clínica e fontes on-line & Instituições e repositórios; país não localizado & 220 imagens iniciais e 450 imagens de hanseníase após aumento; pacientes não localizados.\\
 \estudo{E07} Coleção clínica & Camarões & 1.054 imagens; pacientes e lesões distintas não informados.\\
 \estudo{E08} Histopatologia & Instituto Colombiano de Medicina Tropical/Universidad CES & 106 lâminas (55 de pacientes com hanseníase e 51 de controles); 640 microfotografias.\\
-\estudo{E13} AI4Leprosy & Fiocruz, Brasil & 1.226 imagens e 582 lesões de 222 pacientes nos resultados; resumo informa 1.229 imagens e 585 conjuntos de metadados.\\
+\estudo{E13} AI4Leprosy & Fiocruz, Brasil & 1.226 imagens e 582 lesões de 222 pacientes, conforme os resultados do estudo.\\
 \estudo{E14} DermNet e web & Fontes on-line & Quantidades de imagens e pacientes não localizadas.\\
 \estudo{E15} WHO Skin NTDs & OMS e parceiros; Fitzpatrick 17k e ImageNet & 74.806 imagens ou recortes de diferentes categorias; pacientes não localizados.\\
 \estudo{E17} Coleção Sivananda & Telangana, Índia & 1.931 imagens de 396 lesões em 151 pacientes.\\
 \estudo{E18} Coleção clínica e fontes on-line & Hospitais e fontes secundárias; país não localizado & 220 imagens iniciais e 450 imagens após processamento; pacientes não localizados.\\
 \estudo{E19} Base curada & Kaggle; origem da população não localizada & Total informado de 1.476 imagens; divisão 1.476/62/62 não conciliada.\\
-\estudo{E21,E22} Co2Wounds-V2 & Sanatorio de Contratación, Colômbia, conforme \estudo{E21} & 764 imagens de 96 pacientes, reutilizadas em \estudo{E22}; \estudo{E21} também menciona 746 após curadoria.\\
+\estudo{E21,E22} Co2Wounds-V2 & Sanatorio de Contratación, Colômbia, conforme \estudo{E21} & 764 imagens de 96 pacientes, reutilizadas em \estudo{E22}.\\
 \estudo{E23} Fredrick e HAM10000 & Roboflow & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.\\
 \estudo{E24} Coleção da web & DermNet NZ e outras fontes abertas & 1.524 imagens; artigo apresenta divergência na distribuição por classe.\\
 \estudo{E25} JUCMATER: Skindb.v1 & School of Tropical Medicine, Calcutá, Índia & 876 imagens de 141 pacientes.\\
@@ -691,7 +691,7 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 \endgroup
 \fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes e páginas no Apêndice~\ref{apend:inventario-datasets}.}
 
-A base de \estudo{E04} foi curada de modo independente no contexto de acordo entre a UFES e a OMS. O artigo informa 208 casos para o conjunto inicial, mas não explicita o número de casos únicos restante após a exclusão de 16 imagens. Em \estudo{E13}, os resultados descrevem imagens e lesões de pessoas com suspeita de hanseníase e outras condições dermatológicas; o artigo descreve acesso aos dados mediante registro e validação. Em \estudo{E21}, a coleta ocorreu na Colômbia, e o mesmo Co2Wounds-V2 é utilizado em \estudo{E22}. Os autores de \estudo{E21} relatam tanto 764 imagens na versão descrita quanto 746 após curadoria, sem esclarecer no texto consultado como os números se relacionam.
+A base de \estudo{E04} foi curada de modo independente no contexto de acordo entre a UFES e a OMS. O artigo informa 208 casos para o conjunto inicial, mas não explicita o número de casos únicos restante após a exclusão de 16 imagens. Em \estudo{E13}, os resultados descrevem imagens e lesões de pessoas com suspeita de hanseníase e outras condições dermatológicas; o artigo descreve acesso aos dados mediante registro e validação. Em \estudo{E21}, a coleta ocorreu na Colômbia, e o mesmo Co2Wounds-V2 é utilizado em \estudo{E22}. A versão 2 disponibilizada no repositório contém 607 imagens anotadas para treino e validação e 157 imagens sem anotação para teste.
 
 O conjunto do aplicativo da OMS \estudo{E15} inclui 5.760 imagens de doenças tropicais negligenciadas cutâneas, 16.577 de outras doenças de pele do \textit{Fitzpatrick 17k}, 2.469 recortes de pele sã e 50.000 imagens que não são de pele do ImageNet. Esses recortes, as bases reutilizadas e a possível sobreposição entre estudos impedem interpretar uma soma dos valores reportados como total de imagens ou pacientes únicos. As diferenças entre imagens originais, amostras aumentadas, pacientes, lesões e anotações devem ser preservadas ao comparar os estudos.
 
