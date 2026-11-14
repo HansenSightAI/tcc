@@ -315,6 +315,56 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 	\fonte{Autores.}
 \end{figure}
 
+\subsection{Integração entre protocolo, ferramentas e pesquisadores}
+\label{subsec:integracao-ferramentas}
+
+O fluxo da Figura~\ref{fig:fluxo-metodologico-ia} articula quatro ferramentas e o
+julgamento da dupla de pesquisadores. Cada ferramenta cumpre uma função distinta, e a
+saída de uma etapa é a entrada da seguinte, como sintetiza a Tabela~\ref{tab:papel-ferramentas}.
+O protocolo registrado no Evidentia origina o \textit{prompt} enviado ao Consensus; as listas
+de referências do Consensus e do Claude, reunidas e deduplicadas pelos autores,
+formam o conjunto submetido ao Jev; as sugestões do Jev orientam, sem substituir, a revisão
+dos títulos e resumos feita pelos pesquisadores; e as decisões registradas no Evidentia definem
+os estudos lidos integralmente e extraídos.
+
+\begin{table}[htb]
+\centering
+\caption{Papel de cada ferramenta e dos pesquisadores no fluxo da revisão}
+\label{tab:papel-ferramentas}
+\footnotesize
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}p{3.2cm}}
+\toprule
+\textbf{Ferramenta} & \textbf{Papel} & \textbf{Saída que alimenta a etapa seguinte} & \textbf{Quem decide} \\
+\midrule
+Evidentia & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores \\
+Consensus & Busca assistida, a partir de solicitação em inglês com a questão e os componentes do PICOC & Lista de 100 referências, salva pelos autores & Pesquisadores, ao triar \\
+Claude & Busca complementar & Lista de 30 referências & Pesquisadores, ao triar \\
+Jev Reviewer & Classificação preliminar dos 118 registros segundo cinco critérios & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails} & Pesquisadores, ao revisar \\
+Pesquisadores & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados & Decisões registradas no Evidentia; 26 estudos para leitura integral e 25 extraídos & Pesquisadores \\
+\bottomrule
+\end{tabular}
+\fonte{Autores, a partir do registro da busca e da triagem.}
+\end{table}
+
+As saídas do Consensus, do Claude e do Jev são sugestões e candidatos; nenhuma
+delas determina a inclusão ou a exclusão de um estudo. A presença de uma referência na lista
+do Consensus não significa que ela atenda aos critérios, e a sugestão do Jev não registra a
+justificativa da decisão. A decisão é a consolidada no Evidentia, tomada pelos pesquisadores. A
+diferença entre os dois registros é mensurável: dos 26 registros incluídos no Evidentia, 13 tinham
+sugestão de exclusão do Jev e 11 tinham sugestão incerta, enquanto apenas dois tinham
+sugestão de inclusão (detalhado adiante, na subseção de triagem). Nessa configuração, o Jev serviu de apoio à revisão
+humana, não de regra de decisão. As decisões finais constam do Evidentia.
+
+O Evidentia é o ponto de registro do processo. Nele ficam o protocolo e os critérios, as decisões
+individuais e a decisão consolidada de cada registro, o relatório PRISMA e o formulário de
+extração com 18 campos padronizados. Isso permite vincular cada quantidade informada ao
+registro que a originou. O diferencial dessa integração é a rastreabilidade: cada saída
+automatizada tem origem identificada, e cada decisão tem registro e data. Não se alega
+ineditismo da combinação das ferramentas nem superioridade sobre outras formas de conduzir
+revisões; os limites do procedimento, como a documentação parcial da busca complementar e a
+ausência de comprovação de avaliação independente por ambos os pesquisadores, são descritos
+nas subseções seguintes.
+
 \subsection{Busca e identificação dos registros}
 
 O protocolo da revisão foi organizado no Evidentia a partir da questão de
