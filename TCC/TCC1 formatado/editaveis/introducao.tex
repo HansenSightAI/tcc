@@ -19,11 +19,11 @@ acesso a serviços. Suas manifestações cutâneas incluem manchas
 e úlceras (Figura~\ref{fig:lesoes-hanseniase}).
 
 \begin{figure}[htbp]
-\centering
-\caption{Lesões cutâneas na hanseníase: úlcera em estágio avançado (à esquerda) e mancha hipocrômica (à direita)}
-\label{fig:lesoes-hanseniase}
-\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2e.png}\hspace{0.8cm}\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2f.png}
-\fonte{Adaptado de \citeonline{yotsu2023}, painéis 2e e 2f (licença CC BY 4.0).}
+	\centering
+	\caption{Lesões cutâneas na hanseníase: úlcera em estágio avançado (à esquerda) e mancha hipocrômica (à direita)}
+	\label{fig:lesoes-hanseniase}
+	\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2e.png}\hspace{0.8cm}\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2f.png}
+	\fonte{Adaptado de \citeonline{yotsu2023}, painéis 2e e 2f (licença CC BY 4.0).}
 \end{figure}
 
 Segundo dados da \citeonline{oms2026gho}, em 2025 foram registrados
@@ -49,42 +49,42 @@ avaliação considere as características da tarefa e da população de
 interesse.
 
 \begin{figure}[htbp]
-\centering
-\caption{Países com mais novos casos de hanseníase em 2025}
-\label{fig:casos-paises}
-\begin{tikzpicture}
-\begin{axis}[
-    xbar,
-    width=0.82\textwidth,
-    height=6.4cm,
-    xmin=0, xmax=115000,
-    xtick={0,25000,50000,75000,100000},
-    xlabel={Novos casos em 2025},
-    symbolic y coords={Nepal, {R. D. do Congo}, Bangladesh, Indonésia, Brasil, Índia},
-    ytick=data,
-    yticklabel style={font=\footnotesize},
-    nodes near coords={\pgfmathprintnumber[set thousands separator={.}]{\pgfplotspointmeta}},
-    nodes near coords align={horizontal},
-    every node near coord/.append style={font=\scriptsize},
-    bar width=11pt,
-    enlarge y limits=0.12,
-    xmajorgrids=true,
-    grid style=dashed,
-    scaled x ticks=false,
-    xticklabel style={font=\footnotesize, /pgf/number format/.cd, set thousands separator={.}, fixed}
-]
-\addplot[fill=blue!65!black, draw=black] coordinates {
-    (2897,Nepal)
-    (3026,{R. D. do Congo})
-    (3558,Bangladesh)
-    (16292,Indonésia)
-    (22901,Brasil)
-    (91783,Índia)
-};
-\end{axis}
-\end{tikzpicture}
-\fonte{Elaboração própria com dados de 2025 da \citeonline{oms2026gho},
-\textit{Global Health Observatory} (indicador WHS3\_45).}
+	\centering
+	\caption{Países com mais novos casos de hanseníase em 2025}
+	\label{fig:casos-paises}
+	\begin{tikzpicture}
+		\begin{axis}[
+				xbar,
+				width=0.82\textwidth,
+				height=6.4cm,
+				xmin=0, xmax=115000,
+				xtick={0,25000,50000,75000,100000},
+				xlabel={Novos casos em 2025},
+				symbolic y coords={Nepal, {R. D. do Congo}, Bangladesh, Indonésia, Brasil, Índia},
+				ytick=data,
+				yticklabel style={font=\footnotesize},
+				nodes near coords={\pgfmathprintnumber[set thousands separator={.}]{\pgfplotspointmeta}},
+				nodes near coords align={horizontal},
+				every node near coord/.append style={font=\scriptsize},
+				bar width=11pt,
+				enlarge y limits=0.12,
+				xmajorgrids=true,
+				grid style=dashed,
+				scaled x ticks=false,
+				xticklabel style={font=\footnotesize, /pgf/number format/.cd, set thousands separator={.}, fixed}
+			]
+			\addplot[fill=blue!65!black, draw=black] coordinates {
+					(2897,Nepal)
+					(3026,{R. D. do Congo})
+					(3558,Bangladesh)
+					(16292,Indonésia)
+					(22901,Brasil)
+					(91783,Índia)
+				};
+		\end{axis}
+	\end{tikzpicture}
+	\fonte{Elaboração própria com dados de 2025 da \citeonline{oms2026gho},
+		\textit{Global Health Observatory} (indicador WHS3\_45).}
 \end{figure}
 
 A análise automatizada de imagens dermatológicas tem sido investigada
@@ -209,32 +209,32 @@ explicita o objeto, o propósito, o foco, o ponto de vista e o contexto
 da investigação. O quadro orienta a definição da questão de pesquisa e
 das medidas a serem extraídas dos estudos.
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Característica
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Valor
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Analisar} & Modelos de visão computacional aplicados à
-identificação de manifestações dermatológicas. \\
-\textbf{Com o propósito de} & Avaliar o desempenho dos modelos aplicados
-à identificação de padrões em imagens de pele. \\
-\textbf{Com foco em} & Identificação de características patológicas de
-hanseníase. \\
-\textbf{Do ponto de vista de} & Pesquisadores das áreas de Engenharia de
-Software e da área da saúde. \\
-\textbf{No contexto de} & Apoio à triagem de hanseníase na rede pública
-de saúde do Brasil. \\
-\end{longtable}
-}
+	{\def\LTcaptype{none} % do not increment counter
+		\begin{longtable}[]{@{}
+			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+			\toprule\noalign{}
+			\begin{minipage}[b]{\linewidth}\raggedright
+				Característica
+			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+				                 Valor
+			                 \end{minipage}                                   \\
+			\midrule\noalign{}
+			\endhead
+			\bottomrule\noalign{}
+			\endlastfoot
+			\textbf{Analisar}                           & Modelos de visão computacional aplicados à
+			identificação de manifestações dermatológicas.                                                \\
+			\textbf{Com o propósito de}                 & Avaliar o desempenho dos modelos aplicados
+			à identificação de padrões em imagens de pele.                                                \\
+			\textbf{Com foco em}                        & Identificação de características patológicas de
+			hanseníase.                                                                                   \\
+			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
+			Software e da área da saúde.                                                                  \\
+			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
+			de saúde do Brasil.                                                                           \\
+		\end{longtable}
+	}
 \fonte{Adaptado de \citeonline{basili1994} e \citeonline{wohlin2024}.}
 
 \subsection{Questão norteadora}
@@ -242,9 +242,9 @@ de saúde do Brasil. \\
 A investigação é orientada pela seguinte questão:
 
 \begin{quote}
-Como avaliar o desempenho de modelos de visão computacional aplicados à
-identificação de padrões associados à hanseníase em imagens de pele, no
-contexto da rede pública de saúde do Brasil?
+	Como avaliar o desempenho de modelos de visão computacional aplicados à
+	identificação de padrões associados à hanseníase em imagens de pele, no
+	contexto da rede pública de saúde do Brasil?
 \end{quote}
 
 Nesta etapa, a questão será abordada por meio da identificação e análise
@@ -269,29 +269,28 @@ Brasil.
 \subsection{Objetivos específicos}\label{objetivos-especuxedficos}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Caracterizar as tarefas, os modelos e as abordagens de visão
-  computacional empregados na análise de manifestações dermatológicas
-  associadas à hanseníase.
-\item
-  Identificar os conjuntos de dados utilizados, suas formas de aquisição
-  e anotação e as informações disponíveis sobre as populações e os tons
-  de pele representados.
-\item
-  Sistematizar os procedimentos de avaliação, as métricas e os
-  resultados reportados, distinguindo medidas globais, resultados
-  específicos de hanseníase e unidades de análise.
-\item
-  Examinar as evidências de generalização e de avaliação do desempenho
-  entre grupos de tom de pele, quando disponíveis.
-\item
-  Identificar limitações e lacunas que fundamentem o planejamento de uma
-  avaliação futura de modelos no contexto de apoio à triagem na rede
-  pública de saúde do Brasil.
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item
+	      Caracterizar as tarefas, os modelos e as abordagens de visão
+	      computacional empregados na análise de manifestações dermatológicas
+	      associadas à hanseníase.
+	\item
+	      Identificar os conjuntos de dados utilizados, suas formas de aquisição
+	      e anotação e as informações disponíveis sobre as populações e os tons
+	      de pele representados.
+	\item
+	      Sistematizar os procedimentos de avaliação, as métricas e os
+	      resultados reportados, distinguindo medidas globais, resultados
+	      específicos de hanseníase e unidades de análise.
+	\item
+	      Examinar as evidências de generalização e de avaliação do desempenho
+	      entre grupos de tom de pele, quando disponíveis.
+	\item
+	      Identificar limitações e lacunas que fundamentem o planejamento de uma
+	      avaliação futura de modelos no contexto de apoio à triagem na rede
+	      pública de saúde do Brasil.
 \end{enumerate}
-
 
 \section{Metodologia}
 
@@ -302,37 +301,37 @@ pele. A Figura~\ref{fig:percurso-metodologico} apresenta o percurso da
 revisão, do problema de pesquisa à síntese das evidências.
 
 \begin{figure}[htbp]
-\centering
-\small
-\begin{tikzpicture}[
-  node distance=0.7cm and 0.6cm,
-  etapa/.style={draw=black, thick, rounded corners=4pt, fill=white,
-    text width=2.3cm, minimum height=1.25cm, align=center, font=\footnotesize, inner sep=3pt},
-  inicio/.style={circle, fill=black, minimum size=0.45cm, inner sep=0pt},
-  seta/.style={-{Stealth[length=2.2mm]}, thick}
-]
-\node[inicio] (ini) {};
-\node[etapa, right=0.55cm of ini] (a1) {Problema e questão de pesquisa (GQM)};
-\node[etapa, right=of a1] (a2) {Protocolo da revisão};
-\node[etapa, right=of a2] (a3) {Busca};
-\node[etapa, right=of a3] (a4) {Triagem};
-\node[etapa, below=of a4] (b5) {Leitura integral};
-\node[etapa, left=of b5] (b6) {Extração};
-\node[etapa, left=of b6] (b7) {Síntese};
-\node[circle, draw=black, thick, minimum size=0.6cm, inner sep=0pt, left=0.55cm of b7] (fim) {};
-\fill (fim.center) circle (0.2cm);
-\draw[seta] (ini) -- (a1);
-\draw[seta] (a1) -- (a2);
-\draw[seta] (a2) -- (a3);
-\draw[seta] (a3) -- (a4);
-\draw[seta] (a4) -- (b5);
-\draw[seta] (b5) -- (b6);
-\draw[seta] (b6) -- (b7);
-\draw[seta] (b7) -- (fim);
-\end{tikzpicture}
-\caption{Fluxo de atividades da revisão estruturada da literatura}
-\label{fig:percurso-metodologico}
-\fonte{Elaboração própria.}
+	\centering
+	\small
+	\begin{tikzpicture}[
+		node distance=0.7cm and 0.6cm,
+		etapa/.style={draw=black, thick, rounded corners=4pt, fill=white,
+				text width=2.3cm, minimum height=1.25cm, align=center, font=\footnotesize, inner sep=3pt},
+		inicio/.style={circle, fill=black, minimum size=0.45cm, inner sep=0pt},
+		seta/.style={-{Stealth[length=2.2mm]}, thick}
+		]
+		\node[inicio] (ini) {};
+		\node[etapa, right=0.55cm of ini] (a1) {Problema e questão de pesquisa (GQM)};
+		\node[etapa, right=of a1] (a2) {Protocolo da revisão};
+		\node[etapa, right=of a2] (a3) {Busca};
+		\node[etapa, right=of a3] (a4) {Triagem};
+		\node[etapa, below=of a4] (b5) {Leitura integral};
+		\node[etapa, left=of b5] (b6) {Extração};
+		\node[etapa, left=of b6] (b7) {Síntese};
+		\node[circle, draw=black, thick, minimum size=0.6cm, inner sep=0pt, left=0.55cm of b7] (fim) {};
+		\fill (fim.center) circle (0.2cm);
+		\draw[seta] (ini) -- (a1);
+		\draw[seta] (a1) -- (a2);
+		\draw[seta] (a2) -- (a3);
+		\draw[seta] (a3) -- (a4);
+		\draw[seta] (a4) -- (b5);
+		\draw[seta] (b5) -- (b6);
+		\draw[seta] (b6) -- (b7);
+		\draw[seta] (b7) -- (fim);
+	\end{tikzpicture}
+	\caption{Fluxo de atividades da revisão estruturada da literatura}
+	\label{fig:percurso-metodologico}
+	\fonte{Elaboração própria.}
 \end{figure}
 
 \subsection{Classificação do estudo}
@@ -340,27 +339,27 @@ revisão, do problema de pesquisa à síntese das evidências.
 A classificação segue as dimensões do Capítulo~2 de \citeonline{wohlin2024}.
 
 \begin{itemize}
-\item \textbf{Finalidade descritiva} \cite{wohlin2024}. A pesquisa
-descritiva descreve um fenômeno ou as características de um problema, e sua
-questão costuma começar com ``o quê'' ou ``como'' \cite{wohlin2024}.
-A questão norteadora começa com ``Como'', e os objetivos específicos 1 a 4
-pedem caracterizar, identificar, sistematizar e examinar o que os estudos
-reportam.
+	\item \textbf{Finalidade descritiva} \cite{wohlin2024}. A pesquisa
+	      descritiva descreve um fenômeno ou as características de um problema, e sua
+	      questão costuma começar com ``o quê'' ou ``como'' \cite{wohlin2024}.
+	      A questão norteadora começa com ``Como'', e os objetivos específicos 1 a 4
+	      pedem caracterizar, identificar, sistematizar e examinar o que os estudos
+	      reportam.
 
-\item \textbf{Abordagem mista} \cite{wohlin2024}. A extração reúne
-dados quantitativos (como número de imagens e métricas) e qualitativos (como
-tarefa, modelo e população). O Capítulo~\ref{cap:revisao-literatura} combina
-contagens e tabelas com síntese descritiva.
+	\item \textbf{Abordagem mista} \cite{wohlin2024}. A extração reúne
+	      dados quantitativos (como número de imagens e métricas) e qualitativos (como
+	      tarefa, modelo e população). O Capítulo~\ref{cap:revisao-literatura} combina
+	      contagens e tabelas com síntese descritiva.
 
-\item \textbf{Coleta por estudo de literatura estruturado}
-\cite{wohlin2024}. A revisão tem questões de pesquisa, protocolo,
-estratégia de busca, critérios explícitos de seleção e formulário de extração,
-características que \citeonline{kitchenham2007} apontam como diferenciais
-da revisão sistemática em relação à revisão convencional.
+	\item \textbf{Coleta por estudo de literatura estruturado}
+	      \cite{wohlin2024}. A revisão tem questões de pesquisa, protocolo,
+	      estratégia de busca, critérios explícitos de seleção e formulário de extração,
+	      características que \citeonline{kitchenham2007} apontam como diferenciais
+	      da revisão sistemática em relação à revisão convencional.
 
-\item \textbf{Análise descritiva e por classificação}
-\cite{wohlin2024}. Os estudos são resumidos por contagens e tabelas e
-classificados por tarefa, modelo e procedimento de avaliação.
+	\item \textbf{Análise descritiva e por classificação}
+	      \cite{wohlin2024}. Os estudos são resumidos por contagens e tabelas e
+	      classificados por tarefa, modelo e procedimento de avaliação.
 \end{itemize}
 
 \subsection{Etapas e atividades da revisão}
@@ -369,80 +368,44 @@ A Tabela~\ref{tab:etapas-metodologia} lista as atividades realizadas na revisão
 e indica onde cada uma é apresentada.
 
 \begin{table}[htb]
-\centering
-\caption{Atividades realizadas na revisão estruturada}
-\label{tab:etapas-metodologia}
-\footnotesize
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedright\arraybackslash}p{5.6cm} >{\raggedright\arraybackslash}p{6.0cm}}
-\toprule
-\textbf{Atividade} & \textbf{Descrição} & \textbf{Onde está} \\
-\midrule
-Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos & Capítulo~1 \\
-Protocolo da revisão & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
-Busca & Execução da busca e identificação dos registros & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos'' \\
-Triagem & Seleção por título e resumo, com os critérios do protocolo & Mesma seção; Figura~\ref{fig:fluxo-triagem} \\
-Leitura integral & Leitura dos textos completos e confirmação da elegibilidade & Mesma seção \\
-Extração & Preenchimento do formulário de extração dos estudos incluídos & Subseção ``Extração e síntese das evidências'' \\
-Síntese & Síntese das evidências por questão de pesquisa & Seção ``Resultados da revisão'' \\
-\bottomrule
-\end{tabular}
-\fonte{Autores.}
+	\centering
+	\caption{Atividades realizadas na revisão estruturada}
+	\label{tab:etapas-metodologia}
+	\footnotesize
+	\begin{tabular}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedright\arraybackslash}p{5.6cm} >{\raggedright\arraybackslash}p{6.0cm}}
+		\toprule
+		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\
+		\midrule
+		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\
+		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
+		Busca                          & Execução da busca e identificação dos registros                                                  & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos''                                                                                                                                               \\
+		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Mesma seção; Figura~\ref{fig:fluxo-triagem}                                                                                                                                                                                              \\
+		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Mesma seção                                                                                                                                                                                                                              \\
+		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção ``Extração e síntese das evidências''                                                                                                                                                                                           \\
+		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção ``Resultados da revisão''                                                                                                                                                                                                          \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores.}
 \end{table}
 
-\subsection{Evidências da revisão e elementos do escopo e do planejamento}
+\subsection{Contribuição da revisão para uma avaliação futura}
 
-As evidências reunidas na revisão estruturada (Capítulo~\ref{cap:revisao-literatura})
-organizam-se em consonância com as etapas de definição do escopo (\textit{Scoping}, Capítulo~8)
-e de planejamento (\textit{Planning}, Capítulo~9) do processo experimental de \citeonline{wohlin2024},
-apresentado no Capítulo~\ref{cap:referencial-teorico} (Figura~\ref{fig:processo-experimento}):
-
-\begin{itemize}
-\item \textbf{Definição do escopo (\textit{Scoping}, Capítulo~8)} \cite{wohlin2024}:
-o escopo é formalizado por um modelo de objetivo estruturado em cinco elementos fundamentais:
-objeto de estudo, propósito, foco de qualidade, perspectiva e contexto \cite{wohlin2024}.
-No presente trabalho, o modelo GQM adaptado \cite{basili1994} (Quadro da Seção~\ref{gqm-adaptado-e-questuxe3o-de-pesquisa})
-cumpre essa função, delimitando os modelos de visão computacional (objeto) voltados a avaliar o desempenho
-diagnóstico (propósito), focando a identificação de manifestações da hanseníase (foco), sob a perspectiva
-de pesquisadores e da atenção à saúde, no contexto da triagem na rede pública do Brasil.
-
-\item \textbf{Planejamento experimental (\textit{Planning}, Capítulo~9)} \cite{wohlin2024}:
-o planejamento operacionaliza o escopo em sete dimensões: seleção do contexto (Seção~9.1),
-formulação de hipóteses (Seção~9.2), seleção de variáveis dependentes e independentes (Seção~9.3),
-seleção de sujeitos e populações (Seção~9.4), desenho experimental (Seção~9.5), instrumentação
-(Seção~9.6) e avaliação de ameaças à validade (Seções~9.7 e 9.8).
-\end{itemize}
-
-A Tabela~\ref{tab:planejamento-wohlin} relaciona cada um desses elementos ao que a revisão
-reúne e aos limites das evidências identificadas na literatura. A correspondência dá-se por analogia:
-os sujeitos descritos por \citeonline{wohlin2024} correspondem aqui aos conjuntos de dados e às amostras demográficas de imagens
-clínicas de lesões, enquanto os objetos experimentais correspondem aos modelos e algoritmos de visão
-computacional sob avaliação.
-
-\begin{table}[htb]
-\centering
-\caption{Elementos do escopo e do planejamento experimental e evidências da revisão}
-\label{tab:planejamento-wohlin}
-\footnotesize
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{4.3cm} >{\raggedright\arraybackslash}p{6.5cm}}
-\toprule
-\textbf{Elemento (seção)} & \textbf{O que a revisão reúne} & \textbf{Limite das evidências} \\
-\midrule
-Escopo (8.1) & GQM adaptado: objeto, propósito, foco, perspectiva e contexto & ``Foco'' e ``contexto'' descrevem domínio e cenário de uso \\
-Contexto e sujeitos (9.1 e 9.4) & Contexto do GQM (rede pública de saúde do Brasil); conjuntos de dados e populações usados nos estudos & Poucos estudos caracterizam o tom de pele da base \\
-Variáveis (9.3) & Modelos e abordagens identificados; métricas e procedimentos reportados & Em dois estudos, o desempenho para a hanseníase é bem inferior ao indicador global ou ao Top-5 (Subseção~\ref{subsec:rq4-metricas}) \\
-Desenho (9.5) & Procedimentos de avaliação dos estudos (divisão dos dados e validação) & A maior parte dos estudos que desenvolvem modelos não informa a unidade da divisão dos dados, e poucos testam em outra base (Subseção~\ref{subsec:rq3-metodos}) \\
-Validade (9.7 e 9.8) & Lacunas da evidência (separação por paciente, generalização e tom de pele) & Nenhum estudo com dados reporta, no texto principal, desempenho por tom de pele (Subseção~\ref{subsec:rq5-rq6-tom-pele}) \\
-\bottomrule
-\end{tabular}
-\fonte{Elaboração própria, com os elementos dos capítulos 8 e 9 de \citeonline{wohlin2024}.}
-\end{table}
+A revisão estruturada da literatura (Capítulo~\ref{cap:revisao-literatura})
+sistematiza o que os estudos relatam sobre os dados, os procedimentos de
+avaliação, as métricas de desempenho e a capacidade de generalização dos
+modelos. Essas evidências e suas limitações fundamentam uma avaliação
+computacional futura, que adotará uma abordagem de ciência de dados
+orientada pelo padrão da ACM SIGSOFT, apresentado na
+Subseção~\ref{subsec:ciencia-de-dados}. O protocolo dessa avaliação será
+definido em etapa posterior.
 
 \section{Organização do trabalho}
 
 Este trabalho está organizado em três capítulos. O primeiro apresenta o
 contexto, o problema de pesquisa, a questão norteadora, os objetivos e a
 metodologia. O segundo reúne os fundamentos sobre pesquisa empírica,
-hanseníase, visão computacional e avaliação de modelos. O terceiro apresenta a
+ciência de dados, hanseníase, visão computacional e avaliação de modelos.
+O terceiro apresenta a
 revisão estruturada da literatura: o planejamento e o protocolo, a estratégia
 de busca, a seleção dos estudos, a extração e a síntese das evidências e os
 resultados, organizados pelas questões de pesquisa. Ao final, são apresentadas
@@ -454,21 +417,21 @@ Esta seção apresenta as atividades realizadas, em forma de fluxo na
 Figura~\ref{fig:percurso-metodologico}.
 
 \begin{itemize}
-\item \textbf{Definição do problema, da questão de pesquisa e dos objetivos:}
-formulação do problema e da questão norteadora, com o GQM adaptado, e dos
-objetivos geral e específicos.
-\item \textbf{Elaboração do protocolo da revisão:} definição das questões de
-pesquisa, da estratégia de busca (PICOC), dos critérios de inclusão e exclusão
-e do formulário de extração.
-\item \textbf{Busca dos registros:} execução da busca e identificação dos
-registros.
-\item \textbf{Triagem:} seleção por título e resumo, com os critérios do
-protocolo.
-\item \textbf{Leitura integral:} leitura dos textos completos e confirmação da
-elegibilidade.
-\item \textbf{Extração:} preenchimento do formulário de extração dos estudos
-incluídos.
-\item \textbf{Síntese:} síntese das evidências por questão de pesquisa.
+	\item \textbf{Definição do problema, da questão de pesquisa e dos objetivos:}
+	      formulação do problema e da questão norteadora, com o GQM adaptado, e dos
+	      objetivos geral e específicos.
+	\item \textbf{Elaboração do protocolo da revisão:} definição das questões de
+	      pesquisa, da estratégia de busca (PICOC), dos critérios de inclusão e exclusão
+	      e do formulário de extração.
+	\item \textbf{Busca dos registros:} execução da busca e identificação dos
+	      registros.
+	\item \textbf{Triagem:} seleção por título e resumo, com os critérios do
+	      protocolo.
+	\item \textbf{Leitura integral:} leitura dos textos completos e confirmação da
+	      elegibilidade.
+	\item \textbf{Extração:} preenchimento do formulário de extração dos estudos
+	      incluídos.
+	\item \textbf{Síntese:} síntese das evidências por questão de pesquisa.
 \end{itemize}
 
 O fluxo de seleção e os resultados são apresentados no
