@@ -18,8 +18,7 @@ interpretadas como a execução de um experimento controlado.
 
 \section{Planejamento e protocolo}
 
-O objetivo, o protocolo e os critérios foram organizados no Evidentia. A
-questão principal é: como avaliar o desempenho de modelos de visão
+A questão principal é: como avaliar o desempenho de modelos de visão
 computacional aplicados à identificação de padrões associados à hanseníase
 em imagens de pele, no contexto da rede pública de saúde do Brasil?
 
@@ -41,6 +40,54 @@ investigação foi detalhada nas seguintes questões secundárias:
 	\item Como a capacidade de generalização é avaliada, especialmente em conjuntos diferentes dos usados no treinamento?
 	\item Em que tipo de veículo o artigo foi publicado, como periódico ou conferência?
 \end{enumerate}
+
+\subsection{Integração entre protocolo, ferramentas e pesquisadores}
+\label{subsec:integracao-ferramentas}
+
+Os pesquisadores executaram o protocolo com o apoio de quatro ferramentas,
+usadas desde o planejamento até o registro da extração. O Evidentia
+Review, plataforma desenvolvida pelo CEDIS/UnB para apoiar a condução de
+revisões sistemáticas da literatura, foi usado para organizar o protocolo
+e registrar as decisões de triagem e os dados extraídos dos estudos incluídos.
+
+Na etapa de busca, a questão de pesquisa e os componentes do PICOC serviram
+de base para uma solicitação em linguagem natural (\textit{prompt}). Os
+pesquisadores submeteram o mesmo texto ao Consensus, buscador de literatura
+científica que usa inteligência artificial para localizar publicações, e ao
+Claude, assistente de inteligência artificial de uso geral desenvolvido pela
+Anthropic. O Consensus foi usado na busca inicial e o Claude, no levantamento
+complementar de referências. Reuniu-se as listas obtidas e removeu-se as
+duplicatas antes da triagem.
+
+Na triagem, utilizou-se o Jev Reviewer, ferramenta de apoio a revisões de
+literatura, para avaliar preliminarmente os títulos e resumos com base em
+critérios de seleção. Para cada registro, a ferramenta sugeriu inclusão,
+exclusão ou classificação incerta. Os pesquisadores usaram essas sugestões
+como apoio para decidir quais registros seguiriam para leitura integral
+e registraram as decisões no Evidentia Review. A
+Tabela~\ref{tab:papel-ferramentas} resume as responsabilidades em cada etapa,
+e a Figura~\ref{fig:fluxo-metodologico-ia} mostra a sequência da revisão.
+
+% Mantém a tabela da subseção 3.1.1 antes do título da seção seguinte.
+\begin{table}[H]
+	\centering
+	\caption{Papel de cada ferramenta e dos pesquisadores no fluxo da revisão}
+	\label{tab:papel-ferramentas}
+	\footnotesize
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}p{3.2cm}@{}}
+		\toprule
+		\textbf{Ferramenta} & \textbf{Papel}                                                                                                                                            & \textbf{Saída que alimenta a etapa seguinte}                                                  & \textbf{Quem decide}      \\
+		\midrule
+		Evidentia           & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores             \\
+		Consensus           & Busca assistida, a partir de solicitação em inglês com a questão e os componentes do PICOC                                                                & Lista de 100 referências, salva pelos autores                                                 & Pesquisadores, ao triar   \\
+		Claude              & Busca complementar com o mesmo \textit{prompt} do Consensus                                                                                               & 30 referências informadas no relato                                                           & Pesquisadores, ao triar   \\
+		Jev Reviewer        & Classificação preliminar dos 118 registros segundo cinco critérios                                                                                        & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails}                          & Pesquisadores, ao revisar \\
+		Pesquisadores       & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados                                                & Decisões registradas no Evidentia; 26 estudos para leitura integral e 25 extraídos            & Pesquisadores             \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores, a partir do registro da busca e da triagem.}
+\end{table}
 
 \section{Estruturação da estratégia de busca}
 
@@ -131,7 +178,9 @@ O Quadro~\ref{qua:prompt-consensus} reproduz integralmente a solicitação subme
 	xleftmargin=0.5em,
 	xrightmargin=0.5em
 ]{editaveis/prompt-consensus.txt}
-\vspace{-0.2cm}\noindent\footnotesize\textbf{Fonte:} Autores.\vspace{0.4cm}
+\vspace{-0.2cm}\noindent{\footnotesize\textbf{Fonte:} Autores.}\vspace{0.4cm}
+
+O mesmo \textit{prompt} foi submetido ao Claude na busca complementar.
 
 \subsection{Consultas apresentadas pelo Consensus}
 
@@ -139,7 +188,7 @@ Na busca de 25 de setembro de 2026, o Consensus apresentou uma sequência
 de consultas em quatro rodadas. A Tabela~\ref{tab:consultas-consensus}
 reproduz os textos e indicadores exibidos. Esses indicadores são saídas
 internas da ferramenta e não correspondem, por si só, a contagens auditadas
-de estudos únicos triados pela dupla.
+de estudos únicos triados.
 
 \begin{longtable}{p{0.08\textwidth}p{0.68\textwidth}r}
 	\caption{Consultas e indicadores apresentados pelo Consensus}\label{tab:consultas-consensus}                                                               \\
@@ -315,68 +364,15 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 	\fonte{Autores.}
 \end{figure}
 
-\subsection{Integração entre protocolo, ferramentas e pesquisadores}
-\label{subsec:integracao-ferramentas}
-
-O fluxo da Figura~\ref{fig:fluxo-metodologico-ia} articula quatro ferramentas e o
-julgamento da dupla de pesquisadores. Cada ferramenta cumpre uma função distinta, e a
-saída de uma etapa é a entrada da seguinte, como sintetiza a Tabela~\ref{tab:papel-ferramentas}.
-O protocolo registrado no Evidentia origina o \textit{prompt} enviado ao Consensus; as listas
-de referências do Consensus e do Claude, reunidas e deduplicadas pelos autores,
-formam o conjunto submetido ao Jev; as sugestões do Jev orientam, sem substituir, a revisão
-dos títulos e resumos feita pelos pesquisadores; e as decisões registradas no Evidentia definem
-os estudos lidos integralmente e extraídos.
-
-\begin{table}[htb]
-\centering
-\caption{Papel de cada ferramenta e dos pesquisadores no fluxo da revisão}
-\label{tab:papel-ferramentas}
-\footnotesize
-\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}p{3.2cm}}
-\toprule
-\textbf{Ferramenta} & \textbf{Papel} & \textbf{Saída que alimenta a etapa seguinte} & \textbf{Quem decide} \\
-\midrule
-Evidentia & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores \\
-Consensus & Busca assistida, a partir de solicitação em inglês com a questão e os componentes do PICOC & Lista de 100 referências, salva pelos autores & Pesquisadores, ao triar \\
-Claude & Busca complementar & Lista de 30 referências & Pesquisadores, ao triar \\
-Jev Reviewer & Classificação preliminar dos 118 registros segundo cinco critérios & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails} & Pesquisadores, ao revisar \\
-Pesquisadores & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados & Decisões registradas no Evidentia; 26 estudos para leitura integral e 25 extraídos & Pesquisadores \\
-\bottomrule
-\end{tabular}
-\fonte{Autores, a partir do registro da busca e da triagem.}
-\end{table}
-
-As saídas do Consensus, do Claude e do Jev são sugestões e candidatos; nenhuma
-delas determina a inclusão ou a exclusão de um estudo. A presença de uma referência na lista
-do Consensus não significa que ela atenda aos critérios, e a sugestão do Jev não registra a
-justificativa da decisão. A decisão é a consolidada no Evidentia, tomada pelos pesquisadores. A
-diferença entre os dois registros é mensurável: dos 26 registros incluídos no Evidentia, 13 tinham
-sugestão de exclusão do Jev e 11 tinham sugestão incerta, enquanto apenas dois tinham
-sugestão de inclusão (detalhado adiante, na subseção de triagem). Nessa configuração, o Jev serviu de apoio à revisão
-humana, não de regra de decisão. As decisões finais constam do Evidentia.
-
-O Evidentia é o ponto de registro do processo. Nele ficam o protocolo e os critérios, as decisões
-individuais e a decisão consolidada de cada registro, o relatório PRISMA e o formulário de
-extração com 18 campos padronizados. Isso permite vincular cada quantidade informada ao
-registro que a originou. O diferencial dessa integração é a rastreabilidade: cada saída
-automatizada tem origem identificada, e cada decisão tem registro e data. Não se alega
-ineditismo da combinação das ferramentas nem superioridade sobre outras formas de conduzir
-revisões; os limites do procedimento, como a documentação parcial da busca complementar e a
-ausência de comprovação de avaliação independente por ambos os pesquisadores, são descritos
-nas subseções seguintes.
-
 \subsection{Busca e identificação dos registros}
 
-O protocolo da revisão foi organizado no Evidentia a partir da questão de
-pesquisa e dos componentes do PICOC. Esses elementos foram utilizados em
-uma solicitação em inglês ao Consensus, sem a inclusão dos critérios de
-seleção no texto do \textit{prompt}. Em 25 de setembro de 2026, a
-ferramenta retornou uma lista de 100 referências, que foi salva pelos autores,
-das quais 98 tinham DOI informado. Foi registrada também uma busca complementar por meio do Claude, da qual
-foram reunidas 30 referências. A data, o \textit{prompt}, o modelo, a configuração e a lista completa
-dessa busca complementar ainda precisam ser confirmados. Embora o protocolo
-também registre a Scopus como fonte, não há comprovação de uma busca separada
-nessa base na etapa descrita.
+Em 25 de setembro de 2026, o Consensus retornou 100 referências, das
+quais 98 tinham DOI informado. Os autores salvaram essa lista. O documento
+da busca complementar no Claude foi criado em 25 de setembro de 2026.
+A busca realizada pela ferramenta Claude retornou 30 referências com o mesmo
+\textit{prompt} apresentado no Quadro~\ref{qua:prompt-consensus}. O modelo,
+a configuração, a lista completa de referências e o registro da execução
+da busca no Claude ainda precisam ser confirmados. As bases de dados utilizadas pelas duas ferramentas ainda não foram integralmente documentadas. A Tabela~\ref{tab:consultas-consensus} apresenta as consultas e os indicadores exibidos pelo Consensus.
 
 As duas listas somaram 130 registros e,
 após a remoção de duplicatas, permaneceram 118 para triagem. A diferença
@@ -391,9 +387,6 @@ foi deduplicado. A diferença entre as 129 entradas identificadas e os
 130 registros informados no relato permanece a esclarecer. Os
 indicadores internos apresentados pelo Consensus não foram tratados
 como quantidades auditadas de estudos únicos examinados pelos pesquisadores.
-Após a reunião dos registros do Consensus e do Claude e a deduplicação,
-o Jev apoiou a classificação preliminar e os autores registraram as decisões
-de triagem no Evidentia, como descrito na subseção seguinte.
 
 \subsection{Critérios de seleção}
 
@@ -443,11 +436,11 @@ valores associados ao não atendimento de cinco critérios:
 	      como intervenção.
 \end{enumerate}
 
-Esses cinco critérios descrevem o que foi avaliado pelo Jev; eles não
+Esses cinco critérios descrevem o que foi avaliado pelo Jev Reviwer; eles não
 substituem os critérios gerais de inclusão e exclusão da revisão. Os valores
 de \texttt{fails} acompanham a avaliação automatizada e não registram, por
 si sós, a justificativa da decisão dos pesquisadores. Após a classificação
-preliminar, a dupla relatou ter revisado os registros por título e resumo,
+preliminar, revisou-se os registros por título e resumo,
 com as decisões registradas no Evidentia. A documentação não esclarece se
 ambos avaliaram todos os registros de maneira independente. A avaliação por
 dois ou mais pesquisadores, ao menos para uma amostra, é recomendada por
@@ -458,10 +451,10 @@ As sugestões do Jev para os 118 registros foram: duas de inclusão, 15 incertas
 O cruzamento por título entre as sugestões e as decisões do Evidentia
 identificou correspondência para todos os registros. Entre os 26 com
 situação de inclusão no Evidentia, dois tinham sugestão de inclusão do
-Jev, 11 tinham sugestão incerta e 13 tinham sugestão de exclusão. Entre
+Jev Reviwer, 11 tinham sugestão incerta e 13 tinham sugestão de exclusão. Entre
 os 91 excluídos no Evidentia, 87 tinham sugestão de exclusão e quatro
 tinham sugestão incerta. O registro restante, classificado como
-intermediário no Evidentia, tinha sugestão de exclusão pelo Jev. Assim,
+intermediário no Evidentia, tinha sugestão de exclusão pelo Jev Reviwer. Assim,
 as sugestões automáticas são distintas das decisões de triagem. A data de
 execução, o modelo, a configuração completa e a versão da ferramenta não
 foram identificados; os cinco critérios exibidos acima, por sua vez, estão
@@ -580,7 +573,8 @@ as análises empíricas desta monografia.
 Conforme \citeonline{wohlin2024}, o formulário de extração
 deve ser orientado pelas questões de pesquisa e permitir o registro das
 características dos estudos e dos dados necessários à síntese. Neste
-trabalho, o formulário foi organizado para registrar título, autores,
+trabalho, foi utilizado um formulário de 18 campos padronizados
+no Evidentia para registrar título, autores,
 ano, fonte, tipo de estudo e veículo, além das respostas detalhadas às questões da
 revisão: técnicas de visão computacional, bases de dados, características das populações, manifestações cutâneas, quantidade de
 imagens, métodos e procedimentos de avaliação, métricas, resultados obtidos, informações sobre tons de pele,
@@ -606,46 +600,46 @@ Cada estudo incluído recebeu um identificador (E01 a E25). Nas tabelas, nos gr�
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.1}
 \begin{longtable}{@{}lp{3.3cm}p{3.6cm}p{2.7cm}llp{2.1cm}@{}}
-	\caption[Estudos inclu\'idos na revis\~ao, com identificador (ID)]{Estudos inclu\'idos na revis\~ao (n = 25), com identificador (ID). Grupos: A, desenvolve e avalia modelo; B, valida\c{c}\~ao externa de modelo de terceiros; C, protocolo; D, revis\~ao, perspectiva ou editorial}\label{tab:estudos-incluidos} \\
+	\caption[Estudos inclu\'idos na revis\~ao, com identificador (ID)]{Estudos inclu\'idos na revis\~ao (n = 25), com identificador (ID). Grupos: A, desenvolve e avalia modelo; B, valida\c{c}\~ao externa de modelo de terceiros; C, protocolo; D, revis\~ao, perspectiva ou editorial}\label{tab:estudos-incluidos}                                                                                                                                                                                                                     \\
 	\toprule
-	\textbf{ID} & \textbf{Publicação} & \textbf{T\'itulo} & \textbf{Ve\'iculo} & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI} \\
+	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\
 	\midrule
 	\endfirsthead
-	\multicolumn{7}{l}{\scriptsize\textit{Tabela~\ref{tab:estudos-incluidos} (continua\c{c}\~ao)}} \\
+	\multicolumn{7}{l}{\scriptsize\textit{Tabela~\ref{tab:estudos-incluidos} (continua\c{c}\~ao)}}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\
 	\toprule
-	\textbf{ID} & \textbf{Publicação} & \textbf{T\'itulo} & \textbf{Ve\'iculo} & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI} \\
+	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\
 	\midrule
 	\endhead
 	\midrule
-	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}} \\
+	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\
 	\endfoot
 	\bottomrule
 	\endlastfoot
-	\hypertarget{estudo:E01}{}E01 & \citeonline{fernandes2024} & Artificial Intelligence on Diagnostic Aid of Leprosy: A Systematic Literature Review & Journal of Clinical Medicine & Revista & D & \href{https://doi.org/10.3390/jcm13010180}{\nolinkurl{10.3390/jcm13010180}} \\
-	\hypertarget{estudo:E02}{}E02 & \citeonline{andrade2025} & On the usage of artificial intelligence in leprosy care: A systematic literature review & PLOS Computational Biology & Revista & D & \href{https://doi.org/10.1371/journal.pcbi.1012550}{\nolinkurl{10.1371/journal.pcbi.1012550}} \\
-	\hypertarget{estudo:E03}{}E03 & \citeonline{deps2024} & The potential role of artificial intelligence in the clinical management of Hansen's disease (leprosy) & Frontiers in Medicine & Revista & D & \href{https://doi.org/10.3389/fmed.2024.1338598}{\nolinkurl{10.3389/fmed.2024.1338598}} \\
-	\hypertarget{estudo:E04}{}E04 & \citeonline{deps2026} & Independent assessment of the WHO Skin Neglected Tropical Diseases application for leprosy detection & Revista Panamericana de Salud Pública & Revista & B & \href{https://doi.org/10.26633/RPSP.2026.40}{\nolinkurl{10.26633/RPSP.2026.40}} \\
-	\hypertarget{estudo:E05}{}E05 & \citeonline{yotsu2023} & Deep learning for AI-based diagnosis of skin-related neglected tropical diseases: A pilot study & PLOS Neglected Tropical Diseases & Revista & A & \href{https://doi.org/10.1371/journal.pntd.0011230}{\nolinkurl{10.1371/journal.pntd.0011230}} \\
-	\hypertarget{estudo:E06}{}E06 & \citeonline{jitendra2024deep} & Deep Semantic Segmentation Assisted Region-of-Interest Sensitive Deep Spatio-Textural Feature Learning Framework for Leprosy Detection and Classification & SN Computer Science & Revista & A & \href{https://doi.org/10.1007/s42979-024-03054-2}{\nolinkurl{10.1007/s42979-024-03054-2}} \\
-	\hypertarget{estudo:E07}{}E07 & \citeonline{nyatte2022} & Optimized real-time diagnosis of neglected tropical diseases by automatic recognition of skin lesions & Informatics in Medicine Unlocked & Revista & A & \href{https://doi.org/10.1016/j.imu.2022.101078}{\nolinkurl{10.1016/j.imu.2022.101078}} \\
-	\hypertarget{estudo:E08}{}E08 & \citeonline{vargasclavijo2025} & Evaluating Advanced Machine Learning Models for Histopathological Diagnosis of Hansen Disease & The American Journal of Dermatopathology & Revista & A & \href{https://doi.org/10.1097/dad.0000000000002875}{\nolinkurl{10.1097/dad.0000000000002875}} \\
-	\hypertarget{estudo:E09}{}E09 & \citeonline{goswami2026} & Unveiling leprosy through machines: a review of artificial intelligence in a neglected tropical disease & Portuguese Journal of Dermatology and Venereology & Revista & D & \href{https://doi.org/10.24875/PJDV.25000080}{\nolinkurl{10.24875/PJDV.25000080}} \\
-	\hypertarget{estudo:E10}{}E10 & \citeonline{prayitno2026} & Utilization of digital health in the screening, diagnosis, and management of Morbus Hansen & Malahayati International Journal of Nursing and Health Science & Revista & D & \href{https://doi.org/10.33024/minh.v9i4.3415}{\nolinkurl{10.33024/minh.v9i4.3415}} \\
-	\hypertarget{estudo:E11}{}E11 & \citeonline{sall2025} & Potential of the World Health Organization's Skin NTDs App to Support and Improve the Detection of Skin-Related Neglected Tropical Diseases: Protocol for a Performance Evaluation and Feasibility Study in Senegal & JMIR Research Protocols & Revista & C & \href{https://doi.org/10.2196/69420}{\nolinkurl{10.2196/69420}} \\
-	\hypertarget{estudo:E12}{}E12 & \citeonline{ahikpa2025} & A Machine Learning-Based Diagnosis of Leprosy: Study & 2025 IEEE International Conference on Emerging Trends in Computing and Communication (ETCOM) & Conferência & D & \href{https://doi.org/10.1109/ETCOM66606.2025.11436464}{\nolinkurl{10.1109/ETCOM66606.2025.11436464}} \\
-	\hypertarget{estudo:E13}{}E13 & \citeonline{barbieri2022} & Reimagining leprosy elimination with AI analysis of a combination of skin lesion images with demographic and clinical data & The Lancet Regional Health -- Americas & Revista & A & \href{https://doi.org/10.1016/j.lana.2022.100192}{\nolinkurl{10.1016/j.lana.2022.100192}} \\
-	\hypertarget{estudo:E14}{}E14 & \citeonline{baweja2023} & Leprosy Diagnosis using Explainable Artificial Intelligence Techniques & 2023 International Conference on Sustainable Computing and Data Communication Systems (ICSCDS) & Conferência & A & \href{https://doi.org/10.1109/ICSCDS56580.2023.10104958}{\nolinkurl{10.1109/ICSCDS56580.2023.10104958}} \\
-	\hypertarget{estudo:E15}{}E15 & \citeonline{pons2026} & The World Health Organization skin neglected tropical diseases app: A dynamic capacity-building training tool enhanced with artificial intelligence & Journal of Investigative Dermatology & Revista & A & \href{https://doi.org/10.1016/j.jid.2026.03.043}{\nolinkurl{10.1016/j.jid.2026.03.043}} \\
-	\hypertarget{estudo:E16}{}E16 & \citeonline{innocent2026} & Explainable AI for differential diagnosis of skin-manifesting neglected tropical diseases (NTDS) in darker skin tones & BMC Artificial Intelligence & Revista & D & \href{https://doi.org/10.1186/s44398-026-00033-w}{\nolinkurl{10.1186/s44398-026-00033-w}} \\
-	\hypertarget{estudo:E17}{}E17 & \citeonline{beesetty2023} & Leprosy Skin Lesion Detection: An AI Approach Using Few Shot Learning in a Small Clinical Dataset & Indian Journal of Leprosy & Revista & A & não informado na fonte \\
-	\hypertarget{estudo:E18}{}E18 & \citeonline{jitendra2024heuristic} & Heuristic Segmentation Assisted Deep-Spatial Feature Learning Model for Leprosy Detection & SN Computer Science & Revista & A & \href{https://doi.org/10.1007/s42979-024-03053-3}{\nolinkurl{10.1007/s42979-024-03053-3}} \\
-	\hypertarget{estudo:E19}{}E19 & \citeonline{gawali2024} & Enhancing Diagnosis of Infectious Skin Disease: A Professional Approach using Deep Learning for Leprosy Detection & 2024 15th International Conference on Computing Communication and Networking Technologies (ICCCNT) & Conferência & A & \href{https://doi.org/10.1109/ICCCNT61001.2024.10725616}{\nolinkurl{10.1109/ICCCNT61001.2024.10725616}} \\
-	\hypertarget{estudo:E20}{}E20 & \citeonline{yotsu2025} & Harnessing artificial intelligence for skin-related neglected tropical diseases (skin NTDs): opportunities, challenges and future directions & International Health & Revista & D & \href{https://doi.org/10.1093/inthealth/ihaf068}{\nolinkurl{10.1093/inthealth/ihaf068}} \\
-	\hypertarget{estudo:E21}{}E21 & \citeonline{sanchez2024} & Co2Wounds-V2: Extended Chronic Wounds Dataset from Leprosy Patients & 2024 IEEE International Conference on Image Processing (ICIP) & Conferência & A & \href{https://doi.org/10.1109/ICIP51287.2024.10647641}{\nolinkurl{10.1109/ICIP51287.2024.10647641}} \\
-	\hypertarget{estudo:E22}{}E22 & \citeonline{mehta2026} & Integrative Image Processing Framework for Enhanced Detection of Leprosy-Associated Chronic Wounds & The International Journal of Lower Extremity Wounds & Revista & A & \href{https://doi.org/10.1177/15347346251412645}{\nolinkurl{10.1177/15347346251412645}} \\
-	\hypertarget{estudo:E23}{}E23 & \citeonline{eita2025} & A trustworthy and explainable deep learning framework for skin lesion detection in smart dermatology & Engineering Applications of Artificial Intelligence & Revista & A & \href{https://doi.org/10.1016/j.engappai.2025.111594}{\nolinkurl{10.1016/j.engappai.2025.111594}} \\
-	\hypertarget{estudo:E24}{}E24 & \citeonline{jaikishore2021} & AI Driven Edge Device for Screening Skin Lesion and Its Severity in Peripheral Communities & 2021 IEEE 18th India Council International Conference (INDICON) & Conferência & A & \href{https://doi.org/10.1109/INDICON52576.2021.9691666}{\nolinkurl{10.1109/INDICON52576.2021.9691666}} \\
-	\hypertarget{estudo:E25}{}E25 & \citeonline{banerjee2023} & Skin Diseases Detection Using LBP and WLD: An Ensembling Approach & SN Computer Science & Revista & A & \href{https://doi.org/10.1007/s42979-023-02395-8}{\nolinkurl{10.1007/s42979-023-02395-8}} \\
+	\hypertarget{estudo:E01}{}E01 & \citeonline{fernandes2024}         & Artificial Intelligence on Diagnostic Aid of Leprosy: A Systematic Literature Review                                                                                                                                & Journal of Clinical Medicine                                                                       & Revista       & D            & \href{https://doi.org/10.3390/jcm13010180}{\nolinkurl{10.3390/jcm13010180}}                             \\
+	\hypertarget{estudo:E02}{}E02 & \citeonline{andrade2025}           & On the usage of artificial intelligence in leprosy care: A systematic literature review                                                                                                                             & PLOS Computational Biology                                                                         & Revista       & D            & \href{https://doi.org/10.1371/journal.pcbi.1012550}{\nolinkurl{10.1371/journal.pcbi.1012550}}           \\
+	\hypertarget{estudo:E03}{}E03 & \citeonline{deps2024}              & The potential role of artificial intelligence in the clinical management of Hansen's disease (leprosy)                                                                                                              & Frontiers in Medicine                                                                              & Revista       & D            & \href{https://doi.org/10.3389/fmed.2024.1338598}{\nolinkurl{10.3389/fmed.2024.1338598}}                 \\
+	\hypertarget{estudo:E04}{}E04 & \citeonline{deps2026}              & Independent assessment of the WHO Skin Neglected Tropical Diseases application for leprosy detection                                                                                                                & Revista Panamericana de Salud Pública                                                              & Revista       & B            & \href{https://doi.org/10.26633/RPSP.2026.40}{\nolinkurl{10.26633/RPSP.2026.40}}                         \\
+	\hypertarget{estudo:E05}{}E05 & \citeonline{yotsu2023}             & Deep learning for AI-based diagnosis of skin-related neglected tropical diseases: A pilot study                                                                                                                     & PLOS Neglected Tropical Diseases                                                                   & Revista       & A            & \href{https://doi.org/10.1371/journal.pntd.0011230}{\nolinkurl{10.1371/journal.pntd.0011230}}           \\
+	\hypertarget{estudo:E06}{}E06 & \citeonline{jitendra2024deep}      & Deep Semantic Segmentation Assisted Region-of-Interest Sensitive Deep Spatio-Textural Feature Learning Framework for Leprosy Detection and Classification                                                           & SN Computer Science                                                                                & Revista       & A            & \href{https://doi.org/10.1007/s42979-024-03054-2}{\nolinkurl{10.1007/s42979-024-03054-2}}               \\
+	\hypertarget{estudo:E07}{}E07 & \citeonline{nyatte2022}            & Optimized real-time diagnosis of neglected tropical diseases by automatic recognition of skin lesions                                                                                                               & Informatics in Medicine Unlocked                                                                   & Revista       & A            & \href{https://doi.org/10.1016/j.imu.2022.101078}{\nolinkurl{10.1016/j.imu.2022.101078}}                 \\
+	\hypertarget{estudo:E08}{}E08 & \citeonline{vargasclavijo2025}     & Evaluating Advanced Machine Learning Models for Histopathological Diagnosis of Hansen Disease                                                                                                                       & The American Journal of Dermatopathology                                                           & Revista       & A            & \href{https://doi.org/10.1097/dad.0000000000002875}{\nolinkurl{10.1097/dad.0000000000002875}}           \\
+	\hypertarget{estudo:E09}{}E09 & \citeonline{goswami2026}           & Unveiling leprosy through machines: a review of artificial intelligence in a neglected tropical disease                                                                                                             & Portuguese Journal of Dermatology and Venereology                                                  & Revista       & D            & \href{https://doi.org/10.24875/PJDV.25000080}{\nolinkurl{10.24875/PJDV.25000080}}                       \\
+	\hypertarget{estudo:E10}{}E10 & \citeonline{prayitno2026}          & Utilization of digital health in the screening, diagnosis, and management of Morbus Hansen                                                                                                                          & Malahayati International Journal of Nursing and Health Science                                     & Revista       & D            & \href{https://doi.org/10.33024/minh.v9i4.3415}{\nolinkurl{10.33024/minh.v9i4.3415}}                     \\
+	\hypertarget{estudo:E11}{}E11 & \citeonline{sall2025}              & Potential of the World Health Organization's Skin NTDs App to Support and Improve the Detection of Skin-Related Neglected Tropical Diseases: Protocol for a Performance Evaluation and Feasibility Study in Senegal & JMIR Research Protocols                                                                            & Revista       & C            & \href{https://doi.org/10.2196/69420}{\nolinkurl{10.2196/69420}}                                         \\
+	\hypertarget{estudo:E12}{}E12 & \citeonline{ahikpa2025}            & A Machine Learning-Based Diagnosis of Leprosy: Study                                                                                                                                                                & 2025 IEEE International Conference on Emerging Trends in Computing and Communication (ETCOM)       & Conferência   & D            & \href{https://doi.org/10.1109/ETCOM66606.2025.11436464}{\nolinkurl{10.1109/ETCOM66606.2025.11436464}}   \\
+	\hypertarget{estudo:E13}{}E13 & \citeonline{barbieri2022}          & Reimagining leprosy elimination with AI analysis of a combination of skin lesion images with demographic and clinical data                                                                                          & The Lancet Regional Health -- Americas                                                             & Revista       & A            & \href{https://doi.org/10.1016/j.lana.2022.100192}{\nolinkurl{10.1016/j.lana.2022.100192}}               \\
+	\hypertarget{estudo:E14}{}E14 & \citeonline{baweja2023}            & Leprosy Diagnosis using Explainable Artificial Intelligence Techniques                                                                                                                                              & 2023 International Conference on Sustainable Computing and Data Communication Systems (ICSCDS)     & Conferência   & A            & \href{https://doi.org/10.1109/ICSCDS56580.2023.10104958}{\nolinkurl{10.1109/ICSCDS56580.2023.10104958}} \\
+	\hypertarget{estudo:E15}{}E15 & \citeonline{pons2026}              & The World Health Organization skin neglected tropical diseases app: A dynamic capacity-building training tool enhanced with artificial intelligence                                                                 & Journal of Investigative Dermatology                                                               & Revista       & A            & \href{https://doi.org/10.1016/j.jid.2026.03.043}{\nolinkurl{10.1016/j.jid.2026.03.043}}                 \\
+	\hypertarget{estudo:E16}{}E16 & \citeonline{innocent2026}          & Explainable AI for differential diagnosis of skin-manifesting neglected tropical diseases (NTDS) in darker skin tones                                                                                               & BMC Artificial Intelligence                                                                        & Revista       & D            & \href{https://doi.org/10.1186/s44398-026-00033-w}{\nolinkurl{10.1186/s44398-026-00033-w}}               \\
+	\hypertarget{estudo:E17}{}E17 & \citeonline{beesetty2023}          & Leprosy Skin Lesion Detection: An AI Approach Using Few Shot Learning in a Small Clinical Dataset                                                                                                                   & Indian Journal of Leprosy                                                                          & Revista       & A            & não informado na fonte                                                                                  \\
+	\hypertarget{estudo:E18}{}E18 & \citeonline{jitendra2024heuristic} & Heuristic Segmentation Assisted Deep-Spatial Feature Learning Model for Leprosy Detection                                                                                                                           & SN Computer Science                                                                                & Revista       & A            & \href{https://doi.org/10.1007/s42979-024-03053-3}{\nolinkurl{10.1007/s42979-024-03053-3}}               \\
+	\hypertarget{estudo:E19}{}E19 & \citeonline{gawali2024}            & Enhancing Diagnosis of Infectious Skin Disease: A Professional Approach using Deep Learning for Leprosy Detection                                                                                                   & 2024 15th International Conference on Computing Communication and Networking Technologies (ICCCNT) & Conferência   & A            & \href{https://doi.org/10.1109/ICCCNT61001.2024.10725616}{\nolinkurl{10.1109/ICCCNT61001.2024.10725616}} \\
+	\hypertarget{estudo:E20}{}E20 & \citeonline{yotsu2025}             & Harnessing artificial intelligence for skin-related neglected tropical diseases (skin NTDs): opportunities, challenges and future directions                                                                        & International Health                                                                               & Revista       & D            & \href{https://doi.org/10.1093/inthealth/ihaf068}{\nolinkurl{10.1093/inthealth/ihaf068}}                 \\
+	\hypertarget{estudo:E21}{}E21 & \citeonline{sanchez2024}           & Co2Wounds-V2: Extended Chronic Wounds Dataset from Leprosy Patients                                                                                                                                                 & 2024 IEEE International Conference on Image Processing (ICIP)                                      & Conferência   & A            & \href{https://doi.org/10.1109/ICIP51287.2024.10647641}{\nolinkurl{10.1109/ICIP51287.2024.10647641}}     \\
+	\hypertarget{estudo:E22}{}E22 & \citeonline{mehta2026}             & Integrative Image Processing Framework for Enhanced Detection of Leprosy-Associated Chronic Wounds                                                                                                                  & The International Journal of Lower Extremity Wounds                                                & Revista       & A            & \href{https://doi.org/10.1177/15347346251412645}{\nolinkurl{10.1177/15347346251412645}}                 \\
+	\hypertarget{estudo:E23}{}E23 & \citeonline{eita2025}              & A trustworthy and explainable deep learning framework for skin lesion detection in smart dermatology                                                                                                                & Engineering Applications of Artificial Intelligence                                                & Revista       & A            & \href{https://doi.org/10.1016/j.engappai.2025.111594}{\nolinkurl{10.1016/j.engappai.2025.111594}}       \\
+	\hypertarget{estudo:E24}{}E24 & \citeonline{jaikishore2021}        & AI Driven Edge Device for Screening Skin Lesion and Its Severity in Peripheral Communities                                                                                                                          & 2021 IEEE 18th India Council International Conference (INDICON)                                    & Conferência   & A            & \href{https://doi.org/10.1109/INDICON52576.2021.9691666}{\nolinkurl{10.1109/INDICON52576.2021.9691666}} \\
+	\hypertarget{estudo:E25}{}E25 & \citeonline{banerjee2023}          & Skin Diseases Detection Using LBP and WLD: An Ensembling Approach                                                                                                                                                   & SN Computer Science                                                                                & Revista       & A            & \href{https://doi.org/10.1007/s42979-023-02395-8}{\nolinkurl{10.1007/s42979-023-02395-8}}               \\
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -703,36 +697,36 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.7cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{7.0cm}@{}}
-\caption[Conjuntos de dados utilizados nos estudos]{Conjuntos de dados utilizados diretamente nos estudos com dados}\label{tab:datasets-sintese}\\
-\toprule
-\textbf{Estudo e conjunto} & \textbf{Origem} & \textbf{Amostra descrita}\\
-\midrule
-\endfirsthead
-\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:datasets-sintese} (continuação)}}\\
-\toprule
-\textbf{Estudo e conjunto} & \textbf{Origem} & \textbf{Amostra descrita}\\
-\midrule
-\endhead
-\midrule
-\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}\\
-\endfoot
-\bottomrule
-\endlastfoot
-\estudo{E04} Conjunto externo & Curadoria UFES--OMS; coleta não localizada & 439 imagens iniciais de 208 casos; 423 imagens analisadas após exclusões.\\
-\estudo{E05} Coleção clínica & Costa do Marfim e Gana & 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes com hanseníase.\\
-\estudo{E06} Coleção clínica e fontes on-line & Instituições e repositórios; país não localizado & 220 imagens iniciais e 450 imagens de hanseníase após aumento; pacientes não localizados.\\
-\estudo{E07} Coleção clínica & Camarões & 1.054 imagens; pacientes e lesões distintas não informados.\\
-\estudo{E08} Histopatologia & Instituto Colombiano de Medicina Tropical/Universidad CES & 106 lâminas (55 de pacientes com hanseníase e 51 de controles); 640 microfotografias.\\
-\estudo{E13} AI4Leprosy & Fiocruz, Brasil & 1.226 imagens e 582 lesões de 222 pacientes, conforme os resultados do estudo.\\
-\estudo{E14} DermNet e web & Fontes on-line & Quantidades de imagens e pacientes não localizadas.\\
-\estudo{E15} WHO Skin NTDs & OMS e parceiros; Fitzpatrick 17k e ImageNet & 74.806 imagens ou recortes de diferentes categorias; pacientes não localizados.\\
-\estudo{E17} Coleção Sivananda & Telangana, Índia & 1.931 imagens de 396 lesões em 151 pacientes.\\
-\estudo{E18} Coleção clínica e fontes on-line & Hospitais e fontes secundárias; país não localizado & 220 imagens iniciais e 450 imagens após processamento; pacientes não localizados.\\
-\estudo{E19} Base curada & Kaggle; origem da população não localizada & Total informado de 1.476 imagens; divisão 1.476/62/62 não conciliada.\\
-\estudo{E21,E22} Co2Wounds-V2 & Sanatorio de Contratación, Colômbia, conforme \estudo{E21} & 764 imagens de 96 pacientes, reutilizadas em \estudo{E22}.\\
-\estudo{E23} Fredrick e HAM10000 & Roboflow & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.\\
-\estudo{E24} Coleção da web & DermNet NZ e outras fontes abertas & 1.524 imagens; artigo apresenta divergência na distribuição por classe.\\
-\estudo{E25} JUCMATER: Skindb.v1 & School of Tropical Medicine, Calcutá, Índia & 876 imagens de 141 pacientes.\\
+	\caption[Conjuntos de dados utilizados nos estudos]{Conjuntos de dados utilizados diretamente nos estudos com dados}\label{tab:datasets-sintese}                                                       \\
+	\toprule
+	\textbf{Estudo e conjunto}                    & \textbf{Origem}                                            & \textbf{Amostra descrita}                                                                 \\
+	\midrule
+	\endfirsthead
+	\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:datasets-sintese} (continuação)}}                                                                                                                \\
+	\toprule
+	\textbf{Estudo e conjunto}                    & \textbf{Origem}                                            & \textbf{Amostra descrita}                                                                 \\
+	\midrule
+	\endhead
+	\midrule
+	\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}                                                                                                                                     \\
+	\endfoot
+	\bottomrule
+	\endlastfoot
+	\estudo{E04} Conjunto externo                 & Curadoria UFES--OMS; coleta não localizada                 & 439 imagens iniciais de 208 casos; 423 imagens analisadas após exclusões.                 \\
+	\estudo{E05} Coleção clínica                  & Costa do Marfim e Gana                                     & 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes com hanseníase.                \\
+	\estudo{E06} Coleção clínica e fontes on-line & Instituições e repositórios; país não localizado           & 220 imagens iniciais e 450 imagens de hanseníase após aumento; pacientes não localizados. \\
+	\estudo{E07} Coleção clínica                  & Camarões                                                   & 1.054 imagens; pacientes e lesões distintas não informados.                               \\
+	\estudo{E08} Histopatologia                   & Instituto Colombiano de Medicina Tropical/Universidad CES  & 106 lâminas (55 de pacientes com hanseníase e 51 de controles); 640 microfotografias.     \\
+	\estudo{E13} AI4Leprosy                       & Fiocruz, Brasil                                            & 1.226 imagens e 582 lesões de 222 pacientes, conforme os resultados do estudo.            \\
+	\estudo{E14} DermNet e web                    & Fontes on-line                                             & Quantidades de imagens e pacientes não localizadas.                                       \\
+	\estudo{E15} WHO Skin NTDs                    & OMS e parceiros; Fitzpatrick 17k e ImageNet                & 74.806 imagens ou recortes de diferentes categorias; pacientes não localizados.           \\
+	\estudo{E17} Coleção Sivananda                & Telangana, Índia                                           & 1.931 imagens de 396 lesões em 151 pacientes.                                             \\
+	\estudo{E18} Coleção clínica e fontes on-line & Hospitais e fontes secundárias; país não localizado        & 220 imagens iniciais e 450 imagens após processamento; pacientes não localizados.         \\
+	\estudo{E19} Base curada                      & Kaggle; origem da população não localizada                 & Total informado de 1.476 imagens; divisão 1.476/62/62 não conciliada.                     \\
+	\estudo{E21,E22} Co2Wounds-V2                 & Sanatorio de Contratación, Colômbia, conforme \estudo{E21} & 764 imagens de 96 pacientes, reutilizadas em \estudo{E22}.                                \\
+	\estudo{E23} Fredrick e HAM10000              & Roboflow                                                   & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.     \\
+	\estudo{E24} Coleção da web                   & DermNet NZ e outras fontes abertas                         & 1.524 imagens; artigo apresenta divergência na distribuição por classe.                   \\
+	\estudo{E25} JUCMATER: Skindb.v1              & School of Tropical Medicine, Calcutá, Índia                & 876 imagens de 141 pacientes.                                                             \\
 \end{longtable}
 \endgroup
 \fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
@@ -1130,97 +1124,97 @@ Dos 25 estudos incluídos, 15 desenvolveram e avaliaram modelos, e \citeonline{d
 A Tabela~\ref{tab:tarefas-ia} vincula as tarefas e as etapas dos sistemas aos estudos. O sistema de \citeonline{mehta2026} também descreve um classificador após a segmentação, com métricas apresentadas para o sistema. Em \citeonline{jaikishore2021}, o treino relatado para a classificação de gravidade abrange eczema e sarampo. A classificação de doenças desse estudo inclui hanseníase.
 
 \begin{table}[htbp]
-\centering
-\small
-\caption{Tarefas e etapas dos sistemas por estudo}
-\label{tab:tarefas-ia}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{7.4cm}>{\raggedright\arraybackslash}p{6.3cm}@{}}
-\toprule
-\textbf{Tarefa ou etapa} & \textbf{Estudos} \\
-\midrule
-Classificação de doenças em imagens cutâneas & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25} \\
-Classificação em microfotografias histopatológicas & \estudo{E08} \\
-Detecção por caixas delimitadoras e classificação das lesões localizadas & \estudo{E23} \\
-Segmentação binária de ferida e fundo & \estudo{E21,E22} \\
-Delimitação da região de interesse como etapa da classificação & \estudo{E06,E07,E18} \\
-Classificação após a segmentação como etapa do sistema & \estudo{E22} \\
-Classificação de gravidade para eczema e sarampo & \estudo{E24} \\
-\bottomrule
-\end{tabular}
-\fonte{Autores, a partir dos estudos incluídos.}
+	\centering
+	\small
+	\caption{Tarefas e etapas dos sistemas por estudo}
+	\label{tab:tarefas-ia}
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{7.4cm}>{\raggedright\arraybackslash}p{6.3cm}@{}}
+		\toprule
+		\textbf{Tarefa ou etapa}                                                 & \textbf{Estudos}                                         \\
+		\midrule
+		Classificação de doenças em imagens cutâneas                             & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25} \\
+		Classificação em microfotografias histopatológicas                       & \estudo{E08}                                             \\
+		Detecção por caixas delimitadoras e classificação das lesões localizadas & \estudo{E23}                                             \\
+		Segmentação binária de ferida e fundo                                    & \estudo{E21,E22}                                         \\
+		Delimitação da região de interesse como etapa da classificação           & \estudo{E06,E07,E18}                                     \\
+		Classificação após a segmentação como etapa do sistema                   & \estudo{E22}                                             \\
+		Classificação de gravidade para eczema e sarampo                         & \estudo{E24}                                             \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores, a partir dos estudos incluídos.}
 \end{table}
 
 A Tabela~\ref{tab:abordagens-ia} e a Figura~\ref{fig:abordagens-ia} apresentam as abordagens. Cada estudo pode integrar várias categorias, inclusive pelo uso de comparadores testados. A abordagem híbrida exige que as técnicas coexistam na mesma configuração. O aprendizado profundo é contabilizado quando há evidência da profundidade da rede. A transferência de aprendizado foi usada, por exemplo, em \estudo{E05,E19,E24}, e o aprendizado com poucos exemplos em \estudo{E17}.
 
 \begin{table}[htbp]
-\centering
-\small
-\caption{Abordagens de IA identificadas nos estudos com avaliação de modelos}
-\label{tab:abordagens-ia}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{5.0cm}c>{\raggedright\arraybackslash}p{4.3cm}@{}}
-\toprule
-\textbf{Abordagem} & \textbf{Definição nesta análise} & \textbf{n/16} & \textbf{Estudos} \\
-\midrule
-Aprendizado profundo & Uso ou avaliação de redes profundas & 14/16 & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25} \\
-Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo & 8/16 & \estudo{E06,E07,E08,E13,E17,E18,E22,E25} \\
-Abordagem híbrida & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 5/16 & \estudo{E06,E13,E17,E18,E22} \\
-Poucos exemplos & Estratégia \textit{few-shot} documentada & 1/16 & \estudo{E17} \\
-\bottomrule
-\end{tabular}
-\fonte{Autores, a partir dos estudos incluídos.}
+	\centering
+	\small
+	\caption{Abordagens de IA identificadas nos estudos com avaliação de modelos}
+	\label{tab:abordagens-ia}
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{5.0cm}c>{\raggedright\arraybackslash}p{4.3cm}@{}}
+		\toprule
+		\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/16} & \textbf{Estudos}                                                 \\
+		\midrule
+		Aprendizado profundo    & Uso ou avaliação de redes profundas                                                                        & 14/16         & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25} \\
+		Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo                                                        & 8/16          & \estudo{E06,E07,E08,E13,E17,E18,E22,E25}                         \\
+		Abordagem híbrida       & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 5/16          & \estudo{E06,E13,E17,E18,E22}                                     \\
+		Poucos exemplos         & Estratégia \textit{few-shot} documentada                                                                   & 1/16          & \estudo{E17}                                                     \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores, a partir dos estudos incluídos.}
 \end{table}
 
 \begin{figure}[htbp]
-\centering
-\caption{Quantidade de estudos por abordagem de IA}
-\label{fig:abordagens-ia}
-\begin{tikzpicture}[x=0.39cm,y=0.70cm]
-\draw[->] (0,0) -- (16.7,0) node[right,font=\footnotesize] {Estudos};
-\foreach \x in {0,4,8,12,16} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
-\foreach \y/\n/\rotulo in {4/14/Aprendizado profundo,3/8/Aprendizado tradicional,2/5/Abordagem híbrida,1/1/Poucos exemplos} {
-\fill[blue!65!black] (0,\y-0.25) rectangle (\n,\y+0.25);
-\node[left,font=\footnotesize] at (0,\y) {\rotulo};
-\node[right,font=\footnotesize] at (\n,\y) {\n};}
-\end{tikzpicture}
-\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
+	\centering
+	\caption{Quantidade de estudos por abordagem de IA}
+	\label{fig:abordagens-ia}
+	\begin{tikzpicture}[x=0.39cm,y=0.70cm]
+		\draw[->] (0,0) -- (16.7,0) node[right,font=\footnotesize] {Estudos};
+		\foreach \x in {0,4,8,12,16} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
+		\foreach \y/\n/\rotulo in {4/14/Aprendizado profundo,3/8/Aprendizado tradicional,2/5/Abordagem híbrida,1/1/Poucos exemplos} {
+				\fill[blue!65!black] (0,\y-0.25) rectangle (\n,\y+0.25);
+				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
+				\node[right,font=\footnotesize] at (\n,\y) {\n};}
+	\end{tikzpicture}
+	\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
 
 A Tabela~\ref{tab:modelos-resumo} apresenta os itens com pelo menos três ocorrências. O inventário auditado está na Tabela~\ref{tab:frequencia-modelos}, no Apêndice~\ref{apend:inventario-modelos}. A frequência mede o uso por publicação. A linha de U-Net inclui a adaptação de \estudo{E22}, a de ResNet-101 inclui seu uso como extrator ou codificador, e a de SVM reúne a variante multinível e a configuração otimizada por buraco negro.
 
 \begin{table}[htbp]
-\centering
-\caption{Modelos e componentes com maior ocorrência nos estudos analisados}
-\label{tab:modelos-resumo}
-\begin{tabular}{@{}lcl@{}}
-\toprule
-\textbf{Modelo ou componente} & \textbf{Estudos (n/16)} & \textbf{Identificadores} \\
-\midrule
-Random Forest & 4/16 & \estudo{E06,E08,E13,E18} \\
-SVM / Multi-SVM & 4/16 & \estudo{E06,E07,E08,E25} \\
-ResNet-101 & 3/16 & \estudo{E06,E21,E25} \\
-VGG-16 & 3/16 & \estudo{E05,E19,E24} \\
-U-Net, incluindo adaptação & 3/16 & \estudo{E06,E21,E22} \\
-ANN, arquitetura não especificada & 3/16 & \estudo{E06,E07,E08} \\
-\bottomrule
-\end{tabular}
-\fonte{Autores, a partir dos estudos incluídos.}
+	\centering
+	\caption{Modelos e componentes com maior ocorrência nos estudos analisados}
+	\label{tab:modelos-resumo}
+	\begin{tabular}{@{}lcl@{}}
+		\toprule
+		\textbf{Modelo ou componente}     & \textbf{Estudos (n/16)} & \textbf{Identificadores} \\
+		\midrule
+		Random Forest                     & 4/16                    & \estudo{E06,E08,E13,E18} \\
+		SVM / Multi-SVM                   & 4/16                    & \estudo{E06,E07,E08,E25} \\
+		ResNet-101                        & 3/16                    & \estudo{E06,E21,E25}     \\
+		VGG-16                            & 3/16                    & \estudo{E05,E19,E24}     \\
+		U-Net, incluindo adaptação        & 3/16                    & \estudo{E06,E21,E22}     \\
+		ANN, arquitetura não especificada & 3/16                    & \estudo{E06,E07,E08}     \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores, a partir dos estudos incluídos.}
 \end{table}
 
 A Figura~\ref{fig:ocorrencias-modelos} compara a quantidade de estudos para os mesmos modelos ou componentes da Tabela~\ref{tab:modelos-resumo}. Um estudo pode contribuir para mais de uma barra; o comprimento da barra não representa frequência exclusiva nem desempenho.
 
 \begin{figure}[htbp]
-\centering
-\caption{Quantidade de estudos por modelo ou componente selecionado}
-\label{fig:ocorrencias-modelos}
-\begin{tikzpicture}[x=1.0cm,y=0.65cm]
-\draw[->] (0,0) -- (5.2,0) node[right,font=\footnotesize] {Estudos};
-\foreach \x in {0,1,2,3,4,5} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
-\foreach \y/\n/\rotulo in {6/4/Random Forest,5/4/SVM e Multi-SVM,4/3/ResNet-101,3/3/VGG-16,2/3/U-Net incluindo adaptação,1/3/ANN não especificada} {
-\fill[teal!70!black] (0,\y-0.25) rectangle (\n,\y+0.25);
-\node[left,font=\footnotesize] at (0,\y) {\rotulo};
-\node[right,font=\footnotesize] at (\n,\y) {\n};}
-\end{tikzpicture}
-\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
+	\centering
+	\caption{Quantidade de estudos por modelo ou componente selecionado}
+	\label{fig:ocorrencias-modelos}
+	\begin{tikzpicture}[x=1.0cm,y=0.65cm]
+		\draw[->] (0,0) -- (5.2,0) node[right,font=\footnotesize] {Estudos};
+		\foreach \x in {0,1,2,3,4,5} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
+		\foreach \y/\n/\rotulo in {6/4/Random Forest,5/4/SVM e Multi-SVM,4/3/ResNet-101,3/3/VGG-16,2/3/U-Net incluindo adaptação,1/3/ANN não especificada} {
+				\fill[teal!70!black] (0,\y-0.25) rectangle (\n,\y+0.25);
+				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
+				\node[right,font=\footnotesize] at (\n,\y) {\n};}
+	\end{tikzpicture}
+	\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
 
 Entre os classificadores tradicionais, \citeonline{nyatte2022} utilizaram SVM otimizada, \citeonline{banerjee2023} empregaram Multi-SVM com descritores de textura e \citeonline{vargasclavijo2025} avaliaram, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas. O XGBoost aparece entre os comparadores de \citeonline{barbieri2022} e no classificador do sistema de \citeonline{mehta2026}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \citeonline{nyatte2022} e a SVM citada na conclusão de \citeonline{gawali2024}.
