@@ -1,3 +1,15 @@
+% A chave própria evita a colisão entre AUTHORYEAR e AuthorYEAR no
+% arquivo de opções do abntex2, pois o BibTeX ignora caixa nas chaves.
+@ABNT-options{tcc-citacoes-autor-data,
+ abnt-cite-style = {(Author, YEAR)},
+ key = {aaaa}
+}
+
+@ABNT-options{abnt-url-package=url,
+ abnt-url-package = {url},
+ key = {aaaa}
+}
+
 @article{fernandes2024,
  author = {Fernandes, Jacks Renan Neves and Teles, Ariel Soares and Fernandes, Thayaná Ribeiro Silva and Lima, Lucas Daniel Batista and Balhara, Surjeet and Gupta, Nishu and Teixeira, Silmar},
  title = {Artificial Intelligence on Diagnostic Aid of Leprosy: A Systematic Literature Review},
@@ -16,7 +28,7 @@
  author = {Eita, Mohammad A. and Rizk, Hamada}, title = {A trustworthy and explainable deep learning framework for skin lesion detection in smart dermatology}, journal = {Engineering Applications of Artificial Intelligence}, year = {2025}, volume = {159}, pages = {111594}, doi = {10.1016/j.engappai.2025.111594}, url = {https://doi.org/10.1016/j.engappai.2025.111594}
 }
 @misc{coco,
- author = {{COCO}}, title = {Detection Evaluation}, howpublished = {Documentação técnica do benchmark}, url = {https://cocodataset.org/dataset/detection-eval.htm}, urlaccessdate = {15 out. 2026}
+ author = {{COCO}}, title = {Detection Evaluation}, year = {\mbox{[201-]}}, howpublished = {Documentação técnica do benchmark}, url = {https://cocodataset.org/dataset/detection-eval.htm}, urlaccessdate = {15 out. 2026}
 }
 @incollection{basili1994,
  author = {Basili, Victor R. and Caldiera, Gianluigi and Rombach, H. Dieter},
@@ -186,13 +198,14 @@
 }
 
 @article{vargasclavijo2025,
- author = {Vargas-Clavijo, Mariana and others},
+ author = {Vargas-Clavijo, Mariana and Cardona-Castro, Nora and Ospina-Gómez, Juan Pablo and Serrano-Coll, Héctor},
  title = {Evaluating Advanced Machine Learning Models for Histopathological Diagnosis of {Hansen} Disease},
  journal = {American Journal of Dermatopathology},
  year = {2025},
  volume = {47},
  number = {4},
- pages = {301--307}
+ pages = {301--307},
+ doi = {10.1097/DAD.0000000000002875}
 }
 
 @article{yotsu2025,
@@ -221,7 +234,8 @@
  journal = {Indian Journal of Leprosy},
  year = {2023},
  volume = {95},
- pages = {89--102}
+ pages = {89--102},
+ url = {https://indianleprosy.org/published-articles/29062023223603/1-R-Beesetty-et-al-Final.pdf}
 }
 
 @article{banerjee2023,
@@ -265,4 +279,67 @@
  volume = {14},
  pages = {e69420},
  doi = {10.2196/69420}
+}
+
+@misc{arcaAi4leprosy,
+ author = {{Arca Dados}},
+ title = {{AI4Leprosy}},
+ year = {\mbox{[202-]}},
+ howpublished = {Registro do conjunto de dados no repositório da Fiocruz},
+ url = {https://doi.org/10.35078/1PSIEL},
+ urlaccessdate = {13 nov. 2026}
+}
+
+@misc{co2woundsDados2024,
+ author = {Sanchez, Karen and Hinojosa, Carlos and Correa, Claudia V. and Arguello, Paula and Monroy, Brayan and Mieles, Olinto and Rojas, Fernando and Zhao, Chen and Ghanem, Bernard and Arguello Fuentes, Henry},
+ title = {{CO2Wounds-V2}: extended chronic wounds dataset from leprosy patients},
+ year = {2024},
+ howpublished = {Mendeley Data, versão 2},
+ doi = {10.17632/s2w7rjwz49.2},
+ url = {https://data.mendeley.com/datasets/s2w7rjwz49/2},
+ urlaccessdate = {14 nov. 2026}
+}
+
+@misc{grohFitzpatrick2021,
+ author = {Groh, Matthew and Harris, Caleb and Soenksen, Luis and Lau, Felix and Han, Rachel and Kim, Aerin and Koochek, Arash and Badri, Omar},
+ title = {{Fitzpatrick 17k dataset}},
+ year = {2021},
+ howpublished = {Repositório do conjunto de dados no GitHub},
+ url = {https://github.com/mattgroh/fitzpatrick17k},
+ urlaccessdate = {14 nov. 2026}
+}
+
+@misc{imagenetDownload,
+ author = {{ImageNet}},
+ title = {Download {ImageNet} Data},
+ year = {\mbox{[202-?]}},
+ url = {https://www.image-net.org/download.php},
+ urlaccessdate = {14 nov. 2026}
+}
+
+@misc{fredrickSkinDisease2025,
+ author = {{Fredrick Gk}},
+ title = {skin disease Dataset},
+ year = {2025},
+ howpublished = {Roboflow Universe},
+ url = {https://universe.roboflow.com/fredrick-gk-wpenz/skin-disease-hwlrn},
+ urlaccessdate = {14 nov. 2026}
+}
+
+@misc{dermnetAtlas,
+ author = {{DermNet}},
+ title = {{DermNet}},
+ year = {\mbox{[202-?]}},
+ howpublished = {Atlas dermatológico},
+ url = {https://dermnetnz.org/},
+ urlaccessdate = {14 nov. 2026}
+}
+
+@misc{mtnskinRepositorio,
+ author = {{dodo12}},
+ title = {{MTNskin-Diagnosis}},
+ year = {\mbox{[2022?]}},
+ howpublished = {Repositório no GitHub},
+ url = {https://github.com/dodo12/MTNskin-Diagnosis},
+ urlaccessdate = {14 nov. 2026}
 }
