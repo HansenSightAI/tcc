@@ -11,17 +11,78 @@ do Brasil.
 
 \section{Contexto}\label{contexto}
 
-A hanseníase integra o grupo das doenças tropicais negligenciadas e
-constitui um desafio para a identificação oportuna de casos e o
-acompanhamento das pessoas afetadas. Em sua revisão da literatura,
-\estudo{E01} destaca que o diagnóstico se baseia
-principalmente na avaliação clínica e que a semelhança com outras
-condições dermatológicas pode dificultar o reconhecimento da doença.
-Nesse contexto, a investigação de recursos computacionais de apoio à
+A hanseníase é uma doença infecciosa causada principalmente pelo
+\textit{Mycobacterium leprae} e integra o grupo das doenças tropicais
+negligenciadas \estudo{E12}. Atinge sobretudo populações com pouco
+acesso a serviços \estudo{E13}. Suas manifestações cutâneas incluem manchas
+e úlceras (Figura~\ref{fig:lesoes-hanseniase}).
+
+\begin{figure}[htbp]
+\centering
+\caption{Lesões cutâneas na hanseníase: úlcera em estágio avançado (à esquerda) e mancha hipocrômica (à direita)}
+\label{fig:lesoes-hanseniase}
+\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2e.png}\hspace{0.8cm}\includegraphics[height=5.2cm]{figuras/hanseniase_yotsu2023_fig2f.png}
+\fonte{Adaptado de \estudo{E05}, Figura 2e e 2f (licença CC BY 4.0).}
+\end{figure}
+
+Em 2025, a Organização Mundial da Saúde
+registrou 167.292 novos casos em 180 países com dados reportados; Índia
+(91.783), Brasil (22.901) e Indonésia (16.292) concentram 78,3\% do total
+\cite{oms2026gho}, e o Brasil é o segundo país em número de casos
+(Figura~\ref{fig:casos-paises}). Na ausência de um teste diagnóstico, o diagnóstico clínico costuma ser tardio, o que
+pode causar dano neurológico irreversível, com o estigma dele decorrente,
+e manter a transmissão \estudo{E13}; por isso, o diagnóstico precoce é
+essencial \estudo{E12}. A hanseníase constitui, assim, um desafio para a
+identificação oportuna de casos e o acompanhamento das pessoas afetadas.
+Em sua revisão da literatura, \estudo{E01} destaca que o diagnóstico se
+baseia principalmente na avaliação clínica e que a semelhança com outras
+condições dermatológicas pode dificultar o reconhecimento da doença. Em
+países de baixa e média renda, os profissionais da linha de frente muitas
+vezes não têm formação em dermatologia, e a Organização Mundial da Saúde
+disponibilizou um aplicativo de apoio a esses profissionais
+\estudo{E15}. Nesse contexto, a investigação de recursos computacionais de apoio à
 análise de manifestações cutâneas pode contribuir para ampliar as
 possibilidades de suporte aos profissionais de saúde, desde que sua
 avaliação considere as características da tarefa e da população de
 interesse.
+
+\begin{figure}[htbp]
+\centering
+\caption{Países com mais novos casos de hanseníase em 2025}
+\label{fig:casos-paises}
+\begin{tikzpicture}
+\begin{axis}[
+    xbar,
+    width=0.82\textwidth,
+    height=6.4cm,
+    xmin=0, xmax=115000,
+    xtick={0,25000,50000,75000,100000},
+    xlabel={Novos casos em 2025},
+    symbolic y coords={Nepal, {R. D. do Congo}, Bangladesh, Indonésia, Brasil, Índia},
+    ytick=data,
+    yticklabel style={font=\footnotesize},
+    nodes near coords={\pgfmathprintnumber[set thousands separator={.}]{\pgfplotspointmeta}},
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\scriptsize},
+    bar width=11pt,
+    enlarge y limits=0.12,
+    xmajorgrids=true,
+    grid style=dashed,
+    scaled x ticks=false,
+    xticklabel style={font=\footnotesize, /pgf/number format/.cd, set thousands separator={.}, fixed}
+]
+\addplot[fill=blue!65!black, draw=black] coordinates {
+    (2897,Nepal)
+    (3026,{R. D. do Congo})
+    (3558,Bangladesh)
+    (16292,Indonésia)
+    (22901,Brasil)
+    (91783,Índia)
+};
+\end{axis}
+\end{tikzpicture}
+\fonte{Organização Mundial da Saúde, \textit{Global Health Observatory} (indicador WHS3\_45), dados de 2025 \cite{oms2026gho}.}
+\end{figure}
 
 A análise automatizada de imagens dermatológicas tem sido investigada
 por meio de técnicas de aprendizado de máquina e aprendizado profundo.
