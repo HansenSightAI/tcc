@@ -21,7 +21,7 @@
 \usepackage{pgf-pie}
 
 \usepackage{etoolbox}
-% Citações por identificador (ID) com hiperligação interna para a linha da tabela de estudos
+% Identificadores (IDs) com hiperligação interna para a linha da tabela de estudos
 % (\hypertarget{estudo:ID}{ID}). Aceita vários IDs: \estudo{E05,E06}.
 \makeatletter
 \DeclareRobustCommand{\estudo}[1]{%
@@ -31,8 +31,7 @@
   \docsvlist{#1}%
   \endgroup}
 \makeatother
-% Referencias: sem a linha "Nenhuma citacao no texto." quando a entrada so e citada por \estudo ou \nocite
-% (o backref nao reconhece \estudo{}); as demais entradas mantem "Citado na(s) pagina(s)".
+% A lista de referências indica as páginas das chamadas bibliográficas.
 \renewcommand*{\backrefalt}[4]{%
   \ifcase #1 %
   \or
@@ -51,6 +50,7 @@
 \input{fixos/setup}
 \setsecnumdepth{subsubsection}
 \settocdepth{subsubsection}
+\bibliographystyle{abntex2-alf}
 \begin{document}
 \frenchspacing
 \imprimircapa
