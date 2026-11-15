@@ -48,3 +48,7 @@ TCC/TCC1 formatado/tcc_revisao_*.pdf
 Thumbs.db
 
 TCC/TCC1 formatado/evidencias-issue-13
+.agents
+
+# Compilacao isolada do TCC
+/TCC/TCC1 formatado/.build/
