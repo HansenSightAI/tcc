@@ -81,8 +81,7 @@ Depois, execute `make` na raiz do repositório. Não é necessário habilitar `-
 - **Texto do TCC:** capítulos em `TCC/TCC1 formatado/editaveis/` e imagens em `figuras/`. Preserve os caminhos relativos dos comandos LaTeX.
 - **Literatura:** guarde cada artigo e suas notas juntos em `Leituras_Artigos_Notas/files/`. Preserve os nomes e identificadores já usados nas notas e no BibTeX.
 - **Dados de extração:** guarde planilhas em `dados/extracao/`. A [planilha atual](<dados/extracao/data_extraction (2).ods>) manteve o nome de origem para preservar a rastreabilidade. A pasta contém dados extraídos da literatura; não implica uma base de imagens clínicas.
-- **Análises:** ao adicionar matrizes, auditorias e planos, use `docs/analises/` e referencie a planilha, o artigo e a página ou célula que sustentam cada resultado. Essa pasta ainda não existe na estrutura atual. Não substitua dados de origem por sínteses.
-- **Modelos:** use `templates/` como referência. `templates/Monografia/` contém o trabalho de Alex de Souza Campelo Lima (2014) sobre shaders em dispositivos móveis; não é uma versão anterior do TCC sobre hanseníase. As cópias antigas `TCC/main.tex` e `main-original.*` foram retiradas da estrutura atual e permanecem no histórico Git.
-- **Bibliografias:** `Leituras_Artigos_Notas/TCC.bib` pertence ao acervo; os `.bib` do documento pertencem ao TCC. Não unifique essas bases automaticamente.
+- **Modelos:** use `templates/` como referência.
+- **Bibliografias:** `Leituras_Artigos_Notas/TCC.bib` pertence ao acervo; os `.bib` do documento pertencem ao TCC.
 - **Arquivos gerados:** auxiliares LaTeX e logs são ignorados pelo `.gitignore`. Há auxiliares antigos já rastreados pelo Git; a regra de ignore não os remove do histórico nem do índice. PDFs de artigos e PDFs de entrega não devem ser apagados por uma limpeza genérica.
 - **Novos nomes:** prefira nomes descritivos, sem espaços ou acentos para novas pastas e scripts. Evite renomear artigos ou arquivos citados apenas para padronizar a aparência.
