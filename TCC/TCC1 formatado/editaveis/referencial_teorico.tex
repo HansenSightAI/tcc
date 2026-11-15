@@ -3,92 +3,59 @@
 \label{cap:referencial-teorico}
 
 Neste capítulo são apresentados os conceitos que fundamentam a investigação.
-Inicialmente, são abordadas a pesquisa empírica em engenharia de software
-e a revisão sistemática da literatura. Em seguida, são apresentados aspectos
-da hanseníase, da aplicação de aprendizado de máquina a imagens de pele e
-das medidas usadas na avaliação dos modelos.
+Inicialmente, são abordadas a pesquisa empírica em engenharia de software,
+a ciência de dados e a revisão sistemática da literatura. Em seguida, são
+apresentados aspectos da hanseníase, da aplicação de aprendizado de máquina
+a imagens de pele e das medidas usadas na avaliação dos modelos.
 
-\section{Experimentação na engenharia de software}
+\section{Pesquisa empírica em engenharia de software}
 
 A pesquisa empírica utiliza observações e dados para investigar fenômenos,
-avaliar propostas e fundamentar conclusões. Na engenharia de software, as
-estratégias empíricas incluem experimentos, estudos de caso e estudos
-secundários de literatura, cada qual com objetivos e procedimentos próprios
-\cite{wohlin2024}. A escolha entre essas estratégias depende da questão
-investigada e das evidências necessárias para respondê-la.
+avaliar propostas e fundamentar conclusões. Na engenharia de software, as estratégias empíricas
+ncluem experimentos, estudos de caso, estudos secundários de literatura, ciência de dados, entre outros \cite{acmSigsoftDataScience,wohlin2024} A escolha da estratégia de
+pesquisa depende da questão investigada e das evidências necessárias
+para respondê-la \cite{wohlin2024}. Neste trabalho, a revisão estruturada da literatura é orientada por diretrizes de revisão sistemática,
+já a avaliação  dos modelos de visão computacional, adota-se como referencial o padrão \textit{Data Science} da ACM SIGSOFT.
 
-Um experimento controlado envolve a definição de fatores, tratamentos e
-medidas para investigar seus efeitos sob condições estabelecidas. Já uma
-revisão sistemática é um estudo secundário, no qual as evidências de outros
-trabalhos são identificadas e analisadas a partir de um processo documentado
-\cite{wohlin2024}. Neste TCC, a revisão busca reunir informações
-sobre avaliações de modelos; sua realização não constitui, por si só, um
-experimento controlado ou uma validação clínica.
+\subsection{Ciência de dados na avaliação de modelos}
+\label{subsec:ciencia-de-dados}
 
-\subsection{Experimento}
+A ciência de dados reúne métodos para estudar sistematicamente os dados e
+extrair deles padrões que possam ser avaliados em novas observações.
+\citeonline{dhar2013} destaca a capacidade preditiva como critério para
+examinar a robustez desses padrões. Na visão computacional, essa perspectiva
+permite investigar em que medida um modelo identifica os padrões de
+interesse em imagens que não foram usadas para ajustá-lo. A interpretação
+do desempenho se restringe às condições avaliadas. Inferências causais
+exigem pressupostos e evidências sobre como os dados foram gerados
+\cite{dhar2013}.
 
-Um experimento é empregado para investigar questões por meio de observações
-sob condições planejadas. Sua definição envolve, entre outros elementos, o
-objeto estudado, os tratamentos ou fatores considerados e as medidas usadas
-para observar seus efeitos. A organização do processo contribui para que
-as condições da investigação e os limites de interpretação sejam
-explicitados \cite{wohlin2024}. Esses conceitos são apresentados
-como fundamentação para o trabalho e não indicam que um experimento já
-foi executado.
+O padrão \textit{Data Science} da ACM SIGSOFT estabelece critérios para a
+condução e o relato de estudos de engenharia de software que empregam
+análise centrada em dados, incluindo modelagem preditiva
+\cite{acmSigsoftDataScience}. Neste trabalho, o padrão é adotado como
+referencial para uma avaliação futura de modelos de visão computacional
+aplicados a imagens de pele associadas à hanseníase.
 
-A Figura~\ref{fig:processo-experimento} apresenta uma visão geral do
-processo experimental proposto por \citeonline{wohlin2024}: definição do
-escopo, planejamento, operação, análise e interpretação, e apresentação
-e documentação. A figura ilustra o referencial metodológico; ela não
-representa um experimento já executado neste TCC.
+Entre os critérios essenciais estão a justificativa da seleção dos dados,
+a descrição do pré-processamento e das transformações aplicadas, a
+documentação dos modelos e do ambiente computacional e a justificativa das
+métricas e dos procedimentos de análise. O padrão orienta a discussão dos
+métodos de referência disponíveis e de suas limitações. Quando esses
+métodos não existem ou a comparação direta é impraticável, cabe justificar
+essa condição \cite{acmSigsoftDataScience}.
 
-\begin{figure}[htbp]
-\centering
-\caption{Visão geral do processo experimental}
-\label{fig:processo-experimento}
-\includegraphics[width=0.88\textwidth]{figuras/processo-experimental-wohlin-2024.png}
-\fonte{Adaptado de \citeonline{wohlin2024}.}
-\end{figure}
-
-\subsubsection{Definição do escopo}
-
-A definição do escopo delimita o objeto, o propósito, o foco de qualidade,
-a perspectiva e o contexto do estudo. Esses elementos orientam a pergunta
-que se pretende responder e as decisões das etapas seguintes. O GQM
-adaptado apresentado na introdução \cite{basili1994} explicita esses componentes para o
-objetivo desta pesquisa \cite{wohlin2024}.
-
-\subsubsection{Planejamento}
-
-No planejamento são especificados o contexto da investigação, as variáveis,
-as hipóteses quando aplicáveis, o desenho e os instrumentos de medição.
-Também são examinadas possíveis ameaças à validade. Em uma avaliação de
-modelos de visão computacional, essas decisões poderiam envolver a
-caracterização dos dados, a definição das tarefas e a escolha das métricas;
-o desenho efetivo de uma avaliação futura ainda depende dos resultados da
-revisão \cite{wohlin2024}.
-
-\subsubsection{Operação}
-
-A operação corresponde à preparação e à execução do procedimento
-planejado, incluindo a coleta e a verificação dos dados produzidos. Seu
-registro permite relacionar os resultados às condições em que foram
-obtidos. Nesta etapa do TCC, a operação de um experimento com modelos não
-foi estabelecida \cite{wohlin2024}.
-
-\subsubsection{Análise e interpretação}
-
-Após a obtenção dos dados, a análise organiza as medidas e examina os
-resultados em relação às questões formuladas. A interpretação deve
-considerar as características dos dados e as ameaças à validade, evitando
-estender conclusões além das condições de avaliação \cite{wohlin2024}.
-
-\subsubsection{Apresentação e documentação}
-
-O relato reúne o objetivo, o procedimento, as medidas, os resultados e as
-limitações, permitindo que outras pessoas compreendam e examinem o estudo.
-A documentação também dá suporte à comparação com investigações posteriores
-\cite{wohlin2024}.
+O relato do desempenho deve informar a variabilidade ou a incerteza das
+estimativas e discutir as ameaças à validade. Em imagens de pele, por
+exemplo, fotografias de um mesmo paciente no treino e no teste podem
+inflar as estimativas de desempenho. A origem e a qualidade dos dados
+também afetam a interpretação. Em um estudo sobre defeitos de software,
+\citeonline{ghotra2015} observaram que a conclusão sobre a influência da
+técnica de classificação mudou ao repetir a avaliação com outros conjuntos
+de dados. A inspeção manual de parte dos dados e a disponibilização de
+materiais para replicação são práticas desejáveis. O padrão apresenta a
+triangulação com outras fontes como atributo extraordinário
+\cite{acmSigsoftDataScience}.
 
 \subsection{Revisão sistemática da literatura}
 
@@ -157,7 +124,7 @@ adicionais somente serão realizados quando houver dados suficientes, com
 identificação explícita de que foram derivados nesta revisão.
 
 \subsection{Resultados de
-classificação}\label{resultados-de-classificauxe7uxe3o}
+	classificação}\label{resultados-de-classificauxe7uxe3o}
 
 Para classificação binária, deve-se definir previamente o que constitui
 a classe positiva e o diagnóstico/rótulo de referência. Em modelos
@@ -166,30 +133,30 @@ multiclasse, a hanseníase pode ser analisada como classe positiva frente
 unidade avaliada --- por exemplo, imagem --- e não implicam
 automaticamente diagnóstico por paciente.
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Resultado
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Significado
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{TP --- True Positive} & A unidade pertence à classe positiva
-segundo a referência e o modelo a classifica como positiva. \\
-\textbf{TN --- True Negative} & A unidade pertence à classe negativa
-segundo a referência e o modelo a classifica como negativa. \\
-\textbf{FP --- False Positive} & A unidade pertence à classe negativa
-segundo a referência, mas o modelo a classifica como positiva. \\
-\textbf{FN --- False Negative} & A unidade pertence à classe positiva
-segundo a referência, mas o modelo a classifica como negativa. \\
-\end{longtable}
-}
+	{\def\LTcaptype{none} % do not increment counter
+		\begin{longtable}[]{@{}
+			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+			\toprule\noalign{}
+			\begin{minipage}[b]{\linewidth}\raggedright
+				Resultado
+			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+				                 Significado
+			                 \end{minipage}                        \\
+			\midrule\noalign{}
+			\endhead
+			\bottomrule\noalign{}
+			\endlastfoot
+			\textbf{TP --- True Positive}               & A unidade pertence à classe positiva
+			segundo a referência e o modelo a classifica como positiva.                        \\
+			\textbf{TN --- True Negative}               & A unidade pertence à classe negativa
+			segundo a referência e o modelo a classifica como negativa.                        \\
+			\textbf{FP --- False Positive}              & A unidade pertence à classe negativa
+			segundo a referência, mas o modelo a classifica como positiva.                     \\
+			\textbf{FN --- False Negative}              & A unidade pertence à classe positiva
+			segundo a referência, mas o modelo a classifica como negativa.                     \\
+		\end{longtable}
+	}
 
 A classe positiva pode representar hanseníase ou uma manifestação
 definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
@@ -197,69 +164,69 @@ reconhecer uma ferida em paciente com hanseníase não equivale a
 diagnosticar a doença.
 
 \subsection{Métricas relacionadas à questão de
-pesquisa}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+	pesquisa}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-ID
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Dimensão do desempenho
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Métrica
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Descrição e operacionalização
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-M1 & Classificação & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
-& Proporção de positivos corretamente identificados: \textbf{SEN = TP /
-(TP + FN)}. \\
-M2 & Classificação & \textbf{Especificidade --- Specificity (SPE)} &
-Proporção de negativos corretamente identificados: \textbf{SPE = TN /
-(TN + FP)}. \\
-M3 & Classificação & \textbf{Precisão --- Precision (PRE)} & Proporção
-de predições positivas que correspondem a positivos de referência:
-\textbf{PRE = TP / (TP + FP)}. \\
-M4 & Classificação & \textbf{F1-score} & Média harmônica entre precisão
-e sensibilidade, considerando o efeito de falsos positivos e falsos
-negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
-(2TP + FP + FN)}. \\
-M5 & Classificação geral & \textbf{Acurácia --- Accuracy (ACC)} &
-Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
-(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
-acertos totais / unidades totais. \\
-M6 & Equidade do desempenho & \textbf{Diferença de desempenho entre
-grupos} & Comparação da mesma métrica entre grupos de tons de pele,
-quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
-métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
-grupos, condições de avaliação e incerteza, quando reportados. \\
-M7 & Generalização & \textbf{Variação de desempenho entre datasets} &
-Comparação da mesma métrica entre avaliações em dados de distribuição
-semelhante à de treinamento e dados de distribuição diferente:
-\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
-Registrar se houve adaptação ou retreinamento e se tarefa/classes são
-comparáveis. \\
-M8 & Segmentação / sobreposição espacial & \textbf{Intersection over
-Union (IoU)} & Interseção dividida pela união das regiões prevista P e
-de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
-binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
-FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
-classes. \\
-M9 & Detecção / segmentação por instância & \textbf{Mean Average
-Precision (mAP)} & Média dos valores de AP das classes consideradas; AP
-resume a curva precisão--recall segundo a convenção do benchmark.
-Registrar o critério de correspondência e o limiar de IoU: por exemplo,
-\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
-AP de máscaras. \\
-\end{longtable}
+	\begin{longtable}[]{@{}
+		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+		\toprule\noalign{}
+		\begin{minipage}[b]{\linewidth}\raggedright
+			ID
+		\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+			                 Dimensão do desempenho
+		                 \end{minipage}                           & \begin{minipage}[b]{\linewidth}\raggedright
+			                                                            Métrica
+		                                                            \end{minipage}         & \begin{minipage}[b]{\linewidth}\raggedright
+			                                                                                     Descrição e operacionalização
+		                                                                                     \end{minipage}                                                                            \\
+		\midrule\noalign{}
+		\endhead
+		\bottomrule\noalign{}
+		\endlastfoot
+		M1                                          & Classificação                                                         & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
+		                                            & Proporção de positivos corretamente identificados: \textbf{SEN = TP /
+		(TP + FN)}.                                                                                                                                                                                                \\
+		M2                                          & Classificação                                                         & \textbf{Especificidade --- Specificity (SPE)}       &
+		Proporção de negativos corretamente identificados: \textbf{SPE = TN /
+		(TN + FP)}.                                                                                                                                                                                                \\
+		M3                                          & Classificação                                                         & \textbf{Precisão --- Precision (PRE)}               & Proporção
+		de predições positivas que correspondem a positivos de referência:
+		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\
+		M4                                          & Classificação                                                         & \textbf{F1-score}                                   & Média harmônica entre precisão
+		e sensibilidade, considerando o efeito de falsos positivos e falsos
+		negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
+		(2TP + FP + FN)}.                                                                                                                                                                                          \\
+		M5                                          & Classificação geral                                                   & \textbf{Acurácia --- Accuracy (ACC)}                &
+		Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
+			(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
+		acertos totais / unidades totais.                                                                                                                                                                          \\
+		M6                                          & Equidade do desempenho                                                & \textbf{Diferença de desempenho entre
+		grupos}                                     & Comparação da mesma métrica entre grupos de tons de pele,
+		quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
+			métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
+		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\
+		M7                                          & Generalização                                                         & \textbf{Variação de desempenho entre datasets}      &
+		Comparação da mesma métrica entre avaliações em dados de distribuição
+		semelhante à de treinamento e dados de distribuição diferente:
+		\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
+		Registrar se houve adaptação ou retreinamento e se tarefa/classes são
+		comparáveis.                                                                                                                                                                                               \\
+		M8                                          & Segmentação / sobreposição espacial                                   & \textbf{Intersection over
+		Union (IoU)}                                & Interseção dividida pela união das regiões prevista P e
+		de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
+		binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
+			FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
+		classes.                                                                                                                                                                                                   \\
+		M9                                          & Detecção / segmentação por instância                                  & \textbf{Mean Average
+		Precision (mAP)}                            & Média dos valores de AP das classes consideradas; AP
+		resume a curva precisão--recall segundo a convenção do benchmark.
+		Registrar o critério de correspondência e o limiar de IoU: por exemplo,
+		\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
+		AP de máscaras.                                                                                                                                                                                            \\
+	\end{longtable}
 }
 
 \textbf{IoU e mAP não são métricas exclusivas de segmentação.} Em
@@ -285,7 +252,6 @@ lista fechada. Medidas adicionais reportadas pelos artigos, como MCC,
 devem ser registradas com sua definição e contexto. A análise de
 equidade não será restrição de elegibilidade dos artigos e não será
 presumida quando não houver resultados por grupo.
-
 
 \section{Avaliação e generalização dos modelos}
 
