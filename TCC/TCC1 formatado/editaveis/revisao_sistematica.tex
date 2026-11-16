@@ -41,7 +41,7 @@ investigação foi detalhada nas seguintes questões secundárias:
 	\item Como o desempenho varia entre diferentes grupos ou tons de pele?
 	\item Quais modelos e abordagens de inteligência artificial são utilizados para identificar as manifestações dermatológicas associadas à doença?
 	\item Como a capacidade de generalização é avaliada, especialmente em conjuntos diferentes dos usados no treinamento?
-	\item Em que tipo de veículo o artigo foi publicado, como periódico ou conferência?
+	\item Em que tipo de veículo o estudo foi publicado, como periódico, conferência ou capítulo de livro?
 \end{enumerate}
 
 \subsection{Integração entre protocolo, ferramentas e pesquisadores}
@@ -62,12 +62,24 @@ Anthropic. O Consensus foi usado na busca inicial e o Claude, no levantamento
 complementar de referências. Reuniu-se as listas obtidas e removeu-se as
 duplicatas antes da triagem.
 
+O uso dessas duas ferramentas decorreu de uma limitação da própria busca.
+Mesmo após diversos ajustes, a \textit{string} de busca continuou
+retornando um grande número de artigos: sua execução na base Scopus
+(Subseção~\ref{subsec:picoc-string-busca}) retornou 10.818 artigos, mesmo após a aplicação dos filtros. Ao mesmo tempo, há poucos trabalhos
+sobre modelos de inteligência artificial aplicados à hanseníase, o que
+dificulta separar os estudos pertinentes dos demais apenas pela
+formulação booleana. Por isso, a busca assistida do Consensus e a busca complementar
+do Claude foram adotadas para ampliar a recuperação de estudos pertinentes.
+
 Na triagem, utilizou-se o Jev Reviewer (versão \texttt{jev-1.13.0}),
 ferramenta de apoio a revisões de literatura, para avaliar preliminarmente os títulos e resumos com base em
 critérios de seleção. Para cada registro, a ferramenta sugeriu inclusão,
-exclusão ou classificação incerta. Os pesquisadores usaram essas sugestões
-como apoio para decidir quais registros seguiriam para leitura integral
-e registraram as decisões no Evidentia Review. A
+exclusão ou classificação incerta. As sugestões do Jev Reviewer aceleraram a triagem
+no que diz respeito às exclusões, pois permitiram descartar com mais rapidez os
+registros claramente fora dos critérios, mas não no que diz respeito às
+inclusões, que exigiram a verificação dos pesquisadores. Os pesquisadores
+decidiram quais registros seguiriam para leitura integral e registraram as
+decisões no Evidentia Review. A
 Tabela~\ref{tab:papel-ferramentas} resume as responsabilidades em cada etapa,
 e a Figura~\ref{fig:fluxo-metodologico-ia} mostra a sequência da revisão.
 
@@ -85,8 +97,8 @@ e a Figura~\ref{fig:fluxo-metodologico-ia} mostra a sequência da revisão.
 		Evidentia           & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores             \\
 		Consensus           & Busca assistida, a partir de solicitação em inglês com a questão e os componentes do PICOC                                                                & Lista de 100 referências, salva pelos autores                                                 & Pesquisadores, ao triar   \\
 		Claude              & Busca complementar com o mesmo \textit{prompt} do Consensus                                                                                               & 30 referências informadas no relato                                                           & Pesquisadores, ao triar   \\
-		Jev Reviewer        & Classificação preliminar dos 118 registros segundo cinco critérios                                                                                        & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails}                          & Pesquisadores, ao revisar \\
-		Pesquisadores       & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados                                                & Decisões registradas no Evidentia; 26 estudos para leitura integral e 25 extraídos            & Pesquisadores             \\
+		Jev Reviewer        & Classificação preliminar dos 119 registros segundo cinco critérios                                                                                        & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails}                          & Pesquisadores, ao revisar \\
+		Pesquisadores       & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados                                                & Decisões registradas no Evidentia; 27 estudos para leitura integral e 26 extraídos            & Pesquisadores             \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Autores, a partir do registro da busca e da triagem.}
@@ -159,6 +171,16 @@ A partir do mapeamento dos componentes, a string de busca foi estruturada aplica
 		\end{minipage}
 	}
 \end{center}
+
+Na execução da \textit{string} na base Scopus, foram aplicados filtros para restringir os resultados às áreas e aos tipos de publicação mais pertinentes ao tema:
+\begin{itemize}
+	\item \textbf{Ano de publicação}: de 2020 a 2027;
+	\item \textbf{Área do conhecimento} (\textit{Subject area}): \textit{Computer Science} e \textit{Engineering};
+	\item \textbf{Idioma}: inglês e português;
+	\item \textbf{Tipo de fonte} (\textit{Source type}): periódicos (\textit{Journal}) e anais de conferência (\textit{Conference proceeding}).
+\end{itemize}
+
+O filtro de ano justifica-se por três motivos. O primeiro é que as técnicas de visão computacional e de aprendizado profundo empregadas hoje na análise de imagens médicas são tecnologias recentes, de modo que estudos mais antigos tendem a empregar abordagens superadas. O segundo é que o \textit{Vision Transformer} (ViT), um dos termos da \textit{string} de busca, foi introduzido oficialmente em 22 de outubro de 2020, com a publicação, no \textit{arXiv}, do artigo \textit{An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale}, de Alexey Dosovitskiy e colaboradores do Google Research \cite{dosovitskiy2020}, de modo que o ano de 2020 marca a chegada dessa arquitetura à classificação de imagens. O terceiro é que a revisão busca o estado da arte, o que exige priorizar os estudos mais recentes. Com a \textit{string} e os filtros acima, a base Scopus retornou 10.818 artigos. Esse recorte corresponde ao critério de exclusão CE02 (publicação anterior a 2020), descrito na Subseção~\ref{subsec:criterios-selecao}. O filtro de idioma segue o critério CE03, que admite textos completos em inglês ou português.
 
 \subsection{Prompt estruturado submetido à plataforma Consensus}
 \label{subsec:prompt-consensus}
@@ -300,8 +322,8 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 			Cadastro estruturado do protocolo, formulários de extração e governança do processo.};
 
 		% Headers
-		\node[font=\bfseries\small, above=0.25cm of s1] (h1) {Etapas Metodológicas da RSL};
-		\node[font=\bfseries\small, above=0.25cm of t1] (h2) {Ferramentas de IA e Desdobramentos};
+		\node[font=\bfseries\small, align=center, anchor=south] (h1) at ([yshift=0.25cm]s1.north) {Etapas Metodológicas\\da revisão estruturada};
+		\node[font=\bfseries\small, align=center, anchor=south] (h2) at (h1.south -| t1) {Ferramentas de IA\\e Desdobramentos};
 
 		% 2. Busca e Identificação
 		\node[stage, below=0.45cm of s1] (s2) {\textbf{2. Busca e Identificação Inicial}\\
@@ -316,9 +338,9 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 		\node[stage, below=0.45cm of s2] (s3) {\textbf{3. Deduplicação e Pré-Triagem}\\
 			\footnotesize Resolução de redundâncias bibliográficas via cruzamento automatizado por DOI e títulos.};
 
-		\node[excl] (t3) at (s3 -| t1) {\textbf{12 duplicatas removidas}\\
+		\node[excl] (t3) at (s3 -| t1) {\textbf{11 duplicatas removidas}\\
 			\textit{Aplicação do critério CE01 (Duplicatas)}\\
-			$\rightarrow$ Restam \textbf{118 registros únicos} para triagem.};
+			$\rightarrow$ Restam \textbf{119 registros únicos} para triagem.};
 
 		% 4. Triagem Título/Resumo
 		\node[stage, below=0.45cm of s3] (s4) {\textbf{4. Triagem por Título e Resumo}\\
@@ -327,11 +349,11 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 		\node[tool] (t4) at (s4 -| t1) {\textbf{JevReviewer}: predição e 5 \textit{fail scores}\\
 			\textbf{Evidentia Review} (decisão por pares):\\
 			$\bullet$ 91 excluídos \quad $\bullet$ 1 intermediário\\
-			$\bullet$ \textbf{26 selecionados para texto integral}};
+			$\bullet$ \textbf{27 selecionados para texto integral}};
 
 		% 5. Leitura na Íntegra
 		\node[stage, below=0.45cm of s4] (s5) {\textbf{5. Avaliação de Elegibilidade}\\
-			\footnotesize Leitura minuciosa de 26 artigos integrais e checagem de conformidade com os critérios.};
+			\footnotesize Leitura minuciosa de 27 artigos integrais e checagem de conformidade com os critérios.};
 
 		\node[excl] (t5) at (s5 -| t1) {\textbf{1 estudo selecionado e não extraído}\\
 			Registro~\estudo{38}\\
@@ -339,7 +361,7 @@ A Figura~\ref{fig:fluxo-metodologico-ia} ilustra o fluxo metodológico integrado
 
 		% 6. Extração e Síntese
 		\node[finalstage, below=0.45cm of s5] (s6) {\textbf{6. Extração Padronizada e Síntese}\\
-			\footnotesize Preenchimento estruturado de \textbf{18 campos padronizados} sobre os \textbf{25 estudos definitivos}.};
+			\footnotesize Preenchimento estruturado de \textbf{18 campos padronizados} sobre os \textbf{26 estudos definitivos}.};
 
 		\node[tool, draw=green!60!black, fill=green!6] (t6) at (s6 -| t1) {\textbf{Evidentia Review \& Síntese Final}\\
 			Matriz de dados consolidada:\\
@@ -378,20 +400,15 @@ a configuração, a lista completa de referências e o registro da execução
 da busca no Claude ainda precisam ser confirmados. As bases de dados utilizadas pelas duas ferramentas ainda não foram integralmente documentadas. A Tabela~\ref{tab:consultas-consensus} apresenta as consultas e os indicadores exibidos pelo Consensus.
 
 As duas listas somaram 130 registros e,
-após a remoção de duplicatas, permaneceram 118 para triagem. A diferença
-entre esses totais corresponde a 12 registros removidos; entretanto, os
-pares considerados duplicados e o procedimento usado para identificá-los
-ainda não foram integralmente documentados. O conjunto bibliográfico disponível contém 129 entradas. Na comparação
-com os 118 registros triados, onze entradas não aparecem no conjunto de triagem e apresentam o mesmo DOI de outras entradas nele
-representadas. Essa comparação permite identificar 11 pares de
-registros com DOI coincidente, mas não identifica um eventual décimo
-segundo registro removido nem comprova, isoladamente, quando cada par
-foi deduplicado. A diferença entre as 129 entradas identificadas e os
-130 registros informados no relato permanece a esclarecer. Os
+após a remoção de duplicatas, permaneceram 119 para triagem. A diferença
+entre esses totais corresponde a 11 registros removidos, que formam 11 pares de
+registros com DOI coincidente.
+Os
 indicadores internos apresentados pelo Consensus não foram tratados
 como quantidades auditadas de estudos únicos examinados pelos pesquisadores.
 
 \subsection{Critérios de seleção}
+\label{subsec:criterios-selecao}
 
 Os critérios de inclusão foram: disponibilidade do texto completo (CI01);
 uso de visão computacional, aprendizado de máquina ou aprendizado profundo
@@ -419,7 +436,7 @@ resumo, enquanto data e duplicidade também dependem dos metadados.
 \subsection{Triagem e seleção para leitura integral}
 
 O Jev Reviewer, na versão \texttt{jev-1.13.0}, foi utilizado como apoio à
-classificação preliminar dos 118 registros. Para cada registro, suas sugestões são acompanhadas de
+classificação preliminar dos 119 registros. Para cada registro, suas sugestões são acompanhadas de
 valores associados ao não atendimento de cinco critérios:
 \begin{enumerate}
 	\item Abordar a hanseníase como condição investigada ou avaliada,
@@ -450,18 +467,16 @@ dois ou mais pesquisadores, ao menos para uma amostra, é recomendada por
 \citeonline{wohlin2024}; essa recomendação não demonstra que ela
 foi executada neste trabalho.
 
-As sugestões do Jev para os 118 registros foram: duas de inclusão, 15 incertas e 101 de exclusão.
+As sugestões do Jev para os 119 registros foram: três de inclusão, 15 incertas e 101 de exclusão.
 O cruzamento por título entre as sugestões e as decisões do Evidentia
-identificou correspondência para todos os registros. Entre os 26 com
-situação de inclusão no Evidentia, dois tinham sugestão de inclusão do
+identificou correspondência para todos os registros. Entre os 27 com
+situação de inclusão no Evidentia, três tinham sugestão de inclusão do
 Jev Reviwer, 11 tinham sugestão incerta e 13 tinham sugestão de exclusão. Entre
 os 91 excluídos no Evidentia, 87 tinham sugestão de exclusão e quatro
 tinham sugestão incerta. O registro restante, classificado como
 intermediário no Evidentia, tinha sugestão de exclusão pelo Jev Reviwer. Assim,
-as sugestões automáticas são distintas das decisões de triagem. A data de
-execução, o modelo, a configuração completa e a versão da ferramenta não
-foram identificados; os cinco critérios exibidos acima, por sua vez, estão
-registrados nas avaliações disponíveis.
+as sugestões automáticas são distintas das decisões de triagem. Os cinco
+critérios exibidos acima estão registrados nas avaliações disponíveis.
 
 Os estados intermediários da triagem registram, em uma etapa, 12 inclusões,
 32 exclusões, 15 decisões intermediárias e 59 registros sem decisão. Em
@@ -473,7 +488,7 @@ estados intermediários não devem ser confundidos com o resultado
 consolidado descrito a seguir.
 
 No Evidentia, 91 registros apresentam decisão de exclusão,
-26 de inclusão e uma decisão intermediária, totalizando 118 registros (Tabela~\ref{tab:registros-118}, Apêndice~\ref{apend:registros}).
+27 de inclusão e uma decisão intermediária, totalizando 119 registros (Tabela~\ref{tab:registros-118}, Apêndice~\ref{apend:registros}).
 Esse último registro, \textit{Leprosy Screening Based on Artificial
 	Intelligence: Development of a Cross-Platform App} (registro~\estudo{9}, \citeonline{souza2021}), apresenta duas
 decisões individuais de exclusão, mas sua decisão consolidada foi
@@ -486,23 +501,23 @@ correspondente no Evidentia. Essa classificação descreve o mecanismo de
 consolidação registrado pelo sistema e não identifica uma revisão
 independente por ambos os pesquisadores para cada artigo.
 
-A decomposição 91 exclusões, 26 inclusões e uma decisão intermediária
-esclarece a diferença observada no registro anterior: 118 menos 26 é 92,
+A decomposição 91 exclusões, 27 inclusões e uma decisão intermediária
+esclarece a diferença observada no registro anterior: 119 menos 27 é 92,
 mas esse resultado reúne os 91 excluídos e o registro intermediário.
 Assim, não se deve representar a diferença de 92 como 92 exclusões.
-Os 26 registros com situação de inclusão na triagem constituíram o conjunto
+Os 27 registros com situação de inclusão na triagem constituíram o conjunto
 encaminhado à leitura integral. Após a análise aprofundada dos textos completos e
-verificação dos critérios de elegibilidade no formulário de extração, 25 estudos foram
-confirmados e integralmente extraídos. O registro~\estudo{38} está entre os 26 e não consta
+verificação dos critérios de elegibilidade no formulário de extração, 26 estudos foram
+confirmados e integralmente extraídos. O registro~\estudo{38} está entre os 27 e não consta
 da extração final. As fontes registram coisas diferentes a seu respeito: o relatório PRISMA do Evidentia
 (03/11/2026) registra uma exclusão em texto completo, com o motivo ``Não aborda hanseníase''; o título do
 artigo trata de imagens dermatológicas geradas por inteligência artificial; e as planilhas de triagem não
 registram motivo de exclusão para esse registro (decisão de inclusão).
 
 A Figura~\ref{fig:fluxo-triagem} sintetiza as quantidades descritas nesta
-seção; os 118 registros e sua situação estão listados na Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}). A indicação de 12 registros removidos corresponde à diferença entre
-130 e 118, decorrente da deduplicação das fontes de identificação. O processo
-culminou na seleção definitiva de 25 estudos para extração e síntese.
+seção; os 119 registros e sua situação estão listados na Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}). A indicação de 11 registros removidos corresponde à diferença entre
+130 e 119, decorrente da deduplicação das fontes de identificação. O processo
+culminou na seleção definitiva de 26 estudos para extração e síntese.
 Segundo o relatório PRISMA do Evidentia, dos 91 registros excluídos por título e resumo, 67 têm o motivo
 ``Não aborda hanseníase'' e 24 não têm motivo registrado; as planilhas de triagem não registram o motivo
 de cada exclusão.
@@ -517,15 +532,15 @@ de cada exclusão.
 		arrow/.style={-{Stealth[length=2.3mm]},thick}
 		]
 		\node[wide] (identified) {Registros informados: 130\\(Consensus: 100; Claude: 30)};
-		\node[wide,below=1.3cm of identified] (screened) {Registros após deduplicação: 118\\para triagem por título e resumo};
-		\draw[arrow] (identified) -- node[right=3mm,align=left,font=\scriptsize,text width=4.2cm] {12 registros removidos\\(duplicatas / pré-triagem)} (screened);
+		\node[wide,below=1.3cm of identified] (screened) {Registros após deduplicação: 119\\para triagem por título e resumo};
+		\draw[arrow] (identified) -- node[right=3mm,align=left,font=\scriptsize,text width=4.2cm] {11 registros removidos\\(duplicatas / pré-triagem)} (screened);
 
 		\node[box,text width=4.5cm,below=1.2cm of screened,xshift=-4.8cm] (excluded) {Registros excluídos: 91\\Não aborda hanseníase: 67\\Nenhum motivo especificado: 24};
-		\node[box,text width=3.6cm,below=1.2cm of screened] (included) {Incluídos na triagem\\26 registros};
+		\node[box,text width=3.6cm,below=1.2cm of screened] (included) {Incluídos na triagem\\27 registros};
 		\draw[arrow] (screened.south) -- ++(0,-0.45) -| (excluded.north);
 		\draw[arrow] (screened.south) -- (included.north);
 
-		\node[box,text width=3.8cm,below=1.3cm of included] (fulltext) {Leitura integral\\e extração\\25 estudos incluídos};
+		\node[box,text width=3.8cm,below=1.3cm of included] (fulltext) {Leitura integral\\e extração\\26 estudos incluídos};
 		\node[box,text width=4.6cm,right=0.9cm of fulltext] (not_extracted) {1 selecionado e não extraído\\[2pt]Exclusão em texto completo};
 		\draw[arrow] (included.south) -- (fulltext.north);
 		\draw[arrow] (fulltext.east) -- (not_extracted.west);
@@ -544,21 +559,21 @@ de cada exclusão.
 		Referências informadas do Consensus                     & 100        \\
 		Referências informadas do Claude                        & 30         \\
 		Registros reunidos                                      & 130        \\
-		Registros removidos na pré-triagem (duplicatas)         & 12         \\
-		Registros submetidos à triagem no Evidentia             & 118        \\
+		Registros removidos na pré-triagem (duplicatas)         & 11         \\
+		Registros submetidos à triagem no Evidentia             & 119        \\
 		Excluídos na triagem por título e resumo                & 91         \\
-		Incluídos na triagem para leitura integral              & 26         \\
+		Incluídos na triagem para leitura integral              & 27         \\
 		Decisão intermediária (avaliada e resolvida)            & 1          \\
 		Selecionado para leitura integral e não extraído        & 1          \\
-		Estudos incluídos definitivamente com extração completa & 25         \\
+		Estudos incluídos definitivamente com extração completa & 26         \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Autores.}
 \end{table}
 
-O formulário de extração no sistema Evidentia reúne os 25 estudos incluídos
+O formulário de extração no sistema Evidentia reúne os 26 estudos incluídos
 definitivamente após a leitura integral e verificação de elegibilidade, com todos os seus
-18 campos padronizados integralmente preenchidos. Entre os 26 registros pré-selecionados na
+18 campos padronizados integralmente preenchidos. Entre os 27 registros pré-selecionados na
 triagem, o estudo \textit{AI-generated dermatologic images show deficient skin tone
 	diversity and poor diagnostic accuracy: An experimental study} (registro~\estudo{38}, \citeonline{joerg2025}) não
 integrou a extração final; o relatório PRISMA do Evidentia registra uma exclusão em texto completo, com o
@@ -568,7 +583,7 @@ Quanto à rastreabilidade do processo de seleção, os motivos de exclusão cons
 relatório PRISMA do Evidentia: dos 91 registros excluídos por título e resumo, 67 com o motivo
 ``Não aborda hanseníase'' e 24 sem motivo registrado; as planilhas de triagem não registram o motivo de
 cada exclusão. Após a resolução das divergências e a conclusão da leitura
-integral, 25 estudos foram incluídos na síntese desta revisão.
+integral, 26 estudos foram incluídos na síntese desta revisão.
 
 \subsection{Extração e síntese das evidências}
 
@@ -580,7 +595,7 @@ no Evidentia para registrar título, autores,
 ano, fonte, tipo de estudo e veículo, além das respostas detalhadas às questões da
 revisão: técnicas de visão computacional, bases de dados, características das populações, manifestações cutâneas, quantidade de
 imagens, métodos e procedimentos de avaliação, métricas, resultados obtidos, informações sobre tons de pele,
-modelos de inteligência artificial, avaliação de generalização, métodos de validação e limitações relatadas. A extração completa dos 25 estudos permitiu correlacionar sistematicamente cada achado com as páginas e tabelas de origem, distinguindo rigorosamente estudos primários e revisões para evitar atribuições indevidas de métricas secundárias.
+modelos de inteligência artificial, avaliação de generalização, métodos de validação e limitações relatadas. A extração completa dos 26 estudos permitiu correlacionar sistematicamente cada achado com as páginas e tabelas de origem, distinguindo rigorosamente estudos primários e revisões para evitar atribuições indevidas de métricas secundárias.
 
 A síntese apresentada a seguir distingue formalmente as tarefas de classificação diagnóstica, detecção e segmentação de feridas, bem
 como compara os desempenhos globais multiclasse com os resultados específicos obtidos para hanseníase. As lacunas documentadas a respeito da ausência de estratificação por tons de pele e as limitações de validação externa em bases independentes evidenciam a relevância científica do tema e balizam a discussão sobre a viabilidade e os riscos de implantação dessas ferramentas no SUS.
@@ -589,20 +604,20 @@ como compara os desempenhos globais multiclasse com os resultados específicos o
 \label{sec:resultados-revisao}
 
 Esta seção apresenta a síntese qualitativa e quantitativa das evidências
-extraídas dos 25 estudos primários e secundários incluídos definitivamente
+extraídas dos 26 estudos primários e secundários incluídos definitivamente
 na revisão estruturada da literatura. Os dados foram extraídos a partir de
 formulário estruturado no Evidentia Review, composto por 18 campos padronizados,
 permitindo responder detalhadamente a cada uma das questões secundárias de
 pesquisa estabelecidas no protocolo.
 
-Cada estudo incluído recebeu um identificador (E01 a E25). Nas tabelas, nos gráficos e nas sínteses da revisão, cada identificador remete à linha da Tabela~\ref{tab:estudos-incluidos}, que reúne a chamada autor-data, o título, o veículo, o tipo de veículo, o grupo e o DOI. Os registros da triagem que não integram os 25 estudos incluídos são referidos por identificador numérico de 1 a 118 (por exemplo, registro~\estudo{9}), que remete à Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}), com a totalidade dos 118 registros encontrados na busca e suas respectivas situações.
+Cada estudo incluído recebeu um identificador (E01 a E26). Nas tabelas, nos gráficos e nas sínteses da revisão, cada identificador remete à linha da Tabela~\ref{tab:estudos-incluidos}, que reúne a chamada autor-data, o título, o veículo, o tipo de veículo, o grupo e o DOI. Os registros da triagem que não integram os 26 estudos incluídos são referidos por identificador numérico de 1 a 119 (por exemplo, registro~\estudo{9}), que remete à Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}), com a totalidade dos 119 registros encontrados na busca e suas respectivas situações.
 
 \begingroup
 \scriptsize
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.1}
 \begin{longtable}{@{}lp{3.3cm}p{3.6cm}p{2.7cm}llp{2.1cm}@{}}
-	\caption[Estudos inclu\'idos na revis\~ao, com identificador (ID)]{Estudos inclu\'idos na revis\~ao (n = 25), com identificador (ID). Grupos: A, desenvolve e avalia modelo; B, valida\c{c}\~ao externa de modelo de terceiros; C, protocolo; D, revis\~ao, perspectiva ou editorial}\label{tab:estudos-incluidos}                                                                                                                                                                                                                     \\
+	\caption[Estudos inclu\'idos na revis\~ao, com identificador (ID)]{Estudos inclu\'idos na revis\~ao (n = 26), com identificador (ID). Grupos: A, desenvolve e avalia modelo; B, valida\c{c}\~ao externa de modelo de terceiros; C, protocolo; D, revis\~ao, perspectiva ou editorial}\label{tab:estudos-incluidos}                                                                                                                                                                                                                     \\
 	\toprule
 	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\
 	\midrule
@@ -642,6 +657,7 @@ Cada estudo incluído recebeu um identificador (E01 a E25). Nas tabelas, nos gr�
 	\hypertarget{estudo:E23}{}E23 & \citeonline{eita2025}              & A trustworthy and explainable deep learning framework for skin lesion detection in smart dermatology                                                                                                                & Engineering Applications of Artificial Intelligence                                                & Revista       & A            & \href{https://doi.org/10.1016/j.engappai.2025.111594}{\nolinkurl{10.1016/j.engappai.2025.111594}}       \\
 	\hypertarget{estudo:E24}{}E24 & \citeonline{jaikishore2021}        & AI Driven Edge Device for Screening Skin Lesion and Its Severity in Peripheral Communities                                                                                                                          & 2021 IEEE 18th India Council International Conference (INDICON)                                    & Conferência   & A            & \href{https://doi.org/10.1109/INDICON52576.2021.9691666}{\nolinkurl{10.1109/INDICON52576.2021.9691666}} \\
 	\hypertarget{estudo:E25}{}E25 & \citeonline{banerjee2023}          & Skin Diseases Detection Using LBP and WLD: An Ensembling Approach                                                                                                                                                   & SN Computer Science                                                                                & Revista       & A            & \href{https://doi.org/10.1007/s42979-023-02395-8}{\nolinkurl{10.1007/s42979-023-02395-8}}               \\
+	\hypertarget{estudo:E26}{}E26 & \citeonline{lima2024skin} & Skin Cancer and Hansen's Disease Diagnosis & \textit{Biomedical Imaging: Principles and Advancements} (CRC Press) & Capítulo de livro & A & \href{https://doi.org/10.1201/9781003359418-12}{\nolinkurl{10.1201/9781003359418-12}} \\
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -649,7 +665,7 @@ Cada estudo incluído recebeu um identificador (E01 a E25). Nas tabelas, nos gr�
 \subsection{Quais técnicas de visão computacional são utilizadas?}
 \label{subsec:rq1-tecnicas}
 
-A análise dos 25 estudos incluídos demonstra que as técnicas de visão computacional
+A análise dos 26 estudos incluídos demonstra que as técnicas de visão computacional
 empregadas no contexto da hanseníase organizam-se ao longo de quatro etapas principais
 do fluxo de processamento de imagens: pré-processamento, delimitação de regiões de
 interesse (segmentação), extração de atributos para classificação e explicabilidade visual.
@@ -675,7 +691,7 @@ Um estudo exploratório aplica descritores manuais de textura, como \textit{Loca
 (LBP) e \textit{Weber Local Descriptor} (WLD), fusionados a um classificador SVM multinível
 \cite{banerjee2023}, e a revisão de \citeonline{ahikpa2025} relata, entre os estudos que revisa, o uso de SVM e de
 \textit{Random Forest}. Entre os modelos de aprendizado profundo, destacam-se redes convolucionais como ResNet-50
-\cite{yotsu2023,barbieri2022}, VGG-16 \cite{yotsu2023,gawali2024}, MobileNetV2 \cite{jaikishore2021} e Inception \cite{barbieri2022}. Observa-se também a adoção
+\cite{yotsu2023,barbieri2022}, VGG-16 \cite{yotsu2023,gawali2024}, MobileNetV2 \cite{jaikishore2021} e Inception \cite{barbieri2022,lima2024skin}. Uma configuração combina a rede convolucional pré-treinada Inception V3, usada apenas como extratora de 2.048 atributos, com um classificador \textit{Random Forest} sobre os atributos extraídos, após balanceamento das classes pela técnica SMOTE \cite{lima2024skin}. Observa-se também a adoção
 de sistemas em cascata de dois estágios para diferenciação hierárquica entre dermatoses
 tropicais negligenciadas \cite{deps2026,pons2026} e a conversão de um modelo leve (MobileNetV2) para TensorFlow Lite, executado
 em aplicativo Android em dispositivo periférico (\textit{edge computing}) \cite{jaikishore2021}.
@@ -729,6 +745,7 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 	\estudo{E23} Fredrick e HAM10000              & Roboflow                                                   & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.     \\
 	\estudo{E24} Coleção da web                   & DermNet NZ e outras fontes abertas                         & 1.524 imagens; artigo apresenta divergência na distribuição por classe.                   \\
 	\estudo{E25} JUCMATER: Skindb.v1              & School of Tropical Medicine, Calcutá, Índia                & 876 imagens de 141 pacientes.                                                             \\
+	\estudo{E26} Atlas Dermatológico               & Atlas público; coleta não detalhada                        & 11.606 imagens no atlas; quantidade usada e pacientes não informados.                     \\
 \end{longtable}
 \endgroup
 \fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
@@ -745,7 +762,7 @@ mimetizadoras para treino e teste de especificidade diagnóstica, como leishmani
 tinha corporal, pitiríase versicolor, eczema e vitiligo.
 
 Não obstante a abrangência geográfica, a revisão identifica um gargalo metodológico crítico:
-a escassez de registro individual do tom de pele. Apenas três dos 16 estudos com dados
+a escassez de registro individual do tom de pele. Apenas três dos 17 estudos com dados
 descrevem o tom de pele da base, e só dois trazem distribuição por fototipo ou faixa de tom
 (Subseção~\ref{subsec:rq5-rq6-tom-pele}). Entre os estudos com dados, \citeonline{deps2026} registram também
 o sexo e a faixa etária das imagens (Tabela 1 do artigo). A falta de registro do tom de pele na maioria dos
@@ -756,19 +773,19 @@ transportados para a população multiétnica atendida pelo Sistema Único de Sa
 \subsection{Quais métodos e procedimentos de avaliação são empregados?}
 \label{subsec:rq3-metodos}
 
-Os procedimentos de avaliação foram levantados nos 15 estudos que desenvolvem e avaliam um
+Os procedimentos de avaliação foram levantados nos 16 estudos que desenvolvem e avaliam um
 modelo (Tabela~\ref{tab:procedimentos-avaliacao}). Os outros 10 estudos incluídos são oito revisões, perspectivas ou
 editorial, um protocolo sem resultados \estudo{E11} e a validação externa de um modelo
-pré-treinado \estudo{E04}, e não entram nessas contagens. Dos 15 estudos, 13 usam partição
+pré-treinado \estudo{E04}, e não entram nessas contagens. Dos 16 estudos, 14 usam partição
 \textit{hold-out} (por imagem, por paciente ou herdada do conjunto de dados), um divide as imagens por
 classes disjuntas \estudo{E17} e um não descreve a divisão \estudo{E07}. A validação cruzada
-$k$-fold com $k$ declarado aparece em apenas um dos 15 \estudo{E13}. Nesse estudo, \citeonline{barbieri2022} combinaram \textit{hold-out}
-por paciente com 5-\textit{fold} nos pacientes de desenvolvimento; dois dos 13 \textit{hold-out} citam também
+$k$-fold com $k$ declarado aparece em dois dos 16 \estudo{E13,E26}. Em \citeonline{barbieri2022}, combinaram-se \textit{hold-out}
+por paciente e 5-\textit{fold} nos pacientes de desenvolvimento; em \citeonline{lima2024skin}, a base é dividida em 80\% para treino e validação e 20\% para teste, e o conjunto de 80\% passa por validação cruzada de 10 dobras repetida 30 vezes. Dois dos 14 \textit{hold-out} citam também
 validação cruzada interna, sem declarar $k$.
 
-Quanto à unidade de particionamento, apenas 2 dos 15 estudos declaram a separação por paciente
-\estudo{E05,E13}; os outros 13 não informam, e nenhum deles declara não a ter adotado, de modo que
-a falta de informação não equivale à ausência de separação. Em sete dos 13 a divisão descrita é feita sobre
+Quanto à unidade de particionamento, apenas 2 dos 16 estudos declaram a separação por paciente
+\estudo{E05,E13}; os outros 14 não informam, e nenhum deles declara não a ter adotado, de modo que
+a falta de informação não equivale à ausência de separação. Em sete dos 14 a divisão descrita é feita sobre
 imagens (seis estudos) ou microfotografias (um) \estudo{E08,E14,E15,E19,E23,E24,E25};
 nos estudos \estudo{E25,E15}, a unidade é inferida porque os artigos descrevem apenas a proporção da divisão \cite{banerjee2023,pons2026}.
 
@@ -776,10 +793,10 @@ Quando múltiplas fotografias de um mesmo paciente são distribuídas aleatoriam
 conjuntos de treino e teste, ocorre vazamento de informação (\textit{data leakage}), fazendo
 com que atributos contextuais (como iluminação de fundo, tonalidade de pele do indivíduo e
 artefatos de câmera) facilitem o reconhecimento e resultem em desempenhos artificialmente
-otimistas. Esse risco não pode ser descartado nos 13 estudos que não informam a unidade da divisão.
+otimistas. Esse risco não pode ser descartado nos 14 estudos que não informam a unidade da divisão.
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{6.1cm} >{\raggedright\arraybackslash}p{2.6cm}}
-	\caption{Procedimento de avaliação e separação por paciente nos 15 estudos que desenvolvem e avaliam um modelo}
+	\caption{Procedimento de avaliação e separação por paciente nos 16 estudos que desenvolvem e avaliam um modelo}
 	\label{tab:procedimentos-avaliacao}                                                                                                                                                                                                                                                                                                                                             \\
 	\toprule
 	\textbf{Estudo} & \textbf{Unidade da divisão} & \textbf{Procedimento}                                                                                                                                                                            & \textbf{Separação por paciente}                                                                                              \\
@@ -808,11 +825,12 @@ otimistas. Esse risco não pode ser descartado nos 13 estudos que não informam 
 	\estudo{E22}    & Não informada               & Mesmo \textit{hold-out} 485/122/157; sem $k$-fold; métricas de teste reportadas embora o subconjunto de teste seja citado como não anotado                                                       & Não informada                                                                                                                \\
 	\estudo{E23}    & Imagem aumentada            & \textit{Hold-out} 85/10/5 sobre o conjunto já ampliado; teste também em outra base                                                                                                               & Não informada                                                                                                                \\
 	\estudo{E24}    & Imagem                      & \textit{Hold-out} 80/20 (1.220/304 imagens); aplicação de aumento de dados no teste não informada                                                                                                & Não informada                                                                                                                \\
+	\estudo{E26}    & Não informada               & \textit{Hold-out} 80/20 (20\% para o teste final); SMOTE aplicado só ao conjunto de treino e validação; validação cruzada de 10 dobras repetida 30 vezes; sem teste externo & Não informada \\
 \end{longtable}
-\fonte{Elaboração própria a partir dos artigos incluídos (denominador 15). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 15 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
+\fonte{Elaboração própria a partir dos artigos incluídos (denominador 16). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 16 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
 
 Outro achado é a escassez de avaliação em base distinta da usada no desenvolvimento: entre os
-15 estudos, apenas um testa o modelo também em outra base \estudo{E23}, e os outros 14 avaliam o
+16 estudos, apenas um testa o modelo também em outra base \estudo{E23}, e os outros 15 avaliam o
 modelo somente na própria base. Fora dessa contagem, a exceção mais relevante no conjunto selecionado é a
 validação externa independente conduzida por \citeonline{deps2026}, que submeteram o classificador
 pré-treinado da OMS a uma avaliação retrospectiva com 423 imagens analisadas de um banco inicialmente composto por 439 imagens de 208 casos de hanseníase, coletadas entre 1996 e 2024. O número de casos únicos remanescentes após as exclusões não foi informado.
@@ -857,6 +875,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E17}    & Classificação (\textit{few-shot})      & Acurácia episódica; sensibilidade e especificidade (um contra todos)                                                                                                             \\
 	\estudo{E25}    & Classificação                          & Apenas acurácia                                                                                                                                                                  \\
 	\estudo{E24}    & Classificação                          & Acurácia, precisão, \textit{recall}, F1 e perda; sem especificidade. O tamanho do modelo (cerca de 14 MB) é reportado; latência de inferência e uso de memória não foram medidos \\
+	\estudo{E26}    & Classificação                          & Acurácia, especificidade, sensibilidade, AUC e índice kappa (média e desvio padrão em 30 repetições de 10 dobras); tempos de treinamento e de teste; matriz de confusão \\
 	\estudo{E23}    & Detecção                               & Precisão, \textit{recall}, F1, mAP@50 e mAP@50-95; sem acurácia, AUC, ECE nem Brier                                                                                              \\
 	\estudo{E21}    & Segmentação                            & mIoU, F1, acurácia de pixel, precisão e \textit{recall}                                                                                                                          \\
 	\estudo{E22}    & Segmentação                            & Precisão, \textit{recall}, F1, IoU e acurácia                                                                                                                                    \\
@@ -891,6 +910,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E17}                     & 2-\textit{way} 1-\textit{shot}: acurácia 73,13\% (resumo: 73,12\%; texto: 73,0\%); sensibilidade/especificidade 72,39/73,66 (2-\textit{way}) e 69,33/77,65 (3-\textit{way})                                                                                                                                                                      & Hanseníase $\times$ demais & Proporção treino/teste                                                                                    \\
 	\estudo{E25}                     & Acurácia 91,3793\% (cogriWeberLBP e Multi-SVM); melhor CNN: 89 (ResNet101)                                                                                                                                                                                                                                                                       & Global, 4 classes          & Sensibilidade e especificidade                                                                            \\
 	\estudo{E24}                     & SkinLesion Net: acurácia de teste 94,32\% (4 classes). Os 91\% são da SeverityNet, que não inclui hanseníase                                                                                                                                                                                                                                     & Global                     & Especificidade                                                                                            \\
+	\estudo{E26}                     & Inception v3 e Random Forest, sete classes (quatro tipos de hanseníase e três de câncer de pele), validação cruzada: com 100 árvores, acurácia 0,9533, sensibilidade 0,9818, especificidade 0,9936, AUC 0,9991 e kappa 0,9455; com 500 árvores, acurácia 0,9668. O teste final é apresentado só em matriz de confusão \\
 	\estudo{E04} (validação externa) & Sensibilidade Top-5 84,9\% (359/423); 87,2\% nas lesões clássicas e 69,6\% nas reacionais ou atípicas. Top-1: 46,9\% (clássicas) e 30,4\% (reacionais ou atípicas), por subconjunto; o artigo não traz Top-1 global                                                                                                                              & Só hanseníase              & Especificidade, VPP, VPN e acurácia não calculáveis (só casos confirmados)                                \\
 \end{longtable}
 \fonte{Elaboração própria a partir dos artigos incluídos.}
@@ -1033,10 +1053,10 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 
 As questões relativas à caracterização do tom de pele (RQ5) e à comparação de desempenho
 entre diferentes fototipos cutâneos (RQ6) constituem o núcleo investigativo central deste
-trabalho. A síntese dos 25 estudos incluídos mostra uma lacuna empírica: nenhum dos 16 estudos com dados
+trabalho. A síntese dos 26 estudos incluídos mostra uma lacuna empírica: nenhum dos 17 estudos com dados
 reporta, no texto principal, desempenho por tom de pele, e só três descrevem o tom de pele da base.
 
-No que tange à caracterização do tom de pele (RQ5), três dos 16 estudos com dados descrevem a base,
+No que tange à caracterização do tom de pele (RQ5), três dos 17 estudos com dados descrevem a base,
 em níveis diferentes. \citeonline{pons2026} categorizam as imagens de treino em peles claras (4\%,
 fototipos I-II), moderadas (26\%, III-IV) e escuras (70\%, V-VI) (Tabela 3 do artigo).
 \citeonline{deps2026} registram o fototipo de Fitzpatrick de 411 das 423 imagens (Tabela 1 do artigo; o
@@ -1044,18 +1064,18 @@ fototipo I não foi observado): nas lesões clássicas (subconjunto 1, 362 das 3
 de III, 18,5\% de IV, 16,6\% de V e 11,3\% de VI; no subconjunto de reações e formas atípicas (n = 56),
 7,1\% de II, 64,3\% de III, 8,9\% de IV, 0\% de V e 7,1\% de VI, com 12,5\% sem registro.
 \citeonline{yotsu2023} apenas afirmam que todas as imagens são de populações africanas de pele escura,
-com fototipo IV ou superior, sem apresentar a distribuição. Os outros 13 estudos com dados não informam
+com fototipo IV ou superior, sem apresentar a distribuição. Os outros 14 estudos com dados não informam
 o tom de pele: cinco mencionam diversidade, limitação ou um campo de registro de tom sem apresentar dados
 \estudo{E06,E13,E17,E18,E23},
-e oito não o mencionam no texto principal
-\estudo{E07,E08,E14,E19,E21,E22,E24,E25}.
+e nove não o mencionam no texto principal
+\estudo{E07,E08,E14,E19,E21,E22,E24,E25,E26}.
 No estudo \textit{AI4Leprosy}, os autores descrevem imagens com
 ``diversidade de manifestações clínicas e tipos de pele''
 \cite[seção Introdução, tradução nossa]{barbieri2022}, obtidas em um centro de referência nacional que recebe pacientes de todo o Brasil,
 sem escala nem distribuição por tom. ``Não informa'' indica que o texto principal não traz dado utilizável
 de tom de pele e não equivale a ``não avalia'', pois figuras e suplementos não foram examinados.
 
-Quanto à variação do desempenho entre tons de pele (RQ6), nenhum dos 16 estudos com dados reporta, no
+Quanto à variação do desempenho entre tons de pele (RQ6), nenhum dos 17 estudos com dados reporta, no
 texto principal, métrica de acurácia, sensibilidade ou erro estratificada por tom de pele ou fototipo;
 figuras e suplementos, como o de \estudo{E13}, não foram examinados. Mesmo nos estudos que
 caracterizam o tom da base, o desempenho é apresentado de outra forma. \citeonline{pons2026} reportam o teste
@@ -1077,12 +1097,12 @@ com manchas hipocrômicas ou placas eritematosas,
 pigmentação basal do paciente, hipótese que os estudos incluídos não testam. A ausência de resultados estratificados nos textos principais impede
 assegurar que os sistemas computacionais atuais operem de forma justa e segura na rede pública de saúde
 do Brasil, justificando a urgência de protocolos de avaliação equitativos no SUS. A
-Figura~\ref{fig:vazio-tom-pele} resume, para os 16 estudos com dados, quantos caracterizam o tom de pele da
+Figura~\ref{fig:vazio-tom-pele} resume, para os 17 estudos com dados, quantos caracterizam o tom de pele da
 base (RQ5) e quantos reportam desempenho por tom nos textos principais (RQ6).
 
 \begin{figure}[htbp]
 	\centering
-	\caption{Caracterização do tom de pele (RQ5) e desempenho estratificado por tom (RQ6) nos 16 estudos com dados}
+	\caption{Caracterização do tom de pele (RQ5) e desempenho estratificado por tom (RQ6) nos 17 estudos com dados}
 	\label{fig:vazio-tom-pele}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -1090,7 +1110,7 @@ base (RQ5) e quantos reportam desempenho por tom nos textos principais (RQ6).
 				width=0.85\textwidth,
 				height=6.6cm,
 				ymin=0, ymax=19,
-				ylabel={Número de estudos (n = 16)},
+				ylabel={Número de estudos (n = 17)},
 				symbolic x coords={
 						{Caracterização do tom (RQ5)},
 						{Desempenho por tom (RQ6)}
@@ -1106,8 +1126,8 @@ base (RQ5) e quantos reportam desempenho por tom nos textos principais (RQ6).
 				legend style={at={(0.5, 1.04)}, anchor=south, legend columns=1, font=\footnotesize, draw=none}
 			]
 			\addplot[fill=red!75!black, draw=black] coordinates {
-					({Caracterização do tom (RQ5)}, 13)
-					({Desempenho por tom (RQ6)}, 16)
+					({Caracterização do tom (RQ5)}, 14)
+					({Desempenho por tom (RQ6)}, 17)
 				};
 			\addplot[fill=blue!65!black, draw=black] coordinates {
 					({Caracterização do tom (RQ5)}, 3)
@@ -1116,12 +1136,12 @@ base (RQ5) e quantos reportam desempenho por tom nos textos principais (RQ6).
 			\legend{Não informa no texto principal, Caracteriza o tom (RQ5) ou reporta desempenho por tom (RQ6)}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, a partir da leitura dos textos principais dos 16 estudos com dados (15 que desenvolvem modelo e a validação externa de \estudo{E04}); figuras e suplementos não foram examinados. ``Não informa'' não equivale a ``não avalia''. Em RQ5, três estudos caracterizam o tom da base em níveis diferentes: \estudo{E15} e \estudo{E04} com distribuição, e \estudo{E05} apenas pela afirmação de fototipo IV ou superior.}
+	\fonte{Autores, a partir da leitura dos textos principais dos 17 estudos com dados (16 que desenvolvem modelo e a validação externa de \estudo{E04}); figuras e suplementos não foram examinados. ``Não informa'' não equivale a ``não avalia''. Em RQ5, três estudos caracterizam o tom da base em níveis diferentes: \estudo{E15} e \estudo{E04} com distribuição, e \estudo{E05} apenas pela afirmação de fototipo IV ou superior.}
 \end{figure}
 
 \subsection{Quais modelos e abordagens de inteligência artificial são empregados?}
 
-Dos 25 estudos incluídos, 15 desenvolveram e avaliaram modelos, e \citeonline{deps2026} avaliaram independentemente um classificador existente. As frequências usam esses 16 estudos. As seis revisões, as duas perspectivas e o protocolo contribuem para a síntese narrativa. Cada publicação conta uma vez por modelo ou componente usado diretamente, incluindo comparadores testados e componentes de configurações avaliadas. Uma publicação pode contribuir para várias linhas.
+Dos 26 estudos incluídos, 16 desenvolveram e avaliaram modelos, e \citeonline{deps2026} avaliaram independentemente um classificador existente. As frequências usam esses 17 estudos. As seis revisões, as duas perspectivas e o protocolo contribuem para a síntese narrativa. Cada publicação conta uma vez por modelo ou componente usado diretamente, incluindo comparadores testados e componentes de configurações avaliadas. Uma publicação pode contribuir para várias linhas.
 
 A Tabela~\ref{tab:tarefas-ia} vincula as tarefas e as etapas dos sistemas aos estudos. O sistema de \citeonline{mehta2026} também descreve um classificador após a segmentação, com métricas apresentadas para o sistema. Em \citeonline{jaikishore2021}, o treino relatado para a classificação de gravidade abrange eczema e sarampo. A classificação de doenças desse estudo inclui hanseníase.
 
@@ -1134,7 +1154,7 @@ A Tabela~\ref{tab:tarefas-ia} vincula as tarefas e as etapas dos sistemas aos es
 		\toprule
 		\textbf{Tarefa ou etapa}                                                 & \textbf{Estudos}                                         \\
 		\midrule
-		Classificação de doenças em imagens cutâneas                             & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25} \\
+		Classificação de doenças em imagens cutâneas                             & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25,E26} \\
 		Classificação em microfotografias histopatológicas                       & \estudo{E08}                                             \\
 		Detecção por caixas delimitadoras e classificação das lesões localizadas & \estudo{E23}                                             \\
 		Segmentação binária de ferida e fundo                                    & \estudo{E21,E22}                                         \\
@@ -1155,12 +1175,12 @@ A Tabela~\ref{tab:abordagens-ia} e a Figura~\ref{fig:abordagens-ia} apresentam a
 	\label{tab:abordagens-ia}
 	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{5.0cm}c>{\raggedright\arraybackslash}p{4.3cm}@{}}
 		\toprule
-		\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/16} & \textbf{Estudos}                                                 \\
+		\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/17} & \textbf{Estudos}                                                 \\
 		\midrule
-		Aprendizado profundo    & Uso ou avaliação de redes profundas                                                                        & 14/16         & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25} \\
-		Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo                                                        & 8/16          & \estudo{E06,E07,E08,E13,E17,E18,E22,E25}                         \\
-		Abordagem híbrida       & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 5/16          & \estudo{E06,E13,E17,E18,E22}                                     \\
-		Poucos exemplos         & Estratégia \textit{few-shot} documentada                                                                   & 1/16          & \estudo{E17}                                                     \\
+		Aprendizado profundo    & Uso ou avaliação de redes profundas                                                                        & 15/17         & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25,E26} \\
+		Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo                                                        & 9/17          & \estudo{E06,E07,E08,E13,E17,E18,E22,E25,E26}                         \\
+		Abordagem híbrida       & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 6/17          & \estudo{E06,E13,E17,E18,E22,E26}                                     \\
+		Poucos exemplos         & Estratégia \textit{few-shot} documentada                                                                   & 1/17          & \estudo{E17}                                                     \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Autores, a partir dos estudos incluídos.}
@@ -1173,12 +1193,12 @@ A Tabela~\ref{tab:abordagens-ia} e a Figura~\ref{fig:abordagens-ia} apresentam a
 	\begin{tikzpicture}[x=0.39cm,y=0.70cm]
 		\draw[->] (0,0) -- (16.7,0) node[right,font=\footnotesize] {Estudos};
 		\foreach \x in {0,4,8,12,16} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
-		\foreach \y/\n/\rotulo in {4/14/Aprendizado profundo,3/8/Aprendizado tradicional,2/5/Abordagem híbrida,1/1/Poucos exemplos} {
+		\foreach \y/\n/\rotulo in {4/15/Aprendizado profundo,3/9/Aprendizado tradicional,2/6/Abordagem híbrida,1/1/Poucos exemplos} {
 				\fill[blue!65!black] (0,\y-0.25) rectangle (\n,\y+0.25);
 				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
 				\node[right,font=\footnotesize] at (\n,\y) {\n};}
 	\end{tikzpicture}
-	\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
+	\fonte{Autores, a partir dos 17 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
 
 A Tabela~\ref{tab:modelos-resumo} apresenta os itens com pelo menos três ocorrências. O inventário auditado está na Tabela~\ref{tab:frequencia-modelos}, no Apêndice~\ref{apend:inventario-modelos}. A frequência mede o uso por publicação. A linha de U-Net inclui a adaptação de \estudo{E22}, a de ResNet-101 inclui seu uso como extrator ou codificador, e a de SVM reúne a variante multinível e a configuração otimizada por buraco negro.
@@ -1189,14 +1209,15 @@ A Tabela~\ref{tab:modelos-resumo} apresenta os itens com pelo menos três ocorr�
 	\label{tab:modelos-resumo}
 	\begin{tabular}{@{}lcl@{}}
 		\toprule
-		\textbf{Modelo ou componente}     & \textbf{Estudos (n/16)} & \textbf{Identificadores} \\
+		\textbf{Modelo ou componente}     & \textbf{Estudos (n/17)} & \textbf{Identificadores} \\
 		\midrule
-		Random Forest                     & 4/16                    & \estudo{E06,E08,E13,E18} \\
-		SVM / Multi-SVM                   & 4/16                    & \estudo{E06,E07,E08,E25} \\
-		ResNet-101                        & 3/16                    & \estudo{E06,E21,E25}     \\
-		VGG-16                            & 3/16                    & \estudo{E05,E19,E24}     \\
-		U-Net, incluindo adaptação        & 3/16                    & \estudo{E06,E21,E22}     \\
-		ANN, arquitetura não especificada & 3/16                    & \estudo{E06,E07,E08}     \\
+		Random Forest                     & 5/17                    & \estudo{E06,E08,E13,E18,E26} \\
+		SVM / Multi-SVM                   & 4/17                    & \estudo{E06,E07,E08,E25} \\
+		ResNet-101                        & 3/17                    & \estudo{E06,E21,E25}     \\
+		VGG-16                            & 3/17                    & \estudo{E05,E19,E24}     \\
+		U-Net, incluindo adaptação        & 3/17                    & \estudo{E06,E21,E22}     \\
+		ANN, arquitetura não especificada & 3/17                    & \estudo{E06,E07,E08}     \\
+		Inception V3                      & 3/17                    & \estudo{E17,E24,E26}     \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Autores, a partir dos estudos incluídos.}
@@ -1209,17 +1230,17 @@ A Figura~\ref{fig:ocorrencias-modelos} compara a quantidade de estudos para os m
 	\caption{Quantidade de estudos por modelo ou componente selecionado}
 	\label{fig:ocorrencias-modelos}
 	\begin{tikzpicture}[x=1.0cm,y=0.65cm]
-		\draw[->] (0,0) -- (5.2,0) node[right,font=\footnotesize] {Estudos};
+		\draw[->] (0,0) -- (5.8,0) node[right,font=\footnotesize] {Estudos};
 		\foreach \x in {0,1,2,3,4,5} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
-		\foreach \y/\n/\rotulo in {6/4/Random Forest,5/4/SVM e Multi-SVM,4/3/ResNet-101,3/3/VGG-16,2/3/U-Net incluindo adaptação,1/3/ANN não especificada} {
+		\foreach \y/\n/\rotulo in {7/5/Random Forest,6/4/SVM e Multi-SVM,5/3/ResNet-101,4/3/VGG-16,3/3/U-Net incluindo adaptação,2/3/ANN não especificada,1/3/Inception V3} {
 				\fill[teal!70!black] (0,\y-0.25) rectangle (\n,\y+0.25);
 				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
 				\node[right,font=\footnotesize] at (\n,\y) {\n};}
 	\end{tikzpicture}
-	\fonte{Autores, a partir dos 16 estudos com avaliação de modelos; categorias não exclusivas.}
+	\fonte{Autores, a partir dos 17 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
 
-Entre os classificadores tradicionais, \citeonline{nyatte2022} utilizaram SVM otimizada, \citeonline{banerjee2023} empregaram Multi-SVM com descritores de textura e \citeonline{vargasclavijo2025} avaliaram, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas. O XGBoost aparece entre os comparadores de \citeonline{barbieri2022} e no classificador do sistema de \citeonline{mehta2026}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \citeonline{nyatte2022} e a SVM citada na conclusão de \citeonline{gawali2024}.
+Entre os classificadores tradicionais, \citeonline{nyatte2022} utilizaram SVM otimizada, \citeonline{banerjee2023} empregaram Multi-SVM com descritores de textura, \citeonline{vargasclavijo2025} avaliaram, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas e \citeonline{lima2024skin} treinaram Random Forest, com 100 a 500 árvores, sobre 2.048 atributos extraídos pela rede Inception V3 pré-treinada. O XGBoost aparece entre os comparadores de \citeonline{barbieri2022} e no classificador do sistema de \citeonline{mehta2026}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \citeonline{nyatte2022} e a SVM citada na conclusão de \citeonline{gawali2024}.
 
 Em \citeonline{barbieri2022}, as configurações multimodais testadas combinaram a saída do modelo de imagens com a saída do modelo de características clínicas da lesão, dados do paciente ou ambos. A regressão logística elastic-net selecionada para o modelo final usa a saída do modelo de características clínicas da lesão e dados do paciente. Em \citeonline{beesetty2023}, o protocolo de aquisição incluiu câmera, polarização e smartphone. O agrupamento de Ward formou subclasses para o experimento, e a rede siamesa operou sobre pares de imagens. A fusão dos modos de captura na entrada da rede fica indeterminada.
 
@@ -1242,30 +1263,30 @@ As perspectivas \cite{deps2024,yotsu2025} discutem a inteligência artificial co
 A avaliação crítica da generalização dos modelos representa um dos achados mais determinantes da presente revisão sistemática, evidenciando uma lacuna estrutural entre os desempenhos computacionais reportados em laboratório e a capacidade real de implantação clínica no Sistema Único de Saúde (SUS):
 
 \begin{enumerate}
-	\item \textbf{Hegemonia de Avaliações Internas:} Em 14 dos 15 estudos que desenvolvem e avaliam um modelo (Tabela~\ref{tab:procedimentos-avaliacao}), como \estudo{E08,E14,E18,E19,E25}, a validação dos modelos é conduzida unicamente por divisões internas da mesma base de dados (\textit{hold-out}, divisão por classes ou validação cruzada interna); apenas um estudo (\estudo{E23}) testa o modelo também em outra base. Nesse desenho, treino e teste vêm da mesma coleta, o que impede avaliar o desempenho em outras condições de captura e pode mascarar fragilidades de sobreajuste (\textit{overfitting}).
+	\item \textbf{Hegemonia de Avaliações Internas:} Em 15 dos 16 estudos que desenvolvem e avaliam um modelo (Tabela~\ref{tab:procedimentos-avaliacao}), como \estudo{E08,E14,E18,E19,E25,E26}, a validação dos modelos é conduzida unicamente por divisões internas da mesma base de dados (\textit{hold-out}, divisão por classes ou validação cruzada interna); apenas um estudo (\estudo{E23}) testa o modelo também em outra base. Nesse desenho, treino e teste vêm da mesma coleta, o que impede avaliar o desempenho em outras condições de captura e pode mascarar fragilidades de sobreajuste (\textit{overfitting}).
 
-	\item \textbf{Vazamento de Dados por Falta de Separação Estrita por Paciente:} A partição aleatória no nível de imagem (\textit{image-level split}), em vez de uma separação estrita por paciente (\textit{patient-level split}), é um risco de vazamento que não pode ser descartado: entre os 15 estudos que desenvolvem e avaliam um modelo, 13 não informam a unidade da separação (Tabela~\ref{tab:procedimentos-avaliacao}). Quando imagens de diferentes ângulos ou aproximações da mesma lesão pertencem simultaneamente aos conjuntos de treinamento e teste, o modelo decora artefatos de fundo e texturas superficiais do indivíduo, inflando artificialmente as métricas de acurácia.
+	\item \textbf{Vazamento de Dados por Falta de Separação Estrita por Paciente:} A partição aleatória no nível de imagem (\textit{image-level split}), em vez de uma separação estrita por paciente (\textit{patient-level split}), é um risco de vazamento que não pode ser descartado: entre os 16 estudos que desenvolvem e avaliam um modelo, 14 não informam a unidade da separação (Tabela~\ref{tab:procedimentos-avaliacao}). Quando imagens de diferentes ângulos ou aproximações da mesma lesão pertencem simultaneamente aos conjuntos de treinamento e teste, o modelo decora artefatos de fundo e texturas superficiais do indivíduo, inflando artificialmente as métricas de acurácia.
 
 	\item \textbf{Validação Externa Independente do Aplicativo da OMS:} A única validação externa independente de um modelo pré-treinado reportada nos estudos incluídos foi conduzida por \citeonline{deps2026} com um banco de imagens clínicas de hanseníase coletadas entre 1996 e 2024. Ao submeter 423 imagens analisadas de um conjunto inicialmente composto por 439 imagens de 208 casos de hanseníase ao classificador de segundo estágio do aplicativo da OMS descrito no próprio estudo, os autores obtiveram sensibilidade Top-5 de 84,9\% (359 de 423 imagens). A sensibilidade Top-1 foi de 46,9\% nas lesões clássicas e de 30,4\% nas lesões reacionais ou atípicas, calculadas por subconjunto, sem valor global reportado, o que mostra que o resultado depende do número de predições consideradas.
 
 	\item \textbf{Contribuição das Imagens e das Informações Clínicas (AI4Leprosy):} No estudo de \citeonline{barbieri2022}, no teste com 40 pacientes, os modelos construídos só com as informações do paciente ou com as saídas do Modelo 2 (atributos clínicos da lesão) tiveram AUC superior a 90\%, enquanto as saídas do modelo de imagens, isoladas, tiveram AUC próxima de 70\%; para a floresta aleatória e o XGBoost, os autores relatam pouco benefício em acrescentar as saídas dos Modelos 1 e 2 às informações do paciente. A acurácia de 66,6\% do modelo de imagens vem de validação cruzada nos 182 pacientes de desenvolvimento, e a de 90\% do modelo final vem do teste de 40 pacientes; os procedimentos são distintos e os valores não são comparáveis diretamente. Por se tratar de um único estudo, com 40 pacientes de teste, não é possível concluir sobre um limite de desempenho da generalização fotográfica.
 
-	\item \textbf{Ausência de Resultados de Aplicação em Serviço de Saúde:} Entre os 16 estudos com dados, nenhum reporta resultados de aplicação em serviço de saúde: as avaliações usam bancos de imagens pré-coletados, a validação externa de \citeonline{deps2026} é retrospectiva, e \citeonline{pons2026} tratam a validação externa e a clínica como trabalho futuro. O único estudo que planeja avaliar o aplicativo da OMS em pacientes é o protocolo de \citeonline{sall2025} no Senegal, ainda sem resultados.
+	\item \textbf{Ausência de Resultados de Aplicação em Serviço de Saúde:} Entre os 17 estudos com dados, nenhum reporta resultados de aplicação em serviço de saúde: as avaliações usam bancos de imagens pré-coletados, a validação externa de \citeonline{deps2026} é retrospectiva, e \citeonline{pons2026} tratam a validação externa e a clínica como trabalho futuro. O único estudo que planeja avaliar o aplicativo da OMS em pacientes é o protocolo de \citeonline{sall2025} no Senegal, ainda sem resultados.
 \end{enumerate}
 
-A Figura~\ref{fig:tipos-validacao} ilustra a distribuição dos 25 estudos incluídos quanto à abordagem de validação empregada: 14 avaliam o modelo somente na própria base, um testa também em outra base, um valida externamente um modelo de terceiros, um é protocolo sem resultados e oito são revisões, perspectivas ou editorial.
+A Figura~\ref{fig:tipos-validacao} ilustra a distribuição dos 26 estudos incluídos quanto à abordagem de validação empregada: 15 avaliam o modelo somente na própria base, um testa também em outra base, um valida externamente um modelo de terceiros, um é protocolo sem resultados e oito são revisões, perspectivas ou editorial.
 
 \begin{figure}[htbp]
 	\centering
-	\caption{Distribuição dos 25 estudos por abordagem de validação do modelo}
+	\caption{Distribuição dos 26 estudos por abordagem de validação do modelo}
 	\label{fig:tipos-validacao}
 	\begin{tikzpicture}
 		\begin{axis}[
 				xbar,
 				width=0.55\textwidth,
 				height=6.6cm,
-				xmin=0, xmax=17,
-				xlabel={Número de estudos (n = 25)},
+				xmin=0, xmax=18,
+				xlabel={Número de estudos (n = 26)},
 				symbolic y coords={
 						{Revisões, perspectivas e editorial},
 						{Protocolo sem resultados},
@@ -1288,28 +1309,30 @@ A Figura~\ref{fig:tipos-validacao} ilustra a distribuição dos 25 estudos inclu
 					(1,{Protocolo sem resultados})
 					(1,{Validação externa de modelo de terceiros})
 					(1,{Teste em outra base})
-					(14,{Somente na própria base})
+					(15,{Somente na própria base})
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores. Dos 15 estudos que desenvolvem modelo, 14 avaliam somente na própria base e um testa também em outra base \estudo{E23}; a validação externa de modelo de terceiros é a de \estudo{E04}; \estudo{E11} é um protocolo sem resultados; os oito restantes são seis revisões, uma perspectiva e um editorial.}
+	\fonte{Autores. Dos 16 estudos que desenvolvem modelo, 15 avaliam somente na própria base e um testa também em outra base \estudo{E23}; a validação externa de modelo de terceiros é a de \estudo{E04}; \estudo{E11} é um protocolo sem resultados; os oito restantes são seis revisões, uma perspectiva e um editorial.}
 \end{figure}
 
 \subsection{Em quais veículos os estudos são publicados?}
 
-A distribuição dos 25 estudos incluídos quanto ao veículo de disseminação científica evidencia uma clara preponderância de periódicos indexados de alto fator de impacto sobre anais de congressos, além de demonstrar um notável caráter interdisciplinar entre as ciências da computação, a dermatologia e a saúde pública global:
+A distribuição dos 26 estudos incluídos quanto ao veículo de disseminação científica evidencia uma clara preponderância de periódicos indexados de alto fator de impacto sobre anais de congressos e sobre um capítulo de livro, além de demonstrar um notável caráter interdisciplinar entre as ciências da computação, a dermatologia e a saúde pública global:
 
 \begin{itemize}
-	\item \textbf{Periódicos Científicos (\textit{Journals}):} Totalizam 20 dos 25 estudos selecionados (80,0\% do corpo amostral). Essa concentração reflete o amadurecimento científico da temática e a necessidade de validação metodológica rigorosa por pares. Entre os periódicos da área médica, dermatológica e de saúde pública internacional, incluem-se veículos de prestígio como \textit{The Lancet Regional Health -- Americas} \estudo{E13}, \textit{PLOS Neglected Tropical Diseases} \estudo{E05}, \textit{Revista Panamericana de Salud Pública} \estudo{E04}, \textit{Journal of Investigative Dermatology} \estudo{E15}, \textit{International Health} \estudo{E20}, \textit{Frontiers in Medicine} \estudo{E03}, \textit{The American Journal of Dermatopathology} \estudo{E08}, \textit{Indian Journal of Leprosy} \estudo{E17}, \textit{Portuguese Journal of Dermatology and Venereology} \estudo{E09}, \textit{Journal of Clinical Medicine} \estudo{E01}, \textit{JMIR Research Protocols} \estudo{E11} e \textit{Malahayati International Journal of Nursing and Health Science} \estudo{E10}. No domínio da computação aplicada e bioinformática médica, destacam-se \textit{PLOS Computational Biology} \estudo{E02}, \textit{Engineering Applications of Artificial Intelligence} \estudo{E23}, \textit{BMC Artificial Intelligence} \estudo{E16}, \textit{Informatics in Medicine Unlocked} \estudo{E07}, \textit{SN Computer Science} \estudo{E06,E18,E25} e \textit{The International Journal of Lower Extremity Wounds} \estudo{E22}.
+	\item \textbf{Periódicos Científicos (\textit{Journals}):} Totalizam 20 dos 26 estudos selecionados (76,9\% do corpo amostral). Essa concentração reflete o amadurecimento científico da temática e a necessidade de validação metodológica rigorosa por pares. Entre os periódicos da área médica, dermatológica e de saúde pública internacional, incluem-se veículos de prestígio como \textit{The Lancet Regional Health -- Americas} \estudo{E13}, \textit{PLOS Neglected Tropical Diseases} \estudo{E05}, \textit{Revista Panamericana de Salud Pública} \estudo{E04}, \textit{Journal of Investigative Dermatology} \estudo{E15}, \textit{International Health} \estudo{E20}, \textit{Frontiers in Medicine} \estudo{E03}, \textit{The American Journal of Dermatopathology} \estudo{E08}, \textit{Indian Journal of Leprosy} \estudo{E17}, \textit{Portuguese Journal of Dermatology and Venereology} \estudo{E09}, \textit{Journal of Clinical Medicine} \estudo{E01}, \textit{JMIR Research Protocols} \estudo{E11} e \textit{Malahayati International Journal of Nursing and Health Science} \estudo{E10}. No domínio da computação aplicada e bioinformática médica, destacam-se \textit{PLOS Computational Biology} \estudo{E02}, \textit{Engineering Applications of Artificial Intelligence} \estudo{E23}, \textit{BMC Artificial Intelligence} \estudo{E16}, \textit{Informatics in Medicine Unlocked} \estudo{E07}, \textit{SN Computer Science} \estudo{E06,E18,E25} e \textit{The International Journal of Lower Extremity Wounds} \estudo{E22}.
 
-	\item \textbf{Anais de Conferências Internacionais (\textit{Conference Proceedings}):} Correspondem aos 5 estudos restantes (20,0\% da seleção), congregando trabalhos focados no desenvolvimento experimental rápido de novos modelos, segmentação de imagem e soluções de \textit{hardware} embarcado para a atenção periférica. Destacam-se eventos chancelados pelo IEEE: \textit{IEEE International Conference on Image Processing} (ICIP) \estudo{E21}, \textit{IEEE India Council International Conference} (INDICON) \estudo{E24}, \textit{IEEE International Conference on Computing, Communication and Networking Technologies} (ICCCNT) \estudo{E19}, \textit{IEEE International Conference on Emerging Trends in Computing and Communication} (ETCOM) \estudo{E12} e a \textit{International Conference on Sustainable Computing and Data Communication Systems} (ICSCDS) \estudo{E14}.
+	\item \textbf{Anais de Conferências Internacionais (\textit{Conference Proceedings}):} Correspondem a 5 estudos (19,2\% da seleção), congregando trabalhos focados no desenvolvimento experimental rápido de novos modelos, segmentação de imagem e soluções de \textit{hardware} embarcado para a atenção periférica. Destacam-se eventos chancelados pelo IEEE: \textit{IEEE International Conference on Image Processing} (ICIP) \estudo{E21}, \textit{IEEE India Council International Conference} (INDICON) \estudo{E24}, \textit{IEEE International Conference on Computing, Communication and Networking Technologies} (ICCCNT) \estudo{E19}, \textit{IEEE International Conference on Emerging Trends in Computing and Communication} (ETCOM) \estudo{E12} e a \textit{International Conference on Sustainable Computing and Data Communication Systems} (ICSCDS) \estudo{E14}.
+
+	\item \textbf{Capítulo de Livro:} Corresponde a 1 estudo (3,8\% da seleção), \estudo{E26}, publicado em 2024 como capítulo do livro \textit{Biomedical Imaging: Principles and Advancements}, da editora CRC Press. Não é artigo de periódico nem de conferência: é capítulo de uma obra organizada, e apresenta o desenvolvimento e a avaliação de um sistema de apoio ao diagnóstico por imagem de hanseníase e câncer de pele.
 \end{itemize}
 
-Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 2021 (conferência), 2 em 2022 (revistas), 3 em 2023 (2 revistas e 1 conferência), 7 em 2024 (5 revistas e 2 conferências), 6 em 2025 (5 revistas e 1 conferência) e 6 em 2026 (todos em revistas). Entre 2021 e 2023, 4 dos 6 estudos foram publicados em revistas e 2 em anais de conferências; entre 2024 e 2026, 16 dos 19 em revistas e 3 em anais. A Figura~\ref{fig:veiculos-evolucao} apresenta essas contagens, com o ano impresso no PDF de cada artigo.
+Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 2021 (conferência), 2 em 2022 (revistas), 3 em 2023 (2 revistas e 1 conferência), 8 em 2024 (5 revistas, 2 conferências e 1 capítulo de livro), 6 em 2025 (5 revistas e 1 conferência) e 6 em 2026 (todos em revistas). Entre 2021 e 2023, 4 dos 6 estudos foram publicados em revistas e 2 em anais de conferências; entre 2024 e 2026, 16 dos 20 em revistas, 3 em anais e 1 em capítulo de livro. A Figura~\ref{fig:veiculos-evolucao} apresenta essas contagens, com o ano impresso no PDF de cada artigo.
 
 \begin{figure}[htbp]
 	\centering
-	\caption{Evolução temporal e distribuição dos 25 estudos por tipo de veículo de publicação (2021--2026)}
+	\caption{Evolução temporal e distribuição dos 26 estudos por tipo de veículo de publicação (2021--2026)}
 	\label{fig:veiculos-evolucao}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -1323,7 +1346,7 @@ Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 20
 				xtick=data,
 				nodes near coords,
 				every node near coord/.append style={font=\scriptsize},
-				bar width=9pt,
+				bar width=8pt,
 				enlarge x limits=0.14,
 				ymajorgrids=true,
 				grid style=dashed,
@@ -1345,7 +1368,15 @@ Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 20
 					(2025, 1)
 					(2026, 0)
 				};
-			\legend{Artigos de Periódico (80\%), Anais de Conferência (20\%)}
+			\addplot[fill=green!55!black, draw=black] coordinates {
+					(2021, 0)
+					(2022, 0)
+					(2023, 0)
+					(2024, 1)
+					(2025, 0)
+					(2026, 0)
+				};
+			\legend{{Artigos de Periódico (76,9\%)}, {Anais de Conferência (19,2\%)}, {Capítulo de livro (3,8\%)}}
 		\end{axis}
 	\end{tikzpicture}
 	\fonte{Autores.}
