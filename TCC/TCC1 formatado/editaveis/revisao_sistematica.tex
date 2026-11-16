@@ -41,7 +41,7 @@ investigação foi detalhada nas seguintes questões secundárias:
 	\item Como o desempenho varia entre diferentes grupos ou tons de pele?
 	\item Quais modelos e abordagens de inteligência artificial são utilizados para identificar as manifestações dermatológicas associadas à doença?
 	\item Como a capacidade de generalização é avaliada, especialmente em conjuntos diferentes dos usados no treinamento?
-	\item Em que tipo de veículo o estudo foi publicado, como periódico, conferência ou dissertação de mestrado?
+	\item Em que tipo de veículo o estudo foi publicado, como periódico, conferência ou capítulo de livro?
 \end{enumerate}
 
 \subsection{Integração entre protocolo, ferramentas e pesquisadores}
@@ -636,7 +636,7 @@ Cada estudo incluído recebeu um identificador (E01 a E26). Nas tabelas, nos gr�
 	\hypertarget{estudo:E23}{}E23 & \citeonline{eita2025}              & A trustworthy and explainable deep learning framework for skin lesion detection in smart dermatology                                                                                                                & Engineering Applications of Artificial Intelligence                                                & Revista       & A            & \href{https://doi.org/10.1016/j.engappai.2025.111594}{\nolinkurl{10.1016/j.engappai.2025.111594}}       \\
 	\hypertarget{estudo:E24}{}E24 & \citeonline{jaikishore2021}        & AI Driven Edge Device for Screening Skin Lesion and Its Severity in Peripheral Communities                                                                                                                          & 2021 IEEE 18th India Council International Conference (INDICON)                                    & Conferência   & A            & \href{https://doi.org/10.1109/INDICON52576.2021.9691666}{\nolinkurl{10.1109/INDICON52576.2021.9691666}} \\
 	\hypertarget{estudo:E25}{}E25 & \citeonline{banerjee2023}          & Skin Diseases Detection Using LBP and WLD: An Ensembling Approach                                                                                                                                                   & SN Computer Science                                                                                & Revista       & A            & \href{https://doi.org/10.1007/s42979-023-02395-8}{\nolinkurl{10.1007/s42979-023-02395-8}}               \\
-	\hypertarget{estudo:E26}{}E26 & \citeonline{lima2023sistema} & Sistema inteligente para apoio ao diagnóstico de câncer de pele e hanseníase usando análise digital de imagens e redes neurais artificiais profundas & Dissertação de mestrado, Programa de Pós-Graduação em Engenharia Biomédica, Centro de Tecnologia e Geociências, Universidade Federal de Pernambuco (Recife) & Dissertação de mestrado & A & não informado na fonte \\
+	\hypertarget{estudo:E26}{}E26 & \citeonline{lima2024skin} & Skin Cancer and Hansen's Disease Diagnosis & \textit{Biomedical Imaging: Principles and Advancements} (CRC Press) & Capítulo de livro & A & não informado na fonte \\
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -670,7 +670,7 @@ Um estudo exploratório aplica descritores manuais de textura, como \textit{Loca
 (LBP) e \textit{Weber Local Descriptor} (WLD), fusionados a um classificador SVM multinível
 \cite{banerjee2023}, e a revisão de \citeonline{ahikpa2025} relata, entre os estudos que revisa, o uso de SVM e de
 \textit{Random Forest}. Entre os modelos de aprendizado profundo, destacam-se redes convolucionais como ResNet-50
-\cite{yotsu2023,barbieri2022,lima2023sistema}, VGG-16 \cite{yotsu2023,gawali2024}, MobileNetV2 \cite{jaikishore2021} e Inception \cite{barbieri2022,lima2023sistema}. Uma configuração em duas etapas combina redes convolucionais pré-treinadas, usadas apenas como extratoras de atributos (LeNet, SqueezeNet, NASNetMobile, ResNet50 e Inception v3), com um classificador \textit{Random Forest} sobre os atributos extraídos, após balanceamento das classes pela técnica SMOTE \cite{lima2023sistema}. Observa-se também a adoção
+\cite{yotsu2023,barbieri2022}, VGG-16 \cite{yotsu2023,gawali2024}, MobileNetV2 \cite{jaikishore2021} e Inception \cite{barbieri2022,lima2024skin}. Uma configuração combina a rede convolucional pré-treinada Inception V3, usada apenas como extratora de 2.048 atributos, com um classificador \textit{Random Forest} sobre os atributos extraídos, após balanceamento das classes pela técnica SMOTE \cite{lima2024skin}. Observa-se também a adoção
 de sistemas em cascata de dois estágios para diferenciação hierárquica entre dermatoses
 tropicais negligenciadas \cite{deps2026,pons2026} e a conversão de um modelo leve (MobileNetV2) para TensorFlow Lite, executado
 em aplicativo Android em dispositivo periférico (\textit{edge computing}) \cite{jaikishore2021}.
@@ -724,7 +724,7 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 	\estudo{E23} Fredrick e HAM10000              & Roboflow                                                   & 1.101 imagens na primeira base; tamanho da amostra testada na segunda não localizado.     \\
 	\estudo{E24} Coleção da web                   & DermNet NZ e outras fontes abertas                         & 1.524 imagens; artigo apresenta divergência na distribuição por classe.                   \\
 	\estudo{E25} JUCMATER: Skindb.v1              & School of Tropical Medicine, Calcutá, Índia                & 876 imagens de 141 pacientes.                                                             \\
-	\estudo{E26} Atlas Dermatológico               & Atlas público; coleta não detalhada                        & 1.916 imagens (684 de hanseníase); pacientes não informados.                              \\
+	\estudo{E26} Atlas Dermatológico               & Atlas público; coleta não detalhada                        & 11.606 imagens no atlas; quantidade usada e pacientes não informados.                     \\
 \end{longtable}
 \endgroup
 \fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
@@ -759,13 +759,13 @@ pré-treinado \estudo{E04}, e não entram nessas contagens. Dos 16 estudos, 14 u
 \textit{hold-out} (por imagem, por paciente ou herdada do conjunto de dados), um divide as imagens por
 classes disjuntas \estudo{E17} e um não descreve a divisão \estudo{E07}. A validação cruzada
 $k$-fold com $k$ declarado aparece em dois dos 16 \estudo{E13,E26}. Em \citeonline{barbieri2022}, combinaram-se \textit{hold-out}
-por paciente e 5-\textit{fold} nos pacientes de desenvolvimento; em \citeonline{lima2023sistema}, 80\% das imagens entram em validação cruzada de 10 dobras repetida 30 vezes e 20\% formam o teste final. Dois dos 14 \textit{hold-out} citam também
+por paciente e 5-\textit{fold} nos pacientes de desenvolvimento; em \citeonline{lima2024skin}, a base é dividida em 80\% para treino e validação e 20\% para teste, e o conjunto de 80\% passa por validação cruzada de 10 dobras repetida 30 vezes. Dois dos 14 \textit{hold-out} citam também
 validação cruzada interna, sem declarar $k$.
 
 Quanto à unidade de particionamento, apenas 2 dos 16 estudos declaram a separação por paciente
 \estudo{E05,E13}; os outros 14 não informam, e nenhum deles declara não a ter adotado, de modo que
-a falta de informação não equivale à ausência de separação. Em oito dos 14 a divisão descrita é feita sobre
-imagens (sete estudos) ou microfotografias (um) \estudo{E08,E14,E15,E19,E23,E24,E25,E26};
+a falta de informação não equivale à ausência de separação. Em sete dos 14 a divisão descrita é feita sobre
+imagens (seis estudos) ou microfotografias (um) \estudo{E08,E14,E15,E19,E23,E24,E25};
 nos estudos \estudo{E25,E15}, a unidade é inferida porque os artigos descrevem apenas a proporção da divisão \cite{banerjee2023,pons2026}.
 
 Quando múltiplas fotografias de um mesmo paciente são distribuídas aleatoriamente entre os
@@ -804,7 +804,7 @@ otimistas. Esse risco não pode ser descartado nos 14 estudos que não informam 
 	\estudo{E22}    & Não informada               & Mesmo \textit{hold-out} 485/122/157; sem $k$-fold; métricas de teste reportadas embora o subconjunto de teste seja citado como não anotado                                                       & Não informada                                                                                                                \\
 	\estudo{E23}    & Imagem aumentada            & \textit{Hold-out} 85/10/5 sobre o conjunto já ampliado; teste também em outra base                                                                                                               & Não informada                                                                                                                \\
 	\estudo{E24}    & Imagem                      & \textit{Hold-out} 80/20 (1.220/304 imagens); aplicação de aumento de dados no teste não informada                                                                                                & Não informada                                                                                                                \\
-	\estudo{E26}    & Imagem                      & \textit{Hold-out} 80/20 (20\% reservados para o teste final); validação cruzada de 10 dobras repetida 30 vezes nos 80\%; sem teste externo; na etapa de escolha da rede, validação cruzada em todas as imagens, sem teste final & Não informada \\
+	\estudo{E26}    & Não informada               & \textit{Hold-out} 80/20 (20\% para o teste final); SMOTE aplicado só ao conjunto de treino e validação; validação cruzada de 10 dobras repetida 30 vezes; sem teste externo & Não informada \\
 \end{longtable}
 \fonte{Elaboração própria a partir dos artigos incluídos (denominador 16). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 16 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
 
@@ -854,7 +854,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E17}    & Classificação (\textit{few-shot})      & Acurácia episódica; sensibilidade e especificidade (um contra todos)                                                                                                             \\
 	\estudo{E25}    & Classificação                          & Apenas acurácia                                                                                                                                                                  \\
 	\estudo{E24}    & Classificação                          & Acurácia, precisão, \textit{recall}, F1 e perda; sem especificidade. O tamanho do modelo (cerca de 14 MB) é reportado; latência de inferência e uso de memória não foram medidos \\
-	\estudo{E26}    & Classificação                          & Acurácia, sensibilidade, especificidade, AUC e índice kappa (média e desvio padrão em 30 repetições de 10 dobras); tempos de treinamento e de teste; matrizes de confusão \\
+	\estudo{E26}    & Classificação                          & Acurácia, especificidade, sensibilidade, AUC e índice kappa (média e desvio padrão em 30 repetições de 10 dobras); tempos de treinamento e de teste; matriz de confusão \\
 	\estudo{E23}    & Detecção                               & Precisão, \textit{recall}, F1, mAP@50 e mAP@50-95; sem acurácia, AUC, ECE nem Brier                                                                                              \\
 	\estudo{E21}    & Segmentação                            & mIoU, F1, acurácia de pixel, precisão e \textit{recall}                                                                                                                          \\
 	\estudo{E22}    & Segmentação                            & Precisão, \textit{recall}, F1, IoU e acurácia                                                                                                                                    \\
@@ -889,7 +889,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E17}                     & 2-\textit{way} 1-\textit{shot}: acurácia 73,13\% (resumo: 73,12\%; texto: 73,0\%); sensibilidade/especificidade 72,39/73,66 (2-\textit{way}) e 69,33/77,65 (3-\textit{way})                                                                                                                                                                      & Hanseníase $\times$ demais & Proporção treino/teste                                                                                    \\
 	\estudo{E25}                     & Acurácia 91,3793\% (cogriWeberLBP e Multi-SVM); melhor CNN: 89 (ResNet101)                                                                                                                                                                                                                                                                       & Global, 4 classes          & Sensibilidade e especificidade                                                                            \\
 	\estudo{E24}                     & SkinLesion Net: acurácia de teste 94,32\% (4 classes). Os 91\% são da SeverityNet, que não inclui hanseníase                                                                                                                                                                                                                                     & Global                     & Especificidade                                                                                            \\
-	\estudo{E26}                     & Inception v3 e Random Forest com 100 árvores, validação cruzada: acurácia de 0,9290 (hanseníase e câncer de pele em 2 classes), 0,9533 (7 classes), 0,9135 (4 tipos de hanseníase) e 0,8377 (8 classes com diagnóstico diferencial); sensibilidade de 0,9249 a 0,9897 conforme o cenário. O teste final com 20\% das imagens é apresentado só em matrizes de confusão \\
+	\estudo{E26}                     & Inception v3 e Random Forest, sete classes (quatro tipos de hanseníase e três de câncer de pele), validação cruzada: com 100 árvores, acurácia 0,9533, sensibilidade 0,9818, especificidade 0,9936, AUC 0,9991 e kappa 0,9455; com 500 árvores, acurácia 0,9668. O teste final é apresentado só em matriz de confusão \\
 	\estudo{E04} (validação externa) & Sensibilidade Top-5 84,9\% (359/423); 87,2\% nas lesões clássicas e 69,6\% nas reacionais ou atípicas. Top-1: 46,9\% (clássicas) e 30,4\% (reacionais ou atípicas), por subconjunto; o artigo não traz Top-1 global                                                                                                                              & Só hanseníase              & Especificidade, VPP, VPN e acurácia não calculáveis (só casos confirmados)                                \\
 \end{longtable}
 \fonte{Elaboração própria a partir dos artigos incluídos.}
@@ -1197,7 +1197,6 @@ A Tabela~\ref{tab:modelos-resumo} apresenta os itens com pelo menos três ocorr�
 		U-Net, incluindo adaptação        & 3/17                    & \estudo{E06,E21,E22}     \\
 		ANN, arquitetura não especificada & 3/17                    & \estudo{E06,E07,E08}     \\
 		Inception V3                      & 3/17                    & \estudo{E17,E24,E26}     \\
-		ResNet-50                         & 3/17                    & \estudo{E05,E13,E26}     \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Autores, a partir dos estudos incluídos.}
@@ -1212,7 +1211,7 @@ A Figura~\ref{fig:ocorrencias-modelos} compara a quantidade de estudos para os m
 	\begin{tikzpicture}[x=1.0cm,y=0.65cm]
 		\draw[->] (0,0) -- (5.8,0) node[right,font=\footnotesize] {Estudos};
 		\foreach \x in {0,1,2,3,4,5} {\draw (\x,0.1) -- (\x,-0.1) node[below,font=\footnotesize] {\x};}
-		\foreach \y/\n/\rotulo in {8/5/Random Forest,7/4/SVM e Multi-SVM,6/3/ResNet-101,5/3/VGG-16,4/3/U-Net incluindo adaptação,3/3/ANN não especificada,2/3/Inception V3,1/3/ResNet-50} {
+		\foreach \y/\n/\rotulo in {7/5/Random Forest,6/4/SVM e Multi-SVM,5/3/ResNet-101,4/3/VGG-16,3/3/U-Net incluindo adaptação,2/3/ANN não especificada,1/3/Inception V3} {
 				\fill[teal!70!black] (0,\y-0.25) rectangle (\n,\y+0.25);
 				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
 				\node[right,font=\footnotesize] at (\n,\y) {\n};}
@@ -1220,7 +1219,7 @@ A Figura~\ref{fig:ocorrencias-modelos} compara a quantidade de estudos para os m
 	\fonte{Autores, a partir dos 17 estudos com avaliação de modelos; categorias não exclusivas.}
 \end{figure}
 
-Entre os classificadores tradicionais, \citeonline{nyatte2022} utilizaram SVM otimizada, \citeonline{banerjee2023} empregaram Multi-SVM com descritores de textura, \citeonline{vargasclavijo2025} avaliaram, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas e \citeonline{lima2023sistema} treinou Random Forest, com 50 a 500 árvores, sobre atributos extraídos por redes profundas pré-treinadas, sem ajuste fino das redes. O XGBoost aparece entre os comparadores de \citeonline{barbieri2022} e no classificador do sistema de \citeonline{mehta2026}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \citeonline{nyatte2022} e a SVM citada na conclusão de \citeonline{gawali2024}.
+Entre os classificadores tradicionais, \citeonline{nyatte2022} utilizaram SVM otimizada, \citeonline{banerjee2023} empregaram Multi-SVM com descritores de textura, \citeonline{vargasclavijo2025} avaliaram, entre outros, SVM, Random Forest e regressão logística em imagens histopatológicas e \citeonline{lima2024skin} treinaram Random Forest, com 100 a 500 árvores, sobre 2.048 atributos extraídos pela rede Inception V3 pré-treinada. O XGBoost aparece entre os comparadores de \citeonline{barbieri2022} e no classificador do sistema de \citeonline{mehta2026}. Duas atribuições permaneceram inconclusivas e ficaram fora da contagem: a árvore de decisão citada no texto de \citeonline{nyatte2022} e a SVM citada na conclusão de \citeonline{gawali2024}.
 
 Em \citeonline{barbieri2022}, as configurações multimodais testadas combinaram a saída do modelo de imagens com a saída do modelo de características clínicas da lesão, dados do paciente ou ambos. A regressão logística elastic-net selecionada para o modelo final usa a saída do modelo de características clínicas da lesão e dados do paciente. Em \citeonline{beesetty2023}, o protocolo de aquisição incluiu câmera, polarização e smartphone. O agrupamento de Ward formou subclasses para o experimento, e a rede siamesa operou sobre pares de imagens. A fusão dos modos de captura na entrada da rede fica indeterminada.
 
@@ -1298,17 +1297,17 @@ A Figura~\ref{fig:tipos-validacao} ilustra a distribuição dos 26 estudos inclu
 
 \subsection{Em quais veículos os estudos são publicados?}
 
-A distribuição dos 26 estudos incluídos quanto ao veículo de disseminação científica evidencia uma clara preponderância de periódicos indexados de alto fator de impacto sobre anais de congressos e sobre uma dissertação de mestrado, além de demonstrar um notável caráter interdisciplinar entre as ciências da computação, a dermatologia e a saúde pública global:
+A distribuição dos 26 estudos incluídos quanto ao veículo de disseminação científica evidencia uma clara preponderância de periódicos indexados de alto fator de impacto sobre anais de congressos e sobre um capítulo de livro, além de demonstrar um notável caráter interdisciplinar entre as ciências da computação, a dermatologia e a saúde pública global:
 
 \begin{itemize}
 	\item \textbf{Periódicos Científicos (\textit{Journals}):} Totalizam 20 dos 26 estudos selecionados (76,9\% do corpo amostral). Essa concentração reflete o amadurecimento científico da temática e a necessidade de validação metodológica rigorosa por pares. Entre os periódicos da área médica, dermatológica e de saúde pública internacional, incluem-se veículos de prestígio como \textit{The Lancet Regional Health -- Americas} \estudo{E13}, \textit{PLOS Neglected Tropical Diseases} \estudo{E05}, \textit{Revista Panamericana de Salud Pública} \estudo{E04}, \textit{Journal of Investigative Dermatology} \estudo{E15}, \textit{International Health} \estudo{E20}, \textit{Frontiers in Medicine} \estudo{E03}, \textit{The American Journal of Dermatopathology} \estudo{E08}, \textit{Indian Journal of Leprosy} \estudo{E17}, \textit{Portuguese Journal of Dermatology and Venereology} \estudo{E09}, \textit{Journal of Clinical Medicine} \estudo{E01}, \textit{JMIR Research Protocols} \estudo{E11} e \textit{Malahayati International Journal of Nursing and Health Science} \estudo{E10}. No domínio da computação aplicada e bioinformática médica, destacam-se \textit{PLOS Computational Biology} \estudo{E02}, \textit{Engineering Applications of Artificial Intelligence} \estudo{E23}, \textit{BMC Artificial Intelligence} \estudo{E16}, \textit{Informatics in Medicine Unlocked} \estudo{E07}, \textit{SN Computer Science} \estudo{E06,E18,E25} e \textit{The International Journal of Lower Extremity Wounds} \estudo{E22}.
 
 	\item \textbf{Anais de Conferências Internacionais (\textit{Conference Proceedings}):} Correspondem a 5 estudos (19,2\% da seleção), congregando trabalhos focados no desenvolvimento experimental rápido de novos modelos, segmentação de imagem e soluções de \textit{hardware} embarcado para a atenção periférica. Destacam-se eventos chancelados pelo IEEE: \textit{IEEE International Conference on Image Processing} (ICIP) \estudo{E21}, \textit{IEEE India Council International Conference} (INDICON) \estudo{E24}, \textit{IEEE International Conference on Computing, Communication and Networking Technologies} (ICCCNT) \estudo{E19}, \textit{IEEE International Conference on Emerging Trends in Computing and Communication} (ETCOM) \estudo{E12} e a \textit{International Conference on Sustainable Computing and Data Communication Systems} (ICSCDS) \estudo{E14}.
 
-	\item \textbf{Dissertação de Mestrado:} Corresponde a 1 estudo (3,8\% da seleção), \estudo{E26}, defendido em 30/03/2023 no Programa de Pós-Graduação em Engenharia Biomédica do Centro de Tecnologia e Geociências da Universidade Federal de Pernambuco (Recife). Não é artigo de periódico nem de conferência: trata-se de trabalho acadêmico de pós-graduação, avaliado por banca examinadora e disponibilizado em repositório institucional, e não por revisão por pares de um veículo de publicação. Desenvolve e avalia um sistema de apoio ao diagnóstico por imagem de hanseníase e câncer de pele.
+	\item \textbf{Capítulo de Livro:} Corresponde a 1 estudo (3,8\% da seleção), \estudo{E26}, publicado em 2024 como capítulo do livro \textit{Biomedical Imaging: Principles and Advancements}, da editora CRC Press. Não é artigo de periódico nem de conferência: é capítulo de uma obra organizada, e apresenta o desenvolvimento e a avaliação de um sistema de apoio ao diagnóstico por imagem de hanseníase e câncer de pele.
 \end{itemize}
 
-Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 2021 (conferência), 2 em 2022 (revistas), 4 em 2023 (2 revistas, 1 conferência e 1 dissertação), 7 em 2024 (5 revistas e 2 conferências), 6 em 2025 (5 revistas e 1 conferência) e 6 em 2026 (todos em revistas). Entre 2021 e 2023, 4 dos 7 estudos foram publicados em revistas, 2 em anais de conferências e 1 em dissertação de mestrado; entre 2024 e 2026, 16 dos 19 em revistas e 3 em anais. A Figura~\ref{fig:veiculos-evolucao} apresenta essas contagens, com o ano impresso no PDF de cada artigo.
+Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 2021 (conferência), 2 em 2022 (revistas), 3 em 2023 (2 revistas e 1 conferência), 8 em 2024 (5 revistas, 2 conferências e 1 capítulo de livro), 6 em 2025 (5 revistas e 1 conferência) e 6 em 2026 (todos em revistas). Entre 2021 e 2023, 4 dos 6 estudos foram publicados em revistas e 2 em anais de conferências; entre 2024 e 2026, 16 dos 20 em revistas, 3 em anais e 1 em capítulo de livro. A Figura~\ref{fig:veiculos-evolucao} apresenta essas contagens, com o ano impresso no PDF de cada artigo.
 
 \begin{figure}[htbp]
 	\centering
@@ -1351,12 +1350,12 @@ Por ano de publicação (Tabela~\ref{tab:estudos-incluidos}), há 1 estudo em 20
 			\addplot[fill=green!55!black, draw=black] coordinates {
 					(2021, 0)
 					(2022, 0)
-					(2023, 1)
-					(2024, 0)
+					(2023, 0)
+					(2024, 1)
 					(2025, 0)
 					(2026, 0)
 				};
-			\legend{{Artigos de Periódico (76,9\%)}, {Anais de Conferência (19,2\%)}, {Dissertação de mestrado (3,8\%)}}
+			\legend{{Artigos de Periódico (76,9\%)}, {Anais de Conferência (19,2\%)}, {Capítulo de livro (3,8\%)}}
 		\end{axis}
 	\end{tikzpicture}
 	\fonte{Autores.}
