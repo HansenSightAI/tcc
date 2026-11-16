@@ -62,12 +62,24 @@ Anthropic. O Consensus foi usado na busca inicial e o Claude, no levantamento
 complementar de referências. Reuniu-se as listas obtidas e removeu-se as
 duplicatas antes da triagem.
 
+O uso dessas duas ferramentas decorreu de uma limitação da própria busca.
+Mesmo após diversos ajustes, a \textit{string} de busca continuou
+retornando um grande número de artigos: sua execução na base Scopus
+(Subseção~\ref{subsec:picoc-string-busca}) retornou 10.818 artigos, mesmo após a aplicação dos filtros. Ao mesmo tempo, há poucos trabalhos
+sobre modelos de inteligência artificial aplicados à hanseníase, o que
+dificulta separar os estudos pertinentes dos demais apenas pela
+formulação booleana. Por isso, a busca assistida do Consensus e a busca complementar
+do Claude foram adotadas para ampliar a recuperação de estudos pertinentes.
+
 Na triagem, utilizou-se o Jev Reviewer (versão \texttt{jev-1.13.0}),
 ferramenta de apoio a revisões de literatura, para avaliar preliminarmente os títulos e resumos com base em
 critérios de seleção. Para cada registro, a ferramenta sugeriu inclusão,
-exclusão ou classificação incerta. Os pesquisadores usaram essas sugestões
-como apoio para decidir quais registros seguiriam para leitura integral
-e registraram as decisões no Evidentia Review. A
+exclusão ou classificação incerta. As sugestões do Jev Reviewer aceleraram a triagem
+no que diz respeito às exclusões, pois permitiram descartar com mais rapidez os
+registros claramente fora dos critérios, mas não no que diz respeito às
+inclusões, que exigiram a verificação dos pesquisadores. Os pesquisadores
+decidiram quais registros seguiriam para leitura integral e registraram as
+decisões no Evidentia Review. A
 Tabela~\ref{tab:papel-ferramentas} resume as responsabilidades em cada etapa,
 e a Figura~\ref{fig:fluxo-metodologico-ia} mostra a sequência da revisão.
 
@@ -159,6 +171,16 @@ A partir do mapeamento dos componentes, a string de busca foi estruturada aplica
 		\end{minipage}
 	}
 \end{center}
+
+Na execução da \textit{string} na base Scopus, foram aplicados filtros para restringir os resultados às áreas e aos tipos de publicação mais pertinentes ao tema:
+\begin{itemize}
+	\item \textbf{Ano de publicação}: de 2020 a 2027;
+	\item \textbf{Área do conhecimento} (\textit{Subject area}): \textit{Computer Science} e \textit{Engineering};
+	\item \textbf{Idioma}: inglês e português;
+	\item \textbf{Tipo de fonte} (\textit{Source type}): periódicos (\textit{Journal}) e anais de conferência (\textit{Conference proceeding}).
+\end{itemize}
+
+O filtro de ano justifica-se por três motivos. O primeiro é que as técnicas de visão computacional e de aprendizado profundo empregadas hoje na análise de imagens médicas são tecnologias recentes, de modo que estudos mais antigos tendem a empregar abordagens superadas. O segundo é que o \textit{Vision Transformer} (ViT), um dos termos da \textit{string} de busca, foi introduzido oficialmente em 22 de outubro de 2020, com a publicação, no \textit{arXiv}, do artigo \textit{An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale}, de Alexey Dosovitskiy e colaboradores do Google Research \cite{dosovitskiy2020}, de modo que o ano de 2020 marca a chegada dessa arquitetura à classificação de imagens. O terceiro é que a revisão busca o estado da arte, o que exige priorizar os estudos mais recentes. Com a \textit{string} e os filtros acima, a base Scopus retornou 10.818 artigos. Esse recorte corresponde ao critério de exclusão CE02 (publicação anterior a 2020), descrito na Subseção~\ref{subsec:criterios-selecao}. O filtro de idioma segue o critério CE03, que admite textos completos em inglês ou português.
 
 \subsection{Prompt estruturado submetido à plataforma Consensus}
 \label{subsec:prompt-consensus}
@@ -386,6 +408,7 @@ indicadores internos apresentados pelo Consensus não foram tratados
 como quantidades auditadas de estudos únicos examinados pelos pesquisadores.
 
 \subsection{Critérios de seleção}
+\label{subsec:criterios-selecao}
 
 Os critérios de inclusão foram: disponibilidade do texto completo (CI01);
 uso de visão computacional, aprendizado de máquina ou aprendizado profundo
