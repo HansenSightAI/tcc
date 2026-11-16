@@ -478,9 +478,9 @@ intermediário no Evidentia, tinha sugestão de exclusão pelo Jev Reviwer. Assi
 as sugestões automáticas são distintas das decisões de triagem. Os cinco
 critérios exibidos acima estão registrados nas avaliações disponíveis.
 
-Os estados intermediários da triagem registram, em uma etapa, 12 inclusões,
+Os estados intermediários da triagem registram, em uma etapa, 13 inclusões,
 32 exclusões, 15 decisões intermediárias e 59 registros sem decisão. Em
-outro estado foram observadas 19 inclusões, 40 exclusões e os mesmos 59
+outro estado foram observadas 20 inclusões, 40 exclusões e os mesmos 59
 registros sem decisão; as 15 decisões intermediárias passaram a sete
 inclusões e oito exclusões. As datas das decisões preenchidas indicam
 28 de setembro de 2026, mas não registram horário de cada decisão. Esses
@@ -496,7 +496,7 @@ registrada manualmente como intermediária. Em outro registro,
 \textit{Leprosy lesion recognition using convolutional neural networks} (registro~\estudo{90}, \citeonline{baweja2016}),
 houve uma decisão individual de inclusão e uma de exclusão; o conflito
 foi resolvido manualmente com decisão consolidada de exclusão. Os demais
-116 registros possuem decisão consolidada automática, segundo o campo
+117 registros possuem decisão consolidada automática, segundo o campo
 correspondente no Evidentia. Essa classificação descreve o mecanismo de
 consolidação registrado pelo sistema e não identifica uma revisão
 independente por ambos os pesquisadores para cada artigo.
@@ -998,7 +998,7 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 		\begin{axis}[
 				xbar,
 				width=0.64\textwidth,
-				height=8.2cm,
+				height=9cm,
 				xmin=0, xmax=118,
 				xlabel={Desempenho (\%)},
 				symbolic y coords={
@@ -1008,7 +1008,8 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 						{E05 [Multiclasse]},
 						{E13 [Teste, 40 pac.]},
 						{E13 [Só imagem, VC]},
-						{E14 [Interno]}
+						{E14 [Interno]},
+						{E26 [Interno, VC]}
 					},
 				ytick={
 						{E04 [Externa, Top-1 reacionais]},
@@ -1017,7 +1018,8 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 						{E05 [Multiclasse]},
 						{E13 [Teste, 40 pac.]},
 						{E13 [Só imagem, VC]},
-						{E14 [Interno]}
+						{E14 [Interno]},
+						{E26 [Interno, VC]}
 					},
 				yticklabel style={font=\footnotesize},
 				nodes near coords={\pgfmathprintnumber\pgfplotspointmeta\%},
@@ -1030,6 +1032,7 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 				legend style={at={(0.5, 1.04)}, anchor=south, legend columns=1, font=\footnotesize, draw=none}
 			]
 			\addplot[fill=blue!65!black, draw=black] coordinates {
+					(95.33,{E26 [Interno, VC]})
 					(98.0,{E14 [Interno]})
 					(66.6,{E13 [Só imagem, VC]})
 					(90.0,{E13 [Teste, 40 pac.]})
@@ -1045,7 +1048,7 @@ Os valores não são comparáveis entre estudos, pois bases, tarefas e procedime
 			\legend{Acurácia (ou Top-1) reportada, Sensibilidade ou acerto da classe hanseníase}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, com os valores literais dos artigos (Tabela~\ref{tab:resultados-classificacao}). Barra ausente indica valor não reportado ou não verificado. \estudo{E05}: maior Top-1 (faixa de 76,61 a 84,63\%) e maior acerto da classe hanseníase (faixa de 12,0 a 13,0\%). \estudo{E04}: Top-1 por subconjunto, sem valor global. \estudo{E19} não aparece por não reportar acurácia de teste. VC: validação cruzada.}
+	\fonte{Autores, com os valores literais dos artigos (Tabela~\ref{tab:resultados-classificacao}). Barra ausente indica valor não reportado ou não verificado. \estudo{E05}: maior Top-1 (faixa de 76,61 a 84,63\%) e maior acerto da classe hanseníase (faixa de 12,0 a 13,0\%). \estudo{E04}: Top-1 por subconjunto, sem valor global. \estudo{E19} não aparece por não reportar acurácia de teste. \estudo{E26}: acurácia da validação cruzada com 100 árvores; a sensibilidade reportada (98,18\%) é global e não específica da hanseníase, por isso não consta. VC: validação cruzada.}
 \end{figure}
 
 \subsection{Como o desempenho varia entre grupos ou tons de pele?}
