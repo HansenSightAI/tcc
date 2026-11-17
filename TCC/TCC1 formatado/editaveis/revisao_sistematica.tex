@@ -531,7 +531,7 @@ de cada exclusão.
 		wide/.style={box,text width=7.8cm},
 		arrow/.style={-{Stealth[length=2.3mm]},thick}
 		]
-		\node[wide] (identified) {Registros informados: 130\\(Consensus: 100; Claude: 30)};
+		\node[wide] (identified) {Registros retornados: 130\\(Consensus: 100; Claude: 30)};
 		\node[wide,below=1.3cm of identified] (screened) {Registros após deduplicação: 119\\para triagem por título e resumo};
 		\draw[arrow] (identified) -- node[right=3mm,align=left,font=\scriptsize,text width=4.2cm] {11 registros removidos\\(duplicatas / pré-triagem)} (screened);
 
