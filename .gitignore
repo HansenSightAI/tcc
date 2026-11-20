@@ -52,3 +52,5 @@ TCC/TCC1 formatado/evidencias-issue-13
 
 # Compilacao isolada do TCC
 /TCC/TCC1 formatado/.build/
+
+outputs
