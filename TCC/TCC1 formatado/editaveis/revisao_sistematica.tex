@@ -473,45 +473,7 @@ revisões, uma perspectiva \estudo{E03} e um editorial \estudo{E20}
 \subsection{Técnicas de visão computacional (RQ1)}
 \label{subsec:rq1-tecnicas}
 
-As técnicas empregadas se organizam em quatro etapas: pré-processamento,
-delimitação da região de interesse, extração de atributos e
-classificação, e explicabilidade. No pré-processamento, predominam
-operações que atenuam a variação de captura: redimensionamento, em geral
-para $224 \times 224$ pixels, compatível com redes pré-treinadas no
-ImageNet \cite{pons2026}; equalização de contraste; filtragem de ruído;
-conversão para escala de cinza com limiarização de Otsu
-\cite{nyatte2022}; recorte manual da lesão e anonimização por mascaramento
-\cite{deps2026,banerjee2023}.
-
-Na segmentação de feridas crônicas, que delimita a ferida em relação ao
-fundo, \citeonline{sanchez2024} avaliaram DeepLabV3, DeepLabV3+, U-Net e
-FPN, e \citeonline{mehta2026}, uma U-Net modificada. Em sistemas de
-classificação, a região de interesse foi delimitada com U-Net
-\cite{jitendra2024deep}, limiarização e morfologia \cite{nyatte2022} ou
-\textit{Fuzzy C-Means} otimizado pelo algoritmo do vaga-lume
-\cite{jitendra2024heuristic}.
-
-Na classificação, coexistem descritores manuais e redes profundas.
-\citeonline{banerjee2023} combinam os descritores de textura
-\textit{Local Binary Patterns} (LBP) e \textit{Weber Local Descriptor}
-(WLD) com SVM multinível, e a revisão de \citeonline{ahikpa2025} relata
-SVM e \textit{Random Forest} nos estudos que revisa. Entre as redes
-convolucionais, aparecem ResNet-50 \cite{yotsu2023,barbieri2022}, VGG-16
-\cite{yotsu2023,gawali2024}, MobileNetV2 \cite{jaikishore2021} e
-Inception \cite{barbieri2022,lima2024skin}. \citeonline{lima2024skin} usam
-a Inception V3 apenas para extrair 2.048 atributos, classificados por
-\textit{Random Forest} após balanceamento das classes com SMOTE. Há ainda
-sistemas em cascata de dois estágios para diferenciar doenças tropicais
-negligenciadas \cite{deps2026,pons2026} e a conversão da MobileNetV2 para
-TensorFlow Lite, executada em aplicativo Android em dispositivo periférico
-\cite{jaikishore2021}.
-
-Quanto à explicabilidade, \citeonline{eita2025} usam mapas de saliência
-em um detector YOLOv8n, e \citeonline{baweja2023}, mapas de sensibilidade
-por oclusão e Grad-CAM em uma rede convolucional de quatro camadas; a
-revisão de \citeonline{innocent2026} discute esses métodos e as
-pontuações de confiança. Esses recursos indicam as regiões da lesão que
-influenciaram a decisão do modelo.
+\input{editaveis/tecnicas_visao}
 
 \subsection{Conjuntos de dados e populações (RQ2)}
 \label{subsec:rq2-datasets}
@@ -901,6 +863,7 @@ por tom.
 
 \subsection{Modelos e abordagens de inteligência artificial (RQ6)}
 \label{subsec:rq6-modelos}
+\label{subsec:rq-modelos-abordagens}
 
 As frequências desta subseção usam os 17 estudos com dados. Cada
 publicação conta uma vez por modelo ou componente usado diretamente,
