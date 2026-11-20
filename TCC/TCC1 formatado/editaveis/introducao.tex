@@ -131,7 +131,7 @@ reconhecem limitações na diversidade dos dados e apontam a ampliação da
 representação de pessoas com tons de pele mais escuros como uma direção
 de trabalho futuro.
 
-Esses estudos motivam a investigação de como o desempenho dos modelos é
+Esses estudos no motivaram a investigar como o desempenho dos modelos é
 definido, mensurado e interpretado. Para o presente trabalho, a
 avaliação compreende os resultados preditivos relativos à tarefa, os
 procedimentos empregados para obtê-los e as evidências disponíveis sobre
@@ -140,6 +140,7 @@ utilização futura em apoio à triagem na rede pública de saúde do Brasil
 constitui o contexto de interesse da pesquisa, sem que os resultados
 computacionais sejam, por si só, considerados demonstração de
 efetividade clínica.
+
 
 \section{Problema}\label{problema}
 
@@ -151,12 +152,12 @@ composição dos conjuntos de dados e nas métricas utilizadas. Classificar
 uma imagem entre doenças, localizar uma lesão e segmentar uma ferida
 produzem resultados com significados distintos. Consequentemente, uma
 comparação baseada apenas nos maiores valores publicados pode
-desconsiderar diferenças essenciais entre os experimentos de
+desconsiderar diferenças essenciais entre os experimentos, conforme observaram
 \citeonline{yotsu2023}, \citeonline{sanchez2024} e \citeonline{eita2025}.
 
 Além disso, medidas agregadas podem não representar adequadamente o
 desempenho referente à hanseníase. No estudo de \citeonline{yotsu2023}, a
-Task 2 apresentou acurácias globais de 77\% e 80\% nos dois cenários
+uma tarefa apresentou acurácias globais de 77\% e 80\% nos dois cenários
 avaliados. Entretanto, a leitura da diagonal correspondente à hanseníase
 nas matrizes de confusão indica proporções de classificação correta de
 12\% e 13\%, respectivamente. Como as linhas representam a classe real,
@@ -230,7 +231,7 @@ das medidas a serem extraídas dos estudos.
 			\textbf{Com foco em}                        & Identificação de características patológicas de
 			hanseníase.                                                                                   \\
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da área da saúde.                                                                  \\
+			Software e da Medicina.                                                                  \\
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
 			de saúde do Brasil.                                                                           \\
 		\end{longtable}
@@ -238,13 +239,12 @@ das medidas a serem extraídas dos estudos.
 \fonte{Adaptado de \citeonline{basili1994} e \citeonline{wohlin2024}.}
 
 \subsection{Questão norteadora}
-
-A investigação é orientada pela seguinte questão:
+O GQM adaptado orienta a formulação da questão de pesquisa principal deste trabalho:
 
 \begin{quote}
-	Como avaliar o desempenho de modelos de visão computacional aplicados à
+	\textbf{\textit{Como avaliar o desempenho de modelos de visão computacional aplicados à
 	identificação de padrões associados à hanseníase em imagens de pele, no
-	contexto da rede pública de saúde do Brasil?
+	contexto da rede pública de saúde do Brasil?}}
 \end{quote}
 
 Nesta etapa, a questão será abordada por meio da identificação e análise
@@ -256,15 +256,20 @@ ausência de avaliação por grupo será registrada como uma limitação das
 evidências disponíveis, sem ser tomada como demonstração de equidade ou
 de desigualdade de desempenho.
 
+\todo[inline, color=pink]{Esse parágrafo está meio descontextualizado aqui nesta subseção. Aqui a QP precisa ter destaque. Vejam onde cabe melhor encaixar o parágrafo ou elimininá-lo.} 
+
 \section{Objetivos}\label{objetivos}
 
 \subsection{Objetivo geral}\label{objetivo-geral}
 
 Analisar a avaliação de desempenho de modelos de visão computacional
 aplicados à identificação de padrões associados à hanseníase em imagens
-de pele, a partir da síntese das evidências da literatura, visando
+de pele, a partir das evidências observadas na literatura, visando
 fundamentar seu uso em apoio à triagem na rede pública de saúde do
 Brasil.
+
+
+
 
 \subsection{Objetivos específicos}\label{objetivos-especuxedficos}
 
@@ -299,6 +304,8 @@ analisar evidências sobre a avaliação de modelos de visão computacional
 aplicados à identificação de padrões associados à hanseníase em imagens de
 pele. A Figura~\ref{fig:percurso-metodologico} apresenta o percurso da
 revisão, do problema de pesquisa à síntese das evidências.
+
+\todo[inline, color=pink]{Dizer e citar que a revisao estruturada é baseada no protocolo da revisao sistematica de literatura proposto por Kitchenham e Charters (2007), daquele guia de revisão que vocês utilizaram para montar o protocolo da revisão.} 
 
 \begin{figure}[htbp]
 	\centering
@@ -361,6 +368,15 @@ A classificação segue as dimensões do Capítulo~2 de \citeonline{wohlin2024}.
 	      \cite{wohlin2024}. Os estudos são resumidos por contagens e tabelas e
 	      classificados por tarefa, modelo e procedimento de avaliação.
 \end{itemize}
+
+
+\todo[inline, color=pink]{Aqui vocês precisam 
+
+\href{https://discord.com/channels/1518650484435718275/1518650487107223726/1573370693360418998}{artigo no discord. 
+1) O artigo foi a capítulo 2 do Wohlin (segunda edição), que fala sobre classificação de estudos.
+2) Vocês precisam criar uma istancia das decisoes de classificacao da pesquisa e explicar em um doi parágrafos as decisões do trabalho de vocês. Isso é que precisa estar escrita nesta subseção de metodologia. 
+3) a figura 3 trata-se tão somente das etapas da revisão, e não da classificação do estudo.
+4) Não precisa detalhar o processo da revisão da literatura aqui na introdução, mas sim de toda a metodologia do trabalho (artigo no discord citado) As subseções 1.5.2 e 1.5.3 devem sair daqui.}} 
 
 \subsection{Etapas e atividades da revisão}
 
@@ -436,3 +452,8 @@ Figura~\ref{fig:percurso-metodologico}.
 
 O fluxo de seleção e os resultados são apresentados no
 Capítulo~\ref{cap:revisao-literatura}.
+
+\todo[inline, color=pink]{Novamente caracterizando o trabalho de vocês somente pela revisão da literatura. Corrigir}
+
+\todo[inline, color=pink]{Um cronograma tem atividades, datas e responsáveis. Vocês tem o cronograma do TCC1 no github projects e precisam planejar o cronograma do TCC2. O que está escrito aqui não é um cronograma. Sao as atividades do cronograma que precisam estar brevemente descritas aqui. }
+
