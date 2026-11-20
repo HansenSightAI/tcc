@@ -10,6 +10,8 @@ a imagens de pele e das medidas usadas na avaliação dos modelos.
 
 \section{Pesquisa empírica em engenharia de software}
 
+\todo[inline, color=pink]{Faltou caracterizar melhor a engenharia de software empírica, os principais métodos e estratégias de pesquisa, e a relação com a ciência de dados. Ex: os experimentos, estuddos de caso, etc. Ficou muito superficial.}
+
 A pesquisa empírica utiliza observações e dados para investigar fenômenos,
 avaliar propostas e fundamentar conclusões. Na engenharia de software, as estratégias empíricas
 ncluem experimentos, estudos de caso, estudos secundários de literatura, ciência de dados, entre outros \cite{acmSigsoftDataScience,wohlin2024} A escolha da estratégia de
@@ -34,7 +36,7 @@ O padrão \textit{Data Science} da ACM SIGSOFT estabelece critérios para a
 condução e o relato de estudos de engenharia de software que empregam
 análise centrada em dados, incluindo modelagem preditiva
 \cite{acmSigsoftDataScience}. Neste trabalho, o padrão é adotado como
-referencial para uma avaliação futura de modelos de visão computacional
+método empírico para a avaliação futura de modelos de visão computacional
 aplicados a imagens de pele associadas à hanseníase.
 
 Entre os critérios essenciais estão a justificativa da seleção dos dados,
@@ -46,7 +48,7 @@ métodos não existem ou a comparação direta é impraticável, cabe justificar
 essa condição \cite{acmSigsoftDataScience}.
 
 O relato do desempenho deve informar a variabilidade ou a incerteza das
-estimativas e discutir as ameaças à validade. Em imagens de pele, por
+estimativas e discutir as ameaças à validade. Em imagens de tons de pele, por
 exemplo, fotografias de um mesmo paciente no treino e no teste podem
 inflar as estimativas de desempenho. A origem e a qualidade dos dados
 também afetam a interpretação. Em um estudo sobre defeitos de software,
@@ -71,6 +73,9 @@ aplicados a imagens de pele relacionadas à hanseníase são avaliados. O
 protocolo e o andamento de sua execução são apresentados no
 Capítulo~\ref{cap:revisao-literatura}.
 
+\todo[inline, color=pink]{Aqui caberia aqueles detalhes da revisão da literatura que estavam na introdução.}
+
+
 \section{Hanseníase e identificação de manifestações cutâneas}
 
 A hanseníase pode apresentar manifestações na pele e comprometimento de
@@ -87,6 +92,9 @@ demonstra, isoladamente, que o sistema possa estabelecer um diagnóstico ou
 melhorar o atendimento em um serviço de saúde. Por isso, é necessário
 relacionar os resultados reportados à tarefa realizada, aos dados utilizados
 e à forma de validação \cite{fernandes2024}.
+
+
+\todo[inline, color=pink]{A hanseníase também ficou superficial. Na introdução foi bom, mas talvez pudesse ser resumida de forma a trazer mais detalhes e informações aqui. Por exemplo, o todo o contexto dele ser uma doença negligenciada, a questão da triagem, a questão do diagnóstico, a questão do estigma, a questão da prevalência, a questão da classificação de tipos de hanseníase, etc.}
 
 \section{Inteligência artificial e visão computacional}
 
@@ -163,8 +171,11 @@ definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
 reconhecer uma ferida em paciente com hanseníase não equivale a
 diagnosticar a doença.
 
-\subsection{Métricas relacionadas à questão de
-	pesquisa}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+\todo[inline, color=pink]{Quando vocês estiverem definindo as metricas que serão analiasadas no contexto do estudo de ciência de dados, com GQM, aí vocês conectam essas métricas da literatura com as métricas que vocês definiram no GQM. Aqui elas são metricas comumente utilizadas na literatura. Por sinal, deveriam aparecer na resposta daquela questao da revisao que trata de metricas.}
+
+\todo[inline, color=pink]{Embora vocês tenham herdado o problema do template latex, vocês precisam corrigir esse problema de gerar uma página em branco nos capítulos.}
+
+\subsection{Métricas relacionadas avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
 
 {\def\LTcaptype{none} % do not increment counter
 	\begin{longtable}[]{@{}
