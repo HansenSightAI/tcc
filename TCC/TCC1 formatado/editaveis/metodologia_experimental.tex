@@ -1,0 +1,250 @@
+% !TeX root = ../tcc.tex
+\chapter{Metodologia experimental adotada}
+\label{cap:metodologia-experimental}
+
+Este capítulo apresenta a proposta de planejamento da avaliação empírica.
+Prevê-se um estudo de classificação binária de fotografias clínicas de
+pele com dados públicos secundários. Um conjunto curado a partir de fontes
+públicas será utilizado para desenvolver os modelos, e uma coleção pública
+independente será reservada para o teste externo. A composição dos conjuntos
+dependerá da auditoria dos arquivos e das anotações. As escolhas de modelos,
+métrica principal e análises complementares são propostas a discutir com a
+orientação.
+
+O planejamento adota o padrão \textit{Data Science} da ACM SIGSOFT para
+orientar a seleção e a preparação dos dados, a configuração da avaliação, a
+modelagem e o relato dos resultados \cite{acmSigsoftDataScience}. A definição
+do objetivo, da instrumentação, das medidas e das ameaças à validade se
+apoia nos capítulos 8 e 9 de \citeonline{wohlin2024}. O padrão remete à edição
+de 2012 da obra, e este capítulo utiliza a segunda edição, de 2024. A
+estrutura de apresentação do planejamento segue os elementos pertinentes do
+esquema de Jedlitschka e Pfahl sintetizado na Tabela~12.1 de
+\citeonline{wohlin2024}.
+
+\section{Objetivo e questão da avaliação}
+\label{sec:objetivo-avaliacao-empirica}
+
+\begin{quote}
+Qual é o desempenho de classificadores de visão computacional para
+distinguir imagens anotadas como hanseníase de imagens anotadas como
+outras condições de pele, quando avaliados em uma base pública
+independente das fontes usadas no desenvolvimento dos modelos?
+\end{quote}
+
+A avaliação foi delimitada pelos cinco campos do GQM adaptado apresentado
+na introdução, em consonância com a definição de escopo da Seção~8.1 de
+\citeonline{wohlin2024}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Objetivo da avaliação empírica segundo o GQM adaptado}
+    \label{tab:gqm-avaliacao-empirica}
+    \begin{tabular}{@{}p{0.19\linewidth}p{0.75\linewidth}@{}}
+        \toprule
+        \textbf{Campo} & \textbf{Descrição} \\
+        \midrule
+        Objeto & Classificadores de visão computacional aplicados a fotografias clínicas de pele. \\
+        Propósito & Estimar o desempenho dos classificadores em uma coleção pública reservada para teste externo. \\
+        Foco & Distinção entre imagens anotadas como hanseníase e imagens anotadas como outras condições de pele. \\
+        Perspectiva & Pesquisadores de Engenharia de Software e da área da saúde interessados na avaliação de modelos para apoio à triagem. \\
+        Contexto & Avaliação computacional com imagens de acesso público. O apoio à triagem no SUS motiva o estudo. \\
+        \bottomrule
+    \end{tabular}
+    \fonte{Elaboração própria, com base em \citeonline{basili1994} e \citeonline{wohlin2024}.}
+\end{table}
+
+A unidade de previsão e de avaliação será a fotografia. O desempenho
+medirá a concordância entre as previsões e os rótulos das coleções. O
+alcance da avaliação será descrito a partir da composição da amostra de
+teste, de sua procedência e das condições de coleta documentadas.
+
+\section{Fontes de dados, curadoria e particionamento}
+\label{sec:particionamento-avaliacao-empirica}
+
+O conjunto curado reunirá fotografias elegíveis das fontes de
+desenvolvimento. O \textit{Fredrick Skin Disease Dataset}, versão 1, é o
+primeiro candidato ao teste externo por disponibilizar uma versão
+identificável com anotações de hanseníase e de outras condições de pele
+\cite{eita2025,fredrickSkinDisease2025}. Caso a auditoria confirme sua
+viabilidade, todas as imagens elegíveis dessa versão serão reservadas,
+independentemente da divisão publicada pelo provedor. O
+\textit{Dermatology Atlas} e o \textit{32 Curated Categories of Skin
+Disease Images}, versão 2, são candidatos a fornecer imagens das duas
+classes para o desenvolvimento \cite{lima2024skin,cahyantoDados2026}. Se o
+Fredrick se mostrar inviável, o Atlas poderá ser considerado para o teste
+externo pelos mesmos critérios. A escolha ocorrerá antes do treinamento.
+
+A curadoria produzirá um inventário com a fonte, a versão, o
+identificador do arquivo, a modalidade de imagem, o rótulo original, o
+rótulo harmonizado e os identificadores de paciente ou lesão, quando
+disponíveis. O procedimento compreenderá as seguintes etapas.
+
+\begin{enumerate}
+    \item \textbf{Verificar imagens e rótulos.} Selecionar fotografias
+    clínicas e registrar quais condições constituem cada classe. No
+    Fredrick, uma fotografia com caixa anotada como hanseníase será
+    candidata à classe positiva. A classe negativa incluirá fotografias
+    anotadas com outras condições de pele e sem anotação de hanseníase,
+    conforme a revisão das anotações. No conjunto de 32 categorias, a
+    modalidade será conferida para selecionar as fotografias clínicas.
+    Arquivos corrompidos, imagens de modalidade incompatível e rótulos
+    que permanecerem ambíguos serão registrados, com o motivo da
+    exclusão. A inspeção manual incluirá uma amostra por fonte e classe.
+    Apresentações raras que satisfaçam os critérios permanecerão elegíveis.
+
+    \item \textbf{Investigar sobreposição.} Conferir a procedência das
+    imagens e buscar tanto duplicatas exatas quanto versões recortadas ou
+    redimensionadas por meio de comparação visual de candidatos
+    semelhantes. Imagens de desenvolvimento relacionadas a imagens da
+    coleção externa serão retiradas do desenvolvimento. O mesmo
+    procedimento será aplicado a fotografias do mesmo paciente quando
+    houver identificação verificável. A ausência de informações de
+    procedência ou de vínculo será registrada como limite da auditoria.
+
+    \item \textbf{Definir as partições.} Selecionar a coleção externa
+    pela compatibilidade dos rótulos, pelas contagens de exemplos em
+    cada classe, pela precisão esperada das estimativas e pelo resultado
+    da auditoria de sobreposição. Dividir os dados de desenvolvimento
+    em treino e validação antes da aplicação de aumento de dados.
+    Fotografias do mesmo paciente, quando identificado, e versões da
+    mesma fotografia permanecerão juntas. Registrar os totais por
+    fonte, classe e partição.
+\end{enumerate}
+
+O conjunto externo ficará reservado para a aplicação final. A
+validação, dentro do conjunto de desenvolvimento, será usada para
+selecionar hiperparâmetros, regras de preparação e limiares. A auditoria
+das bases seguirá critérios documentados antes da obtenção das previsões
+de teste, que serão analisadas após a definição das configurações.
+
+\section{Instrumentação e configuração da avaliação}
+\label{sec:configuracao-avaliacao-empirica}
+
+A Figura~\ref{fig:configuracao-avaliacao-empirica} apresenta o fluxo
+proposto. A instrumentação será composta pelos registros de versões e
+condições de uso das bases, pelo inventário de imagens, pelas listas das
+partições, pelo protocolo, pelo código de treinamento e inferência e
+pelos scripts de análise. Serão registrados também a procedência dos
+pesos iniciais, as versões das bibliotecas, o ambiente computacional e
+as sementes utilizadas \cite{acmSigsoftDataScience,wohlin2024}.
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Configuração proposta para a avaliação em uma coleção externa}
+    \label{fig:configuracao-avaliacao-empirica}
+    \begin{tikzpicture}[
+        etapa/.style={draw, rounded corners=2pt, align=center,
+            text width=0.36\linewidth, minimum height=9mm, font=\small},
+        fluxo/.style={-{Latex[length=2mm]}}
+    ]
+        \node[etapa] (auditoria) {Curadoria e auditoria\\das fontes públicas};
+        \node[etapa, below=8mm of auditoria, xshift=-0.23\linewidth]
+            (desenvolvimento) {Desenvolvimento\\Treino e validação};
+        \node[etapa, below=8mm of auditoria, xshift=0.23\linewidth]
+            (externa) {Coleção externa reservada};
+        \node[etapa, below=6mm of desenvolvimento]
+            (modelos) {Modelos, preparo e limiares fixados};
+        \node[etapa, below=27mm of auditoria, yshift=-13mm]
+            (avaliacao) {Teste externo\\Cálculo das métricas};
+        \draw[fluxo] (auditoria.south) -- ++(0,-3mm) -| (desenvolvimento.north);
+        \draw[fluxo] (auditoria.south) -- ++(0,-3mm) -| (externa.north);
+        \draw[fluxo] (desenvolvimento) -- (modelos);
+        \draw[fluxo] (modelos.south) |- (avaliacao.west);
+        \draw[fluxo] (externa.south) |- (avaliacao.east);
+    \end{tikzpicture}
+    \fonte{Elaboração própria.}
+\end{figure}
+
+\subsection{Modelos de referência e preparo das imagens}
+
+A ResNet-50 e a MobileNetV2 são candidatas iniciais identificadas na
+revisão (Apêndice~\ref{apend:inventario-modelos}). As arquiteturas serão
+implementadas sob o mesmo protocolo de avaliação, com partições e
+informações de entrada equivalentes e orçamento de ajuste comparável.
+A literatura fundamentará a escolha dos métodos de referência e
+permitirá discutir suas limitações. A comparação de desempenho será
+obtida nas mesmas imagens de teste para todos os classificadores.
+
+O protocolo especificará a resolução de entrada, o redimensionamento,
+a normalização e eventuais transformações. Se for adotado recorte, a
+regra deverá ser aplicável às duas classes e às diferentes fontes,
+inclusive no teste. Transformações aleatórias, como inserção de ruído,
+e procedimentos de rebalanceamento serão restritos ao treino. Qualquer
+parâmetro de preparação estimado a partir dos dados será obtido no
+desenvolvimento \cite{acmSigsoftDataScience}.
+
+\subsection{Análise complementar com o Co2Wounds-V2}
+
+A inclusão do Co2Wounds-V2 será discutida com a orientação como análise
+complementar. Nessa configuração, as imagens seriam utilizadas apenas
+no treinamento, como exemplos positivos auxiliares, com a procedência
+preservada. A base registra fotografias de feridas crônicas de pessoas
+com hanseníase, com máscaras que delimitam as feridas
+\cite{co2woundsDados2024}.
+
+A comparação proposta usaria uma arquitetura, um procedimento de
+preparo e um conjunto de teste comuns, em duas condições de
+treinamento, com e sem essas imagens. O volume por classe, o
+balanceamento e o orçamento de treinamento seriam documentados. A
+diferença observada seria interpretada como resultado da inclusão da
+coleção, que acrescenta exemplos positivos com características próprias
+de coleta e de conteúdo visual.
+
+\section{Medidas de desempenho e procedimento de análise}
+\label{sec:medidas-avaliacao-empirica}
+
+A acurácia balanceada é proposta como medida principal. Ela é a média
+entre sensibilidade e especificidade e atribui o mesmo peso às duas
+classes, ainda que seus tamanhos sejam distintos. O relato será
+complementado pela sensibilidade para hanseníase, pela especificidade
+para as outras condições de pele e pelas contagens da matriz de
+confusão. A regra de escolha do limiar será definida previamente e
+aplicada na validação de cada classificador. Modelos e limiares serão
+fixados antes da aplicação no teste externo.
+
+A análise proposta é descritiva, com estimativas pontuais e intervalos
+de confiança. As diferenças entre classificadores serão calculadas
+sobre as mesmas imagens. A análise de incerteza considerará
+agrupamentos conhecidos por paciente ou lesão. A inspeção de falsos
+positivos e falsos negativos será descrita no protocolo. Quando a
+amostra e os rótulos permitirem, serão examinados erros entre condições
+visualmente semelhantes à hanseníase. Uma eventual análise
+confirmatória, com hipóteses formais, será discutida com a orientação,
+incluindo a definição de diferenças de importância prática
+\cite{acmSigsoftDataScience,wohlin2024}.
+
+\section{Ameaças à validade}
+\label{sec:validade-avaliacao-empirica}
+
+As ameaças serão examinadas segundo as quatro dimensões discutidas por
+\citeonline{wohlin2024} nas Seções~9.7 a 9.9. A coerência dos rótulos e a
+independência da coleção de teste têm prioridade por sustentarem a
+interpretação da questão empírica.
+
+\begin{description}
+    \item[Validade de construto.] As bases podem usar rótulos com
+    significados e níveis de verificação distintos. Serão descritos os
+    critérios de referência disponíveis, a composição da classe negativa
+    e os casos de concordância ou ambiguidade encontrados na inspeção.
+
+    \item[Validade interna.] A sobreposição de fotografias e as decisões
+    baseadas no desempenho de teste podem inflar os resultados. Estão
+    previstas auditoria de sobreposição e fixação do protocolo antes do
+    teste. Na comparação complementar, diferenças de volume de dados e
+    de composição de classes serão consideradas na interpretação.
+
+    \item[Validade de conclusão.] Uma amostra pequena em uma das classes
+    ou fotografias dependentes entre si podem reduzir a precisão.
+    Serão reportados os denominadores, a incerteza e os agrupamentos
+    conhecidos. A análise destacará a magnitude das diferenças com
+    relação à tarefa avaliada.
+
+    \item[Validade externa.] Uma coleção independente ainda cobre
+    condições específicas de captura, populações e diagnósticos
+    diferenciais. A caracterização da amostra delimitará o alcance da
+    generalização para outras coleções e para o contexto de interesse.
+\end{description}
+
+A escolha da coleção externa será concluída após a auditoria. A medida
+principal, a regra de limiar e a inclusão da análise complementar serão
+discutidas com a orientação antes do treinamento e da aplicação final.
