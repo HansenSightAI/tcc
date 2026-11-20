@@ -73,8 +73,67 @@ aplicados a imagens de pele relacionadas à hanseníase são avaliados. O
 protocolo e o andamento de sua execução são apresentados no
 Capítulo~\ref{cap:revisao-literatura}.
 
-\todo[inline, color=pink]{Aqui caberia aqueles detalhes da revisão da literatura que estavam na introdução.}
+\subsubsection{Etapas e atividades da revisão}\label{subsec:etapas-revisao}
 
+O percurso da revisão, do problema de pesquisa à síntese das evidências, é
+apresentado na Figura~\ref{fig:percurso-metodologico}. A
+Tabela~\ref{tab:etapas-metodologia} lista as atividades realizadas e indica onde
+cada uma é apresentada.
+
+\begin{figure}[htbp]
+	\centering
+	\small
+	\begin{tikzpicture}[
+		node distance=0.7cm and 0.6cm,
+		etapa/.style={draw=black, thick, rounded corners=4pt, fill=white,
+				text width=2.3cm, minimum height=1.25cm, align=center, font=\footnotesize, inner sep=3pt},
+		inicio/.style={circle, fill=black, minimum size=0.45cm, inner sep=0pt},
+		seta/.style={-{Stealth[length=2.2mm]}, thick}
+		]
+		\node[inicio] (ini) {};
+		\node[etapa, right=0.55cm of ini] (a1) {Problema e questão de pesquisa (GQM)};
+		\node[etapa, right=of a1] (a2) {Protocolo da revisão};
+		\node[etapa, right=of a2] (a3) {Busca};
+		\node[etapa, right=of a3] (a4) {Triagem};
+		\node[etapa, below=of a4] (b5) {Leitura integral};
+		\node[etapa, left=of b5] (b6) {Extração};
+		\node[etapa, left=of b6] (b7) {Síntese};
+		\node[circle, draw=black, thick, minimum size=0.6cm, inner sep=0pt, left=0.55cm of b7] (fim) {};
+		\fill (fim.center) circle (0.2cm);
+		\draw[seta] (ini) -- (a1);
+		\draw[seta] (a1) -- (a2);
+		\draw[seta] (a2) -- (a3);
+		\draw[seta] (a3) -- (a4);
+		\draw[seta] (a4) -- (b5);
+		\draw[seta] (b5) -- (b6);
+		\draw[seta] (b6) -- (b7);
+		\draw[seta] (b7) -- (fim);
+	\end{tikzpicture}
+	\caption{Fluxo de atividades da revisão estruturada da literatura}
+	\label{fig:percurso-metodologico}
+	\fonte{Elaboração própria.}
+\end{figure}
+
+\begin{table}[htb]
+	\centering
+	\caption{Atividades realizadas na revisão estruturada}
+	\label{tab:etapas-metodologia}
+	\footnotesize
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{5.5cm}}
+		\toprule
+		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\
+		\midrule
+		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\
+		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
+		Busca                          & Execução da busca e identificação dos registros                                                  & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos''                                                                                                                                               \\
+		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Mesma seção; Figura~\ref{fig:fluxo-triagem}                                                                                                                                                                                              \\
+		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Mesma seção                                                                                                                                                                                                                              \\
+		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção ``Extração e síntese das evidências''                                                                                                                                                                                           \\
+		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção ``Resultados da revisão''                                                                                                                                                                                                          \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Autores.}
+\end{table}
 
 \section{Hanseníase e identificação de manifestações cutâneas}
 
