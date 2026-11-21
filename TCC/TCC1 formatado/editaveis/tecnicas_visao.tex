@@ -143,7 +143,7 @@ Grad-CAM & Mapas de ativação de classe ponderados por gradientes. & 1/17 & \es
 Saliência por gradientes da entrada & Gradientes de classificação e localização em relação aos pixels da entrada do YOLOv8n. & 1/17 & \estudo{E23} \\ \hline
 \addlinespace[3pt]
 \end{longtable}
-\fonte{Autores, a partir dos 17 estudos com aplicação direta. Grupos não exclusivos.}
+\fonte{Autores.}
 \endgroup
 
 As Figuras~\ref{fig:tecnicas-preparacao-aumento},
@@ -153,199 +153,100 @@ selecionados pela frequência decrescente e, nos empates, pela ordem alfabética
 As barras indicam publicações com uso documentado. Os grupos completos e seus
 artigos estão na Tabela~\ref{tab:tecnicas-visao-estudos}.
 
-\clearpage
-\begin{figure}[p]
+\begin{figure}[H]
 \centering
-\caption{Frequência dos grupos de técnicas: preparação das imagens e aumento de dados}
+\caption{Frequência dos grupos: preparação das imagens e aumento de dados}
 \label{fig:tecnicas-preparacao-aumento}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
+width=0.64\textwidth, height=9.7cm,
+xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=4.7,
-y dir=reverse, ytick={0,1,2,3,4},
-yticklabels={{Redimensionamento},{Normalização de intensidades},{Conversão para cinza},{Realce de contraste e iluminação},{Recorte e centralização}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
+ymin=-0.7, ymax=10.5,
+y dir=reverse, ytick={0,1,2,3,4,5.8,6.8,7.8,8.8,9.8},
+yticklabels={{Redimensionamento},{Normalização de intensidades},{Conversão para cinza},{Realce de contraste e iluminação},{Recorte e centralização},{Transformações geométricas},{Aumento sem operações especificadas},{Desfoque e ruído artificial},{Transformações fotométricas},{SMOTE}},
+yticklabel style={font=\footnotesize, text width=5.2cm, align=right},
 xticklabel style={font=\footnotesize},
 label style={font=\footnotesize},
-title={a) Preparação das imagens},
-title style={font=\small\bfseries},
 axis x line*=bottom, axis y line*=left,
 xmajorgrids=true, grid style={gray!20},
 point meta=x, nodes near coords,
 every node near coord/.append style={font=\footnotesize,anchor=west},
+legend style={at={(0.5,1.02)}, anchor=south, legend columns=2, font=\footnotesize, draw=none, /tikz/every even column/.append style={column sep=10pt}},
+legend image code/.code={\draw[#1, draw=none] (0cm,-0.12cm) rectangle (0.45cm,0.12cm);},
 ]
-\addplot[fill=blue!65!black, draw=none] coordinates {
-(8,0)
-(7,1)
-(4,2)
-(4,3)
-(4,4)
-};
+\addplot[fill=blue!65!black, draw=none] coordinates {(8,0) (7,1) (4,2) (4,3) (4,4)};
+\addplot[fill=teal!65!black, draw=none] coordinates {(6,5.8) (2,6.8) (2,7.8) (2,8.8) (1,9.8)};
+\legend{Preparação das imagens, Aumento e balanceamento}
 \end{axis}
 \end{tikzpicture}
-\par\vspace{0.8cm}
-\begin{tikzpicture}
-\begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
-xtick={0,2,4,6,8,10,12,14,16,17},
-xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=4.7,
-y dir=reverse, ytick={0,1,2,3,4},
-yticklabels={{Transformações geométricas},{Aumento sem operações especificadas},{Desfoque e ruído artificial},{Transformações fotométricas},{SMOTE}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
-xticklabel style={font=\footnotesize},
-label style={font=\footnotesize},
-title={b) Aumento e balanceamento},
-title style={font=\small\bfseries},
-axis x line*=bottom, axis y line*=left,
-xmajorgrids=true, grid style={gray!20},
-point meta=x, nodes near coords,
-every node near coord/.append style={font=\footnotesize,anchor=west},
-]
-\addplot[fill=teal!65!black, draw=none] coordinates {
-(6,0)
-(2,1)
-(2,2)
-(2,3)
-(1,4)
-};
-\end{axis}
-\end{tikzpicture}
-\fonte{Autores, a partir dos 17 estudos com aplicação direta. Grupos não exclusivos, com uma ocorrência por estudo em cada grupo.}
+\fonte{Autores.}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[H]
 \centering
-\caption{Frequência dos grupos de técnicas: segmentação, detecção e extração de atributos}
+\caption{Frequência dos grupos: segmentação, detecção e extração de atributos}
 \label{fig:tecnicas-segmentacao-atributos}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
+width=0.64\textwidth, height=9.7cm,
+xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=4.7,
-y dir=reverse, ytick={0,1,2,3,4},
-yticklabels={{Segmentação por redes profundas},{Agrupamento Fuzzy C-Means},{Detecção por caixas},{Limiarização e morfologia de lesões},{Supressão de caixas redundantes}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
+ymin=-0.7, ymax=10.5,
+y dir=reverse, ytick={0,1,2,3,4,5.8,6.8,7.8,8.8,9.8},
+yticklabels={{Segmentação por redes profundas},{Agrupamento Fuzzy C-Means},{Detecção por caixas},{Limiarização e morfologia de lesões},{Supressão de caixas redundantes},{Atributos aprendidos por redes profundas},{Descritores de textura},{Fusão de atributos manuais e profundos},{Bordas, forma e dimensão fractal},{Fusão de imagens com dados clínicos}},
+yticklabel style={font=\footnotesize, text width=5.2cm, align=right},
 xticklabel style={font=\footnotesize},
 label style={font=\footnotesize},
-title={a) Segmentação e detecção},
-title style={font=\small\bfseries},
 axis x line*=bottom, axis y line*=left,
 xmajorgrids=true, grid style={gray!20},
 point meta=x, nodes near coords,
 every node near coord/.append style={font=\footnotesize,anchor=west},
+legend style={at={(0.5,1.02)}, anchor=south, legend columns=2, font=\footnotesize, draw=none, /tikz/every even column/.append style={column sep=10pt}},
+legend image code/.code={\draw[#1, draw=none] (0cm,-0.12cm) rectangle (0.45cm,0.12cm);},
 ]
-\addplot[fill=blue!65!black, draw=none] coordinates {
-(3,0)
-(1,1)
-(1,2)
-(1,3)
-(1,4)
-};
+\addplot[fill=blue!65!black, draw=none] coordinates {(3,0) (1,1) (1,2) (1,3) (1,4)};
+\addplot[fill=teal!65!black, draw=none] coordinates {(15,5.8) (5,6.8) (3,7.8) (1,8.8) (1,9.8)};
+\legend{Segmentação e detecção, Extração e combinação de atributos}
 \end{axis}
 \end{tikzpicture}
-\par\vspace{0.8cm}
-\begin{tikzpicture}
-\begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
-xtick={0,2,4,6,8,10,12,14,16,17},
-xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=4.7,
-y dir=reverse, ytick={0,1,2,3,4},
-yticklabels={{Atributos aprendidos por redes profundas},{Descritores de textura},{Fusão de atributos manuais e profundos},{Bordas, forma e dimensão fractal},{Fusão de imagens com dados clínicos}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
-xticklabel style={font=\footnotesize},
-label style={font=\footnotesize},
-title={b) Extração e combinação de atributos},
-title style={font=\small\bfseries},
-axis x line*=bottom, axis y line*=left,
-xmajorgrids=true, grid style={gray!20},
-point meta=x, nodes near coords,
-every node near coord/.append style={font=\footnotesize,anchor=west},
-]
-\addplot[fill=teal!65!black, draw=none] coordinates {
-(15,0)
-(5,1)
-(3,2)
-(1,3)
-(1,4)
-};
-\end{axis}
-\end{tikzpicture}
-\fonte{Autores, a partir dos 17 estudos com aplicação direta. Grupos não exclusivos, com uma ocorrência por estudo em cada grupo.}
+\fonte{Autores.}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[H]
 \centering
-\caption{Frequência dos grupos de técnicas: classificação, aprendizado e explicabilidade visual}
+\caption{Frequência dos grupos: classificação, aprendizado e explicabilidade visual}
 \label{fig:tecnicas-classificacao-xai}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
+width=0.64\textwidth, height=8.9cm,
+xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=4.7,
-y dir=reverse, ytick={0,1,2,3,4},
-yticklabels={{Classificação por CNN},{Classificadores tradicionais},{Transferência de aprendizado},{Classificação em cascata},{Similaridade com poucos exemplos}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
+ymin=-0.7, ymax=9.5,
+y dir=reverse, ytick={0,1,2,3,4,5.8,6.8,7.8,8.8},
+yticklabels={{Classificação por CNN},{Classificadores tradicionais},{Transferência de aprendizado},{Classificação em cascata},{Similaridade com poucos exemplos},{Grad-CAM},{Saliência por gradientes da entrada},{Sensibilidade à oclusão},{Visualização de ativações}},
+yticklabel style={font=\footnotesize, text width=5.2cm, align=right},
 xticklabel style={font=\footnotesize},
 label style={font=\footnotesize},
-title={a) Classificação e aprendizado},
-title style={font=\small\bfseries},
 axis x line*=bottom, axis y line*=left,
 xmajorgrids=true, grid style={gray!20},
 point meta=x, nodes near coords,
 every node near coord/.append style={font=\footnotesize,anchor=west},
+legend style={at={(0.5,1.02)}, anchor=south, legend columns=2, font=\footnotesize, draw=none, /tikz/every even column/.append style={column sep=10pt}},
+legend image code/.code={\draw[#1, draw=none] (0cm,-0.12cm) rectangle (0.45cm,0.12cm);},
 ]
-\addplot[fill=blue!65!black, draw=none] coordinates {
-(9,0)
-(9,1)
-(7,2)
-(1,3)
-(1,4)
-};
+\addplot[fill=blue!65!black, draw=none] coordinates {(9,0) (9,1) (7,2) (1,3) (1,4)};
+\addplot[fill=teal!65!black, draw=none] coordinates {(1,5.8) (1,6.8) (1,7.8) (1,8.8)};
+\legend{Classificação e aprendizado, Explicabilidade visual}
 \end{axis}
 \end{tikzpicture}
-\par\vspace{0.8cm}
-\begin{tikzpicture}
-\begin{axis}[
-width=0.78\textwidth, height=7.3cm,
-xbar, bar width=10pt, xmin=0, xmax=17,
-xtick={0,2,4,6,8,10,12,14,16,17},
-xlabel={Número de estudos (base de 17)},
-ymin=-0.7, ymax=3.7,
-y dir=reverse, ytick={0,1,2,3},
-yticklabels={{Grad-CAM},{Saliência por gradientes da entrada},{Sensibilidade à oclusão},{Visualização de ativações}},
-yticklabel style={font=\footnotesize, text width=4.0cm, align=right},
-xticklabel style={font=\footnotesize},
-label style={font=\footnotesize},
-title={b) Explicabilidade visual},
-title style={font=\small\bfseries},
-axis x line*=bottom, axis y line*=left,
-xmajorgrids=true, grid style={gray!20},
-point meta=x, nodes near coords,
-every node near coord/.append style={font=\footnotesize,anchor=west},
-]
-\addplot[fill=teal!65!black, draw=none] coordinates {
-(1,0)
-(1,1)
-(1,2)
-(1,3)
-};
-\end{axis}
-\end{tikzpicture}
-\fonte{Autores, a partir dos 17 estudos com aplicação direta. Grupos não exclusivos, com uma ocorrência por estudo em cada grupo.}
+\fonte{Autores.}
 \end{figure}
 
-\clearpage
+
 Na explicabilidade, \citeonline{baweja2023} apresentam visualização de ativações,
 sensibilidade à oclusão e Grad-CAM, e \citeonline{eita2025} geram saliência por
 gradientes das saídas em relação à imagem de entrada. Esses mapas permitem
