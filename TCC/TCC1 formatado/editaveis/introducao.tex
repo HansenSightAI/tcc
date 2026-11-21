@@ -456,50 +456,85 @@ apresentadas as referências e os apêndices.
 
 \section{Cronograma e fluxo de atividades}
 
-Esta seção apresenta as atividades dos dois estudos que compõem o trabalho. As
-atividades do primeiro estudo seguem o fluxo da
-Figura~\ref{fig:percurso-metodologico}.
+A Figura~\ref{fig:cronograma-tcc1} reúne as macroatividades planejadas para
+o TCC~1 no segundo semestre de 2026, com base nos prazos registrados no
+\href{https://github.com/orgs/HansenSightAI/projects/2/views/4}{GitHub Projects}.
 
-\textbf{Primeiro estudo: revisão estruturada da literatura}
+\begin{figure}[H]
+	\centering
+	\caption{Cronograma das macroatividades do TCC 1 (2026.2)}
+	\label{fig:cronograma-tcc1}
+	\begingroup
+	\definecolor{ganttClaro}{HTML}{B8DBEC}
+	\definecolor{ganttMedio}{HTML}{7FC2E3}
+	\definecolor{ganttAzul}{HTML}{2453A6}
+	\definecolor{ganttEscuro}{HTML}{26365B}
+	\pgfcalendardatetojulian{2026-09-01}{\pgfcalendarcurrentjulian}
+	\edef\inicioCronograma{\the\pgfcalendarcurrentjulian}
+	% Posiciona as barras em dias a partir de 1 de setembro.
+	\newcommand{\diaCronograma}[2]{%
+		\pgfcalendardatetojulian{#1}{\pgfcalendarcurrentjulian}%
+		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronograma\relax}%
+	}
+	\begin{tikzpicture}[
+		x=0.00495\linewidth, y=8.5mm,
+		font=\footnotesize, text=ganttEscuro,
+		rotulo/.style={anchor=west, align=left, inner sep=0pt},
+	]
+		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
+			Setembro/2026-09-01/2026-10-01/ganttClaro/ganttEscuro,
+			Outubro/2026-10-01/2026-11-01/ganttMedio/ganttEscuro,
+			Novembro/2026-11-01/2026-12-01/ganttAzul/white,
+			Dezembro/2026-12-01/2027-01-01/ganttEscuro/white%
+		}{
+			\diaCronograma{\inicio}{\esquerda}
+			\diaCronograma{\limite}{\direita}
+			\ifodd\coluna\relax
+				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-8.5);
+			\fi
+			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
+			\node[font=\footnotesize\bfseries,text=\tinta]
+				at ({(\esquerda+\direita)/2},0) {\mes};
+		}
 
-\begin{itemize}
-	\item \textbf{Definição do problema, da questão de pesquisa e dos objetivos:}
-	      formulação do problema e da questão norteadora, com o GQM adaptado, e dos
-	      objetivos geral e específicos.
-	\item \textbf{Elaboração do protocolo da revisão:} definição das questões de
-	      pesquisa, da estratégia de busca (PICOC), dos critérios de inclusão e exclusão
-	      e do formulário de extração.
-	\item \textbf{Busca dos registros:} execução da busca e identificação dos
-	      registros.
-	\item \textbf{Triagem:} seleção por título e resumo, com os critérios do
-	      protocolo.
-	\item \textbf{Leitura integral:} leitura dos textos completos e confirmação da
-	      elegibilidade.
-	\item \textbf{Extração:} preenchimento do formulário de extração dos estudos
-	      incluídos.
-	\item \textbf{Síntese:} síntese das evidências por questão de pesquisa.
-\end{itemize}
+		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
+		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (122,-0.5);
+		\foreach \linha in {1,...,8}{
+			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (122,{-\linha-0.5});
+		}
 
-O fluxo de seleção e os resultados são apresentados no
-Capítulo~\ref{cap:revisao-literatura}.
+		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
+			{GQM e questões de pesquisa}/{08/09 a 11/09}/2026-09-08/2026-09-11/ganttMedio,
+			{Protocolo da revisão}/{14/09 a 25/09}/2026-09-14/2026-09-25/ganttMedio,
+			{Busca e seleção dos estudos}/{25/09 a 25/10}/2026-09-25/2026-10-25/ganttMedio,
+			{Leitura e extração dos dados}/{03/10 a 29/10}/2026-10-03/2026-10-29/ganttAzul,
+			{Síntese e revisão das evidências}/{26/10 a 06/11}/2026-10-26/2026-11-06/ganttAzul,
+			{Plano da avaliação computacional}/{06/11 a 13/11}/2026-11-06/2026-11-13/ganttAzul,
+			{Redação da monografia}/{16/11 a 04/12}/2026-11-16/2026-12-04/ganttEscuro,
+			{Revisão e correções finais}/{07/12 a 14/12}/2026-12-07/2026-12-14/ganttEscuro%
+		}{
+			\diaCronograma{\inicio}{\esquerda}
+			\diaCronograma{\fim+1}{\direita}
+			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
+				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
+			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
+		}
+	\end{tikzpicture}
+	\endgroup
+	\fonte{Autores.}
+\end{figure}
 
-\textbf{Segundo estudo: avaliação computacional}
+Quando uma linha reúne mais de uma atividade, a barra vai do primeiro
+início ao último prazo registrado. Euller e Gabriel são responsáveis pela
+preparação e execução da revisão, pela síntese, pela redação e pelas
+correções finais. Na síntese, Euller ficou responsável por técnicas, modelos,
+procedimentos de avaliação e métricas, e Gabriel, por conjuntos de dados,
+populações, tons de pele e generalização. O planejamento da avaliação
+computacional consta no quadro sem responsável atribuído.
 
-As atividades previstas seguem os critérios essenciais do padrão
-\textit{Data Science}, apresentado na Subseção~\ref{subsec:ciencia-de-dados}.
-
-\begin{itemize}
-	\item \textbf{Formulação da questão específica:} definição da questão da
-	      avaliação a partir das lacunas identificadas na revisão.
-	\item \textbf{Seleção e acesso aos dados:} justificativa da escolha da coleção pública.
-	\item \textbf{Preparação dos dados:} curadoria, agrupamento de fotografias e
-	      reserva da partição de teste.
-	\item \textbf{Modelagem:} treinamento por transferência da ResNet-50 e da
-	      MobileNetV2 e seleção de hiperparâmetros na validação cruzada.
-	\item \textbf{Avaliação:} fixação dos limiares e comparação dos desempenhos
-	      no mesmo teste reservado.
-	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
-	      à validade.
-\end{itemize}
-
-\todo[inline, color=pink]{Um cronograma tem atividades, datas e responsáveis. Vocês tem o cronograma do TCC1 no github projects e precisam planejar o cronograma do TCC2. O que está escrito aqui não é um cronograma. Sao as atividades do cronograma que precisam estar brevemente descritas aqui. }
+Para o TCC~2, estão previstas a seleção e a curadoria do conjunto de imagens,
+o treinamento por transferência, a seleção de hiperparâmetros por validação
+cruzada, a comparação dos modelos no teste reservado e a análise dos
+resultados. O Capítulo~\ref{cap:metodologia-experimental} descreve essas
+atividades. As datas e os responsáveis do TCC~2 serão definidos no
+planejamento dessa etapa.
