@@ -91,7 +91,7 @@ foi desdobrada em oito questões secundárias (RQ1 a RQ8).
 	\end{tabular} \\
 \end{longtable}
 \endgroup
-\fonte{Autores}
+\fonte{Autores.}
 
 \subsection{Ferramentas de apoio e papel dos pesquisadores}
 \label{subsec:integracao-ferramentas}
@@ -113,23 +113,28 @@ ou classificação incerta para cada registro. As sugestões aceleraram as
 exclusões evidentes, mas as inclusões exigiram verificação dos
 pesquisadores, que tomaram todas as decisões.
 
-\begin{table}[H]
-	\centering
-	\caption{Papel de cada ferramenta e dos pesquisadores no fluxo da revisão}
-	\label{tab:papel-ferramentas}
-	\footnotesize
-	\setlength{\tabcolsep}{3pt}
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{4.9cm}|>{\raggedright\arraybackslash}p{4.4cm}|>{\raggedright\arraybackslash}p{3.2cm}|}
-		\hline
-		\textbf{Ferramenta} & \textbf{Papel}                                                                                                                                            & \textbf{Saída que alimenta a etapa seguinte}                                                  & \textbf{Quem decide}      \\ \hline
-		Evidentia           & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores             \\ \hline
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.5cm}|>{\footnotesize\raggedright\arraybackslash}p{4.9cm}|>{\footnotesize\raggedright\arraybackslash}p{4.4cm}|>{\footnotesize\raggedright\arraybackslash}p{3.2cm}|}
+	\caption{Papel de cada ferramenta e dos pesquisadores no fluxo da revisão}\label{tab:papel-ferramentas} \\
+	\hline
+	\textbf{Ferramenta} & \textbf{Papel}                                                                                                                                            & \textbf{Saída que alimenta a etapa seguinte}                                                  & \textbf{Quem decide}      \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:papel-ferramentas} (continuação)}} \\
+	\hline
+	\textbf{Ferramenta} & \textbf{Papel}                                                                                                                                            & \textbf{Saída que alimenta a etapa seguinte}                                                  & \textbf{Quem decide}      \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Evidentia           & Organiza o protocolo (objetivo, questões, PICOC e critérios), registra as decisões de triagem, emite o relatório PRISMA e abriga o formulário de extração & Protocolo, que origina o \textit{prompt}; decisões de triagem; extração dos estudos incluídos & Pesquisadores             \\ \hline
 		Consensus           & Busca assistida, a partir de solicitação em inglês com a questão e os componentes do PICOC                                                                & Lista de 100 referências, salva pelos autores                                                 & Pesquisadores, ao triar   \\ \hline
 		Claude              & Busca complementar com o mesmo \textit{prompt} do Consensus                                                                                               & 30 referências informadas no relato                                                           & Pesquisadores, ao triar   \\ \hline
 		Jev Reviewer        & Classificação preliminar dos 119 registros segundo cinco critérios                                                                                        & Sugestão (inclusão, incerta ou exclusão) e valores de \texttt{fails}                          & Pesquisadores, ao revisar \\ \hline
 		Pesquisadores       & Reúnem as listas, removem duplicatas, revisam título e resumo, leem os textos completos e extraem os dados                                                & Decisões registradas no Evidentia; 27 estudos para leitura integral e 26 extraídos            & Pesquisadores             \\ \hline
-	\end{tabular}
-	\fonte{Autores, a partir do registro da busca e da triagem.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \section{Estratégia de busca}
 \label{subsec:picoc-string-busca}
@@ -152,23 +157,28 @@ termos usados na busca.
 	\fonte{Adaptado de \citeonline{pai2004}.}
 \end{figure}
 
-\begin{table}[H]
-	\centering
-	\caption{Componentes do modelo PICOC adaptado e termos de busca}
-	\label{tab:picoc-termos}
-	\footnotesize
-	\setlength{\tabcolsep}{4pt}
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.5cm}|>{\raggedright\arraybackslash}p{5.8cm}|}
-		\hline
-		\textbf{Componente} & \textbf{Termo central} & \textbf{O que abrange} & \textbf{Sinônimos e termos relacionados} \\ \hline
-		\textbf{População} (\textit{Population}) & \textit{Computer Vision} / IA & Técnicas investigadas: visão computacional, IA, redes neurais, aprendizado de máquina e profundo & \textit{artificial intelligence}, \textit{CNN}, \textit{convolutional neural network*}, \textit{deep learning}, \textit{machine learning}, \textit{neural network*} \\ \hline
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.5cm}|>{\footnotesize\raggedright\arraybackslash}p{2.0cm}|>{\footnotesize\raggedright\arraybackslash}p{4.5cm}|>{\footnotesize\raggedright\arraybackslash}p{5.8cm}|}
+	\caption{Componentes do modelo PICOC adaptado e termos de busca}\label{tab:picoc-termos} \\
+	\hline
+	\textbf{Componente} & \textbf{Termo central} & \textbf{O que abrange} & \textbf{Sinônimos e termos relacionados} \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:picoc-termos} (continuação)}} \\
+	\hline
+	\textbf{Componente} & \textbf{Termo central} & \textbf{O que abrange} & \textbf{Sinônimos e termos relacionados} \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	\textbf{População} (\textit{Population}) & \textit{Computer Vision} / IA & Técnicas investigadas: visão computacional, IA, redes neurais, aprendizado de máquina e profundo & \textit{artificial intelligence}, \textit{CNN}, \textit{convolutional neural network*}, \textit{deep learning}, \textit{machine learning}, \textit{neural network*} \\ \hline
 		\textbf{Intervenção} (\textit{Intervention}) & Modelos de aprendizado & Arquiteturas e algoritmos aplicados às imagens (CNNs, \textit{Transformers}, segmentação) & \textit{ResNet*}, \textit{DenseNet*}, \textit{EfficientNet*}, \textit{U-Net}, \textit{UNet}, \textit{Attention U-Net}, \textit{Vision Transformer*}, \textit{ViT}, \textit{ConvNeXt*}, \textit{Swin Transformer*}, \textit{transfer learning}, \textit{supervised learning} \\ \hline
 		\textbf{Comparação} (\textit{Comparison}) & Não aplicável & Revisão exploratória, sem grupo de controle nem modelo de referência & --- \\ \hline
 		\textbf{Resultado} (\textit{Outcome}) & Desempenho e métricas & Métricas de desempenho e tarefas de detecção, classificação ou segmentação & \textit{accuracy}, \textit{AUC}, \textit{ROC-AUC}, \textit{sensitivity}, \textit{specificity}, \textit{precision}, \textit{recall}, \textit{F1-score}, \textit{detection}, \textit{diagnosis}, \textit{evaluation}, \textit{segmentation} \\ \hline
 		\textbf{Contexto} (\textit{Context}) & Hanseníase & Hanseníase e análise de lesões cutâneas & \textit{leprosy}, \textit{Hansen disease}, \textit{Hansen's disease}, \textit{hanseniasis}, \textit{skin lesion classification}, \textit{skin lesion segmentation} \\ \hline
-	\end{tabular}
-	\fonte{Autores.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 Os termos de cada componente foram unidos por \texttt{OR}, e os quatro
 componentes aplicáveis, por \texttt{AND}:
@@ -187,9 +197,6 @@ componentes aplicáveis, por \texttt{AND}:
 		\end{minipage}
 	}
 \end{center}
-
-
-
 
 Na Scopus, com os filtros da Tabela~\ref{tab:protocolo-busca}, a
 \textit{string} retornou 10.818 artigos. O limite inicial de 2020
@@ -224,6 +231,43 @@ Figura~\ref{fig:fluxo-metodologico-ia} mostra as seis etapas da revisão e
 a atuação de cada ferramenta, a Figura~\ref{fig:fluxo-triagem} resume as
 quantidades, e a Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}) lista os
 119 registros e sua situação.
+
+\subsection{Critérios de seleção}
+\label{subsec:criterios-selecao}
+
+Os critérios de inclusão (CI01 a CI05) e de exclusão (CE01 a CE05) estão
+na Tabela~\ref{tab:protocolo-busca}. Eles admitem estudos primários e
+revisões, distinguidos na extração. A disponibilidade e o idioma do texto
+completo podem exigir consulta além do título e do resumo.
+
+\subsection{Triagem e seleção para leitura integral}
+
+O Jev Reviewer sugeriu três inclusões, 15 classificações incertas e 101
+exclusões para os 119 registros. Os pesquisadores revisaram título e
+resumo e registraram no Evidentia 91 exclusões, 27 inclusões e uma
+decisão intermediária. As sugestões automáticas divergiram das decisões:
+13 dos 27 registros incluídos tinham sugestão de exclusão, o que confirma
+que a ferramenta não substituiu o julgamento dos pesquisadores. O registro
+intermediário (registro~\estudo{9}, \citeonline{souza2021}) recebeu duas
+exclusões individuais e foi consolidado manualmente como intermediário; o
+registro~\estudo{90} \cite{baweja2016} teve conflito entre inclusão e
+exclusão, resolvido com exclusão. A diferença de 92 registros entre 119 e
+27 reúne, portanto, 91 exclusões e um registro intermediário, e não 92
+exclusões. Segundo o relatório PRISMA do Evidentia, 67 das 91 exclusões
+têm o motivo ``Não aborda hanseníase'' e 24 não têm motivo registrado; as
+planilhas de triagem não registram o motivo de cada exclusão.
+
+Dos 27 registros lidos na íntegra, 26 foram confirmados e extraídos. O
+registro~\estudo{38} \cite{joerg2025}, sobre imagens dermatológicas
+geradas por inteligência artificial, consta no relatório PRISMA (de
+3 de novembro de 2026) como exclusão em texto completo, com o motivo ``Não
+aborda hanseníase'', embora as planilhas de triagem não registrem motivo.
+A documentação não permite afirmar que os dois pesquisadores avaliaram
+todos os registros de forma independente, prática recomendada por
+\citeonline{wohlin2024} ao menos para uma amostra; essa é uma limitação do
+processo. O Apêndice~\ref{apend:registro-busca} detalha os critérios do
+Jev Reviewer, o cruzamento completo entre sugestões e decisões e os
+estados intermediários da triagem.
 
 \begin{figure}[H]
 	\centering
@@ -359,45 +403,8 @@ quantidades, e a Tabela~\ref{tab:registros-118} (Apêndice~\ref{apend:registros}
 		\draw[arrow] (included.south) -- (fulltext.north);
 		\draw[arrow] (fulltext.east) -- (not_extracted.west);
 	\end{tikzpicture}
-	\fonte{Autores, a partir do relatório PRISMA do Evidentia.}
+	\fonte{Autores.}
 \end{figure}
-
-\subsection{Critérios de seleção}
-\label{subsec:criterios-selecao}
-
-Os critérios de inclusão (CI01 a CI05) e de exclusão (CE01 a CE05) estão
-na Tabela~\ref{tab:protocolo-busca}. Eles admitem estudos primários e
-revisões, distinguidos na extração. A disponibilidade e o idioma do texto
-completo podem exigir consulta além do título e do resumo.
-
-\subsection{Triagem e seleção para leitura integral}
-
-O Jev Reviewer sugeriu três inclusões, 15 classificações incertas e 101
-exclusões para os 119 registros. Os pesquisadores revisaram título e
-resumo e registraram no Evidentia 91 exclusões, 27 inclusões e uma
-decisão intermediária. As sugestões automáticas divergiram das decisões:
-13 dos 27 registros incluídos tinham sugestão de exclusão, o que confirma
-que a ferramenta não substituiu o julgamento dos pesquisadores. O registro
-intermediário (registro~\estudo{9}, \citeonline{souza2021}) recebeu duas
-exclusões individuais e foi consolidado manualmente como intermediário; o
-registro~\estudo{90} \cite{baweja2016} teve conflito entre inclusão e
-exclusão, resolvido com exclusão. A diferença de 92 registros entre 119 e
-27 reúne, portanto, 91 exclusões e um registro intermediário, e não 92
-exclusões. Segundo o relatório PRISMA do Evidentia, 67 das 91 exclusões
-têm o motivo ``Não aborda hanseníase'' e 24 não têm motivo registrado; as
-planilhas de triagem não registram o motivo de cada exclusão.
-
-Dos 27 registros lidos na íntegra, 26 foram confirmados e extraídos. O
-registro~\estudo{38} \cite{joerg2025}, sobre imagens dermatológicas
-geradas por inteligência artificial, consta no relatório PRISMA (de
-3 de novembro de 2026) como exclusão em texto completo, com o motivo ``Não
-aborda hanseníase'', embora as planilhas de triagem não registrem motivo.
-A documentação não permite afirmar que os dois pesquisadores avaliaram
-todos os registros de forma independente, prática recomendada por
-\citeonline{wohlin2024} ao menos para uma amostra; essa é uma limitação do
-processo. O Apêndice~\ref{apend:registro-busca} detalha os critérios do
-Jev Reviewer, o cruzamento completo entre sugestões e decisões e os
-estados intermediários da triagem.
 
 \subsection{Extração e síntese}
 \label{subsec:extracao}
@@ -436,7 +443,7 @@ estudos primários com resultados formam a base das contagens desta seção.
 		\begin{axis}[
 				xbar stacked,
 				width=0.86\textwidth,
-				height=4.4cm,
+				height=3.8cm,
 				xmin=0, xmax=20,
 				xlabel={Número de estudos (n = 26)},
 				symbolic y coords={{B -- Secundários (8)},{A -- Primários (18)}},
@@ -462,7 +469,7 @@ estudos primários com resultados formam a base das contagens desta seção.
 			\legend{Desenvolvem e avaliam modelo, Validação externa, Protocolo, Revisões, Perspectiva, Editorial}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, a partir da classificação da Tabela~\ref{tab:estudos-incluidos}.}
+	\fonte{Autores.}
 \end{figure}
 
 \begingroup
@@ -559,7 +566,7 @@ disponibilidade. Os estudos secundários (grupo B) não têm coleta própria, e
 	\estudo{E26} Atlas Dermatológico               & Atlas público; coleta não detalhada                        & 11.606 imagens no atlas; quantidade usada e pacientes não informados.                     \\ \hline
 \end{longtable}
 \endgroup
-\fonte{Autores a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
+\fonte{Autores.}
 
 A base de \citeonline{deps2026}, curada em acordo entre UFES e OMS, não
 informa quantos dos 208 casos restaram após a exclusão de 16 imagens. O
@@ -635,7 +642,7 @@ que não se descarta nesses 14 estudos.
 	\estudo{E26}    & Não informada               & \textit{Hold-out} 80/20 (20\% para o teste final); SMOTE aplicado só ao conjunto de treino e validação; validação cruzada de 10 dobras repetida 30 vezes; sem teste externo & Não informada \\ \hline
 \end{longtable}
 \endgroup
-\fonte{Autores a partir dos artigos incluídos (denominador 16). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 16 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
+\fonte{Autores.}
 
 Apenas \citeonline{eita2025} testam também em outra base; os outros 15 avaliam só
 na própria. Fora desses 16, \citeonline{deps2026} fizeram a única
@@ -685,22 +692,65 @@ diferem.
 	\estudo{E04} (validação externa) & Sensibilidade Top-1 a Top-5 & Sensibilidade Top-5 84,9\% (359/423); 87,2\% nas lesões clássicas e 69,6\% nas reacionais ou atípicas. Top-1: 46,9\% (clássicas) e 30,4\% (reacionais ou atípicas), por subconjunto; sem Top-1 global & Só hanseníase; especificidade, VPP, VPN e acurácia não calculáveis (só casos confirmados) \\ \hline
 \end{longtable}
 \endgroup
-\fonte{Autores a partir dos artigos incluídos.}
+\fonte{Autores.}
 
-\begin{table}[htb]
-	\centering
-	\caption{Resultados reportados nos estudos de detecção e de segmentação}
-	\label{tab:resultados-deteccao-segmentacao}
-	\small
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{1.4cm}|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{6.4cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
-		\hline
-		\textbf{Estudo} & \textbf{Tarefa}                             & \textbf{Resultado reportado}                                                                     & \textbf{Observação}                                                                                                       \\ \hline
-		\estudo{E23}    & Detecção (YOLOv8n), 6 classes               & Teste: P 90,4, R 85,6, F1 87,9 e mAP50 91,2. Em outra base: P 74,1, R 78,2, F1 76,0 e mAP50 82,4 & Também mAP@50-95; sem acurácia, AUC, ECE nem Brier. O texto cita mAP@0,5 = 0,858 e a tabela, 91,2\%; as classes da segunda base não são listadas \\ \hline
+\begingroup
+\begin{longtable}{|>{\small\raggedright\arraybackslash}p{1.4cm}|>{\small\raggedright\arraybackslash}p{2.3cm}|>{\small\raggedright\arraybackslash}p{6.4cm}|>{\small\raggedright\arraybackslash}p{4.0cm}|}
+	\caption{Resultados reportados nos estudos de detecção e de segmentação}\label{tab:resultados-deteccao-segmentacao} \\
+	\hline
+	\textbf{Estudo} & \textbf{Tarefa}                             & \textbf{Resultado reportado}                                                                     & \textbf{Observação}                                                                                                       \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:resultados-deteccao-segmentacao} (continuação)}} \\
+	\hline
+	\textbf{Estudo} & \textbf{Tarefa}                             & \textbf{Resultado reportado}                                                                     & \textbf{Observação}                                                                                                       \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	\estudo{E23}    & Detecção (YOLOv8n), 6 classes               & Teste: P 90,4, R 85,6, F1 87,9 e mAP50 91,2. Em outra base: P 74,1, R 78,2, F1 76,0 e mAP50 82,4 & Também mAP@50-95; sem acurácia, AUC, ECE nem Brier. O texto cita mAP@0,5 = 0,858 e a tabela, 91,2\%; as classes da segunda base não são listadas \\ \hline
 		\estudo{E21}    & Segmentação binária (ferida $\times$ fundo) & Melhor mIoU 70,13 (U-Net/SegFormer; F1 79,26). DeepLabV3+/ResNet-101: mIoU 66,88 e F1 76,55      & Também acurácia de pixel, precisão e \textit{recall}; partição avaliada não discriminada (teste público não anotado)                                              \\ \hline
 		\estudo{E22}    & Segmentação binária                         & Teste: IoU 86,50 e F1 92,50. Validação: IoU 87,09 e F1 93,10                                     & Também precisão, \textit{recall} e acurácia; métricas de teste reportadas apesar de o teste ser citado como não anotado                                 \\ \hline
-	\end{tabular}
-	\fonte{Autores a partir dos artigos incluídos.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
+
+A Tabela~\ref{tab:metricas-codigos} relaciona as métricas definidas na
+Subseção~\ref{subsec:metricas-avaliacao} ao seu uso nos 17 estudos com
+dados. Sensibilidade (M1) e acurácia (M5) são as mais frequentes; nenhum
+estudo reporta acurácia balanceada (M11), calibração (M12) ou diferença de
+desempenho entre tons de pele (M6), e só \citeonline{eita2025} reportam a
+mesma métrica em duas bases (M7). Medidas adicionais incluem o MCC
+\cite{yotsu2023}, o índice kappa \cite{lima2024skin} e a sensibilidade
+\textit{top-k} \cite{deps2026,pons2026}.
+
+\begingroup
+\begin{longtable}{|>{\footnotesize}l|>{\footnotesize\raggedright\arraybackslash}p{4.6cm}|>{\footnotesize}c|>{\footnotesize\raggedright\arraybackslash}p{7.0cm}|}
+	\caption{Uso das métricas definidas no referencial nos 17 estudos com dados}\label{tab:metricas-codigos} \\
+	\hline
+	\textbf{Código} & \textbf{Métrica} & \textbf{n/17} & \textbf{Estudos} \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:metricas-codigos} (continuação)}} \\
+	\hline
+	\textbf{Código} & \textbf{Métrica} & \textbf{n/17} & \textbf{Estudos} \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	M1  & Sensibilidade (\textit{recall}) & 15 & \estudo{E04,E06,E07,E08,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E26} \\ \hline
+		M5  & Acurácia                        & 15 & \estudo{E05,E06,E07,E08,E13,E14,E15,E17,E18,E19,E21,E22,E24,E25,E26} \\ \hline
+		M3  & Precisão                        & 10 & \estudo{E06,E07,E14,E15,E18,E19,E21,E22,E23,E24} \\ \hline
+		M4  & $F_1$                           & 10 & \estudo{E06,E07,E14,E15,E18,E19,E21,E22,E23,E24} \\ \hline
+		M2  & Especificidade                  & 6  & \estudo{E07,E08,E13,E15,E17,E26} \\ \hline
+		M10 & AUC                             & 4  & \estudo{E08,E13,E14,E26} \\ \hline
+		M8  & IoU ou mIoU                     & 2  & \estudo{E21,E22} \\ \hline
+		M7  & Mesma métrica em duas bases     & 1  & \estudo{E23} \\ \hline
+		M9  & mAP                             & 1  & \estudo{E23} \\ \hline
+		M6  & Diferença entre tons de pele    & 0  & --- \\ \hline
+		M11 & Acurácia balanceada             & 0  & --- \\ \hline
+		M12 & Calibração (Brier ou ECE)       & 0  & --- \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \citeonline{andrade2025} registram as limitações relatadas por parte
 desses estudos: falta de validação em outros contextos \cite{baweja2023}, em
@@ -787,7 +837,7 @@ valores.
 			\legend{Acurácia (ou Top-1) reportada, Sensibilidade ou acerto da classe hanseníase}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, com os valores literais dos artigos (Tabela~\ref{tab:resultados-classificacao}). Barra ausente indica valor não reportado ou não verificado. \citeonline{yotsu2023}: maior Top-1 (faixa de 76,61 a 84,63\%) e maior acerto da classe hanseníase (faixa de 12,0 a 13,0\%). \citeonline{deps2026}: Top-1 por subconjunto, sem valor global. \citeonline{gawali2024} não aparecem por não reportar acurácia de teste. \citeonline{lima2024skin}: acurácia da validação cruzada com 100 árvores; a sensibilidade reportada (98,18\%) é global e não específica da hanseníase, por isso não consta. VC: validação cruzada.}
+	\fonte{Autores.}
 \end{figure}
 
 \subsection{Como o desempenho varia entre diferentes grupos ou tons de pele?}
@@ -867,7 +917,7 @@ de forma equitativa no SUS (Figura~\ref{fig:vazio-tom-pele}).
 			\legend{Não informa no texto principal, Caracteriza o tom ou reporta desempenho por tom}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, a partir da leitura dos textos principais dos 17 estudos com dados (16 que desenvolvem modelo e a validação externa de \citeonline{deps2026}); figuras e suplementos não foram examinados. ``Não informa'' não equivale a ``não avalia''. Na caracterização, três estudos caracterizam o tom da base em níveis diferentes: \citeonline{pons2026} e \citeonline{deps2026} com distribuição, e \citeonline{yotsu2023} apenas pela afirmação de fototipo IV ou superior.}
+	\fonte{Autores.}
 \end{figure}
 
 \subsection{Quais modelos e abordagens de inteligência artificial são utilizados para identificar as manifestações dermatológicas associadas à doença?}
@@ -881,24 +931,29 @@ Tabela~\ref{tab:tarefas-ia} liga tarefas e etapas aos estudos; em
 \citeonline{jaikishore2021} a classificação de gravidade abrange só eczema
 e sarampo.
 
-\begin{table}[htbp]
-	\centering
-	\small
-	\caption{Tarefas e etapas dos sistemas por estudo}
-	\label{tab:tarefas-ia}
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{7.4cm}|>{\raggedright\arraybackslash}p{6.3cm}|}
-		\hline
-		\textbf{Tarefa ou etapa}                                                 & \textbf{Estudos}                                         \\ \hline
-		Classificação de doenças em imagens cutâneas                             & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25,E26} \\ \hline
+\begingroup
+\begin{longtable}{|>{\small\raggedright\arraybackslash}p{7.4cm}|>{\small\raggedright\arraybackslash}p{6.3cm}|}
+	\caption{Tarefas e etapas dos sistemas por estudo}\label{tab:tarefas-ia} \\
+	\hline
+	\textbf{Tarefa ou etapa}                                                 & \textbf{Estudos}                                         \\ \hline
+	\endfirsthead
+	\multicolumn{2}{l}{\footnotesize\textit{Tabela~\ref{tab:tarefas-ia} (continuação)}} \\
+	\hline
+	\textbf{Tarefa ou etapa}                                                 & \textbf{Estudos}                                         \\ \hline
+	\endhead
+	\multicolumn{2}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Classificação de doenças em imagens cutâneas                             & \estudo{E04,E05,E06,E07,E13,E14,E15,E17,E18,E19,E24,E25,E26} \\ \hline
 		Classificação em microfotografias histopatológicas                       & \estudo{E08}                                             \\ \hline
 		Detecção por caixas delimitadoras e classificação das lesões localizadas & \estudo{E23}                                             \\ \hline
 		Segmentação binária de ferida e fundo                                    & \estudo{E21,E22}                                         \\ \hline
 		Delimitação da região de interesse como etapa da classificação           & \estudo{E06,E07,E18}                                     \\ \hline
 		Classificação após a segmentação como etapa do sistema                   & \estudo{E22}                                             \\ \hline
 		Classificação de gravidade para eczema e sarampo                         & \estudo{E24}                                             \\ \hline
-	\end{tabular}
-	\fonte{Autores, a partir dos estudos incluídos.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 As abordagens (Tabela~\ref{tab:abordagens-ia} e
 Figura~\ref{fig:abordagens-ia}) não são exclusivas; a híbrida exige
@@ -907,21 +962,26 @@ evidência da profundidade da rede. A transferência de aprendizado aparece,
 por exemplo, em \citeonline{yotsu2023}, \citeonline{gawali2024} e
 \citeonline{jaikishore2021}.
 
-\begin{table}[htbp]
-	\centering
-	\small
-	\caption{Abordagens de IA identificadas nos estudos com avaliação de modelos}
-	\label{tab:abordagens-ia}
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{5.0cm}|c|>{\raggedright\arraybackslash}p{4.3cm}|}
-		\hline
-		\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/17} & \textbf{Estudos}                                                 \\ \hline
-		Aprendizado profundo    & Uso ou avaliação de redes profundas                                                                        & 15/17         & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25,E26} \\ \hline
+\begingroup
+\begin{longtable}{|>{\small\raggedright\arraybackslash}p{3.2cm}|>{\small\raggedright\arraybackslash}p{5.0cm}|>{\small}c|>{\small\raggedright\arraybackslash}p{4.3cm}|}
+	\caption{Abordagens de IA identificadas nos estudos com avaliação de modelos}\label{tab:abordagens-ia} \\
+	\hline
+	\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/17} & \textbf{Estudos}                                                 \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:abordagens-ia} (continuação)}} \\
+	\hline
+	\textbf{Abordagem}      & \textbf{Definição nesta análise}                                                                           & \textbf{n/17} & \textbf{Estudos}                                                 \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Aprendizado profundo    & Uso ou avaliação de redes profundas                                                                        & 15/17         & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25,E26} \\ \hline
 		Aprendizado tradicional & Classificadores tradicionais e vizinho mais próximo                                                        & 9/17          & \estudo{E06,E07,E08,E13,E17,E18,E22,E25,E26}                         \\ \hline
 		Abordagem híbrida       & Combinação de técnicas profundas e tradicionais ou de atributos aprendidos e manuais na mesma configuração & 6/17          & \estudo{E06,E13,E17,E18,E22,E26}                                     \\ \hline
 		Poucos exemplos         & Estratégia \textit{few-shot} documentada                                                                   & 1/17          & \estudo{E17}                                                     \\ \hline
-	\end{tabular}
-	\fonte{Autores, a partir dos estudos incluídos.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \begin{figure}[htbp]
 	\centering
@@ -935,7 +995,7 @@ por exemplo, em \citeonline{yotsu2023}, \citeonline{gawali2024} e
 				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
 				\node[right,font=\footnotesize] at (\n,\y) {\n};}
 	\end{tikzpicture}
-	\fonte{Autores, a partir dos 17 estudos com avaliação de modelos; categorias não exclusivas.}
+	\fonte{Autores.}
 \end{figure}
 
 A Tabela~\ref{tab:modelos-resumo} lista os itens com três ou mais
@@ -946,23 +1006,29 @@ multinível e a otimizada por buraco negro. Na
 Figura~\ref{fig:ocorrencias-modelos}, um estudo pode somar em várias
 barras, e o comprimento não indica desempenho.
 
-\begin{table}[htbp]
-	\centering
-	\caption{Modelos e componentes com maior ocorrência nos estudos analisados}
-	\label{tab:modelos-resumo}
-	\begin{tabular}{|l|c|l|}
-		\hline
-		\textbf{Modelo ou componente}     & \textbf{Estudos (n/17)} & \textbf{Identificadores} \\ \hline
-		Random Forest                     & 5/17                    & \estudo{E06,E08,E13,E18,E26} \\ \hline
+\begingroup
+\begin{longtable}{|l|c|l|}
+	\caption{Modelos e componentes com maior ocorrência nos estudos analisados}\label{tab:modelos-resumo} \\
+	\hline
+	\textbf{Modelo ou componente}     & \textbf{Estudos (n/17)} & \textbf{Identificadores} \\ \hline
+	\endfirsthead
+	\multicolumn{3}{l}{\footnotesize\textit{Tabela~\ref{tab:modelos-resumo} (continuação)}} \\
+	\hline
+	\textbf{Modelo ou componente}     & \textbf{Estudos (n/17)} & \textbf{Identificadores} \\ \hline
+	\endhead
+	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Random Forest                     & 5/17                    & \estudo{E06,E08,E13,E18,E26} \\ \hline
 		SVM / Multi-SVM                   & 4/17                    & \estudo{E06,E07,E08,E25} \\ \hline
 		ResNet-101                        & 3/17                    & \estudo{E06,E21,E25}     \\ \hline
 		VGG-16                            & 3/17                    & \estudo{E05,E19,E24}     \\ \hline
 		U-Net, incluindo adaptação        & 3/17                    & \estudo{E06,E21,E22}     \\ \hline
 		ANN, arquitetura não especificada & 3/17                    & \estudo{E06,E07,E08}     \\ \hline
 		Inception V3                      & 3/17                    & \estudo{E17,E24,E26}     \\ \hline
-	\end{tabular}
-	\fonte{Autores, a partir dos estudos incluídos.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \begin{figure}[htbp]
 	\centering
@@ -976,7 +1042,7 @@ barras, e o comprimento não indica desempenho.
 				\node[left,font=\footnotesize] at (0,\y) {\rotulo};
 				\node[right,font=\footnotesize] at (\n,\y) {\n};}
 	\end{tikzpicture}
-	\fonte{Autores, a partir dos 17 estudos com avaliação de modelos; categorias não exclusivas.}
+	\fonte{Autores.}
 \end{figure}
 
 Os classificadores tradicionais incluem SVM otimizada \cite{nyatte2022},
@@ -1078,7 +1144,7 @@ aplicativo em pacientes.
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores. Dos 16 estudos que desenvolvem modelo, 15 avaliam somente na própria base e um testa também em outra base \cite{eita2025}; a validação externa de modelo de terceiros é a de \citeonline{deps2026}; \citeonline{sall2025} apresentam um protocolo sem resultados; os oito restantes são seis revisões, uma perspectiva e um editorial.}
+	\fonte{Autores.}
 \end{figure}
 
 \subsection{Em que tipo de veículo o estudo foi publicado, como periódico, conferência ou capítulo de livro?}
@@ -1102,7 +1168,7 @@ veículo, e a Tabela~\ref{tab:estudos-incluidos}, cada veículo.
 		\begin{axis}[
 				ybar,
 				width=0.88\textwidth,
-				height=5.6cm,
+				height=4.6cm,
 				ymin=0, ymax=7.5,
 				ylabel={Número de publicações},
 				xlabel={Ano de publicação},
@@ -1143,5 +1209,5 @@ veículo, e a Tabela~\ref{tab:estudos-incluidos}, cada veículo.
 			\legend{{Periódico (76,9\%)}, {Conferência (19,2\%)}, {Capítulo de livro (3,8\%)}}
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores, com o ano impresso no PDF de cada estudo.}
+	\fonte{Autores.}
 \end{figure}
