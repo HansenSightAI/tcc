@@ -1,5 +1,5 @@
 % !TeX root = ../tcc.tex
-\chapter{Introdução}
+\chapter{Introdução}\label{cap:introducao}
 
 Este capítulo apresenta o contexto da aplicação de modelos de visão
 computacional à identificação de manifestações dermatológicas associadas
@@ -131,7 +131,7 @@ reconhecem limitações na diversidade dos dados e apontam a ampliação da
 representação de pessoas com tons de pele mais escuros como uma direção
 de trabalho futuro.
 
-Esses estudos motivam a investigação de como o desempenho dos modelos é
+Esses estudos nos motivaram a investigar como o desempenho dos modelos é
 definido, mensurado e interpretado. Para o presente trabalho, a
 avaliação compreende os resultados preditivos relativos à tarefa, os
 procedimentos empregados para obtê-los e as evidências disponíveis sobre
@@ -140,6 +140,7 @@ utilização futura em apoio à triagem na rede pública de saúde do Brasil
 constitui o contexto de interesse da pesquisa, sem que os resultados
 computacionais sejam, por si só, considerados demonstração de
 efetividade clínica.
+
 
 \section{Problema}\label{problema}
 
@@ -151,13 +152,13 @@ composição dos conjuntos de dados e nas métricas utilizadas. Classificar
 uma imagem entre doenças, localizar uma lesão e segmentar uma ferida
 produzem resultados com significados distintos. Consequentemente, uma
 comparação baseada apenas nos maiores valores publicados pode
-desconsiderar diferenças essenciais entre os experimentos de
+desconsiderar diferenças essenciais entre os experimentos, conforme observaram
 \citeonline{yotsu2023}, \citeonline{sanchez2024} e \citeonline{eita2025}.
 
 Além disso, medidas agregadas podem não representar adequadamente o
-desempenho referente à hanseníase. No estudo de \citeonline{yotsu2023}, a
-Task 2 apresentou acurácias globais de 77\% e 80\% nos dois cenários
-avaliados. Entretanto, a leitura da diagonal correspondente à hanseníase
+desempenho referente à hanseníase. No estudo de \citeonline{yotsu2023}, o teste de
+comparação entre imagens com diagnóstico clínico e com diagnóstico confirmado
+(Tarefa~2) apresentou acurácias globais de 77\% e 80\%, respectivamente. Entretanto, a leitura da diagonal correspondente à hanseníase
 nas matrizes de confusão indica proporções de classificação correta de
 12\% e 13\%, respectivamente. Como as linhas representam a classe real,
 esses valores podem ser interpretados como sensibilidade por imagem para
@@ -230,7 +231,7 @@ das medidas a serem extraídas dos estudos.
 			\textbf{Com foco em}                        & Identificação de características patológicas de
 			hanseníase.                                                                                   \\
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da área da saúde.                                                                  \\
+			Software e da Medicina.                                                                  \\
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
 			de saúde do Brasil.                                                                           \\
 		\end{longtable}
@@ -238,23 +239,13 @@ das medidas a serem extraídas dos estudos.
 \fonte{Adaptado de \citeonline{basili1994} e \citeonline{wohlin2024}.}
 
 \subsection{Questão norteadora}
-
-A investigação é orientada pela seguinte questão:
+O GQM adaptado orienta a formulação da questão de pesquisa principal deste trabalho:
 
 \begin{quote}
-	Como avaliar o desempenho de modelos de visão computacional aplicados à
+	\textbf{\textit{Como avaliar o desempenho de modelos de visão computacional aplicados à
 	identificação de padrões associados à hanseníase em imagens de pele, no
-	contexto da rede pública de saúde do Brasil?
+	contexto da rede pública de saúde do Brasil?}}
 \end{quote}
-
-Nesta etapa, a questão será abordada por meio da identificação e análise
-das evidências apresentadas na literatura. Serão examinadas as tarefas
-realizadas, os modelos empregados, as características dos conjuntos de
-dados, os procedimentos de avaliação, as métricas e os resultados, bem
-como as informações disponíveis sobre tons de pele e generalização. A
-ausência de avaliação por grupo será registrada como uma limitação das
-evidências disponíveis, sem ser tomada como demonstração de equidade ou
-de desigualdade de desempenho.
 
 \section{Objetivos}\label{objetivos}
 
@@ -262,9 +253,12 @@ de desigualdade de desempenho.
 
 Analisar a avaliação de desempenho de modelos de visão computacional
 aplicados à identificação de padrões associados à hanseníase em imagens
-de pele, a partir da síntese das evidências da literatura, visando
+de pele, a partir das evidências observadas na literatura, visando
 fundamentar seu uso em apoio à triagem na rede pública de saúde do
 Brasil.
+
+
+
 
 \subsection{Objetivos específicos}\label{objetivos-especuxedficos}
 
@@ -294,110 +288,156 @@ Brasil.
 
 \section{Metodologia}
 
-Este trabalho adota uma revisão estruturada da literatura para identificar e
-analisar evidências sobre a avaliação de modelos de visão computacional
-aplicados à identificação de padrões associados à hanseníase em imagens de
-pele. A Figura~\ref{fig:percurso-metodologico} apresenta o percurso da
-revisão, do problema de pesquisa à síntese das evidências.
-
-\begin{figure}[htbp]
-	\centering
-	\small
-	\begin{tikzpicture}[
-		node distance=0.7cm and 0.6cm,
-		etapa/.style={draw=black, thick, rounded corners=4pt, fill=white,
-				text width=2.3cm, minimum height=1.25cm, align=center, font=\footnotesize, inner sep=3pt},
-		inicio/.style={circle, fill=black, minimum size=0.45cm, inner sep=0pt},
-		seta/.style={-{Stealth[length=2.2mm]}, thick}
-		]
-		\node[inicio] (ini) {};
-		\node[etapa, right=0.55cm of ini] (a1) {Problema e questão de pesquisa (GQM)};
-		\node[etapa, right=of a1] (a2) {Protocolo da revisão};
-		\node[etapa, right=of a2] (a3) {Busca};
-		\node[etapa, right=of a3] (a4) {Triagem};
-		\node[etapa, below=of a4] (b5) {Leitura integral};
-		\node[etapa, left=of b5] (b6) {Extração};
-		\node[etapa, left=of b6] (b7) {Síntese};
-		\node[circle, draw=black, thick, minimum size=0.6cm, inner sep=0pt, left=0.55cm of b7] (fim) {};
-		\fill (fim.center) circle (0.2cm);
-		\draw[seta] (ini) -- (a1);
-		\draw[seta] (a1) -- (a2);
-		\draw[seta] (a2) -- (a3);
-		\draw[seta] (a3) -- (a4);
-		\draw[seta] (a4) -- (b5);
-		\draw[seta] (b5) -- (b6);
-		\draw[seta] (b6) -- (b7);
-		\draw[seta] (b7) -- (fim);
-	\end{tikzpicture}
-	\caption{Fluxo de atividades da revisão estruturada da literatura}
-	\label{fig:percurso-metodologico}
-	\fonte{Elaboração própria.}
-\end{figure}
+Este trabalho é composto por dois estudos complementares. O primeiro é uma
+revisão estruturada da literatura, que reúne as evidências sobre a avaliação de
+modelos de visão computacional aplicados à identificação de padrões associados
+à hanseníase em imagens de pele. O segundo é uma avaliação computacional desses
+modelos, orientada pelo padrão \textit{Data Science} da ACM SIGSOFT e
+fundamentada nas lacunas identificadas no primeiro. A seção apresenta a
+classificação do trabalho e os estudos que o compõem.
 
 \subsection{Classificação do estudo}
 
-A classificação segue as dimensões do Capítulo~2 de \citeonline{wohlin2024}.
+A classificação adota a estrutura de decisão de \citeonline{wohlin2015}, que
+organiza o desenho de uma pesquisa em oito pontos de decisão, agrupados nas
+fases estratégica, tática e operacional, e que fundamenta o Capítulo~2 de
+\citeonline{wohlin2024}. A Figura~\ref{fig:estrutura-decisao} apresenta essa estrutura, e os
+parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 
-\begin{itemize}
-	\item \textbf{Finalidade descritiva} \cite{wohlin2024}. A pesquisa
-	      descritiva descreve um fenômeno ou as características de um problema, e sua
-	      questão costuma começar com ``o quê'' ou ``como'' \cite{wohlin2024}.
-	      A questão norteadora começa com ``Como'', e os objetivos específicos 1 a 4
-	      pedem caracterizar, identificar, sistematizar e examinar o que os estudos
-	      reportam.
-
-	\item \textbf{Abordagem mista} \cite{wohlin2024}. A extração reúne
-	      dados quantitativos (como número de imagens e métricas) e qualitativos (como
-	      tarefa, modelo e população). O Capítulo~\ref{cap:revisao-literatura} combina
-	      contagens e tabelas com síntese descritiva.
-
-	\item \textbf{Coleta por estudo de literatura estruturado}
-	      \cite{wohlin2024}. A revisão tem questões de pesquisa, protocolo,
-	      estratégia de busca, critérios explícitos de seleção e formulário de extração,
-	      características que \citeonline{kitchenham2007} apontam como diferenciais
-	      da revisão sistemática em relação à revisão convencional.
-
-	\item \textbf{Análise descritiva e por classificação}
-	      \cite{wohlin2024}. Os estudos são resumidos por contagens e tabelas e
-	      classificados por tarefa, modelo e procedimento de avaliação.
-\end{itemize}
-
-\subsection{Etapas e atividades da revisão}
-
-A Tabela~\ref{tab:etapas-metodologia} lista as atividades realizadas na revisão
-e indica onde cada uma é apresentada.
-
-\begin{table}[htb]
+\begin{figure}[htbp]
 	\centering
-	\caption{Atividades realizadas na revisão estruturada}
-	\label{tab:etapas-metodologia}
-	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedright\arraybackslash}p{5.6cm} >{\raggedright\arraybackslash}p{6.0cm}}
-		\toprule
-		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\
-		\midrule
-		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\
-		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
-		Busca                          & Execução da busca e identificação dos registros                                                  & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos''                                                                                                                                               \\
-		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Mesma seção; Figura~\ref{fig:fluxo-triagem}                                                                                                                                                                                              \\
-		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Mesma seção                                                                                                                                                                                                                              \\
-		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção ``Extração e síntese das evidências''                                                                                                                                                                                           \\
-		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção ``Resultados da revisão''                                                                                                                                                                                                          \\
-		\bottomrule
-	\end{tabular}
-	\fonte{Autores.}
-\end{table}
+	\resizebox{\textwidth}{!}{%
+	\begin{tikzpicture}[
+		grupo/.style={draw=blue!45!black, thick, fill=blue!7},
+		titulo/.style={font=\footnotesize\bfseries, align=center, inner sep=1pt},
+		opcao/.style={draw=black!55, fill=yellow!10, align=center, font=\footnotesize, inner sep=1.5pt, minimum height=0.5cm, text width=3.20cm},
+		seta/.style={-{Stealth[length=2.5mm]}, very thick, blue!45!black}
+		]
+		\draw[grupo] (0.00,0.00) rectangle (3.50,-2.54);
+		\node[titulo] at (1.75,-0.55) {(1) Resultado\\da pesquisa};
+		\node[opcao] at (1.75,-1.45) {Pesquisa básica};
+		\node[opcao] at (1.75,-2.09) {Pesquisa aplicada};
+		\draw[grupo] (0.00,-3.34) rectangle (3.50,-5.88);
+		\node[titulo] at (1.75,-3.89) {(2) Lógica\\da pesquisa};
+		\node[opcao] at (1.75,-4.79) {Pesquisa indutiva};
+		\node[opcao] at (1.75,-5.43) {Pesquisa dedutiva};
+		\draw[grupo] (3.95,-1.20) rectangle (7.45,-5.02);
+		\node[titulo] at (5.70,-1.75) {(3) Finalidade\\da pesquisa};
+		\node[opcao] at (5.70,-2.65) {Explicativa};
+		\node[opcao] at (5.70,-3.29) {Descritiva};
+		\node[opcao] at (5.70,-3.93) {Exploratória};
+		\node[opcao] at (5.70,-4.57) {Avaliação};
+		\draw[grupo] (7.90,-1.20) rectangle (11.40,-4.38);
+		\node[titulo] at (9.65,-1.75) {(4) Abordagem\\de pesquisa};
+		\node[opcao] at (9.65,-2.65) {Positivista};
+		\node[opcao] at (9.65,-3.29) {Interpretativista};
+		\node[opcao] at (9.65,-3.93) {Crítica};
+		\draw[grupo] (12.15,0.00) rectangle (15.65,-3.18);
+		\node[titulo] at (13.90,-0.55) {(5) Processo\\de pesquisa};
+		\node[opcao] at (13.90,-1.45) {Qualitativo};
+		\node[opcao] at (13.90,-2.09) {Quantitativo};
+		\node[opcao] at (13.90,-2.73) {Abordagem mista};
+		\draw[grupo] (12.15,-3.98) rectangle (15.65,-7.16);
+		\node[titulo] at (13.90,-4.53) {(6) Metodologia\\de pesquisa};
+		\node[opcao] at (13.90,-5.43) {Estudo de caso};
+		\node[opcao] at (13.90,-6.07) {Pesquisa-ação};
+		\node[opcao] at (13.90,-6.71) {\textit{Design science}};
+		\draw[grupo] (16.40,-0.40) rectangle (19.90,-5.50);
+		\node[titulo] at (18.15,-0.95) {(7) Métodos de\\coleta de dados};
+		\node[opcao] at (18.15,-1.85) {Entrevistas};
+		\node[opcao] at (18.15,-2.49) {Observação};
+		\node[opcao] at (18.15,-3.13) {Pesquisa em arquivo};
+		\node[opcao] at (18.15,-3.77) {Levantamento};
+		\node[opcao] at (18.15,-4.41) {Simulação};
+		\node[opcao] at (18.15,-5.05) {Experimento};
+		\draw[grupo] (20.35,-1.20) rectangle (23.85,-5.02);
+		\node[titulo] at (22.10,-1.75) {(8) Métodos de\\análise de dados};
+		\node[opcao] at (22.10,-2.65) {\mbox{Teoria fundamentada}};
+		\node[opcao] at (22.10,-3.29) {Análise temática};
+		\node[opcao] at (22.10,-3.93) {Hermenêutica};
+		\node[opcao] at (22.10,-4.57) {Análise estatística};
+		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (q) at (1.75,0.80) {};
+		\node[font=\small\bfseries, anchor=west] at (2.10,0.80) {Questão de pesquisa};
+		\draw[seta] (q) -- (1.75,0.00);
+		\draw[seta] (1.75,-2.54) -- (1.75,-3.34);
+		\draw[seta] (3.50,-4.61) -- (3.95,-4.61);
+		\draw[seta] (7.45,-2.79) -- (7.90,-2.79);
+		\draw[seta] (11.40,-1.59) -- (12.15,-1.59);
+		\draw[seta, {Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}] (13.90,-3.18) -- (13.90,-3.98);
+		\draw[seta] (15.65,-1.59) -- (16.40,-1.59);
+		\draw[seta] (15.65,-5.57) -- (16.40,-5.57);
+		\draw[seta] (19.90,-3.11) -- (20.35,-3.11);
+		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (f) at (22.10,-5.82) {};
+		\fill[blue!45!black] (f.center) circle (0.1cm);
+		\draw[seta] (22.10,-5.02) -- (f);
+		\node[font=\small\bfseries, align=center] at (22.10,-6.47) {Resultados da\\pesquisa};
+		\draw[dashed, thick, blue!45!black] (-0.25,1.25) rectangle (24.10,-8.06);
+		\draw[dashed, thick, blue!45!black] (11.78,1.25) -- (11.78,-8.06);
+		\draw[dashed, thick, blue!45!black] (16.03,1.25) -- (16.03,-8.06);
+		\node[font=\small\bfseries] at (5.76,-7.76) {Fase estratégica};
+		\node[font=\small\bfseries] at (13.90,-7.76) {Fase tática};
+		\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
+	\end{tikzpicture}%
+	}
+	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
+	\label{fig:estrutura-decisao}
+	\fonte{Adaptado de \citeonline{wohlin2015}.}
+\end{figure}
 
-\subsection{Contribuição da revisão para uma avaliação futura}
+Na fase estratégica, o trabalho é classificado como pesquisa aplicada, pois trata
+de um problema específico, o apoio à triagem de hanseníase na rede pública de
+saúde, e sua contribuição é o conhecimento que fundamenta esse uso. A pesquisa
+aplicada depende de conhecimento básico \cite{wohlin2015}, que o primeiro
+estudo reúne e o segundo emprega. A lógica é indutiva: parte de observações
+específicas, os estudos publicados e os conjuntos de imagens, para padrões e
+conclusões mais gerais, sem testar uma teoria prévia. A finalidade é descritiva
+no primeiro estudo, cuja questão começa com ``Como'' e cujos objetivos pedem
+caracterizar, identificar, sistematizar e examinar o que a literatura relata, e
+de avaliação no segundo, que busca determinar o desempenho de modelos
+\cite{wohlin2015}. A abordagem é positivista, pois os dois estudos se apoiam em
+medidas objetivas e em procedimentos que outro pesquisador pode repetir.
 
-A revisão estruturada da literatura (Capítulo~\ref{cap:revisao-literatura})
-sistematiza o que os estudos relatam sobre os dados, os procedimentos de
-avaliação, as métricas de desempenho e a capacidade de generalização dos
-modelos. Essas evidências e suas limitações fundamentam o planejamento da
-avaliação computacional apresentado no Capítulo~\ref{cap:metodologia-experimental}.
-A avaliação segue a abordagem de ciência de dados apresentada na
-Subseção~\ref{subsec:ciencia-de-dados} e prevê um teste em uma base pública
-reservada, independente das fontes usadas no desenvolvimento dos modelos.
+Nas fases tática e operacional, o processo de pesquisa é misto no primeiro
+estudo, que extrai dados quantitativos (como número de imagens e valores de
+métricas) e qualitativos (como tarefa, modelo e população), e quantitativo no
+segundo, centrado em métricas de desempenho. O ponto de decisão sobre a
+metodologia não se aplica: nenhuma das metodologias previstas na estrutura
+(estudo de caso, pesquisa-ação ou \textit{design science}) é adotada, caminho
+admitido por \citeonline{wohlin2015}. O segundo estudo é conduzido segundo o
+padrão \textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}, que
+não corresponde a uma dessas metodologias, mas estabelece critérios para estudos
+de engenharia de software baseados em análise centrada em dados. Seus
+procedimentos se refletem nos pontos de coleta e de análise de dados, descritos
+a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
+literatura estruturado, com questões de pesquisa, protocolo, estratégia de
+busca, critérios explícitos de seleção e formulário de extração
+\cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
+conjuntos de imagens já coletados e anotados por terceiros. A análise dos dados
+é estatística: descritiva, por contagens, tabelas e classificação dos estudos
+por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
+medidas de desempenho no segundo, com a variabilidade das estimativas relatada
+conforme o padrão \textit{Data Science}.
+
+\subsection{Estudos que compõem o trabalho}
+
+O primeiro estudo é uma revisão estruturada da literatura baseada no protocolo
+de revisão sistemática proposto por \citeonline{kitchenham2007}, que orientou a
+definição das questões de pesquisa, da estratégia de busca, dos critérios de
+seleção e do formulário de extração. Nele são examinados as tarefas realizadas,
+os modelos empregados, as características dos conjuntos de dados, os
+procedimentos de avaliação, as métricas, os resultados e as informações
+disponíveis sobre tons de pele e generalização. A ausência de avaliação por
+grupo é registrada como limitação das evidências disponíveis, sem ser tomada
+como demonstração de equidade ou de desigualdade de desempenho. O protocolo e
+os resultados são apresentados no Capítulo~\ref{cap:revisao-literatura}, e as
+atividades realizadas, na Subseção~\ref{subsec:etapas-revisao}.
+
+O segundo estudo é uma avaliação computacional de modelos de visão
+computacional, orientada pelo padrão \textit{Data Science} da ACM SIGSOFT,
+apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
+limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
+procedimentos de avaliação e à generalização, fundamentam a formulação da
+questão específica desse estudo e o seu planejamento.
 
 \section{Organização do trabalho}
 
@@ -415,8 +455,11 @@ configuração do teste externo, a comparação dos classificadores e as ameaça
 
 \section{Cronograma e fluxo de atividades}
 
-Esta seção apresenta as atividades realizadas, em forma de fluxo na
+Esta seção apresenta as atividades dos dois estudos que compõem o trabalho. As
+atividades do primeiro estudo seguem o fluxo da
 Figura~\ref{fig:percurso-metodologico}.
+
+\textbf{Primeiro estudo: revisão estruturada da literatura}
 
 \begin{itemize}
 	\item \textbf{Definição do problema, da questão de pesquisa e dos objetivos:}
@@ -438,3 +481,24 @@ Figura~\ref{fig:percurso-metodologico}.
 
 O fluxo de seleção e os resultados são apresentados no
 Capítulo~\ref{cap:revisao-literatura}.
+
+\textbf{Segundo estudo: avaliação computacional}
+
+As atividades previstas seguem os critérios essenciais do padrão
+\textit{Data Science}, apresentado na Subseção~\ref{subsec:ciencia-de-dados}.
+
+\begin{itemize}
+	\item \textbf{Formulação da questão específica:} definição da questão da
+	      avaliação a partir das lacunas identificadas na revisão.
+	\item \textbf{Seleção e acesso aos dados:} escolha dos conjuntos de imagens e
+	      justificativa das fontes.
+	\item \textbf{Preparação dos dados:} pré-processamento, filtragem e
+	      categorização.
+	\item \textbf{Modelagem:} definição das abordagens de modelagem e do ambiente
+	      computacional.
+	\item \textbf{Avaliação:} definição das métricas e dos procedimentos de análise.
+	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
+	      à validade.
+\end{itemize}
+
+\todo[inline, color=pink]{Um cronograma tem atividades, datas e responsáveis. Vocês tem o cronograma do TCC1 no github projects e precisam planejar o cronograma do TCC2. O que está escrito aqui não é um cronograma. Sao as atividades do cronograma que precisam estar brevemente descritas aqui. }

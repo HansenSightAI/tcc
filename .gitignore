@@ -32,6 +32,7 @@
 *.alg
 *.pyg
 *.loe
+*.pdf
 
 # Auto-converted figures
 *-eps-converted-to.pdf
@@ -54,3 +55,4 @@ TCC/TCC1 formatado/evidencias-issue-13
 /TCC/TCC1 formatado/.build/
 
 outputs
+TCC/TCC1 formatado/tcc.pdf
