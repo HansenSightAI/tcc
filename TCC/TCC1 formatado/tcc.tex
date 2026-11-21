@@ -32,7 +32,18 @@
 \usepackage{xurl}
 \usepackage{tikz}
 \usepackage{pgfcalendar}
-\usetikzlibrary{arrows.meta,positioning,patterns,calc}
+\usetikzlibrary{arrows.meta,positioning,patterns,calc,shapes.geometric,fit}
+% Pseudocódigo do procedimento experimental (Capítulo 4).
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Saída:}}
+\renewcommand{\algorithmicfor}{\textbf{para}}
+\renewcommand{\algorithmicforall}{\textbf{para cada}}
+\renewcommand{\algorithmicdo}{\textbf{faça}}
+\renewcommand{\algorithmicend}{\textbf{fim}}
+\renewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ \textit{#1}}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{pgf-pie}
@@ -48,6 +59,9 @@
   \docsvlist{#1}%
   \endgroup}
 \makeatother
+% Código de métrica com hiperligação para sua definição na Tabela de métricas
+% do Capítulo 2 (\hypertarget{met:ID}{ID}). Uso: \metrica{M11}.
+\newcommand{\metrica}[1]{\hyperlink{met:#1}{#1}}
 % A lista de referências indica as páginas das chamadas bibliográficas.
 \renewcommand*{\backrefalt}[4]{%
   \ifcase #1 %
@@ -79,6 +93,7 @@
 \input{editaveis/referencial_teorico}
 \input{editaveis/revisao_sistematica}
 \input{editaveis/metodologia_experimental}
+\input{editaveis/conclusoes}
 \bookmarksetup{startatroot}
 \postextual
 \bibliography{referencias_tcc}

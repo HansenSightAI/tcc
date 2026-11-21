@@ -1,0 +1,114 @@
+% !TeX root = ../tcc.tex
+\chapter{Conclusões e limitações}
+\label{cap:conclusoes}
+
+Este trabalho reuniu as evidências sobre a avaliação de modelos de visão
+computacional aplicados à identificação de manifestações cutâneas
+associadas à hanseníase e, com base nas lacunas encontradas, planejou um
+estudo de ciência de dados para avaliar dois classificadores. Este
+capítulo apresenta as conclusões de cada etapa, as limitações do trabalho
+e a continuidade prevista.
+
+\section{Conclusões}
+\label{sec:conclusoes}
+
+A revisão estruturada incluiu 26 estudos, dos quais 17 são estudos
+primários com resultados (Capítulo~\ref{cap:revisao-literatura}). As
+evidências reunidas permitem as seguintes conclusões.
+
+\begin{enumerate}
+	\item \textbf{Técnicas.} Predominam as redes convolucionais, em geral
+	      treinadas por transferência a partir de pesos pré-treinados, ao
+	      lado de classificadores tradicionais aplicados a descritores de
+	      textura ou a atributos extraídos por redes profundas
+	      (Subseções~\ref{subsec:rq1-tecnicas} e~\ref{subsec:rq6-modelos}).
+	\item \textbf{Avaliação.} A maior parte dos estudos avalia o desempenho
+	      em uma única divisão da própria base: 14 dos 16 estudos que
+	      desenvolvem modelos usam essa divisão, apenas 2 declaram separar os
+	      dados por paciente, e só um testa o modelo em outra base
+	      (Subseções~\ref{subsec:rq3-metodos} e~\ref{subsec:rq7-generalizacao}).
+	      Sem separação por paciente, os indicadores podem estar inflados
+	      por vazamento \cite{kapoor2023}.
+	\item \textbf{Métricas.} A acurácia e a sensibilidade são as métricas
+	      mais relatadas, enquanto a acurácia balanceada e a calibração dos
+	      escores não aparecem nos estudos com dados
+	      (Subseção~\ref{subsec:rq4-metricas}). Os estudos que isolam a
+	      hanseníase relatam sensibilidade bem inferior aos indicadores
+	      globais.
+	\item \textbf{Equidade.} Nenhum dos 17 estudos com dados reporta
+	      desempenho por tom de pele (Subseção~\ref{subsec:rq5-rq6-tom-pele}).
+	\item \textbf{Comparabilidade.} Bases, classes e procedimentos diferem
+	      entre os estudos, e há sobreposição de origem entre conjuntos
+	      públicos, o que impede comparar numericamente os resultados
+	      relatados.
+\end{enumerate}
+
+O planejamento do Capítulo~\ref{cap:metodologia-experimental} responde a
+essas lacunas. Ele define a fotografia como unidade de avaliação, mantém
+fotografias relacionadas no mesmo grupo em todas as partições, seleciona
+os hiperparâmetros por validação cruzada estratificada por grupos, adota a
+acurácia balanceada como medida principal, relata intervalos por
+\textit{bootstrap} de grupos e a diferença pareada entre as duas redes, e
+inclui linhas de base que verificam se atributos da fonte bastam para
+prever a classe. Os atributos essenciais do padrão \textit{Data Science}
+da ACM SIGSOFT estão relacionados às partes do trabalho na
+Tabela~\ref{tab:atributos-data-science}.
+
+\section{Limitações}
+\label{sec:limitacoes}
+
+\subsection{Limitações da revisão}
+
+\begin{itemize}
+	\item \textbf{Estratégia de busca.} A \textit{string} booleana retornou
+	      10.818 artigos na Scopus mesmo após diversos ajustes, e a busca
+	      principal foi feita com o Consensus e o Claude
+	      (Seção~\ref{subsec:picoc-string-busca}). Essas ferramentas
+	      recuperam publicações por similaridade e não expõem integralmente
+	      seus critérios internos, o que limita a reprodutibilidade da busca
+	      e pode ter deixado estudos relevantes de fora
+	      (Apêndice~\ref{apend:registro-busca}).
+	\item \textbf{Triagem.} As sugestões do Jev Reviewer serviram de apoio,
+	      mas divergiram das decisões em boa parte dos incluídos, e a
+	      documentação não permite afirmar que os dois pesquisadores
+	      avaliaram todos os registros de forma independente
+	      (Seção~\ref{sec:execucao-busca-selecao}).
+	\item \textbf{Critérios de seleção.} A formulação preservada do critério
+	      CI03 está truncada, e o texto integral ainda deve ser confirmado
+	      (Apêndice~\ref{apend:registro-busca}).
+	\item \textbf{Extração.} A extração depende do que os artigos relatam.
+	      Dados não localizados, como o número de pacientes ou a unidade da
+	      divisão, foram registrados como tal, sem que se possa afirmar que
+	      inexistam.
+	\item \textbf{Síntese.} A heterogeneidade de bases, tarefas, classes e
+	      procedimentos permitiu apenas uma síntese descritiva, sem
+	      metanálise.
+\end{itemize}
+
+\subsection{Limitações do planejamento}
+
+\begin{itemize}
+	\item \textbf{Ausência de resultados.} Este trabalho apresenta o plano do
+	      estudo; os resultados dependem da execução prevista para a
+	      Monografia~2.
+	\item \textbf{Dados.} O estudo usará uma única coleção pública, com
+	      rótulos sem confirmação clínica, sem identificação de pacientes e
+	      com fontes de origem comum a conjuntos usados na literatura. O
+	      teste será interno a essa coleção.
+	\item \textbf{Escopo da tarefa.} A tarefa é binária e não distingue as
+	      formas clínicas da hanseníase nem as condições da classe negativa.
+	\item \textbf{Análises exploratórias.} As análises por tom de pele, de
+	      calibração e de predição seletiva dependem do tamanho da amostra
+	      curada e não sustentam conclusões confirmatórias.
+\end{itemize}
+
+\section{Continuidade}
+\label{sec:continuidade}
+
+Na Monografia~2, estão previstas a curadoria do 32 CSD conforme o
+protocolo, a geração e o registro das partições, o treinamento e a seleção
+das duas redes, a definição dos limiares, a abertura do teste reservado e
+a análise dos resultados frente às questões do GQM. Em seguida, os
+resultados serão discutidos em relação às evidências da revisão, com
+atenção às ameaças à validade descritas na
+Seção~\ref{sec:validade-avaliacao-empirica}.

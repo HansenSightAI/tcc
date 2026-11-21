@@ -350,6 +350,7 @@ saúde. Por isso, é necessário relacionar os resultados reportados à tarefa
 realizada, aos dados utilizados e à forma de validação \cite{fernandes2024}.
 
 \section{Inteligência artificial e visão computacional}
+\label{sec:ia-visao-computacional}
 
 \subsection{Aprendizado de máquina e aprendizado profundo}
 
@@ -438,49 +439,49 @@ diagnosticar a doença.
 		\endhead
 		
 		\endlastfoot
-		M1                                          & Classificação                                                         & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
+		\hypertarget{met:M1}{M1}                                          & Classificação                                                         & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
 		                                            & Proporção de positivos corretamente identificados: \textbf{SEN = TP /
 		(TP + FN)}.                                                                                                                                                                                                \\ \hline
-		M2                                          & Classificação                                                         & \textbf{Especificidade --- Specificity (SPE)}       &
+		\hypertarget{met:M2}{M2}                                          & Classificação                                                         & \textbf{Especificidade --- Specificity (SPE)}       &
 		Proporção de negativos corretamente identificados: \textbf{SPE = TN /
 		(TN + FP)}.                                                                                                                                                                                                \\ \hline
-		M3                                          & Classificação                                                         & \textbf{Precisão --- Precision (PRE)}               & Proporção
+		\hypertarget{met:M3}{M3}                                          & Classificação                                                         & \textbf{Precisão --- Precision (PRE)}               & Proporção
 		de predições positivas que correspondem a positivos de referência:
 		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\ \hline
-		M4                                          & Classificação                                                         & \textbf{F1-score}                                   & Média harmônica entre precisão
+		\hypertarget{met:M4}{M4}                                          & Classificação                                                         & \textbf{F1-score}                                   & Média harmônica entre precisão
 		e sensibilidade, considerando o efeito de falsos positivos e falsos
 		negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
 		(2TP + FP + FN)}.                                                                                                                                                                                          \\ \hline
-		M5                                          & Classificação geral                                                   & \textbf{Acurácia --- Accuracy (ACC)}                &
+		\hypertarget{met:M5}{M5}                                          & Classificação geral                                                   & \textbf{Acurácia --- Accuracy (ACC)}                &
 		Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
 			(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
 		acertos totais / unidades totais.                                                                                                                                                                          \\ \hline
-		M6                                          & Equidade do desempenho                                                & \textbf{Diferença de desempenho entre
+		\hypertarget{met:M6}{M6}                                          & Equidade do desempenho                                                & \textbf{Diferença de desempenho entre
 		grupos}                                     & Comparação da mesma métrica entre grupos de tons de pele,
 		quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
 			métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
 		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\ \hline
-		M7                                          & Generalização                                                         & \textbf{Variação de desempenho entre datasets}      &
+		\hypertarget{met:M7}{M7}                                          & Generalização                                                         & \textbf{Variação de desempenho entre datasets}      &
 		Comparação da mesma métrica entre avaliações em dados de distribuição
 		semelhante à de treinamento e dados de distribuição diferente:
 		\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
 		Registrar se houve adaptação ou retreinamento e se tarefa/classes são
 		comparáveis.                                                                                                                                                                                               \\ \hline
-		M8                                          & Segmentação / sobreposição espacial                                   & \textbf{Intersection over
+		\hypertarget{met:M8}{M8}                                          & Segmentação / sobreposição espacial                                   & \textbf{Intersection over
 		Union (IoU)}                                & Interseção dividida pela união das regiões prevista P e
 		de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
 		binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
 			FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
 		classes.                                                                                                                                                                                                   \\ \hline
-		M9                                          & Detecção / segmentação por instância                                  & \textbf{Mean Average
+		\hypertarget{met:M9}{M9}                                          & Detecção / segmentação por instância                                  & \textbf{Mean Average
 		Precision (mAP)}                            & Média dos valores de AP das classes consideradas; AP
 		resume a curva precisão--recall segundo a convenção do benchmark.
 		Registrar o critério de correspondência e o limiar de IoU: por exemplo,
 		\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
 		AP de máscaras.                                                                                                                                                                                            \\ \hline
-		M10                                         & Classificação (independente do limiar)                                & \textbf{Área sob a curva ROC (AUC)} & Probabilidade de o modelo atribuir escore maior a uma unidade positiva do que a uma negativa, obtida pela área sob a curva de sensibilidade em função de 1 $-$ especificidade, considerando todos os limiares. \\ \hline
-		M11                                         & Classificação com classes desequilibradas                             & \textbf{Acurácia balanceada (BACC)} & Média entre sensibilidade e especificidade: \textbf{BACC = (SEN + SPE) / 2}. Não é inflada pela classe majoritária. \\ \hline
-		M12                                         & Calibração dos escores                                                & \textbf{Escore de Brier e erro esperado de calibração (ECE)} & Brier: média do quadrado da diferença entre o escore previsto e o rótulo (0 ou 1). ECE: diferença média, ponderada pelo número de unidades, entre o escore médio e a proporção observada de positivos em intervalos de escore. \\ \hline
+		\hypertarget{met:M10}{M10}                                         & Classificação (independente do limiar)                                & \textbf{Área sob a curva ROC (AUC)} & Probabilidade de o modelo atribuir escore maior a uma unidade positiva do que a uma negativa, obtida pela área sob a curva de sensibilidade em função de 1 $-$ especificidade, considerando todos os limiares. \\ \hline
+		\hypertarget{met:M11}{M11}                                         & Classificação com classes desequilibradas                             & \textbf{Acurácia balanceada (BACC)} & Média entre sensibilidade e especificidade: \textbf{BACC = (SEN + SPE) / 2}. Não é inflada pela classe majoritária. \\ \hline
+		\hypertarget{met:M12}{M12}                                         & Calibração dos escores                                                & \textbf{Escore de Brier e erro esperado de calibração (ECE)} & Brier: média do quadrado da diferença entre o escore previsto e o rótulo (0 ou 1). ECE: diferença média, ponderada pelo número de unidades, entre o escore médio e a proporção observada de positivos em intervalos de escore. \\ \hline
 	\end{longtable}
 }
 
@@ -509,6 +510,7 @@ equidade não será restrição de elegibilidade dos artigos e não será
 presumida quando não houver resultados por grupo.
 
 \section{Avaliação e generalização dos modelos}
+\label{sec:avaliacao-generalizacao}
 
 A avaliação de um modelo depende do desenho do estudo e da relação entre
 os dados usados no desenvolvimento e aqueles usados na avaliação. Além do
