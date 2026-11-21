@@ -748,7 +748,7 @@ A Tabela~\ref{tab:datasets-sintese} reúne os conjuntos usados diretamente nos e
 	\estudo{E26} Atlas Dermatológico               & Atlas público; coleta não detalhada                        & 11.606 imagens no atlas; quantidade usada e pacientes não informados.                     \\
 \end{longtable}
 \endgroup
-\fonte{Elaboração própria a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
+\fonte{Autores a partir dos textos principais dos estudos; detalhes no Apêndice~\ref{apend:inventario-datasets}.}
 
 A base de \citeonline{deps2026} foi curada de modo independente no contexto de acordo entre a UFES e a OMS. O artigo informa 208 casos para o conjunto inicial, mas não explicita o número de casos únicos restante após a exclusão de 16 imagens. Em \citeonline{barbieri2022}, os resultados descrevem imagens e lesões de pessoas com suspeita de hanseníase e outras condições dermatológicas; o artigo descreve acesso aos dados mediante registro e validação. Em \citeonline{sanchez2024}, a coleta ocorreu na Colômbia, e o mesmo Co2Wounds-V2 é utilizado em \citeonline{mehta2026}. A versão 2 disponibilizada no repositório contém 607 imagens anotadas para treino e validação e 157 imagens sem anotação para teste \cite{co2woundsDados2024}.
 
@@ -827,7 +827,7 @@ otimistas. Esse risco não pode ser descartado nos 14 estudos que não informam 
 	\estudo{E24}    & Imagem                      & \textit{Hold-out} 80/20 (1.220/304 imagens); aplicação de aumento de dados no teste não informada                                                                                                & Não informada                                                                                                                \\
 	\estudo{E26}    & Não informada               & \textit{Hold-out} 80/20 (20\% para o teste final); SMOTE aplicado só ao conjunto de treino e validação; validação cruzada de 10 dobras repetida 30 vezes; sem teste externo & Não informada \\
 \end{longtable}
-\fonte{Elaboração própria a partir dos artigos incluídos (denominador 16). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 16 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
+\fonte{Autores a partir dos artigos incluídos (denominador 16). ``Não informada'' indica que o artigo não declara o procedimento; não equivale a ``não adotada'' (nenhum dos 16 declara não adotar). ``Inferida'': o artigo descreve só a proporção da divisão, e a unidade foi deduzida.}
 
 Outro achado é a escassez de avaliação em base distinta da usada no desenvolvimento: entre os
 16 estudos, apenas um testa o modelo também em outra base \estudo{E23}, e os outros 15 avaliam o
@@ -881,7 +881,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E22}    & Segmentação                            & Precisão, \textit{recall}, F1, IoU e acurácia                                                                                                                                    \\
 	\estudo{E04}    & Avaliação de modelo pré-treinado       & Sensibilidade Top-1 a Top-5                                                                                                                                                      \\
 \end{longtable}
-\fonte{Elaboração própria a partir dos artigos incluídos.}
+\fonte{Autores a partir dos artigos incluídos.}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}p{7.0cm} >{\raggedright\arraybackslash}p{1.9cm} >{\raggedright\arraybackslash}p{2.3cm}}
 	\caption{Resultados reportados nos estudos de classificação (valores literais dos artigos; não comparáveis entre linhas)}
@@ -913,7 +913,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 	\estudo{E26}                     & Inception v3 e Random Forest, sete classes (quatro tipos de hanseníase e três de câncer de pele), validação cruzada: com 100 árvores, acurácia 0,9533, sensibilidade 0,9818, especificidade 0,9936, AUC 0,9991 e kappa 0,9455; com 500 árvores, acurácia 0,9668. O teste final é apresentado só em matriz de confusão \\
 	\estudo{E04} (validação externa) & Sensibilidade Top-5 84,9\% (359/423); 87,2\% nas lesões clássicas e 69,6\% nas reacionais ou atípicas. Top-1: 46,9\% (clássicas) e 30,4\% (reacionais ou atípicas), por subconjunto; o artigo não traz Top-1 global                                                                                                                              & Só hanseníase              & Especificidade, VPP, VPN e acurácia não calculáveis (só casos confirmados)                                \\
 \end{longtable}
-\fonte{Elaboração própria a partir dos artigos incluídos.}
+\fonte{Autores a partir dos artigos incluídos.}
 
 \begin{table}[htb]
 	\centering
@@ -929,7 +929,7 @@ especificidade, precisão, escore $F_1$ e área sob a curva ROC (AUC). A detecç
 		\estudo{E22}    & Segmentação binária                         & Teste: IoU 86,50 e F1 92,50. Validação: IoU 87,09 e F1 93,10                                     & Métricas de teste reportadas apesar de o subconjunto de teste ser citado como não anotado                                 \\
 		\bottomrule
 	\end{tabular}
-	\fonte{Elaboração própria a partir dos artigos incluídos. Em \estudo{E06} e em \estudo{E18} a segmentação é etapa do \textit{pipeline} e não há métrica de segmentação reportada.}
+	\fonte{Autores a partir dos artigos incluídos. Em \estudo{E06} e em \estudo{E18} a segmentação é etapa do \textit{pipeline} e não há métrica de segmentação reportada.}
 \end{table}
 
 Essa dispersão e heterogeneidade de resultados foi investigada sistematicamente na revisão de

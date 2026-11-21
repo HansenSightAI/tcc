@@ -83,7 +83,7 @@ interesse.
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Elaboração própria com dados de 2025 da \citeonline{oms2026gho},
+	\fonte{Autores com dados de 2025 da \citeonline{oms2026gho},
 		\textit{Global Health Observatory} (indicador WHS3\_45).}
 \end{figure}
 
@@ -140,7 +140,6 @@ utilização futura em apoio à triagem na rede pública de saúde do Brasil
 constitui o contexto de interesse da pesquisa, sem que os resultados
 computacionais sejam, por si só, considerados demonstração de
 efetividade clínica.
-
 
 \section{Problema}\label{problema}
 
@@ -231,7 +230,7 @@ das medidas a serem extraídas dos estudos.
 			\textbf{Com foco em}                        & Identificação de características patológicas de
 			hanseníase.                                                                                   \\
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da Medicina.                                                                  \\
+			Software e da Medicina.                                                                       \\
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
 			de saúde do Brasil.                                                                           \\
 		\end{longtable}
@@ -243,8 +242,8 @@ O GQM adaptado orienta a formulação da questão de pesquisa principal deste tr
 
 \begin{quote}
 	\textbf{\textit{Como avaliar o desempenho de modelos de visão computacional aplicados à
-	identificação de padrões associados à hanseníase em imagens de pele, no
-	contexto da rede pública de saúde do Brasil?}}
+			identificação de padrões associados à hanseníase em imagens de pele, no
+			contexto da rede pública de saúde do Brasil?}}
 \end{quote}
 
 \section{Objetivos}\label{objetivos}
@@ -256,9 +255,6 @@ aplicados à identificação de padrões associados à hanseníase em imagens
 de pele, a partir das evidências observadas na literatura, visando
 fundamentar seu uso em apoio à triagem na rede pública de saúde do
 Brasil.
-
-
-
 
 \subsection{Objetivos específicos}\label{objetivos-especuxedficos}
 
@@ -307,77 +303,77 @@ parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 \begin{figure}[htbp]
 	\centering
 	\resizebox{\textwidth}{!}{%
-	\begin{tikzpicture}[
-		grupo/.style={draw=blue!45!black, thick, fill=blue!7},
-		titulo/.style={font=\footnotesize\bfseries, align=center, inner sep=1pt},
-		opcao/.style={draw=black!55, fill=yellow!10, align=center, font=\footnotesize, inner sep=1.5pt, minimum height=0.5cm, text width=3.20cm},
-		seta/.style={-{Stealth[length=2.5mm]}, very thick, blue!45!black}
-		]
-		\draw[grupo] (0.00,0.00) rectangle (3.50,-2.54);
-		\node[titulo] at (1.75,-0.55) {(1) Resultado\\da pesquisa};
-		\node[opcao] at (1.75,-1.45) {Pesquisa básica};
-		\node[opcao] at (1.75,-2.09) {Pesquisa aplicada};
-		\draw[grupo] (0.00,-3.34) rectangle (3.50,-5.88);
-		\node[titulo] at (1.75,-3.89) {(2) Lógica\\da pesquisa};
-		\node[opcao] at (1.75,-4.79) {Pesquisa indutiva};
-		\node[opcao] at (1.75,-5.43) {Pesquisa dedutiva};
-		\draw[grupo] (3.95,-1.20) rectangle (7.45,-5.02);
-		\node[titulo] at (5.70,-1.75) {(3) Finalidade\\da pesquisa};
-		\node[opcao] at (5.70,-2.65) {Explicativa};
-		\node[opcao] at (5.70,-3.29) {Descritiva};
-		\node[opcao] at (5.70,-3.93) {Exploratória};
-		\node[opcao] at (5.70,-4.57) {Avaliação};
-		\draw[grupo] (7.90,-1.20) rectangle (11.40,-4.38);
-		\node[titulo] at (9.65,-1.75) {(4) Abordagem\\de pesquisa};
-		\node[opcao] at (9.65,-2.65) {Positivista};
-		\node[opcao] at (9.65,-3.29) {Interpretativista};
-		\node[opcao] at (9.65,-3.93) {Crítica};
-		\draw[grupo] (12.15,0.00) rectangle (15.65,-3.18);
-		\node[titulo] at (13.90,-0.55) {(5) Processo\\de pesquisa};
-		\node[opcao] at (13.90,-1.45) {Qualitativo};
-		\node[opcao] at (13.90,-2.09) {Quantitativo};
-		\node[opcao] at (13.90,-2.73) {Abordagem mista};
-		\draw[grupo] (12.15,-3.98) rectangle (15.65,-7.16);
-		\node[titulo] at (13.90,-4.53) {(6) Metodologia\\de pesquisa};
-		\node[opcao] at (13.90,-5.43) {Estudo de caso};
-		\node[opcao] at (13.90,-6.07) {Pesquisa-ação};
-		\node[opcao] at (13.90,-6.71) {\textit{Design science}};
-		\draw[grupo] (16.40,-0.40) rectangle (19.90,-5.50);
-		\node[titulo] at (18.15,-0.95) {(7) Métodos de\\coleta de dados};
-		\node[opcao] at (18.15,-1.85) {Entrevistas};
-		\node[opcao] at (18.15,-2.49) {Observação};
-		\node[opcao] at (18.15,-3.13) {Pesquisa em arquivo};
-		\node[opcao] at (18.15,-3.77) {Levantamento};
-		\node[opcao] at (18.15,-4.41) {Simulação};
-		\node[opcao] at (18.15,-5.05) {Experimento};
-		\draw[grupo] (20.35,-1.20) rectangle (23.85,-5.02);
-		\node[titulo] at (22.10,-1.75) {(8) Métodos de\\análise de dados};
-		\node[opcao] at (22.10,-2.65) {\mbox{Teoria fundamentada}};
-		\node[opcao] at (22.10,-3.29) {Análise temática};
-		\node[opcao] at (22.10,-3.93) {Hermenêutica};
-		\node[opcao] at (22.10,-4.57) {Análise estatística};
-		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (q) at (1.75,0.80) {};
-		\node[font=\small\bfseries, anchor=west] at (2.10,0.80) {Questão de pesquisa};
-		\draw[seta] (q) -- (1.75,0.00);
-		\draw[seta] (1.75,-2.54) -- (1.75,-3.34);
-		\draw[seta] (3.50,-4.61) -- (3.95,-4.61);
-		\draw[seta] (7.45,-2.79) -- (7.90,-2.79);
-		\draw[seta] (11.40,-1.59) -- (12.15,-1.59);
-		\draw[seta, {Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}] (13.90,-3.18) -- (13.90,-3.98);
-		\draw[seta] (15.65,-1.59) -- (16.40,-1.59);
-		\draw[seta] (15.65,-5.57) -- (16.40,-5.57);
-		\draw[seta] (19.90,-3.11) -- (20.35,-3.11);
-		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (f) at (22.10,-5.82) {};
-		\fill[blue!45!black] (f.center) circle (0.1cm);
-		\draw[seta] (22.10,-5.02) -- (f);
-		\node[font=\small\bfseries, align=center] at (22.10,-6.47) {Resultados da\\pesquisa};
-		\draw[dashed, thick, blue!45!black] (-0.25,1.25) rectangle (24.10,-8.06);
-		\draw[dashed, thick, blue!45!black] (11.78,1.25) -- (11.78,-8.06);
-		\draw[dashed, thick, blue!45!black] (16.03,1.25) -- (16.03,-8.06);
-		\node[font=\small\bfseries] at (5.76,-7.76) {Fase estratégica};
-		\node[font=\small\bfseries] at (13.90,-7.76) {Fase tática};
-		\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
-	\end{tikzpicture}%
+		\begin{tikzpicture}[
+			grupo/.style={draw=blue!45!black, thick, fill=blue!7},
+			titulo/.style={font=\footnotesize\bfseries, align=center, inner sep=1pt},
+			opcao/.style={draw=black!55, fill=yellow!10, align=center, font=\footnotesize, inner sep=1.5pt, minimum height=0.5cm, text width=3.20cm},
+			seta/.style={-{Stealth[length=2.5mm]}, very thick, blue!45!black}
+			]
+			\draw[grupo] (0.00,0.00) rectangle (3.50,-2.54);
+			\node[titulo] at (1.75,-0.55) {(1) Resultado\\da pesquisa};
+			\node[opcao] at (1.75,-1.45) {Pesquisa básica};
+			\node[opcao] at (1.75,-2.09) {Pesquisa aplicada};
+			\draw[grupo] (0.00,-3.34) rectangle (3.50,-5.88);
+			\node[titulo] at (1.75,-3.89) {(2) Lógica\\da pesquisa};
+			\node[opcao] at (1.75,-4.79) {Pesquisa indutiva};
+			\node[opcao] at (1.75,-5.43) {Pesquisa dedutiva};
+			\draw[grupo] (3.95,-1.20) rectangle (7.45,-5.02);
+			\node[titulo] at (5.70,-1.75) {(3) Finalidade\\da pesquisa};
+			\node[opcao] at (5.70,-2.65) {Explicativa};
+			\node[opcao] at (5.70,-3.29) {Descritiva};
+			\node[opcao] at (5.70,-3.93) {Exploratória};
+			\node[opcao] at (5.70,-4.57) {Avaliação};
+			\draw[grupo] (7.90,-1.20) rectangle (11.40,-4.38);
+			\node[titulo] at (9.65,-1.75) {(4) Abordagem\\de pesquisa};
+			\node[opcao] at (9.65,-2.65) {Positivista};
+			\node[opcao] at (9.65,-3.29) {Interpretativista};
+			\node[opcao] at (9.65,-3.93) {Crítica};
+			\draw[grupo] (12.15,0.00) rectangle (15.65,-3.18);
+			\node[titulo] at (13.90,-0.55) {(5) Processo\\de pesquisa};
+			\node[opcao] at (13.90,-1.45) {Qualitativo};
+			\node[opcao] at (13.90,-2.09) {Quantitativo};
+			\node[opcao] at (13.90,-2.73) {Abordagem mista};
+			\draw[grupo] (12.15,-3.98) rectangle (15.65,-7.16);
+			\node[titulo] at (13.90,-4.53) {(6) Metodologia\\de pesquisa};
+			\node[opcao] at (13.90,-5.43) {Estudo de caso};
+			\node[opcao] at (13.90,-6.07) {Pesquisa-ação};
+			\node[opcao] at (13.90,-6.71) {\textit{Design science}};
+			\draw[grupo] (16.40,-0.40) rectangle (19.90,-5.50);
+			\node[titulo] at (18.15,-0.95) {(7) Métodos de\\coleta de dados};
+			\node[opcao] at (18.15,-1.85) {Entrevistas};
+			\node[opcao] at (18.15,-2.49) {Observação};
+			\node[opcao] at (18.15,-3.13) {Pesquisa em arquivo};
+			\node[opcao] at (18.15,-3.77) {Levantamento};
+			\node[opcao] at (18.15,-4.41) {Simulação};
+			\node[opcao] at (18.15,-5.05) {Experimento};
+			\draw[grupo] (20.35,-1.20) rectangle (23.85,-5.02);
+			\node[titulo] at (22.10,-1.75) {(8) Métodos de\\análise de dados};
+			\node[opcao] at (22.10,-2.65) {\mbox{Teoria fundamentada}};
+			\node[opcao] at (22.10,-3.29) {Análise temática};
+			\node[opcao] at (22.10,-3.93) {Hermenêutica};
+			\node[opcao] at (22.10,-4.57) {Análise estatística};
+			\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (q) at (1.75,0.80) {};
+			\node[font=\small\bfseries, anchor=west] at (2.10,0.80) {Questão de pesquisa};
+			\draw[seta] (q) -- (1.75,0.00);
+			\draw[seta] (1.75,-2.54) -- (1.75,-3.34);
+			\draw[seta] (3.50,-4.61) -- (3.95,-4.61);
+			\draw[seta] (7.45,-2.79) -- (7.90,-2.79);
+			\draw[seta] (11.40,-1.59) -- (12.15,-1.59);
+			\draw[seta, {Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}] (13.90,-3.18) -- (13.90,-3.98);
+			\draw[seta] (15.65,-1.59) -- (16.40,-1.59);
+			\draw[seta] (15.65,-5.57) -- (16.40,-5.57);
+			\draw[seta] (19.90,-3.11) -- (20.35,-3.11);
+			\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (f) at (22.10,-5.82) {};
+			\fill[blue!45!black] (f.center) circle (0.1cm);
+			\draw[seta] (22.10,-5.02) -- (f);
+			\node[font=\small\bfseries, align=center] at (22.10,-6.47) {Resultados da\\pesquisa};
+			\draw[dashed, thick, blue!45!black] (-0.25,1.25) rectangle (24.10,-8.06);
+			\draw[dashed, thick, blue!45!black] (11.78,1.25) -- (11.78,-8.06);
+			\draw[dashed, thick, blue!45!black] (16.03,1.25) -- (16.03,-8.06);
+			\node[font=\small\bfseries] at (5.76,-7.76) {Fase estratégica};
+			\node[font=\small\bfseries] at (13.90,-7.76) {Fase tática};
+			\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
+		\end{tikzpicture}%
 	}
 	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
 	\label{fig:estrutura-decisao}
@@ -412,7 +408,7 @@ a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
 literatura estruturado, com questões de pesquisa, protocolo, estratégia de
 busca, critérios explícitos de seleção e formulário de extração
 \cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
-conjuntos de imagens já coletados e anotados por terceiros. A análise dos dados
+uma coleção pública de imagens já coletadas e anotadas por terceiros. A análise dos dados
 é estatística: descritiva, por contagens, tabelas e classificação dos estudos
 por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
 medidas de desempenho no segundo, com a variabilidade das estimativas relatada
@@ -437,7 +433,10 @@ computacional, orientada pelo padrão \textit{Data Science} da ACM SIGSOFT,
 apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
 limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
 procedimentos de avaliação e à generalização, fundamentam a formulação da
-questão específica desse estudo e o seu planejamento.
+questão específica e o planejamento apresentado no
+Capítulo~\ref{cap:metodologia-experimental}. A ResNet-50 e a MobileNetV2
+serão ajustadas no desenvolvimento e avaliadas nas mesmas fotografias
+do teste reservado.
 
 \section{Organização do trabalho}
 
@@ -449,9 +448,10 @@ O terceiro apresenta a
 revisão estruturada da literatura: o planejamento e o protocolo, a estratégia
 de busca, a seleção dos estudos, a extração e a síntese das evidências e os
 resultados, organizados pelas questões de pesquisa. O quarto descreve o
-planejamento da avaliação empírica, incluindo a curadoria dos dados, a
-configuração do teste externo, a comparação dos classificadores e as ameaças
-à validade. Ao final, são apresentadas as referências e os apêndices.
+planejamento da avaliação empírica, incluindo a curadoria e o
+particionamento por grupos, o ajuste dos classificadores na validação,
+a avaliação de ambos no teste reservado e as ameaças à validade. Ao final, são
+apresentadas as referências e os apêndices.
 
 \section{Cronograma e fluxo de atividades}
 
@@ -490,13 +490,12 @@ As atividades previstas seguem os critérios essenciais do padrão
 \begin{itemize}
 	\item \textbf{Formulação da questão específica:} definição da questão da
 	      avaliação a partir das lacunas identificadas na revisão.
-	\item \textbf{Seleção e acesso aos dados:} escolha dos conjuntos de imagens e
-	      justificativa das fontes.
-	\item \textbf{Preparação dos dados:} pré-processamento, filtragem e
-	      categorização.
-	\item \textbf{Modelagem:} definição das abordagens de modelagem e do ambiente
-	      computacional.
-	\item \textbf{Avaliação:} definição das métricas e dos procedimentos de análise.
+	\item \textbf{Seleção e acesso aos dados:} justificativa da escolha da coleção pública.
+	\item \textbf{Preparação dos dados:} curadoria, agrupamento de fotografias e
+	      reserva da partição de teste.
+	\item \textbf{Modelagem:} ajuste da ResNet-50 e da MobileNetV2 na validação.
+	\item \textbf{Avaliação:} fixação dos limiares e comparação dos desempenhos
+	      no mesmo teste reservado.
 	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
 	      à validade.
 \end{itemize}

@@ -60,14 +60,14 @@ dos recursos disponíveis e da forma de análise pretendida
 	\footnotesize
 	\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{2.4cm}}
 		\toprule
-		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\
+		\textbf{Fator}           & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento}        & \textbf{Experimento}    & \textbf{Estudo de caso}      \\
 		\midrule
-		Controle da execução & Parcial & Não & Sim & Não \\
-		Controle das medidas & Sim & Não & Sim & Sim \\
-		Custo da investigação & Médio & Baixo & Alto & Alto \\
-		Facilidade de replicação & Alta & Alta & Alta & Média \\
-		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\
-		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\
+		Controle da execução     & Parcial                                   & Não                          & Sim                     & Não                          \\
+		Controle das medidas     & Sim                                       & Não                          & Sim                     & Sim                          \\
+		Custo da investigação    & Médio                                     & Baixo                        & Alto                    & Alto                         \\
+		Facilidade de replicação & Alta                                      & Alta                         & Alta                    & Média                        \\
+		Tipo de desenho          & Fixo                                      & Fixo                         & Fixo                    & Flexível                     \\
+		Dados                    & Qualitativos e quantitativos              & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Adaptado de \citeonline{wohlin2024}.}
@@ -85,13 +85,11 @@ anotados.
 engenharia de software analisam fenômenos ou artefatos por meio de métodos
 centrados em dados, como o aprendizado de máquina, e a ACM SIGSOFT mantém, ao
 lado dos padrões para experimentos e estudos de caso, um padrão específico
-para esse tipo de estudo \cite{acmSigsoftDataScience}. Diferentemente de um
-experimento, o pesquisador não manipula condições aplicadas a participantes:
-ele seleciona, prepara e analisa dados já existentes, e a qualidade das
-conclusões depende de como esses dados foram obtidos e avaliados. Neste
-trabalho, a revisão estruturada da literatura é orientada por diretrizes de
-revisão sistemática, e a avaliação dos modelos de visão computacional adota
-como referencial o padrão \textit{Data Science} da ACM SIGSOFT.
+para esse tipo de estudo \cite{acmSigsoftDataScience}. No presente trabalho,
+a pesquisa em arquivo fornece os dados secundários do estudo computacional.
+A abordagem de ciência de dados orienta a investigação preditiva a partir
+desses dados. A revisão estruturada da literatura fundamenta a escolha das
+arquiteturas e a discussão dos procedimentos de avaliação.
 
 \subsection{Ciência de dados na avaliação de modelos}
 \label{subsec:ciencia-de-dados}
@@ -109,9 +107,11 @@ exigem pressupostos e evidências sobre como os dados foram gerados
 O padrão \textit{Data Science} da ACM SIGSOFT estabelece critérios para a
 condução e o relato de estudos de engenharia de software que empregam
 análise centrada em dados, incluindo modelagem preditiva
-\cite{acmSigsoftDataScience}. Neste trabalho, o padrão é adotado como
-método empírico para a avaliação futura de modelos de visão computacional
-aplicados a imagens de pele associadas à hanseníase.
+\cite{acmSigsoftDataScience}. O padrão funciona como referencial de
+condução e relato. O protocolo específico do estudo define como curar
+as fotografias, ajustar as duas arquiteturas e avaliar ambos os
+classificadores no teste reservado. Essas decisões são apresentadas no
+Capítulo~\ref{cap:metodologia-experimental}.
 
 Entre os critérios essenciais estão a justificativa da seleção dos dados,
 a descrição do pré-processamento e das transformações aplicadas, a
@@ -120,6 +120,18 @@ métricas e dos procedimentos de análise. O padrão orienta a discussão dos
 métodos de referência disponíveis e de suas limitações. Quando esses
 métodos não existem ou a comparação direta é impraticável, cabe justificar
 essa condição \cite{acmSigsoftDataScience}.
+
+Na avaliação preditiva, a validação serve para escolher configurações
+e o teste reservado estima o desempenho do modelo depois que essas
+decisões foram tomadas. A divisão deve considerar a unidade de
+agrupamento. Por exemplo, fotografias da mesma lesão podem compartilhar
+características decorrentes do objeto ou da captura. Manter essas
+fotografias na mesma partição reduz a dependência entre os dados
+de desenvolvimento e teste \cite{kapoor2023}. Quando as partições
+pertencem a uma mesma coleção, o resultado caracteriza a avaliação
+interna. A avaliação externa examina o desempenho em novos dados,
+cuja origem e condições de coleta precisam ser caracterizadas
+\cite{muneer2026realfm}.
 
 O relato do desempenho deve informar a variabilidade ou a incerteza das
 estimativas e discutir as ameaças à validade
@@ -192,7 +204,7 @@ cada uma é apresentada.
 	\end{tikzpicture}
 	\caption{Fluxo de atividades da revisão estruturada da literatura}
 	\label{fig:percurso-metodologico}
-	\fonte{Elaboração própria.}
+	\fonte{Autores.}
 \end{figure}
 
 \begin{table}[H]
@@ -306,12 +318,12 @@ diferencial.
 	\footnotesize
 	\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{4.8cm} >{\raggedright\arraybackslash}p{4.2cm}}
 		\toprule
-		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\
+		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões}                                                                                                                                 & \textbf{Diagnóstico diferencial}                                                                               \\
 		\midrule
-		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\
-		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\
-		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\
-		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\
+		Indeterminada  & PB             & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas                                                              & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo                                    \\
+		Tuberculoide   & PB             & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico                                                              & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\
+		Dimorfa        & MB             & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase                                          \\
+		Virchowiana    & MB             & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados                              & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice                                  \\
 		\bottomrule
 	\end{tabular}
 	\fonte{Adaptado de \citeonline{lima2024skin}.}
