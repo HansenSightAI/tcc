@@ -53,23 +53,28 @@ delas, e a escolha depende das condições da investigação, de seu propósito,
 dos recursos disponíveis e da forma de análise pretendida
 \cite{wohlin2024}.
 
-\begin{table}[htb]
-	\centering
-	\caption{Comparação das principais estratégias empíricas em engenharia de software}
-	\label{tab:estrategias-empiricas}
-	\footnotesize
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{2.4cm}|}
-		\hline
-		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
-		Controle da execução & Parcial & Não & Sim & Não \\ \hline
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.6cm}|>{\footnotesize\raggedright\arraybackslash}p{2.5cm}|>{\footnotesize\raggedright\arraybackslash}p{2.4cm}|>{\footnotesize\raggedright\arraybackslash}p{2.3cm}|>{\footnotesize\raggedright\arraybackslash}p{2.4cm}|}
+	\caption{Comparação das principais estratégias empíricas em engenharia de software}\label{tab:estrategias-empiricas} \\
+	\hline
+	\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
+	\endfirsthead
+	\multicolumn{5}{l}{\footnotesize\textit{Tabela~\ref{tab:estrategias-empiricas} (continuação)}} \\
+	\hline
+	\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
+	\endhead
+	\multicolumn{5}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Controle da execução & Parcial & Não & Sim & Não \\ \hline
 		Controle das medidas & Sim & Não & Sim & Sim \\ \hline
 		Custo da investigação & Médio & Baixo & Alto & Alto \\ \hline
 		Facilidade de replicação & Alta & Alta & Alta & Média \\ \hline
 		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\ \hline
 		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\ \hline
-	\end{tabular}
-	\fonte{Adaptado de \citeonline{wohlin2024}.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Adaptado de \citeonline{wohlin2024}.}
 
 Além dessas estratégias, \citeonline{wohlin2015} descrevem metodologias que
 combinam métodos, processos e arcabouços, como o estudo de caso, a
@@ -107,7 +112,7 @@ condução e o relato de estudos de engenharia de software que empregam
 análise centrada em dados, incluindo modelagem preditiva
 \cite{acmSigsoftDataScience}. O padrão funciona como referencial de
 condução e relato. O protocolo específico do estudo define como curar
-as fotografias, ajustar as duas arquiteturas e avaliar ambos os
+as fotografias, treinar as duas arquiteturas e avaliar ambos os
 classificadores no teste reservado. Essas decisões são apresentadas no
 Capítulo~\ref{cap:metodologia-experimental}.
 
@@ -205,24 +210,29 @@ cada uma é apresentada.
 	\fonte{Autores.}
 \end{figure}
 
-\begin{table}[H]
-	\centering
-	\caption{Atividades realizadas na revisão estruturada}
-	\label{tab:etapas-metodologia}
-	\footnotesize
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.9cm}|>{\raggedright\arraybackslash}p{5.5cm}|}
-		\hline
-		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
-		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\ \hline
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.8cm}|>{\footnotesize\raggedright\arraybackslash}p{4.9cm}|>{\footnotesize\raggedright\arraybackslash}p{5.5cm}|}
+	\caption{Atividades realizadas na revisão estruturada}\label{tab:etapas-metodologia} \\
+	\hline
+	\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
+	\endfirsthead
+	\multicolumn{3}{l}{\footnotesize\textit{Tabela~\ref{tab:etapas-metodologia} (continuação)}} \\
+	\hline
+	\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
+	\endhead
+	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\ \hline
 		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Seções~\ref{sec:planejamento-protocolo} e~\ref{subsec:picoc-string-busca}; Subseções~\ref{subsec:criterios-selecao} e~\ref{subsec:extracao}; Figura~\ref{fig:fluxo-metodologico-ia} \\ \hline
 		Busca                          & Execução da busca e identificação dos registros                                                  & Seção~\ref{subsec:picoc-string-busca}; Apêndice~\ref{apend:registro-busca}                     \\ \hline
 		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Seção~\ref{sec:execucao-busca-selecao}; Figura~\ref{fig:fluxo-triagem}                        \\ \hline
 		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Seção~\ref{sec:execucao-busca-selecao}                                                         \\ \hline
 		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção~\ref{subsec:extracao}                                                                 \\ \hline
 		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção~\ref{sec:resultados-revisao}                                                             \\ \hline
-	\end{tabular}
-	\fonte{Autores.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \section{Hanseníase e identificação de manifestações cutâneas}
 
@@ -307,21 +317,26 @@ virchowiana-\allowbreak virchowiana
 da classificação de Madri e as dermatoses com que cada uma faz diagnóstico
 diferencial.
 
-\begin{table}[htb]
-	\centering
-	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}
-	\label{tab:formas-hanseniase}
-	\footnotesize
-	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{0.9cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|}
-		\hline
-		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
-		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\ \hline
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.2cm}|>{\footnotesize\raggedright\arraybackslash}p{0.9cm}|>{\footnotesize\raggedright\arraybackslash}p{4.8cm}|>{\footnotesize\raggedright\arraybackslash}p{4.2cm}|}
+	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}\label{tab:formas-hanseniase} \\
+	\hline
+	\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:formas-hanseniase} (continuação)}} \\
+	\hline
+	\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\ \hline
 		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\ \hline
 		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\ \hline
 		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\ \hline
-	\end{tabular}
-	\fonte{Adaptado de \citeonline{lima2024skin}.}
-\end{table}
+\end{longtable}
+\endgroup
+\fonte{Adaptado de \citeonline{lima2024skin}.}
 
 Essas classificações também aparecem nos rótulos de bases de imagens. Há
 conjuntos que usam as quatro formas de Madri como classes
@@ -406,14 +421,10 @@ definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
 reconhecer uma ferida em paciente com hanseníase não equivale a
 diagnosticar a doença.
 
-\todo[inline, color=pink]{Quando vocês estiverem definindo as metricas que serão analiasadas no contexto do estudo de ciência de dados, com GQM, aí vocês conectam essas métricas da literatura com as métricas que vocês definiram no GQM. Aqui elas são metricas comumente utilizadas na literatura. Por sinal, deveriam aparecer na resposta daquela questao da revisao que trata de metricas.}
-
-\todo[inline, color=pink]{Embora vocês tenham herdado o problema do template latex, vocês precisam corrigir esse problema de gerar uma página em branco nos capítulos.}
-
-\subsection{Métricas relacionadas avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+\subsection{Métricas relacionadas à avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}\label{subsec:metricas-avaliacao}
 
 {\def\LTcaptype{none} % do not increment counter
-	\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|}
+	\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0800}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2400}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4800}}|}
 		\hline
 		\begin{minipage}[b]{\linewidth}\raggedright
 			ID
@@ -467,6 +478,9 @@ diagnosticar a doença.
 		Registrar o critério de correspondência e o limiar de IoU: por exemplo,
 		\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
 		AP de máscaras.                                                                                                                                                                                            \\ \hline
+		M10                                         & Classificação (independente do limiar)                                & \textbf{Área sob a curva ROC (AUC)} & Probabilidade de o modelo atribuir escore maior a uma unidade positiva do que a uma negativa, obtida pela área sob a curva de sensibilidade em função de 1 $-$ especificidade, considerando todos os limiares. \\ \hline
+		M11                                         & Classificação com classes desequilibradas                             & \textbf{Acurácia balanceada (BACC)} & Média entre sensibilidade e especificidade: \textbf{BACC = (SEN + SPE) / 2}. Não é inflada pela classe majoritária. \\ \hline
+		M12                                         & Calibração dos escores                                                & \textbf{Escore de Brier e erro esperado de calibração (ECE)} & Brier: média do quadrado da diferença entre o escore previsto e o rótulo (0 ou 1). ECE: diferença média, ponderada pelo número de unidades, entre o escore médio e a proporção observada de positivos em intervalos de escore. \\ \hline
 	\end{longtable}
 }
 
