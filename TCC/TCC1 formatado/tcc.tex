@@ -1,4 +1,4 @@
-\documentclass[12pt,openright,twoside,a4paper,english,french,spanish,brazil]{abntex2}
+\documentclass[12pt,openany,oneside,a4paper,english,french,spanish,brazil]{abntex2}
 
 % Arquivo principal: versão adaptada ao template FCTE/UnB.
 \input{fixos/pacotes}
@@ -69,9 +69,11 @@
 \bibliography{referencias_tcc}
 \begin{apendicesenv}
 \partapendices
+\input{editaveis/apendice_busca}
 \input{editaveis/apendices}
 \input{editaveis/inventario_datasets}
 \input{editaveis/inventario_modelos}
-\input{editaveis/notas}
+% Notas de trabalho para os orientadores (15/10/2026), fora do texto do TCC.
+% \input{editaveis/notas}
 \end{apendicesenv}
 \end{document}

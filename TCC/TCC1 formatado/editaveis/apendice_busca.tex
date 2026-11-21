@@ -1,0 +1,134 @@
+% !TeX root = ../tcc.tex
+% Detalhes de auditoria da busca e da triagem, retirados do Capítulo 3 na síntese do capítulo.
+\chapter{Registro detalhado da busca e da triagem}
+\label{apend:registro-busca}
+
+Este apêndice reúne os registros da busca assistida e da triagem que
+sustentam as quantidades apresentadas na Seção~\ref{sec:execucao-busca-selecao}:
+o \textit{prompt} submetido às ferramentas, as consultas exibidas pelo
+Consensus, os critérios avaliados pelo Jev Reviewer e a comparação entre
+as sugestões automáticas e as decisões registradas no Evidentia.
+
+\section{\textit{Prompt} submetido ao Consensus e ao Claude}
+
+Como o Consensus recupera publicações por similaridade semântica, e não
+apenas por correspondência booleana, a solicitação reuniu em inglês a
+questão principal, as oito questões secundárias e os termos da
+Tabela~\ref{tab:picoc-termos}. O Quadro~\ref{qua:prompt-consensus}
+reproduz o texto submetido, que também foi usado na busca complementar
+no Claude.
+
+\lstinputlisting[
+	caption={\textit{Prompt} estruturado submetido ao Consensus e ao Claude},
+	label={qua:prompt-consensus},
+	basicstyle=\scriptsize\ttfamily,
+	breaklines=true,
+	breakatwhitespace=true,
+	columns=flexible,
+	keepspaces=true,
+	frame=single,
+	rulecolor=\color{black!30},
+	backgroundcolor=\color{black!2},
+	xleftmargin=0.5em,
+	xrightmargin=0.5em
+]{editaveis/prompt-consensus.txt}
+\vspace{-0.2cm}\noindent{\footnotesize\textbf{Fonte:} Autores.}\vspace{0.4cm}
+
+\section{Consultas apresentadas pelo Consensus}
+
+Na busca de 25 de setembro de 2026, feita no modo \textit{Deep} (19
+etapas), o Consensus gerou 11 consultas em quatro rodadas
+(Tabela~\ref{tab:consultas-consensus}). Os indicadores são saídas internas
+da ferramenta e não correspondem a contagens auditadas de estudos únicos.
+
+\begingroup
+\small
+\begin{longtable}{|p{0.08\textwidth}|p{0.68\textwidth}|r|}
+	\caption{Consultas e indicadores apresentados pelo Consensus}\label{tab:consultas-consensus} \\ \hline
+	Rodada          & Consulta                                                                                                                     & Indicador \\ \hline
+	\endfirsthead
+	\hline Rodada & Consulta                                                                                                                     & Indicador \\ \hline
+	\endhead
+	1               & deep learning convolutional neural network leprosy Hansen disease skin lesion classification detection diagnosis             & 95,3 mil  \\ \hline
+	1               & U-Net ResNet EfficientNet Vision Transformer skin lesion segmentation leprosy hanseniasis dermatological pattern recognition & 2,3 mil   \\ \hline
+	1               & machine learning model performance evaluation accuracy AUC F1 sensitivity specificity leprosy skin image diagnosis           & 63,5 mil  \\ \hline
+	1               & skin tone fairness demographic subgroup performance dermatology AI model external validation generalization cross-dataset    & 67,4 mil  \\ \hline
+	2               & leprosy skin image dataset Brazil public health AI diagnosis computer vision                                                 & 26,2 mil  \\ \hline
+	2               & transfer learning self-supervised semi-supervised learning skin neglected tropical disease leprosy image classification      & 36,6 mil  \\ \hline
+	2               & WHO skin neglected tropical diseases mobile application telemedicine leprosy detection low-resource settings                 & 63,4 mil  \\ \hline
+	3               & explainability XAI Grad-CAM interpretable AI leprosy neglected tropical disease skin lesion diagnosis                        & 1,6 mil   \\ \hline
+	3               & histopathological image analysis acid-fast bacilli detection deep learning leprosy nerve biopsy microscopy                   & 17,6 mil  \\ \hline
+	4               & leprosy skin image dataset multimodal clinical metadata paucibacillary multibacillary classification AI model                & 3 mil     \\ \hline
+	4               & reporting standards quality assessment QUADAS CONSORT-AI CLEAR dermatology AI model evaluation systematic review             & 47,8 mil  \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores, a partir do histórico da busca no Consensus.}
+
+A plataforma descreve \textit{Retrieved} (425,4 mil) como o total de
+trabalhos encontrados nas buscas, \textit{Eligible} (mil) como os
+considerados relevantes após a deduplicação da ferramenta e
+\textit{Included} (100) como os selecionados para a análise final, sem
+esclarecer integralmente os critérios internos. Após a segunda rodada, o
+histórico indica expansão por grafo de citações a partir de dez trabalhos
+iniciais, com 662 trabalhos associados; após a terceira, a leitura de 12
+resumos; antes da síntese, a leitura de resumos e PDFs de 100 trabalhos.
+A busca também se estendeu a temas relacionados, como dermatologia geral,
+equidade, saúde móvel, microscopia, histopatologia e diretrizes de relato.
+A presença de uma referência na saída da ferramenta não significa que ela
+atenda aos critérios da revisão: os 100 registros foram salvos pelos
+autores e submetidos à deduplicação e à triagem.
+
+\section{Critérios avaliados pelo Jev Reviewer e decisões de triagem}
+
+O Jev Reviewer (\texttt{jev-1.13.0}) acompanha cada sugestão de valores
+de \texttt{fails} associados a cinco critérios, que não substituem os
+critérios de inclusão e exclusão da revisão
+(Subseção~\ref{subsec:criterios-selecao}):
+\begin{enumerate}
+	\item abordar a hanseníase como condição investigada ou avaliada,
+	      isoladamente ou entre outras doenças, e não apenas em menção
+	      introdutória;
+	\item utilizar fotografias clínicas ou imagens dermatoscópicas de
+	      manifestações cutâneas humanas associadas à hanseníase, ou revisar
+	      estudos que as utilizam;
+	\item aplicar ou analisar métodos de visão computacional, aprendizado de
+	      máquina ou aprendizado profundo para detectar, classificar,
+	      identificar ou segmentar essas manifestações, incluindo revisões
+	      dessas aplicações;
+	\item relatar ou sintetizar evidências de avaliação desses métodos, como
+	      experimentos, testes, validação, comparação de desempenho ou
+	      resultados de estudos;
+	\item não se limitar à inteligência artificial generativa como
+	      intervenção.
+\end{enumerate}
+
+O cruzamento por título entre as sugestões do Jev Reviewer e as decisões
+do Evidentia encontrou correspondência para os 119 registros. Entre os 27
+incluídos no Evidentia, três tinham sugestão de inclusão, 11 sugestão
+incerta e 13 sugestão de exclusão. Entre os 91 excluídos, 87 tinham
+sugestão de exclusão e quatro sugestão incerta. O registro intermediário
+tinha sugestão de exclusão. Os valores de \texttt{fails} não registram a
+justificativa da decisão dos pesquisadores.
+
+Os estados intermediários da triagem registram, em uma etapa, 13
+inclusões, 32 exclusões, 15 decisões intermediárias e 59 registros sem
+decisão; em outra, 20 inclusões, 40 exclusões e os mesmos 59 sem decisão,
+com as 15 intermediárias convertidas em sete inclusões e oito exclusões.
+As decisões preenchidas têm data de 28 de setembro de 2026, sem horário.
+No resultado consolidado, 117 registros têm decisão consolidada
+automática, segundo o campo correspondente do Evidentia; o registro~\estudo{9}
+\cite{souza2021} recebeu duas exclusões individuais e foi consolidado
+manualmente como intermediário; e o registro~\estudo{90} \cite{baweja2016}
+recebeu uma inclusão e uma exclusão, conflito resolvido manualmente com
+exclusão. Esse mecanismo de consolidação não identifica uma revisão
+independente de cada artigo pelos dois pesquisadores.
+
+\section{Observações sobre os critérios de seleção}
+
+A formulação preservada do critério CI03 foi recebida truncada após
+``resultados de estu''; a redação apresentada na
+Subseção~\ref{subsec:criterios-selecao} resume a parte legível, e o texto
+integral ainda deve ser confirmado. A verificação de disponibilidade e de
+idioma do texto completo (CI01 e CE03) pode exigir consulta além do título
+e do resumo, e a data e a duplicidade (CE01 e CE02) dependem também dos
+metadados.

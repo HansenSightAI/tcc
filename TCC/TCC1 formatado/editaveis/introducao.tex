@@ -211,29 +211,26 @@ da investigação. O quadro orienta a definição da questão de pesquisa e
 das medidas a serem extraídas dos estudos.
 
 	{\def\LTcaptype{none} % do not increment counter
-		\begin{longtable}[]{@{}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-			\toprule\noalign{}
+		\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|}
+			\hline
 			\begin{minipage}[b]{\linewidth}\raggedright
 				Característica
 			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 				                 Valor
-			                 \end{minipage}                                   \\
-			\midrule\noalign{}
+			                 \end{minipage}                                   \\ \hline
 			\endhead
-			\bottomrule\noalign{}
+			
 			\endlastfoot
 			\textbf{Analisar}                           & Modelos de visão computacional aplicados à
-			identificação de manifestações dermatológicas.                                                \\
+			identificação de manifestações dermatológicas.                                                \\ \hline
 			\textbf{Com o propósito de}                 & Avaliar o desempenho dos modelos aplicados
-			à identificação de padrões em imagens de pele.                                                \\
+			à identificação de padrões em imagens de pele.                                                \\ \hline
 			\textbf{Com foco em}                        & Identificação de características patológicas de
-			hanseníase.                                                                                   \\
+			hanseníase.                                                                                   \\ \hline
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da Medicina.                                                                  \\
+			Software e da Medicina.                                                                  \\ \hline
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
-			de saúde do Brasil.                                                                           \\
+			de saúde do Brasil.                                                                           \\ \hline
 		\end{longtable}
 	}
 \fonte{Adaptado de \citeonline{basili1994} e \citeonline{wohlin2024}.}
@@ -304,8 +301,10 @@ fases estratégica, tática e operacional, e que fundamenta o Capítulo~2 de
 \citeonline{wohlin2024}. A Figura~\ref{fig:estrutura-decisao} apresenta essa estrutura, e os
 parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
+	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
+	\label{fig:estrutura-decisao}
 	\resizebox{\textwidth}{!}{%
 	\begin{tikzpicture}[
 		grupo/.style={draw=blue!45!black, thick, fill=blue!7},
@@ -379,8 +378,6 @@ parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 		\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
 	\end{tikzpicture}%
 	}
-	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
-	\label{fig:estrutura-decisao}
 	\fonte{Adaptado de \citeonline{wohlin2015}.}
 \end{figure}
 

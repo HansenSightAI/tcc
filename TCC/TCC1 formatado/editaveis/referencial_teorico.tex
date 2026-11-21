@@ -58,17 +58,15 @@ dos recursos disponíveis e da forma de análise pretendida
 	\caption{Comparação das principais estratégias empíricas em engenharia de software}
 	\label{tab:estrategias-empiricas}
 	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{2.4cm}}
-		\toprule
-		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\
-		\midrule
-		Controle da execução & Parcial & Não & Sim & Não \\
-		Controle das medidas & Sim & Não & Sim & Sim \\
-		Custo da investigação & Médio & Baixo & Alto & Alto \\
-		Facilidade de replicação & Alta & Alta & Alta & Média \\
-		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\
-		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\
-		\bottomrule
+	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{2.4cm}|}
+		\hline
+		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
+		Controle da execução & Parcial & Não & Sim & Não \\ \hline
+		Controle das medidas & Sim & Não & Sim & Sim \\ \hline
+		Custo da investigação & Médio & Baixo & Alto & Alto \\ \hline
+		Facilidade de replicação & Alta & Alta & Alta & Média \\ \hline
+		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\ \hline
+		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\ \hline
 	\end{tabular}
 	\fonte{Adaptado de \citeonline{wohlin2024}.}
 \end{table}
@@ -163,6 +161,8 @@ cada uma é apresentada.
 
 \begin{figure}[H]
 	\centering
+	\caption{Fluxo de atividades da revisão estruturada da literatura}
+	\label{fig:percurso-metodologico}
 	\small
 	\begin{tikzpicture}[
 		node distance=0.7cm and 0.6cm,
@@ -190,8 +190,6 @@ cada uma é apresentada.
 		\draw[seta] (b6) -- (b7);
 		\draw[seta] (b7) -- (fim);
 	\end{tikzpicture}
-	\caption{Fluxo de atividades da revisão estruturada da literatura}
-	\label{fig:percurso-metodologico}
 	\fonte{Elaboração própria.}
 \end{figure}
 
@@ -200,18 +198,16 @@ cada uma é apresentada.
 	\caption{Atividades realizadas na revisão estruturada}
 	\label{tab:etapas-metodologia}
 	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{5.5cm}}
-		\toprule
-		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\
-		\midrule
-		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\
-		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
-		Busca                          & Execução da busca e identificação dos registros                                                  & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos''                                                                                                                                               \\
-		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Mesma seção; Figura~\ref{fig:fluxo-triagem}                                                                                                                                                                                              \\
-		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Mesma seção                                                                                                                                                                                                                              \\
-		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção ``Extração e síntese das evidências''                                                                                                                                                                                           \\
-		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção ``Resultados da revisão''                                                                                                                                                                                                          \\
-		\bottomrule
+	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.9cm}|>{\raggedright\arraybackslash}p{5.5cm}|}
+		\hline
+		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
+		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\ \hline
+		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Seções~\ref{sec:planejamento-protocolo} e~\ref{subsec:picoc-string-busca}; Subseções~\ref{subsec:criterios-selecao} e~\ref{subsec:extracao}; Figura~\ref{fig:fluxo-metodologico-ia} \\ \hline
+		Busca                          & Execução da busca e identificação dos registros                                                  & Seção~\ref{subsec:picoc-string-busca}; Apêndice~\ref{apend:registro-busca}                     \\ \hline
+		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Seção~\ref{sec:execucao-busca-selecao}; Figura~\ref{fig:fluxo-triagem}                        \\ \hline
+		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Seção~\ref{sec:execucao-busca-selecao}                                                         \\ \hline
+		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção~\ref{subsec:extracao}                                                                 \\ \hline
+		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção~\ref{sec:resultados-revisao}                                                             \\ \hline
 	\end{tabular}
 	\fonte{Autores.}
 \end{table}
@@ -304,15 +300,13 @@ diferencial.
 	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}
 	\label{tab:formas-hanseniase}
 	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{4.8cm} >{\raggedright\arraybackslash}p{4.2cm}}
-		\toprule
-		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\
-		\midrule
-		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\
-		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\
-		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\
-		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\
-		\bottomrule
+	\begin{tabular}{|>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{0.9cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|}
+		\hline
+		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
+		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\ \hline
+		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\ \hline
+		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\ \hline
+		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\ \hline
 	\end{tabular}
 	\fonte{Adaptado de \citeonline{lima2024skin}.}
 \end{table}
@@ -374,27 +368,24 @@ unidade avaliada --- por exemplo, imagem --- e não implicam
 automaticamente diagnóstico por paciente.
 
 	{\def\LTcaptype{none} % do not increment counter
-		\begin{longtable}[]{@{}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-			\toprule\noalign{}
+		\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|}
+			\hline
 			\begin{minipage}[b]{\linewidth}\raggedright
 				Resultado
 			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 				                 Significado
-			                 \end{minipage}                        \\
-			\midrule\noalign{}
+			                 \end{minipage}                        \\ \hline
 			\endhead
-			\bottomrule\noalign{}
+			
 			\endlastfoot
 			\textbf{TP --- True Positive}               & A unidade pertence à classe positiva
-			segundo a referência e o modelo a classifica como positiva.                        \\
+			segundo a referência e o modelo a classifica como positiva.                        \\ \hline
 			\textbf{TN --- True Negative}               & A unidade pertence à classe negativa
-			segundo a referência e o modelo a classifica como negativa.                        \\
+			segundo a referência e o modelo a classifica como negativa.                        \\ \hline
 			\textbf{FP --- False Positive}              & A unidade pertence à classe negativa
-			segundo a referência, mas o modelo a classifica como positiva.                     \\
+			segundo a referência, mas o modelo a classifica como positiva.                     \\ \hline
 			\textbf{FN --- False Negative}              & A unidade pertence à classe positiva
-			segundo a referência, mas o modelo a classifica como negativa.                     \\
+			segundo a referência, mas o modelo a classifica como negativa.                     \\ \hline
 		\end{longtable}
 	}
 
@@ -410,12 +401,8 @@ diagnosticar a doença.
 \subsection{Métricas relacionadas avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
 
 {\def\LTcaptype{none} % do not increment counter
-	\begin{longtable}[]{@{}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
-		\toprule\noalign{}
+	\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}|}
+		\hline
 		\begin{minipage}[b]{\linewidth}\raggedright
 			ID
 		\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -424,51 +411,50 @@ diagnosticar a doença.
 			                                                            Métrica
 		                                                            \end{minipage}         & \begin{minipage}[b]{\linewidth}\raggedright
 			                                                                                     Descrição e operacionalização
-		                                                                                     \end{minipage}                                                                            \\
-		\midrule\noalign{}
+		                                                                                     \end{minipage}                                                                            \\ \hline
 		\endhead
-		\bottomrule\noalign{}
+		
 		\endlastfoot
 		M1                                          & Classificação                                                         & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
 		                                            & Proporção de positivos corretamente identificados: \textbf{SEN = TP /
-		(TP + FN)}.                                                                                                                                                                                                \\
+		(TP + FN)}.                                                                                                                                                                                                \\ \hline
 		M2                                          & Classificação                                                         & \textbf{Especificidade --- Specificity (SPE)}       &
 		Proporção de negativos corretamente identificados: \textbf{SPE = TN /
-		(TN + FP)}.                                                                                                                                                                                                \\
+		(TN + FP)}.                                                                                                                                                                                                \\ \hline
 		M3                                          & Classificação                                                         & \textbf{Precisão --- Precision (PRE)}               & Proporção
 		de predições positivas que correspondem a positivos de referência:
-		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\
+		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\ \hline
 		M4                                          & Classificação                                                         & \textbf{F1-score}                                   & Média harmônica entre precisão
 		e sensibilidade, considerando o efeito de falsos positivos e falsos
 		negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
-		(2TP + FP + FN)}.                                                                                                                                                                                          \\
+		(2TP + FP + FN)}.                                                                                                                                                                                          \\ \hline
 		M5                                          & Classificação geral                                                   & \textbf{Acurácia --- Accuracy (ACC)}                &
 		Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
 			(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
-		acertos totais / unidades totais.                                                                                                                                                                          \\
+		acertos totais / unidades totais.                                                                                                                                                                          \\ \hline
 		M6                                          & Equidade do desempenho                                                & \textbf{Diferença de desempenho entre
 		grupos}                                     & Comparação da mesma métrica entre grupos de tons de pele,
 		quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
 			métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
-		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\
+		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\ \hline
 		M7                                          & Generalização                                                         & \textbf{Variação de desempenho entre datasets}      &
 		Comparação da mesma métrica entre avaliações em dados de distribuição
 		semelhante à de treinamento e dados de distribuição diferente:
 		\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
 		Registrar se houve adaptação ou retreinamento e se tarefa/classes são
-		comparáveis.                                                                                                                                                                                               \\
+		comparáveis.                                                                                                                                                                                               \\ \hline
 		M8                                          & Segmentação / sobreposição espacial                                   & \textbf{Intersection over
 		Union (IoU)}                                & Interseção dividida pela união das regiões prevista P e
 		de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
 		binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
 			FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
-		classes.                                                                                                                                                                                                   \\
+		classes.                                                                                                                                                                                                   \\ \hline
 		M9                                          & Detecção / segmentação por instância                                  & \textbf{Mean Average
 		Precision (mAP)}                            & Média dos valores de AP das classes consideradas; AP
 		resume a curva precisão--recall segundo a convenção do benchmark.
 		Registrar o critério de correspondência e o limiar de IoU: por exemplo,
 		\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
-		AP de máscaras.                                                                                                                                                                                            \\
+		AP de máscaras.                                                                                                                                                                                            \\ \hline
 	\end{longtable}
 }
 
