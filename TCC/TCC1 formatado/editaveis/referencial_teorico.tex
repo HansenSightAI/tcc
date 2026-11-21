@@ -10,14 +10,88 @@ a imagens de pele e das medidas usadas na avaliação dos modelos.
 
 \section{Pesquisa empírica em engenharia de software}
 
-\todo[inline, color=pink]{Faltou caracterizar melhor a engenharia de software empírica, os principais métodos e estratégias de pesquisa, e a relação com a ciência de dados. Ex: os experimentos, estuddos de caso, etc. Ficou muito superficial.}
+A engenharia de software é uma disciplina transversal, que vai de questões
+técnicas a aspectos sociais e psicológicos, e o desenvolvimento de software
+depende fortemente das pessoas que o realizam. Tratá-la como disciplina
+científica implica usar métodos científicos tanto para pesquisar quanto para
+decidir mudanças na forma de desenvolver software. Nesse sentido,
+\citeonline{wohlin2024} apresentam quatro abordagens gerais de pesquisa: a científica, que constrói um modelo a partir
+da observação do mundo; a de engenharia, que estuda soluções existentes,
+propõe mudanças e as avalia; a empírica, que propõe um modelo e o avalia por
+meio de estudos empíricos; e a analítica, que propõe uma teoria formal e a
+compara com observações. Como o desenvolvimento de software é governado em
+grande parte pelo comportamento humano, raramente se obtêm leis formais, e os
+estudos empíricos ganham papel central na produção de evidências
+\cite{wohlin2024}.
 
 A pesquisa empírica utiliza observações e dados para investigar fenômenos,
-avaliar propostas e fundamentar conclusões. Na engenharia de software, as estratégias empíricas
-ncluem experimentos, estudos de caso, estudos secundários de literatura, ciência de dados, entre outros \cite{acmSigsoftDataScience,wohlin2024} A escolha da estratégia de
-pesquisa depende da questão investigada e das evidências necessárias
-para respondê-la \cite{wohlin2024}. Neste trabalho, a revisão estruturada da literatura é orientada por diretrizes de revisão sistemática,
-já a avaliação  dos modelos de visão computacional, adota-se como referencial o padrão \textit{Data Science} da ACM SIGSOFT.
+avaliar propostas e fundamentar conclusões. Na engenharia de software, as
+principais estratégias empíricas são os estudos sistemáticos de literatura,
+os levantamentos (\textit{surveys}), os experimentos e os estudos de caso
+\cite{wohlin2024}:
+
+\begin{itemize}
+	\item \textbf{Estudo sistemático de literatura:} resume e organiza o
+	      conhecimento de uma área a partir de publicações existentes. O
+	      pesquisador controla pouco a execução, pois depende do que foi
+	      publicado, mas controla as medidas extraídas.
+	\item \textbf{Levantamento:} coleta, em geral por questionários, opiniões e
+	      percepções de uma população, de forma retrospectiva. Tem baixo custo,
+	      mas não permite controlar a execução nem as medidas.
+	\item \textbf{Experimento:} investigação formal, rigorosa e controlada, em
+	      que os fatores de interesse são manipulados e os demais mantidos
+	      constantes, com foco em dados quantitativos.
+	\item \textbf{Estudo de caso:} examina um fenômeno no contexto real de um
+	      projeto em andamento, com desenho flexível e pouco controle sobre a
+	      execução.
+\end{itemize}
+
+A Tabela~\ref{tab:estrategias-empiricas} compara essas estratégias quanto ao
+controle, ao custo, à facilidade de replicação e ao tipo de dado. Elas não são
+ortogonais: um estudo pode combinar estratégias ou situar-se entre duas
+delas, e a escolha depende das condições da investigação, de seu propósito,
+dos recursos disponíveis e da forma de análise pretendida
+\cite{wohlin2024}.
+
+\begin{table}[htb]
+	\centering
+	\caption{Comparação das principais estratégias empíricas em engenharia de software}
+	\label{tab:estrategias-empiricas}
+	\footnotesize
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{2.4cm}}
+		\toprule
+		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\
+		\midrule
+		Controle da execução & Parcial & Não & Sim & Não \\
+		Controle das medidas & Sim & Não & Sim & Sim \\
+		Custo da investigação & Médio & Baixo & Alto & Alto \\
+		Facilidade de replicação & Alta & Alta & Alta & Média \\
+		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\
+		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Adaptado de \citeonline{wohlin2024}.}
+\end{table}
+
+Além dessas estratégias, \citeonline{wohlin2015} descrevem metodologias que
+combinam métodos, processos e arcabouços, como o estudo de caso, a
+pesquisa-ação e a \textit{design science}, e métodos de coleta como a pesquisa
+em arquivo, que analisa dados já registrados por pessoas ou organizações, e a
+simulação. A pesquisa em arquivo é a base dos estudos que analisam dados
+existentes, como repositórios de software ou conjuntos de imagens já
+anotados.
+
+É nesse ponto que se situa a ciência de dados. Estudos de ciência de dados em
+engenharia de software analisam fenômenos ou artefatos por meio de métodos
+centrados em dados, como o aprendizado de máquina, e a ACM SIGSOFT mantém, ao
+lado dos padrões para experimentos e estudos de caso, um padrão específico
+para esse tipo de estudo \cite{acmSigsoftDataScience}. Diferentemente de um
+experimento, o pesquisador não manipula condições aplicadas a participantes:
+ele seleciona, prepara e analisa dados já existentes, e a qualidade das
+conclusões depende de como esses dados foram obtidos e avaliados. Neste
+trabalho, a revisão estruturada da literatura é orientada por diretrizes de
+revisão sistemática, e a avaliação dos modelos de visão computacional adota
+como referencial o padrão \textit{Data Science} da ACM SIGSOFT.
 
 \subsection{Ciência de dados na avaliação de modelos}
 \label{subsec:ciencia-de-dados}
@@ -48,9 +122,16 @@ métodos não existem ou a comparação direta é impraticável, cabe justificar
 essa condição \cite{acmSigsoftDataScience}.
 
 O relato do desempenho deve informar a variabilidade ou a incerteza das
-estimativas e discutir as ameaças à validade. Em imagens de tons de pele, por
-exemplo, fotografias de um mesmo paciente no treino e no teste podem
-inflar as estimativas de desempenho. A origem e a qualidade dos dados
+estimativas e discutir as ameaças à validade
+\cite{acmSigsoftDataScience,wohlin2024}. Segundo \citeonline{kapoor2023},
+quando imagens de um mesmo paciente aparecem nos dados de treino e de teste,
+as estimativas de desempenho podem ser infladas, sendo essa situação
+classificada como vazamento de dados por falta de independência entre as
+amostras de treino e de teste: o modelo deveria ser avaliado em pacientes novos, mas é
+testado com dados de pacientes já vistos no treino. Como exemplo, os autores
+citam um estudo de histopatologia que usou observações do mesmo paciente nos
+dois conjuntos. O mesmo risco se aplica a fotografias de pele de um mesmo
+paciente. A origem e a qualidade dos dados
 também afetam a interpretação. Em um estudo sobre defeitos de software,
 \citeonline{ghotra2015} observaram que a conclusão sobre a influência da
 técnica de classificação mudou ao repetir a avaliação com outros conjuntos
@@ -80,7 +161,7 @@ apresentado na Figura~\ref{fig:percurso-metodologico}. A
 Tabela~\ref{tab:etapas-metodologia} lista as atividades realizadas e indica onde
 cada uma é apresentada.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\small
 	\begin{tikzpicture}[
@@ -114,7 +195,7 @@ cada uma é apresentada.
 	\fonte{Elaboração própria.}
 \end{figure}
 
-\begin{table}[htb]
+\begin{table}[H]
 	\centering
 	\caption{Atividades realizadas na revisão estruturada}
 	\label{tab:etapas-metodologia}
@@ -137,23 +218,115 @@ cada uma é apresentada.
 
 \section{Hanseníase e identificação de manifestações cutâneas}
 
-A hanseníase pode apresentar manifestações na pele e comprometimento de
-nervos periféricos. Segundo a \citeonline{oms2018hanseniase}, entre os
-sinais usados para o diagnóstico estão a perda de sensibilidade em uma
-mancha cutânea, alterações em nervos periféricos associadas à perda de
-sensibilidade e a presença de bacilos em exame de esfregaço cutâneo.
-Portanto, uma fotografia de pele representa somente parte das informações
-consideradas na avaliação clínica.
+\subsection{Caracterização e contexto}
 
-No contexto desta pesquisa, a análise computacional de imagens é tratada
-como possível apoio à triagem. Seu desempenho em uma base de imagens não
-demonstra, isoladamente, que o sistema possa estabelecer um diagnóstico ou
-melhorar o atendimento em um serviço de saúde. Por isso, é necessário
-relacionar os resultados reportados à tarefa realizada, aos dados utilizados
-e à forma de validação \cite{fernandes2024}.
+A hanseníase é uma doença infecciosa crônica causada pelo
+\textit{Mycobacterium leprae}, que evolui de forma progressiva e pode afetar a
+pele, os nervos periféricos sensitivos, motores e autonômicos, os olhos, os
+ossos e o trato respiratório superior \cite{fernandes2024,lima2024skin}. A
+transmissão ocorre principalmente pelas vias aéreas superiores, por contato
+próximo e prolongado com pessoas que eliminam o bacilo e não estão em
+tratamento. Estima-se que apenas uma pequena parcela das pessoas expostas
+desenvolva a doença \cite{fernandes2024}. O tratamento cura a doença,
+interrompe a transmissão e previne incapacidades físicas, e o diagnóstico
+precoce está associado a bom prognóstico, sem sequelas \cite{lima2024skin}.
 
+A hanseníase integra o grupo das doenças tropicais negligenciadas, que
+predominam em comunidades empobrecidas de áreas tropicais e em regiões sem
+serviços de saúde de qualidade. Essas doenças são chamadas negligenciadas por
+estarem quase ausentes da agenda global de saúde e por contarem com recursos
+muito limitados \cite{oms2025dtn}. No Brasil, a hanseníase está entre as cinco
+doenças negligenciadas definidas como prioritárias pelo Ministério da Saúde
+\cite{lima2024skin}. Como apresentado no Capítulo~\ref{cap:introducao}, o país é o segundo em número de novos casos no mundo. Em 2019,
+a taxa geral de detecção no Brasil foi de 13,23 casos por 100 mil habitantes,
+com valores mais altos em regiões como o Nordeste, e a redução observada em
+2020 foi associada à sobrecarga dos serviços durante a pandemia de COVID-19
+\cite{lima2024skin}.
 
-\todo[inline, color=pink]{A hanseníase também ficou superficial. Na introdução foi bom, mas talvez pudesse ser resumida de forma a trazer mais detalhes e informações aqui. Por exemplo, o todo o contexto dele ser uma doença negligenciada, a questão da triagem, a questão do diagnóstico, a questão do estigma, a questão da prevalência, a questão da classificação de tipos de hanseníase, etc.}
+Além das consequências clínicas, as pessoas acometidas enfrentam
+discriminação e exclusão social, redução da qualidade de vida e, em muitos
+casos, deformidades permanentes \cite{fernandes2024}. O estigma associado à
+doença contribui também para a subnotificação \cite{lima2024skin} e, segundo
+\citeonline{barbieri2022}, é reforçado pelas sequelas neurológicas decorrentes
+do diagnóstico tardio.
+
+\subsection{Diagnóstico e triagem}
+
+O diagnóstico da hanseníase é predominantemente clínico. Não há teste
+padrão-ouro, e os sintomas podem levar de dois meses a vinte anos para
+aparecer \cite{fernandes2024}. Cerca de 70\% dos casos são diagnosticados por
+história clínica e epidemiológica, anamnese e avaliação dermatológica e
+neurológica, com base em três sinais cardinais: perda definida de
+sensibilidade em mancha hipocrômica ou avermelhada; espessamento de nervo
+periférico, com perda de sensibilidade e fraqueza dos músculos inervados; e
+detecção microscópica de bacilos \cite{fernandes2024,oms2018hanseniase}. Os
+demais casos não apresentam as características típicas e exigem exames
+complementares.
+
+Entre os exames complementares, a baciloscopia de raspado intradérmico tem
+especificidade de 100\% e sensibilidade entre 34,4\% e 50\%. O exame
+histopatológico, feito a partir das bordas de lesões ativas e de nervos, auxilia
+os casos atípicos. Também são empregados a reação intradérmica de Mitsuda, a
+sorologia anti-PGL-1, útil para estimar a carga bacilar e acompanhar contatos,
+e os testes moleculares, como a reação em cadeia da polimerase, de alta
+sensibilidade e especificidade \cite{fernandes2024}. A ausência de sintomas
+iniciais e a semelhança com outras dermatoses podem tornar o diagnóstico
+inconclusivo e atrasar o tratamento \cite{fernandes2024}.
+
+Nesse cenário, a triagem consiste em identificar casos suspeitos para
+encaminhamento à avaliação clínica, e não em estabelecer o diagnóstico. Em
+países de baixa e média renda, os profissionais da linha de frente muitas
+vezes não têm formação em dermatologia \cite{pons2026}. Uma fotografia de pele,
+porém, representa somente parte das informações usadas na avaliação clínica:
+a perda de sensibilidade, o acometimento neural e a baciloscopia não são
+observáveis na imagem.
+
+\subsection{Classificação clínica}
+
+A classificação orienta o tratamento e a descrição das formas da doença. A
+classificação operacional da Organização Mundial da Saúde divide os casos em
+paucibacilares (PB), com até cinco lesões de pele e baciloscopia negativa, e
+multibacilares (MB), com seis ou mais lesões e baciloscopia positiva, e
+define o esquema terapêutico. A classificação de Madri (1953), adotada no
+Brasil, distingue as formas indeterminada, tuberculoide, dimorfa e
+virchowiana conforme as características das lesões, o acometimento neural e a
+sensibilidade. A classificação de Ridley e Jopling (1966) considera critérios
+clínicos, histopatológicos, imunológicos e baciloscópicos e define cinco
+formas: tuberculoide-\allowbreak tuberculoide, \textit{borderline}-\allowbreak tuberculoide,
+\textit{borderline}-\allowbreak \textit{borderline}, \textit{borderline}-\allowbreak virchowiana e
+virchowiana-\allowbreak virchowiana
+\cite{fernandes2024}. A Tabela~\ref{tab:formas-hanseniase} resume as formas
+da classificação de Madri e as dermatoses com que cada uma faz diagnóstico
+diferencial.
+
+\begin{table}[htb]
+	\centering
+	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}
+	\label{tab:formas-hanseniase}
+	\footnotesize
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{4.8cm} >{\raggedright\arraybackslash}p{4.2cm}}
+		\toprule
+		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\
+		\midrule
+		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\
+		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\
+		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\
+		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Adaptado de \citeonline{lima2024skin}.}
+\end{table}
+
+Essas classificações também aparecem nos rótulos de bases de imagens. Há
+conjuntos que usam as quatro formas de Madri como classes
+\cite{lima2024skin}, e a semelhança entre a hanseníase e as dermatoses do
+diagnóstico diferencial explica por que muitos estudos incluem essas
+condições como classes de comparação. No contexto desta pesquisa, a análise
+computacional de imagens é tratada como possível apoio à triagem. Seu
+desempenho em uma base de imagens não demonstra, isoladamente, que o sistema
+possa estabelecer um diagnóstico ou melhorar o atendimento em um serviço de
+saúde. Por isso, é necessário relacionar os resultados reportados à tarefa
+realizada, aos dados utilizados e à forma de validação \cite{fernandes2024}.
 
 \section{Inteligência artificial e visão computacional}
 
