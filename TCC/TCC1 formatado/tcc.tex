@@ -6,6 +6,19 @@
 \usepackage{fixos/customizacoes}
 \usepackage{longtable,booktabs,array,calc}
 \usepackage{float}
+% Posicionamento de figuras: permite mais figuras por página e alinha as
+% páginas só de figuras ao topo, reduzindo espaços em branco.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Quadro}
 \lstset{
