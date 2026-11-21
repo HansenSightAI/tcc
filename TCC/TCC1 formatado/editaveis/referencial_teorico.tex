@@ -53,25 +53,28 @@ delas, e a escolha depende das condições da investigação, de seu propósito,
 dos recursos disponíveis e da forma de análise pretendida
 \cite{wohlin2024}.
 
-\begin{table}[htb]
-	\centering
-	\caption{Comparação das principais estratégias empíricas em engenharia de software}
-	\label{tab:estrategias-empiricas}
-	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{2.4cm}}
-		\toprule
-		\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\
-		\midrule
-		Controle da execução & Parcial & Não & Sim & Não \\
-		Controle das medidas & Sim & Não & Sim & Sim \\
-		Custo da investigação & Médio & Baixo & Alto & Alto \\
-		Facilidade de replicação & Alta & Alta & Alta & Média \\
-		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\
-		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\
-		\bottomrule
-	\end{tabular}
-	\fonte{Adaptado de \citeonline{wohlin2024}.}
-\end{table}
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.6cm}|>{\footnotesize\raggedright\arraybackslash}p{2.5cm}|>{\footnotesize\raggedright\arraybackslash}p{2.4cm}|>{\footnotesize\raggedright\arraybackslash}p{2.3cm}|>{\footnotesize\raggedright\arraybackslash}p{2.4cm}|}
+	\caption{Comparação das principais estratégias empíricas em engenharia de software}\label{tab:estrategias-empiricas} \\
+	\hline
+	\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
+	\endfirsthead
+	\multicolumn{5}{l}{\footnotesize\textit{Tabela~\ref{tab:estrategias-empiricas} (continuação)}} \\
+	\hline
+	\textbf{Fator} & \textbf{Estudo sistemático de literatura} & \textbf{Levantamento} & \textbf{Experimento} & \textbf{Estudo de caso} \\ \hline
+	\endhead
+	\multicolumn{5}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Controle da execução & Parcial & Não & Sim & Não \\ \hline
+		Controle das medidas & Sim & Não & Sim & Sim \\ \hline
+		Custo da investigação & Médio & Baixo & Alto & Alto \\ \hline
+		Facilidade de replicação & Alta & Alta & Alta & Média \\ \hline
+		Tipo de desenho & Fixo & Fixo & Fixo & Flexível \\ \hline
+		Dados & Qualitativos e quantitativos & Qualitativos e quantitativos & Sobretudo quantitativos & Qualitativos e quantitativos \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Adaptado de \citeonline{wohlin2024}.}
 
 Além dessas estratégias, \citeonline{wohlin2015} descrevem metodologias que
 combinam métodos, processos e arcabouços, como o estudo de caso, a
@@ -85,13 +88,11 @@ anotados.
 engenharia de software analisam fenômenos ou artefatos por meio de métodos
 centrados em dados, como o aprendizado de máquina, e a ACM SIGSOFT mantém, ao
 lado dos padrões para experimentos e estudos de caso, um padrão específico
-para esse tipo de estudo \cite{acmSigsoftDataScience}. Diferentemente de um
-experimento, o pesquisador não manipula condições aplicadas a participantes:
-ele seleciona, prepara e analisa dados já existentes, e a qualidade das
-conclusões depende de como esses dados foram obtidos e avaliados. Neste
-trabalho, a revisão estruturada da literatura é orientada por diretrizes de
-revisão sistemática, e a avaliação dos modelos de visão computacional adota
-como referencial o padrão \textit{Data Science} da ACM SIGSOFT.
+para esse tipo de estudo \cite{acmSigsoftDataScience}. No presente trabalho,
+a pesquisa em arquivo fornece os dados secundários do estudo computacional.
+A abordagem de ciência de dados orienta a investigação preditiva a partir
+desses dados. A revisão estruturada da literatura fundamenta a escolha das
+arquiteturas e a discussão dos procedimentos de avaliação.
 
 \subsection{Ciência de dados na avaliação de modelos}
 \label{subsec:ciencia-de-dados}
@@ -109,9 +110,11 @@ exigem pressupostos e evidências sobre como os dados foram gerados
 O padrão \textit{Data Science} da ACM SIGSOFT estabelece critérios para a
 condução e o relato de estudos de engenharia de software que empregam
 análise centrada em dados, incluindo modelagem preditiva
-\cite{acmSigsoftDataScience}. Neste trabalho, o padrão é adotado como
-método empírico para a avaliação futura de modelos de visão computacional
-aplicados a imagens de pele associadas à hanseníase.
+\cite{acmSigsoftDataScience}. O padrão funciona como referencial de
+condução e relato. O protocolo específico do estudo define como curar
+as fotografias, treinar as duas arquiteturas e avaliar ambos os
+classificadores no teste reservado. Essas decisões são apresentadas no
+Capítulo~\ref{cap:metodologia-experimental}.
 
 Entre os critérios essenciais estão a justificativa da seleção dos dados,
 a descrição do pré-processamento e das transformações aplicadas, a
@@ -120,6 +123,18 @@ métricas e dos procedimentos de análise. O padrão orienta a discussão dos
 métodos de referência disponíveis e de suas limitações. Quando esses
 métodos não existem ou a comparação direta é impraticável, cabe justificar
 essa condição \cite{acmSigsoftDataScience}.
+
+Na avaliação preditiva, a validação serve para escolher configurações
+e o teste reservado estima o desempenho do modelo depois que essas
+decisões foram tomadas. A divisão deve considerar a unidade de
+agrupamento. Por exemplo, fotografias da mesma lesão podem compartilhar
+características decorrentes do objeto ou da captura. Manter essas
+fotografias na mesma partição reduz a dependência entre os dados
+de desenvolvimento e teste \cite{kapoor2023}. Quando as partições
+pertencem a uma mesma coleção, o resultado caracteriza a avaliação
+interna. A avaliação externa examina o desempenho em novos dados,
+cuja origem e condições de coleta precisam ser caracterizadas
+\cite{muneer2026realfm}.
 
 O relato do desempenho deve informar a variabilidade ou a incerteza das
 estimativas e discutir as ameaças à validade
@@ -163,6 +178,8 @@ cada uma é apresentada.
 
 \begin{figure}[H]
 	\centering
+	\caption{Fluxo de atividades da revisão estruturada da literatura}
+	\label{fig:percurso-metodologico}
 	\small
 	\begin{tikzpicture}[
 		node distance=0.7cm and 0.6cm,
@@ -190,31 +207,32 @@ cada uma é apresentada.
 		\draw[seta] (b6) -- (b7);
 		\draw[seta] (b7) -- (fim);
 	\end{tikzpicture}
-	\caption{Fluxo de atividades da revisão estruturada da literatura}
-	\label{fig:percurso-metodologico}
-	\fonte{Elaboração própria.}
+	\fonte{Autores.}
 \end{figure}
 
-\begin{table}[H]
-	\centering
-	\caption{Atividades realizadas na revisão estruturada}
-	\label{tab:etapas-metodologia}
-	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{5.5cm}}
-		\toprule
-		\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\
-		\midrule
-		Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\
-		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Capítulo~\ref{cap:revisao-literatura}, seções ``Planejamento e protocolo'' e ``Estruturação da estratégia de busca''; subseções ``Critérios de seleção'' e ``Extração e síntese das evidências''; Figura~\ref{fig:fluxo-metodologico-ia} \\
-		Busca                          & Execução da busca e identificação dos registros                                                  & Capítulo~\ref{cap:revisao-literatura}, seção ``Realização da busca e seleção dos artigos''                                                                                                                                               \\
-		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Mesma seção; Figura~\ref{fig:fluxo-triagem}                                                                                                                                                                                              \\
-		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Mesma seção                                                                                                                                                                                                                              \\
-		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção ``Extração e síntese das evidências''                                                                                                                                                                                           \\
-		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção ``Resultados da revisão''                                                                                                                                                                                                          \\
-		\bottomrule
-	\end{tabular}
-	\fonte{Autores.}
-\end{table}
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.8cm}|>{\footnotesize\raggedright\arraybackslash}p{4.9cm}|>{\footnotesize\raggedright\arraybackslash}p{5.5cm}|}
+	\caption{Atividades realizadas na revisão estruturada}\label{tab:etapas-metodologia} \\
+	\hline
+	\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
+	\endfirsthead
+	\multicolumn{3}{l}{\footnotesize\textit{Tabela~\ref{tab:etapas-metodologia} (continuação)}} \\
+	\hline
+	\textbf{Atividade}             & \textbf{Descrição}                                                                               & \textbf{Localização no trabalho}                                                                                                                                                                                                         \\ \hline
+	\endhead
+	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Problema e questão de pesquisa & Definição do problema, da questão norteadora (GQM adaptado) e dos objetivos                      & Capítulo~1                                                                                                                                                                                                                               \\ \hline
+		Protocolo da revisão           & Questões de pesquisa, estratégia de busca (PICOC), critérios de seleção e formulário de extração & Seções~\ref{sec:planejamento-protocolo} e~\ref{subsec:picoc-string-busca}; Subseções~\ref{subsec:criterios-selecao} e~\ref{subsec:extracao}; Figura~\ref{fig:fluxo-metodologico-ia} \\ \hline
+		Busca                          & Execução da busca e identificação dos registros                                                  & Seção~\ref{subsec:picoc-string-busca}; Apêndice~\ref{apend:registro-busca}                     \\ \hline
+		Triagem                        & Seleção por título e resumo, com os critérios do protocolo                                       & Seção~\ref{sec:execucao-busca-selecao}; Figura~\ref{fig:fluxo-triagem}                        \\ \hline
+		Leitura integral               & Leitura dos textos completos e confirmação da elegibilidade                                      & Seção~\ref{sec:execucao-busca-selecao}                                                         \\ \hline
+		Extração                       & Preenchimento do formulário de extração dos estudos incluídos                                    & Subseção~\ref{subsec:extracao}                                                                 \\ \hline
+		Síntese                        & Síntese das evidências por questão de pesquisa                                                   & Seção~\ref{sec:resultados-revisao}                                                             \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \section{Hanseníase e identificação de manifestações cutâneas}
 
@@ -299,23 +317,26 @@ virchowiana-\allowbreak virchowiana
 da classificação de Madri e as dermatoses com que cada uma faz diagnóstico
 diferencial.
 
-\begin{table}[htb]
-	\centering
-	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}
-	\label{tab:formas-hanseniase}
-	\footnotesize
-	\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{4.8cm} >{\raggedright\arraybackslash}p{4.2cm}}
-		\toprule
-		\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\
-		\midrule
-		Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\
-		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\
-		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\
-		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\
-		\bottomrule
-	\end{tabular}
-	\fonte{Adaptado de \citeonline{lima2024skin}.}
-\end{table}
+\begingroup
+\begin{longtable}{|>{\footnotesize\raggedright\arraybackslash}p{2.2cm}|>{\footnotesize\raggedright\arraybackslash}p{0.9cm}|>{\footnotesize\raggedright\arraybackslash}p{4.8cm}|>{\footnotesize\raggedright\arraybackslash}p{4.2cm}|}
+	\caption{Formas clínicas da hanseníase segundo a classificação de Madri}\label{tab:formas-hanseniase} \\
+	\hline
+	\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:formas-hanseniase} (continuação)}} \\
+	\hline
+	\textbf{Forma} & \textbf{Grupo} & \textbf{Características das lesões} & \textbf{Diagnóstico diferencial} \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	Indeterminada & PB & Fase inicial; lesão única, mais clara que a pele ao redor, sem relevo, seca e com bordas mal definidas & Pitiríase alba, dermatite seborreica, nevo acrômico, nevo anêmico, vitiligo \\ \hline
+		Tuberculoide & PB & Placa anestésica ou com bordas elevadas, bem definidas e centro claro; acometimento neural assimétrico & Dermatofitose (\textit{tinea corporis}), granuloma anular, sarcoidose, tuberculose verrucosa cutânea, psoríase \\ \hline
+		Dimorfa & MB & Várias manchas avermelhadas ou esbranquiçadas, com bordas elevadas e mal definidas na periferia, ou lesões semelhantes às tuberculoides com borda externa imprecisa & Esclerodermia linear, dermatofitose, parapsoríase em placas, psoríase \\ \hline
+		Virchowiana & MB & Lesões difusas e geralmente simétricas, acinzentadas e de limites imprecisos; pele avermelhada, seca, infiltrada e com poros dilatados & Neurofibromatose, xantoma tuberoso, condrodermatite nodular crônica da hélice \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Adaptado de \citeonline{lima2024skin}.}
 
 Essas classificações também aparecem nos rótulos de bases de imagens. Há
 conjuntos que usam as quatro formas de Madri como classes
@@ -374,27 +395,24 @@ unidade avaliada --- por exemplo, imagem --- e não implicam
 automaticamente diagnóstico por paciente.
 
 	{\def\LTcaptype{none} % do not increment counter
-		\begin{longtable}[]{@{}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-			\toprule\noalign{}
+		\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|}
+			\hline
 			\begin{minipage}[b]{\linewidth}\raggedright
 				Resultado
 			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 				                 Significado
-			                 \end{minipage}                        \\
-			\midrule\noalign{}
+			                 \end{minipage}                        \\ \hline
 			\endhead
-			\bottomrule\noalign{}
+			
 			\endlastfoot
 			\textbf{TP --- True Positive}               & A unidade pertence à classe positiva
-			segundo a referência e o modelo a classifica como positiva.                        \\
+			segundo a referência e o modelo a classifica como positiva.                        \\ \hline
 			\textbf{TN --- True Negative}               & A unidade pertence à classe negativa
-			segundo a referência e o modelo a classifica como negativa.                        \\
+			segundo a referência e o modelo a classifica como negativa.                        \\ \hline
 			\textbf{FP --- False Positive}              & A unidade pertence à classe negativa
-			segundo a referência, mas o modelo a classifica como positiva.                     \\
+			segundo a referência, mas o modelo a classifica como positiva.                     \\ \hline
 			\textbf{FN --- False Negative}              & A unidade pertence à classe positiva
-			segundo a referência, mas o modelo a classifica como negativa.                     \\
+			segundo a referência, mas o modelo a classifica como negativa.                     \\ \hline
 		\end{longtable}
 	}
 
@@ -403,19 +421,11 @@ definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
 reconhecer uma ferida em paciente com hanseníase não equivale a
 diagnosticar a doença.
 
-\todo[inline, color=pink]{Quando vocês estiverem definindo as metricas que serão analiasadas no contexto do estudo de ciência de dados, com GQM, aí vocês conectam essas métricas da literatura com as métricas que vocês definiram no GQM. Aqui elas são metricas comumente utilizadas na literatura. Por sinal, deveriam aparecer na resposta daquela questao da revisao que trata de metricas.}
-
-\todo[inline, color=pink]{Embora vocês tenham herdado o problema do template latex, vocês precisam corrigir esse problema de gerar uma página em branco nos capítulos.}
-
-\subsection{Métricas relacionadas avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}
+\subsection{Métricas relacionadas à avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}\label{subsec:metricas-avaliacao}
 
 {\def\LTcaptype{none} % do not increment counter
-	\begin{longtable}[]{@{}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-		>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
-		\toprule\noalign{}
+	\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0800}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2400}}|>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4800}}|}
+		\hline
 		\begin{minipage}[b]{\linewidth}\raggedright
 			ID
 		\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -424,51 +434,53 @@ diagnosticar a doença.
 			                                                            Métrica
 		                                                            \end{minipage}         & \begin{minipage}[b]{\linewidth}\raggedright
 			                                                                                     Descrição e operacionalização
-		                                                                                     \end{minipage}                                                                            \\
-		\midrule\noalign{}
+		                                                                                     \end{minipage}                                                                            \\ \hline
 		\endhead
-		\bottomrule\noalign{}
+		
 		\endlastfoot
 		M1                                          & Classificação                                                         & \textbf{Sensibilidade --- Sensitivity (SEN/Recall)}
 		                                            & Proporção de positivos corretamente identificados: \textbf{SEN = TP /
-		(TP + FN)}.                                                                                                                                                                                                \\
+		(TP + FN)}.                                                                                                                                                                                                \\ \hline
 		M2                                          & Classificação                                                         & \textbf{Especificidade --- Specificity (SPE)}       &
 		Proporção de negativos corretamente identificados: \textbf{SPE = TN /
-		(TN + FP)}.                                                                                                                                                                                                \\
+		(TN + FP)}.                                                                                                                                                                                                \\ \hline
 		M3                                          & Classificação                                                         & \textbf{Precisão --- Precision (PRE)}               & Proporção
 		de predições positivas que correspondem a positivos de referência:
-		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\
+		\textbf{PRE = TP / (TP + FP)}.                                                                                                                                                                             \\ \hline
 		M4                                          & Classificação                                                         & \textbf{F1-score}                                   & Média harmônica entre precisão
 		e sensibilidade, considerando o efeito de falsos positivos e falsos
 		negativos: \textbf{F1 = 2 $\times$ PRE $\times$ SEN / (PRE + SEN)}, ou \textbf{2TP /
-		(2TP + FP + FN)}.                                                                                                                                                                                          \\
+		(2TP + FP + FN)}.                                                                                                                                                                                          \\ \hline
 		M5                                          & Classificação geral                                                   & \textbf{Acurácia --- Accuracy (ACC)}                &
 		Proporção total de classificações corretas: \textbf{ACC = (TP + TN) /
 			(TP + TN + FP + FN)}, na formulação binária. Para multiclasse, usar
-		acertos totais / unidades totais.                                                                                                                                                                          \\
+		acertos totais / unidades totais.                                                                                                                                                                          \\ \hline
 		M6                                          & Equidade do desempenho                                                & \textbf{Diferença de desempenho entre
 		grupos}                                     & Comparação da mesma métrica entre grupos de tons de pele,
 		quando disponível. Para dois grupos A e B: \textbf{$\Delta$ = métrica(A) $-$
 			métrica(B)}, com grupos e direção identificados. Registrar tamanhos dos
-		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\
+		grupos, condições de avaliação e incerteza, quando reportados.                                                                                                                                             \\ \hline
 		M7                                          & Generalização                                                         & \textbf{Variação de desempenho entre datasets}      &
 		Comparação da mesma métrica entre avaliações em dados de distribuição
 		semelhante à de treinamento e dados de distribuição diferente:
 		\textbf{gap = métrica(ID) $-$ métrica(OOD)}, quando o desenho permitir.
 		Registrar se houve adaptação ou retreinamento e se tarefa/classes são
-		comparáveis.                                                                                                                                                                                               \\
+		comparáveis.                                                                                                                                                                                               \\ \hline
 		M8                                          & Segmentação / sobreposição espacial                                   & \textbf{Intersection over
 		Union (IoU)}                                & Interseção dividida pela união das regiões prevista P e
 		de referência G: \textbf{IoU = área(P $\cap$ G) / área(P $\cup$ G)}. Em máscaras
 		binárias: \textbf{IoU = TP\_pixel / (TP\_pixel + FP\_pixel +
 			FN\_pixel)}. Registrar mIoU separadamente quando houver média entre
-		classes.                                                                                                                                                                                                   \\
+		classes.                                                                                                                                                                                                   \\ \hline
 		M9                                          & Detecção / segmentação por instância                                  & \textbf{Mean Average
 		Precision (mAP)}                            & Média dos valores de AP das classes consideradas; AP
 		resume a curva precisão--recall segundo a convenção do benchmark.
 		Registrar o critério de correspondência e o limiar de IoU: por exemplo,
 		\textbf{mAP@0,50} ou \textbf{mAP@0,50:0,95}. Distinguir AP de caixas e
-		AP de máscaras.                                                                                                                                                                                            \\
+		AP de máscaras.                                                                                                                                                                                            \\ \hline
+		M10                                         & Classificação (independente do limiar)                                & \textbf{Área sob a curva ROC (AUC)} & Probabilidade de o modelo atribuir escore maior a uma unidade positiva do que a uma negativa, obtida pela área sob a curva de sensibilidade em função de 1 $-$ especificidade, considerando todos os limiares. \\ \hline
+		M11                                         & Classificação com classes desequilibradas                             & \textbf{Acurácia balanceada (BACC)} & Média entre sensibilidade e especificidade: \textbf{BACC = (SEN + SPE) / 2}. Não é inflada pela classe majoritária. \\ \hline
+		M12                                         & Calibração dos escores                                                & \textbf{Escore de Brier e erro esperado de calibração (ECE)} & Brier: média do quadrado da diferença entre o escore previsto e o rótulo (0 ou 1). ECE: diferença média, ponderada pelo número de unidades, entre o escore médio e a proporção observada de positivos em intervalos de escore. \\ \hline
 	\end{longtable}
 }
 

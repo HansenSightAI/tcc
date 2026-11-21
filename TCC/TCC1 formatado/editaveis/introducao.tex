@@ -83,8 +83,7 @@ interesse.
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Elaboração própria com dados de 2025 da \citeonline{oms2026gho},
-		\textit{Global Health Observatory} (indicador WHS3\_45).}
+	\fonte{Autores.}
 \end{figure}
 
 A análise automatizada de imagens dermatológicas tem sido investigada
@@ -211,29 +210,26 @@ da investigação. O quadro orienta a definição da questão de pesquisa e
 das medidas a serem extraídas dos estudos.
 
 	{\def\LTcaptype{none} % do not increment counter
-		\begin{longtable}[]{@{}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-			>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
-			\toprule\noalign{}
+		\begin{longtable}[]{|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}|}
+			\hline
 			\begin{minipage}[b]{\linewidth}\raggedright
 				Característica
 			\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 				                 Valor
-			                 \end{minipage}                                   \\
-			\midrule\noalign{}
+			                 \end{minipage}                                   \\ \hline
 			\endhead
-			\bottomrule\noalign{}
+			
 			\endlastfoot
 			\textbf{Analisar}                           & Modelos de visão computacional aplicados à
-			identificação de manifestações dermatológicas.                                                \\
+			identificação de manifestações dermatológicas.                                                \\ \hline
 			\textbf{Com o propósito de}                 & Avaliar o desempenho dos modelos aplicados
-			à identificação de padrões em imagens de pele.                                                \\
+			à identificação de padrões em imagens de pele.                                                \\ \hline
 			\textbf{Com foco em}                        & Identificação de características patológicas de
-			hanseníase.                                                                                   \\
+			hanseníase.                                                                                   \\ \hline
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da Medicina.                                                                  \\
+			Software e da Medicina.                                                                  \\ \hline
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
-			de saúde do Brasil.                                                                           \\
+			de saúde do Brasil.                                                                           \\ \hline
 		\end{longtable}
 	}
 \fonte{Adaptado de \citeonline{basili1994} e \citeonline{wohlin2024}.}
@@ -304,8 +300,10 @@ fases estratégica, tática e operacional, e que fundamenta o Capítulo~2 de
 \citeonline{wohlin2024}. A Figura~\ref{fig:estrutura-decisao} apresenta essa estrutura, e os
 parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
+	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
+	\label{fig:estrutura-decisao}
 	\resizebox{\textwidth}{!}{%
 	\begin{tikzpicture}[
 		grupo/.style={draw=blue!45!black, thick, fill=blue!7},
@@ -379,8 +377,6 @@ parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 		\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
 	\end{tikzpicture}%
 	}
-	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
-	\label{fig:estrutura-decisao}
 	\fonte{Adaptado de \citeonline{wohlin2015}.}
 \end{figure}
 
@@ -412,7 +408,7 @@ a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
 literatura estruturado, com questões de pesquisa, protocolo, estratégia de
 busca, critérios explícitos de seleção e formulário de extração
 \cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
-conjuntos de imagens já coletados e anotados por terceiros. A análise dos dados
+uma coleção pública de imagens já coletadas e anotadas por terceiros. A análise dos dados
 é estatística: descritiva, por contagens, tabelas e classificação dos estudos
 por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
 medidas de desempenho no segundo, com a variabilidade das estimativas relatada
@@ -437,66 +433,108 @@ computacional, orientada pelo padrão \textit{Data Science} da ACM SIGSOFT,
 apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
 limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
 procedimentos de avaliação e à generalização, fundamentam a formulação da
-questão específica desse estudo e o seu planejamento.
+questão específica e o planejamento apresentado no
+Capítulo~\ref{cap:metodologia-experimental}. A ResNet-50 e a MobileNetV2
+serão treinadas por transferência no desenvolvimento e avaliadas nas mesmas fotografias
+do teste reservado.
 
 \section{Organização do trabalho}
 
-Este trabalho está organizado em três capítulos. O primeiro apresenta o
+Este trabalho está organizado em quatro capítulos. O primeiro apresenta o
 contexto, o problema de pesquisa, a questão norteadora, os objetivos e a
 metodologia. O segundo reúne os fundamentos sobre pesquisa empírica,
 ciência de dados, hanseníase, visão computacional e avaliação de modelos.
 O terceiro apresenta a
 revisão estruturada da literatura: o planejamento e o protocolo, a estratégia
 de busca, a seleção dos estudos, a extração e a síntese das evidências e os
-resultados, organizados pelas questões de pesquisa. Ao final, são apresentadas
-as referências e os apêndices.
+resultados, organizados pelas questões de pesquisa. O quarto descreve o
+planejamento da avaliação empírica, incluindo a curadoria e o
+particionamento por grupos, o treinamento e a seleção dos classificadores no
+desenvolvimento, as linhas de base,
+a avaliação de ambos no teste reservado e as ameaças à validade. Ao final, são
+apresentadas as referências e os apêndices.
 
 \section{Cronograma e fluxo de atividades}
 
-Esta seção apresenta as atividades dos dois estudos que compõem o trabalho. As
-atividades do primeiro estudo seguem o fluxo da
-Figura~\ref{fig:percurso-metodologico}.
+A Figura~\ref{fig:cronograma-tcc1} reúne as macroatividades planejadas para
+o TCC~1 no segundo semestre de 2026, com base nos prazos registrados no
+\href{https://github.com/orgs/HansenSightAI/projects/2/views/4}{GitHub Projects}.
 
-\textbf{Primeiro estudo: revisão estruturada da literatura}
+\begin{figure}[H]
+	\centering
+	\caption{Cronograma das macroatividades do TCC 1 (2026.2)}
+	\label{fig:cronograma-tcc1}
+	\begingroup
+	\definecolor{ganttClaro}{HTML}{B8DBEC}
+	\definecolor{ganttMedio}{HTML}{7FC2E3}
+	\definecolor{ganttAzul}{HTML}{2453A6}
+	\definecolor{ganttEscuro}{HTML}{26365B}
+	\pgfcalendardatetojulian{2026-09-01}{\pgfcalendarcurrentjulian}
+	\edef\inicioCronograma{\the\pgfcalendarcurrentjulian}
+	% Posiciona as barras em dias a partir de 1 de setembro.
+	\newcommand{\diaCronograma}[2]{%
+		\pgfcalendardatetojulian{#1}{\pgfcalendarcurrentjulian}%
+		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronograma\relax}%
+	}
+	\begin{tikzpicture}[
+		x=0.00495\linewidth, y=8.5mm,
+		font=\footnotesize, text=ganttEscuro,
+		rotulo/.style={anchor=west, align=left, inner sep=0pt},
+	]
+		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
+			Setembro/2026-09-01/2026-10-01/ganttClaro/ganttEscuro,
+			Outubro/2026-10-01/2026-11-01/ganttMedio/ganttEscuro,
+			Novembro/2026-11-01/2026-12-01/ganttAzul/white,
+			Dezembro/2026-12-01/2027-01-01/ganttEscuro/white%
+		}{
+			\diaCronograma{\inicio}{\esquerda}
+			\diaCronograma{\limite}{\direita}
+			\ifodd\coluna\relax
+				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-8.5);
+			\fi
+			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
+			\node[font=\footnotesize\bfseries,text=\tinta]
+				at ({(\esquerda+\direita)/2},0) {\mes};
+		}
 
-\begin{itemize}
-	\item \textbf{Definição do problema, da questão de pesquisa e dos objetivos:}
-	      formulação do problema e da questão norteadora, com o GQM adaptado, e dos
-	      objetivos geral e específicos.
-	\item \textbf{Elaboração do protocolo da revisão:} definição das questões de
-	      pesquisa, da estratégia de busca (PICOC), dos critérios de inclusão e exclusão
-	      e do formulário de extração.
-	\item \textbf{Busca dos registros:} execução da busca e identificação dos
-	      registros.
-	\item \textbf{Triagem:} seleção por título e resumo, com os critérios do
-	      protocolo.
-	\item \textbf{Leitura integral:} leitura dos textos completos e confirmação da
-	      elegibilidade.
-	\item \textbf{Extração:} preenchimento do formulário de extração dos estudos
-	      incluídos.
-	\item \textbf{Síntese:} síntese das evidências por questão de pesquisa.
-\end{itemize}
+		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
+		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (122,-0.5);
+		\foreach \linha in {1,...,8}{
+			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (122,{-\linha-0.5});
+		}
 
-O fluxo de seleção e os resultados são apresentados no
-Capítulo~\ref{cap:revisao-literatura}.
+		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
+			{GQM e questões de pesquisa}/{08/09 a 11/09}/2026-09-08/2026-09-11/ganttMedio,
+			{Protocolo da revisão}/{14/09 a 25/09}/2026-09-14/2026-09-25/ganttMedio,
+			{Busca e seleção dos estudos}/{25/09 a 25/10}/2026-09-25/2026-10-25/ganttMedio,
+			{Leitura e extração dos dados}/{03/10 a 29/10}/2026-10-03/2026-10-29/ganttAzul,
+			{Síntese e revisão das evidências}/{26/10 a 06/11}/2026-10-26/2026-11-06/ganttAzul,
+			{Plano da avaliação computacional}/{06/11 a 13/11}/2026-11-06/2026-11-13/ganttAzul,
+			{Redação da monografia}/{16/11 a 04/12}/2026-11-16/2026-12-04/ganttEscuro,
+			{Revisão e correções finais}/{07/12 a 14/12}/2026-12-07/2026-12-14/ganttEscuro%
+		}{
+			\diaCronograma{\inicio}{\esquerda}
+			\diaCronograma{\fim+1}{\direita}
+			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
+				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
+			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
+		}
+	\end{tikzpicture}
+	\endgroup
+	\fonte{Autores.}
+\end{figure}
 
-\textbf{Segundo estudo: avaliação computacional}
+Quando uma linha reúne mais de uma atividade, a barra vai do primeiro
+início ao último prazo registrado. Euller e Gabriel são responsáveis pela
+preparação e execução da revisão, pela síntese, pela redação e pelas
+correções finais. Na síntese, Euller ficou responsável por técnicas, modelos,
+procedimentos de avaliação e métricas, e Gabriel, por conjuntos de dados,
+populações, tons de pele e generalização. O planejamento da avaliação
+computacional consta no quadro sem responsável atribuído.
 
-As atividades previstas seguem os critérios essenciais do padrão
-\textit{Data Science}, apresentado na Subseção~\ref{subsec:ciencia-de-dados}.
-
-\begin{itemize}
-	\item \textbf{Formulação da questão específica:} definição da questão da
-	      avaliação a partir das lacunas identificadas na revisão.
-	\item \textbf{Seleção e acesso aos dados:} escolha dos conjuntos de imagens e
-	      justificativa das fontes.
-	\item \textbf{Preparação dos dados:} pré-processamento, filtragem e
-	      categorização.
-	\item \textbf{Modelagem:} definição das abordagens de modelagem e do ambiente
-	      computacional.
-	\item \textbf{Avaliação:} definição das métricas e dos procedimentos de análise.
-	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
-	      à validade.
-\end{itemize}
-
-\todo[inline, color=pink]{Um cronograma tem atividades, datas e responsáveis. Vocês tem o cronograma do TCC1 no github projects e precisam planejar o cronograma do TCC2. O que está escrito aqui não é um cronograma. Sao as atividades do cronograma que precisam estar brevemente descritas aqui. }
+Para o TCC~2, estão previstas a seleção e a curadoria do conjunto de imagens,
+o treinamento por transferência, a seleção de hiperparâmetros por validação
+cruzada, a comparação dos modelos no teste reservado e a análise dos
+resultados. O Capítulo~\ref{cap:metodologia-experimental} descreve essas
+atividades. As datas e os responsáveis do TCC~2 serão definidos no
+planejamento dessa etapa.
