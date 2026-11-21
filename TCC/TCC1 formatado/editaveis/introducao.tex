@@ -83,8 +83,7 @@ interesse.
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Autores com dados de 2025 da \citeonline{oms2026gho},
-		\textit{Global Health Observatory} (indicador WHS3\_45).}
+	\fonte{Autores.}
 \end{figure}
 
 A análise automatizada de imagens dermatológicas tem sido investigada
@@ -436,7 +435,7 @@ limitações reunidas no primeiro estudo, em especial as relativas aos dados, ao
 procedimentos de avaliação e à generalização, fundamentam a formulação da
 questão específica e o planejamento apresentado no
 Capítulo~\ref{cap:metodologia-experimental}. A ResNet-50 e a MobileNetV2
-serão ajustadas no desenvolvimento e avaliadas nas mesmas fotografias
+serão treinadas por transferência no desenvolvimento e avaliadas nas mesmas fotografias
 do teste reservado.
 
 \section{Organização do trabalho}
@@ -450,7 +449,8 @@ revisão estruturada da literatura: o planejamento e o protocolo, a estratégia
 de busca, a seleção dos estudos, a extração e a síntese das evidências e os
 resultados, organizados pelas questões de pesquisa. O quarto descreve o
 planejamento da avaliação empírica, incluindo a curadoria e o
-particionamento por grupos, o ajuste dos classificadores na validação,
+particionamento por grupos, o treinamento e a seleção dos classificadores no
+desenvolvimento, as linhas de base,
 a avaliação de ambos no teste reservado e as ameaças à validade. Ao final, são
 apresentadas as referências e os apêndices.
 
@@ -494,7 +494,8 @@ As atividades previstas seguem os critérios essenciais do padrão
 	\item \textbf{Seleção e acesso aos dados:} justificativa da escolha da coleção pública.
 	\item \textbf{Preparação dos dados:} curadoria, agrupamento de fotografias e
 	      reserva da partição de teste.
-	\item \textbf{Modelagem:} ajuste da ResNet-50 e da MobileNetV2 na validação.
+	\item \textbf{Modelagem:} treinamento por transferência da ResNet-50 e da
+	      MobileNetV2 e seleção de hiperparâmetros na validação cruzada.
 	\item \textbf{Avaliação:} fixação dos limiares e comparação dos desempenhos
 	      no mesmo teste reservado.
 	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
