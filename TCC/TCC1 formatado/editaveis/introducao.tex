@@ -83,7 +83,7 @@ interesse.
 				};
 		\end{axis}
 	\end{tikzpicture}
-	\fonte{Elaboração própria com dados de 2025 da \citeonline{oms2026gho},
+	\fonte{Autores com dados de 2025 da \citeonline{oms2026gho},
 		\textit{Global Health Observatory} (indicador WHS3\_45).}
 \end{figure}
 
@@ -409,7 +409,7 @@ a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
 literatura estruturado, com questões de pesquisa, protocolo, estratégia de
 busca, critérios explícitos de seleção e formulário de extração
 \cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
-conjuntos de imagens já coletados e anotados por terceiros. A análise dos dados
+uma coleção pública de imagens já coletadas e anotadas por terceiros. A análise dos dados
 é estatística: descritiva, por contagens, tabelas e classificação dos estudos
 por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
 medidas de desempenho no segundo, com a variabilidade das estimativas relatada
@@ -434,10 +434,10 @@ computacional, orientada pelo padrão \textit{Data Science} da ACM SIGSOFT,
 apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
 limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
 procedimentos de avaliação e à generalização, fundamentam a formulação da
-questão específica desse estudo e o seu planejamento, apresentado no
-Capítulo~\ref{cap:metodologia-experimental}, que prevê um teste em uma base
-pública reservada, independente das fontes usadas no desenvolvimento dos
-modelos.
+questão específica e o planejamento apresentado no
+Capítulo~\ref{cap:metodologia-experimental}. A ResNet-50 e a MobileNetV2
+serão ajustadas no desenvolvimento e avaliadas nas mesmas fotografias
+do teste reservado.
 
 \section{Organização do trabalho}
 
@@ -449,9 +449,10 @@ O terceiro apresenta a
 revisão estruturada da literatura: o planejamento e o protocolo, a estratégia
 de busca, a seleção dos estudos, a extração e a síntese das evidências e os
 resultados, organizados pelas questões de pesquisa. O quarto descreve o
-planejamento da avaliação empírica, incluindo a curadoria dos dados, a
-configuração do teste externo, a comparação dos classificadores e as ameaças
-à validade. Ao final, são apresentadas as referências e os apêndices.
+planejamento da avaliação empírica, incluindo a curadoria e o
+particionamento por grupos, o ajuste dos classificadores na validação,
+a avaliação de ambos no teste reservado e as ameaças à validade. Ao final, são
+apresentadas as referências e os apêndices.
 
 \section{Cronograma e fluxo de atividades}
 
@@ -490,13 +491,12 @@ As atividades previstas seguem os critérios essenciais do padrão
 \begin{itemize}
 	\item \textbf{Formulação da questão específica:} definição da questão da
 	      avaliação a partir das lacunas identificadas na revisão.
-	\item \textbf{Seleção e acesso aos dados:} escolha dos conjuntos de imagens e
-	      justificativa das fontes.
-	\item \textbf{Preparação dos dados:} pré-processamento, filtragem e
-	      categorização.
-	\item \textbf{Modelagem:} definição das abordagens de modelagem e do ambiente
-	      computacional.
-	\item \textbf{Avaliação:} definição das métricas e dos procedimentos de análise.
+	\item \textbf{Seleção e acesso aos dados:} justificativa da escolha da coleção pública.
+	\item \textbf{Preparação dos dados:} curadoria, agrupamento de fotografias e
+	      reserva da partição de teste.
+	\item \textbf{Modelagem:} ajuste da ResNet-50 e da MobileNetV2 na validação.
+	\item \textbf{Avaliação:} fixação dos limiares e comparação dos desempenhos
+	      no mesmo teste reservado.
 	\item \textbf{Análise e relato:} análise dos resultados e discussão das ameaças
 	      à validade.
 \end{itemize}
