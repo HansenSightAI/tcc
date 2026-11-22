@@ -1,8 +1,35 @@
+% !TeX root = ../tcc.tex
 \begin{resumo}
- O resumo deve ressaltar o objetivo, o método, os resultados e as conclusões  do documento. A ordem e a extensão  destes itens dependem do tipo de resumo (informativo ou indicativo) e do  tratamento que cada item recebe no documento original. O resumo deve ser  precedido da referência do documento, com exceção do resumo inserido no  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por ponto e finalizadas também por ponto. O texto pode conter no mínimo 150 e no máximo 500 palavras, é aconselhável que sejam utilizadas 200 palavras. E não se separa o texto do resumo em parágrafos.
+A hanseníase é uma doença tropical negligenciada cujo diagnóstico se
+baseia principalmente na avaliação clínica, e a semelhança de suas lesões
+com outras condições dermatológicas dificulta a detecção precoce. Modelos de
+visão computacional têm sido propostos para apoiar a identificação dessas
+lesões, mas a forma como seu desempenho é avaliado ainda é pouco examinada.
+Este trabalho analisa a avaliação de desempenho de modelos de visão
+computacional aplicados à identificação de padrões associados à hanseníase
+em imagens de pele e, com base nas evidências reunidas, planeja um estudo de
+ciência de dados. Foi conduzida uma revisão estruturada da literatura,
+adaptada do protocolo de revisão sistemática, com busca assistida por
+ferramentas de inteligência artificial, que incluiu 26 estudos, dos quais 17
+apresentam dados próprios. Predominam as redes convolucionais treinadas por
+transferência e a avaliação em uma única divisão da própria base: dos 16
+estudos que desenvolvem e avaliam modelos, 14 usam essa divisão, apenas 2
+declaram separar as imagens por paciente e só 1 testa o modelo em outra
+base. A acurácia e a sensibilidade são as métricas mais relatadas, nenhum
+estudo reporta o desempenho por tom de pele, e as diferenças entre bases,
+classes e procedimentos impedem comparar numericamente os resultados. Com
+base nessas lacunas, foi planejado, segundo o padrão \textit{Data Science}
+da ACM SIGSOFT, um estudo que comparará a ResNet-50 e a MobileNetV2 na
+classificação de fotografias clínicas da coleção pública 32 CSD v2, com
+partições por grupos de fotografias relacionadas, seleção por validação
+cruzada, acurácia balanceada como medida principal, intervalos de confiança
+por \textit{bootstrap} e linhas de base de metadados. O estudo será
+executado na segunda etapa da monografia.
 
- \vspace{\onelineskip}
-    
- \noindent
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+\vspace{\onelineskip}
+
+\noindent
+\textbf{Palavras-chave}: hanseníase. visão computacional. avaliação de
+desempenho. aprendizado profundo. revisão estruturada da literatura.
+ciência de dados.
 \end{resumo}

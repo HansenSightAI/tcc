@@ -12,7 +12,6 @@ all: pdf
 pdf:
 	mkdir -p "$(TCC_DIR)/$(BUILD_DIR)"
 	cd "$(TCC_DIR)" && $(LATEXMK) $(LATEXMK_FLAGS) -outdir=$(BUILD_DIR) $(MAIN_FILE)
-	cp "$(TCC_DIR)/$(BUILD_DIR)/tcc.pdf" "$(TCC_DIR)/tcc.pdf"
 
 watch:
 	mkdir -p "$(TCC_DIR)/$(BUILD_DIR)"

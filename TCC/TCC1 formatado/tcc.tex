@@ -32,7 +32,18 @@
 \usepackage{xurl}
 \usepackage{tikz}
 \usepackage{pgfcalendar}
-\usetikzlibrary{arrows.meta,positioning,patterns,calc}
+\usetikzlibrary{arrows.meta,positioning,patterns,calc,shapes.geometric,shadows,fit}
+% Pseudocódigo do procedimento do estudo (Capítulo 4).
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Saída:}}
+\renewcommand{\algorithmicfor}{\textbf{para}}
+\renewcommand{\algorithmicforall}{\textbf{para cada}}
+\renewcommand{\algorithmicdo}{\textbf{faça}}
+\renewcommand{\algorithmicend}{\textbf{fim}}
+\renewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ \textit{#1}}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{pgf-pie}
@@ -48,6 +59,9 @@
   \docsvlist{#1}%
   \endgroup}
 \makeatother
+% Código de métrica com hiperligação para sua definição na Tabela de métricas
+% do Capítulo 2 (\hypertarget{met:ID}{ID}). Uso: \metrica{M11}.
+\newcommand{\metrica}[1]{\hyperlink{met:#1}{#1}}
 % A lista de referências indica as páginas das chamadas bibliográficas.
 \renewcommand*{\backrefalt}[4]{%
   \ifcase #1 %
@@ -68,17 +82,29 @@
 \setsecnumdepth{subsubsection}
 \settocdepth{subsubsection}
 \bibliographystyle{abntex2-alf}
+% Lista de trechos de código (quadros com código ou prompt e algoritmos),
+% no formato das demais listas do abnTeX2.
+\newlistof{listofcodigos}{loc}{Lista de trechos de código}
+\newlistentry{codigo}{loc}{0}
+\setlength{\cftcodigoindent}{0pt}
+\newcommand{\registrarcodigo}[1]{\addcontentsline{loc}{codigo}{#1}}
 \begin{document}
 \frenchspacing
 \imprimircapa
 \imprimirfolhaderosto*{\folhaderostoname}
-% Os demais elementos pré-textuais foram omitidos porque não constam da fonte.
+\input{editaveis/resumo}
+\input{editaveis/abstract}
+\input{fixos/listasAutomaticas}
+\pdfbookmark[0]{Lista de trechos de código}{loc}
+\listofcodigos*
+\cleardoublepage
 \input{fixos/indiceAutomatico}
 \textual
 \input{editaveis/introducao}
 \input{editaveis/referencial_teorico}
 \input{editaveis/revisao_sistematica}
 \input{editaveis/metodologia_experimental}
+\input{editaveis/conclusoes}
 \bookmarksetup{startatroot}
 \postextual
 \bibliography{referencias_tcc}

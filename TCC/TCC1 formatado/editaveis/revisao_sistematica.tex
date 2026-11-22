@@ -10,8 +10,8 @@ critérios de seleção e procedimentos de extração e síntese segue
 \citeonline{kitchenham2007}, e a organização em planejamento, condução e
 relato segue o capítulo 4 de \citeonline{wohlin2024}, que trata a revisão
 sistemática como estudo secundário. As evidências reunidas fundamentam o
-planejamento da avaliação computacional apresentado no
-Capítulo~\ref{cap:metodologia-experimental}, orientada pelo padrão
+planejamento do estudo de ciência de dados apresentado no
+Capítulo~\ref{cap:metodologia-experimental}, conduzido segundo o padrão
 \textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}.
 
 \section{Planejamento e protocolo}
@@ -443,9 +443,9 @@ estudos primários com resultados formam a base das contagens desta seção.
 		\begin{axis}[
 				xbar stacked,
 				width=0.86\textwidth,
-				height=3.8cm,
+				height=3.5cm,
 				xmin=0, xmax=20,
-				xlabel={Número de estudos (n = 26)},
+				xlabel={},
 				symbolic y coords={{B -- Secundários (8)},{A -- Primários (18)}},
 				ytick=data,
 				yticklabel style={font=\footnotesize},
@@ -474,9 +474,10 @@ estudos primários com resultados formam a base das contagens desta seção.
 
 \begingroup
 \scriptsize
+\SingleSpacing
 \setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.1}
-\begin{longtable}{|l|>{\raggedright\arraybackslash}p{3.1cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{2.7cm}|l|l|>{\raggedright\arraybackslash}p{2.1cm}|}
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|l|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{5.0cm}|>{\raggedright\arraybackslash}p{2.6cm}|l|l|>{\raggedright\arraybackslash}p{2.5cm}|}
 	\caption[Estudos inclu\'idos na revis\~ao, com identificador (ID)]{Estudos inclu\'idos na revis\~ao (n = 26), com identificador (ID). Grupos: A, estudo prim\'ario; B, estudo secund\'ario}\label{tab:estudos-incluidos}                                                                                                                                                                                                                     \\ \hline
 	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\ \hline
 	\endfirsthead
@@ -613,7 +614,8 @@ e artefatos de câmera podem inflar o desempenho \cite{kapoor2023}, risco
 que não se descarta nesses 14 estudos.
 
 \begingroup
-\small
+\footnotesize
+\SingleSpacing
 \begin{longtable}{|>{\raggedright\arraybackslash}p{1.6cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{7.4cm}|>{\raggedright\arraybackslash}p{2.8cm}|}
 	\caption{Procedimento de avaliação e separação por paciente nos 16 estudos que desenvolvem e avaliam um modelo}
 	\label{tab:procedimentos-avaliacao}                                                                                                                                                                                                                                                                                                                                             \\ \hline
@@ -665,6 +667,7 @@ diferem.
 
 \begingroup
 \footnotesize
+\SingleSpacing
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{1.3cm}|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{6.6cm}|>{\raggedright\arraybackslash}p{3.8cm}|}
 	\caption{Métricas e resultados reportados nos estudos de classificação (valores literais dos artigos; não comparáveis entre linhas)}

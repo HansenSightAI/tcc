@@ -16,7 +16,7 @@ O documento ativo é [tcc.tex](<TCC/TCC1 formatado/tcc.tex>). Edite seus capítu
 │       ├── figuras/             # Imagens usadas no documento
 │       ├── bibliografia.bib
 │       ├── referencias_tcc.bib
-│       └── tcc.pdf              # PDF existente; recompilar após editar
+│       └── .build/              # tcc.pdf e arquivos auxiliares gerados
 ├── Leituras_Artigos_Notas/      # Acervo bibliográfico e notas de leitura
 │   ├── TCC.bib                 # Bibliografia da coleção
 │   └── files/                  # Uma pasta por artigo: originais, anotações e notas
@@ -42,13 +42,13 @@ Com TeX Live e `latexmk` instalados, execute a partir da raiz:
 make
 ```
 
-O `Makefile` da raiz compila em `TCC/TCC1 formatado/.build/` (ignorada pelo Git) e copia o PDF concluído para `TCC/TCC1 formatado/tcc.pdf`, que continua versionado. Usa `latexmk`, que executa as rodadas necessárias de LaTeX e BibTeX e acompanha os arquivos incluídos por `tcc.tex`, incluindo `referencias_tcc.bib`.
+O `Makefile` da raiz compila em `TCC/TCC1 formatado/.build/`, pasta ignorada pelo Git. O `latexmk` executa as rodadas necessárias de LaTeX e BibTeX e acompanha os arquivos incluídos por `tcc.tex`, incluindo `referencias_tcc.bib`.
 
-- `make` ou `make pdf`: gera ou atualiza `TCC/TCC1 formatado/tcc.pdf`.
-- `make watch`: acompanha alterações e atualiza `TCC/TCC1 formatado/.build/tcc.pdf` continuamente; abra esse PDF durante a edição. Execute `make` para atualizar a cópia de entrega `tcc.pdf`.
+- `make` ou `make pdf`: gera ou atualiza `TCC/TCC1 formatado/.build/tcc.pdf`.
+- `make watch`: acompanha alterações e atualiza o mesmo PDF continuamente.
 - `make clean`: remove auxiliares, preservando o PDF do TCC e os PDFs das figuras.
 
-Sem `make`, execute `latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1 tcc.tex` dentro de `TCC/TCC1 formatado/`. Após uma limpeza, compile novamente para reconstruir sumário, citações e referências. Uma execução isolada de `pdflatex` pode deixar esses elementos incompletos.
+Sem `make`, execute `latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1 tcc.tex` dentro de `TCC/TCC1 formatado/`. O arquivo `.latexmkrc` direciona a saída para `.build/`. No VS Code com LaTeX Workshop, use `%DIR%/.build` em `latex-workshop.latex.outDir` para usar a mesma pasta. Após uma limpeza, compile novamente para reconstruir sumário, citações e referências. Uma execução isolada de `pdflatex` pode deixar esses elementos incompletos.
 
 ### macOS
 

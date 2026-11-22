@@ -52,96 +52,66 @@ detalhados na Subseção~\ref{subsec:rq-modelos-abordagens} e no
 Apêndice~\ref{apend:inventario-modelos}.
 
 \begingroup
-\small
+\footnotesize
+\SingleSpacing
 \setlength{\tabcolsep}{4pt}
 \setlength{\parskip}{0pt}
-\renewcommand{\arraystretch}{1.12}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{6.1cm}|c|>{\raggedright\arraybackslash}p{3.6cm}|}
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{6.9cm}|c|>{\raggedright\arraybackslash}p{3.6cm}|}
 \caption[Técnicas de visão computacional por estudo]{Grupos de técnicas de visão computacional e estudos com uso direto}\label{tab:tecnicas-visao-estudos}\\ \hline
 \textbf{Grupo de técnicas} & \textbf{Variantes e finalidade} & \textbf{n/17} & \textbf{Artigos}\\ \hline
 \endfirsthead
-\multicolumn{4}{l}{\small\textit{Tabela~\ref{tab:tecnicas-visao-estudos} (continuação)}}\\ \hline
+\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:tecnicas-visao-estudos} (continuação)}}\\ \hline
 \textbf{Grupo de técnicas} & \textbf{Variantes e finalidade} & \textbf{n/17} & \textbf{Artigos}\\ \hline
 \endhead
 
-\multicolumn{4}{r}{\small\textit{continua na próxima página}}\\ 
+\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}}\\ 
 \endfoot
 
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Preparação das imagens}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Preparação das imagens}}\\*
 \hline
 Recorte e centralização & Recorte da ROI, centralização da lesão e ajuste de proporção. E04 usa recorte para desidentificação. & 4/17 & \estudo{E04,E15,E21,E25} \\ \hline
-\addlinespace[3pt]
 Redimensionamento & Padronização da resolução de entrada, incluindo preenchimento de bordas em E23. & 8/17 & \estudo{E05,E06,E15,E18,E19,E23,E24,E25} \\ \hline
-\addlinespace[3pt]
 Normalização de intensidades & Reescala de pixels, escore-z ou padronização RGB pelos parâmetros do ImageNet, conforme o estudo. & 7/17 & \estudo{E05,E06,E08,E15,E18,E23,E24} \\ \hline
-\addlinespace[3pt]
 Conversão para cinza & Conversão RGB para representação em níveis de cinza. & 4/17 & \estudo{E06,E07,E18,E25} \\ \hline
-\addlinespace[3pt]
 Realce de contraste e iluminação & Equalização de histograma e ajuste adaptativo de contraste em E06/E18, expansão de gama em E07 e CLAHE em E22. & 4/17 & \estudo{E06,E07,E18,E22} \\ \hline
-\addlinespace[3pt]
 Redução de ruído & Filtro mediano bidimensional em E18 e filtro bilateral adaptativo em E22. & 2/17 & \estudo{E18,E22} \\ \hline
-\addlinespace[3pt]
 Remoção de pelos & Máscara por limiarização e operações morfológicas descritas no pré-processamento. & 1/17 & \estudo{E23} \\ \hline
-\addlinespace[3pt]
-\multicolumn{4}{@{}l}{\textbf{Aumento e balanceamento}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Aumento e balanceamento}}\\*
 \hline
 Transformações geométricas & Rotação, espelhamento, translação, escala, zoom ou recorte aleatório. E06 relata variações de orientação e campo de visão. & 6/17 & \estudo{E06,E14,E19,E23,E24,E25} \\ \hline
-\addlinespace[3pt]
 Transformações fotométricas & Variações de brilho, saturação, cor, contraste ou exposição. & 2/17 & \estudo{E19,E23} \\ \hline
-\addlinespace[3pt]
 Desfoque e ruído artificial & Desfoque em E14 e adição de ruído gaussiano em E23. & 2/17 & \estudo{E14,E23} \\ \hline
-\addlinespace[3pt]
 Aumento sem operações especificadas & E05 menciona aumento de dados. E22 relata Albumentations sem discriminar as transformações. & 2/17 & \estudo{E05,E22} \\ \hline
-\addlinespace[3pt]
 SMOTE & Geração de amostras sintéticas no espaço de atributos da Inception V3, no conjunto de treino e validação. & 1/17 & \estudo{E26} \\ \hline
-\addlinespace[3pt]
-\multicolumn{4}{@{}l}{\textbf{Segmentação e detecção}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Segmentação e detecção}}\\*
 \hline
 Limiarização e morfologia de lesões & Otsu, dilatação e erosão para delimitar a ROI antes da classificação. & 1/17 & \estudo{E07} \\ \hline
-\addlinespace[3pt]
 Agrupamento Fuzzy C-Means & FCM com centros otimizados pelo algoritmo do vaga-lume (Firefly), para delimitar a ROI. & 1/17 & \estudo{E18} \\ \hline
-\addlinespace[3pt]
 Segmentação por redes profundas & U-Net em E06, U-Net/FPN/DeepLabV3 e V3+ em E21, U-Net modificada com atenção a bordas em E22. & 3/17 & \estudo{E06,E21,E22} \\ \hline
-\addlinespace[3pt]
 Detecção por caixas & YOLOv8n e comparadores YOLOv9t, YOLOv10n, ViT, Faster R-CNN e RetinaNet. & 1/17 & \estudo{E23} \\ \hline
-\addlinespace[3pt]
 Supressão de caixas redundantes & Supressão não máxima (NMS) durante a inferência do detector. & 1/17 & \estudo{E23} \\ \hline
-\addlinespace[3pt]
-\multicolumn{4}{@{}l}{\textbf{Extração e combinação de atributos}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Extração e combinação de atributos}}\\*
 \hline
 Descritores de textura & GLCM em E06/E18, estatísticas de textura em E07, LBP/HOG em E22 e LBP/WLD e variantes em E25. & 5/17 & \estudo{E06,E07,E18,E22,E25} \\ \hline
-\addlinespace[3pt]
 Bordas, forma e dimensão fractal & Canny, Sobel, Gabor e Roberts no fluxo de extração, contornos, zonas homogêneas e dimensão fractal. & 1/17 & \estudo{E07} \\ \hline
-\addlinespace[3pt]
 Atributos aprendidos por redes profundas & Representações aprendidas por CNNs ou Transformers em classificação, detecção e segmentação, incluindo codificadores e extratores. & 15/17 & \estudo{E04,E05,E06,E13,E14,E15,E17,E18,E19,E21,E22,E23,E24,E25,E26} \\ \hline
-\addlinespace[3pt]
 Fusão de atributos manuais e profundos & Concatenação de GLCM e CNN em E06/E18, fusão de LBP/HOG e CNN ponderada por atenção no HSTFC de E22. & 3/17 & \estudo{E06,E18,E22} \\ \hline
-\addlinespace[3pt]
 Fusão de imagens com dados clínicos & Combinações testadas com probabilidades do ramo visual, características clínicas e dados do paciente. & 1/17 & \estudo{E13} \\ \hline
-\addlinespace[3pt]
-\multicolumn{4}{@{}l}{\textbf{Classificação e aprendizado}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Classificação e aprendizado}}\\*
 \hline
 Classificação por CNN & Redes convolucionais com saída de classe, incluindo comparadores e a rede siamesa. E04 avalia uma rede existente. & 9/17 & \estudo{E04,E05,E13,E14,E15,E17,E19,E24,E25} \\ \hline
-\addlinespace[3pt]
 Classificadores tradicionais & SVM/Multi-SVM, BHO-SVM, Random Forest, k-NN/1-NN, árvore, Naive Bayes, ANN convencional, regressão logística ou XGBoost. & 9/17 & \estudo{E06,E07,E08,E13,E17,E18,E22,E25,E26} \\ \hline
-\addlinespace[3pt]
 Transferência de aprendizado & Ajuste de redes pré-treinadas, congelamento de camadas ou reutilização de representações como extratoras. & 7/17 & \estudo{E05,E13,E17,E19,E21,E24,E26} \\ \hline
-\addlinespace[3pt]
 Classificação em cascata & Triagem inicial seguida de classificação entre 12 DTNs cutâneas. E15 documenta o uso dos dois estágios. & 1/17 & \estudo{E15} \\ \hline
-\addlinespace[3pt]
 Similaridade com poucos exemplos & Rede siamesa, pares de imagens, distância L2 e perda contrastiva em tarefas n-way k-shot. & 1/17 & \estudo{E17} \\ \hline
-\addlinespace[3pt]
-\multicolumn{4}{@{}l}{\textbf{Explicabilidade visual}}\\*
+\multicolumn{4}{|l|}{\rule[-0.8ex]{0pt}{3.0ex}\textbf{Explicabilidade visual}}\\*
 \hline
 Visualização de ativações & Visualização das ativações das camadas convolucionais da LeprosyNet e dos comparadores. & 1/17 & \estudo{E14} \\ \hline
-\addlinespace[3pt]
 Sensibilidade à oclusão & Mapas do efeito de ocultar regiões da imagem sobre a predição. & 1/17 & \estudo{E14} \\ \hline
-\addlinespace[3pt]
 Grad-CAM & Mapas de ativação de classe ponderados por gradientes. & 1/17 & \estudo{E14} \\ \hline
-\addlinespace[3pt]
 Saliência por gradientes da entrada & Gradientes de classificação e localização em relação aos pixels da entrada do YOLOv8n. & 1/17 & \estudo{E23} \\ \hline
-\addlinespace[3pt]
 \end{longtable}
 \fonte{Autores.}
 \endgroup
@@ -159,7 +129,7 @@ artigos estão na Tabela~\ref{tab:tecnicas-visao-estudos}.
 \label{fig:tecnicas-preparacao-aumento}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.64\textwidth, height=9.7cm,
+width=0.64\textwidth, height=8.0cm,
 xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
@@ -190,7 +160,7 @@ legend image code/.code={\draw[#1, draw=none] (0cm,-0.12cm) rectangle (0.45cm,0.
 \label{fig:tecnicas-segmentacao-atributos}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.64\textwidth, height=9.7cm,
+width=0.64\textwidth, height=8.0cm,
 xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
@@ -221,7 +191,7 @@ legend image code/.code={\draw[#1, draw=none] (0cm,-0.12cm) rectangle (0.45cm,0.
 \label{fig:tecnicas-classificacao-xai}
 \begin{tikzpicture}
 \begin{axis}[
-width=0.64\textwidth, height=8.9cm,
+width=0.64\textwidth, height=7.9cm,
 xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=17,
 xtick={0,2,4,6,8,10,12,14,16,17},
 xlabel={Número de estudos (base de 17)},
