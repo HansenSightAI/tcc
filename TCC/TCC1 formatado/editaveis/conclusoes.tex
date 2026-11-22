@@ -1,114 +1,167 @@
 % !TeX root = ../tcc.tex
-\chapter{Conclusões e limitações}
+\chapter{Conclusão}
 \label{cap:conclusoes}
 
 Este trabalho reuniu as evidências sobre a avaliação de modelos de visão
 computacional aplicados à identificação de manifestações cutâneas
 associadas à hanseníase e, com base nas lacunas encontradas, planejou um
 estudo de ciência de dados para avaliar dois classificadores. Este
-capítulo apresenta as conclusões de cada etapa, as limitações do trabalho
-e a continuidade prevista.
+capítulo apresenta as atividades realizadas na primeira etapa da
+monografia, os resultados obtidos, as limitações e o cronograma da segunda
+etapa.
 
-\section{Conclusões}
+\section{Atividades realizadas}
+\label{sec:atividades-realizadas}
+
+Os objetivos específicos definidos na Seção~\ref{objetivos} foram
+atendidos pela revisão estruturada e pelo planejamento do estudo, como
+resume a Tabela~\ref{tab:situacao-objetivos}.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{7.4cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{5.2cm}|}
+	\caption{Situação dos objetivos específicos}\label{tab:situacao-objetivos} \\
+	\hline
+	\textbf{Objetivo específico} & \textbf{Situação} & \textbf{Onde é atendido} \\ \hline
+	\endfirsthead
+	\multicolumn{3}{l}{\footnotesize\textit{Tabela~\ref{tab:situacao-objetivos} (continuação)}} \\
+	\hline
+	\textbf{Objetivo específico} & \textbf{Situação} & \textbf{Onde é atendido} \\ \hline
+	\endhead
+	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	1. Caracterizar as tarefas, os modelos e as abordagens de visão computacional & Concluído & Subseções~\ref{subsec:rq1-tecnicas} e~\ref{subsec:rq6-modelos}; Apêndice~\ref{apend:inventario-modelos} \\ \hline
+	2. Identificar os conjuntos de dados, sua aquisição e anotação, as populações e os tons de pele & Concluído & Subseções~\ref{subsec:rq2-datasets} e~\ref{subsec:rq5-rq6-tom-pele}; Apêndice~\ref{apend:inventario-datasets} \\ \hline
+	3. Sistematizar os procedimentos de avaliação, as métricas e os resultados & Concluído & Subseções~\ref{subsec:rq3-metodos} e~\ref{subsec:rq4-metricas} \\ \hline
+	4. Examinar as evidências de generalização e de desempenho por tom de pele & Concluído & Subseções~\ref{subsec:rq5-rq6-tom-pele} e~\ref{subsec:rq7-generalizacao} \\ \hline
+	5. Identificar limitações e lacunas que fundamentem o planejamento de uma avaliação futura & Concluído & Seção~\ref{sec:resultados-revisao} e Capítulo~\ref{cap:metodologia-experimental} \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores.}
+
+\section{Resultados obtidos}
 \label{sec:conclusoes}
 
 A revisão estruturada incluiu 26 estudos, dos quais 17 são estudos
-primários com resultados (Capítulo~\ref{cap:revisao-literatura}). As
-evidências reunidas permitem as seguintes conclusões.
-
-\begin{enumerate}
-	\item \textbf{Técnicas.} Predominam as redes convolucionais, em geral
-	      treinadas por transferência a partir de pesos pré-treinados, ao
-	      lado de classificadores tradicionais aplicados a descritores de
-	      textura ou a atributos extraídos por redes profundas
-	      (Subseções~\ref{subsec:rq1-tecnicas} e~\ref{subsec:rq6-modelos}).
-	\item \textbf{Avaliação.} A maior parte dos estudos avalia o desempenho
-	      em uma única divisão da própria base: 14 dos 16 estudos que
-	      desenvolvem modelos usam essa divisão, apenas 2 declaram separar os
-	      dados por paciente, e só um testa o modelo em outra base
-	      (Subseções~\ref{subsec:rq3-metodos} e~\ref{subsec:rq7-generalizacao}).
-	      Sem separação por paciente, os indicadores podem estar inflados
-	      por vazamento \cite{kapoor2023}.
-	\item \textbf{Métricas.} A acurácia e a sensibilidade são as métricas
-	      mais relatadas, enquanto a acurácia balanceada e a calibração dos
-	      escores não aparecem nos estudos com dados
-	      (Subseção~\ref{subsec:rq4-metricas}). Os estudos que isolam a
-	      hanseníase relatam sensibilidade bem inferior aos indicadores
-	      globais.
-	\item \textbf{Equidade.} Nenhum dos 17 estudos com dados reporta
-	      desempenho por tom de pele (Subseção~\ref{subsec:rq5-rq6-tom-pele}).
-	\item \textbf{Comparabilidade.} Bases, classes e procedimentos diferem
-	      entre os estudos, e há sobreposição de origem entre conjuntos
-	      públicos, o que impede comparar numericamente os resultados
-	      relatados.
-\end{enumerate}
+primários com resultados (Capítulo~\ref{cap:revisao-literatura}). Predominam
+as redes convolucionais treinadas por transferência, ao lado de
+classificadores tradicionais aplicados a descritores de textura ou a
+atributos extraídos por redes profundas. A maior parte dos estudos avalia o
+desempenho em uma única divisão da própria base: 14 dos 16 que desenvolvem
+modelos usam essa divisão, apenas 2 declaram separar os dados por paciente e
+só um testa o modelo em outra base, o que pode inflar os indicadores por
+vazamento \cite{kapoor2023}. A acurácia e a sensibilidade são as métricas
+mais relatadas, enquanto a acurácia balanceada e a calibração não aparecem;
+os estudos que isolam a hanseníase relatam sensibilidade bem inferior aos
+indicadores globais; e nenhum dos 17 estudos com dados reporta desempenho
+por tom de pele. Como bases, classes e procedimentos diferem e há
+sobreposição de origem entre conjuntos públicos, os resultados relatados não
+podem ser comparados numericamente.
 
 O planejamento do Capítulo~\ref{cap:metodologia-experimental} responde a
 essas lacunas. Ele define a fotografia como unidade de avaliação, mantém
-fotografias relacionadas no mesmo grupo em todas as partições, seleciona
-os hiperparâmetros por validação cruzada estratificada por grupos, adota a
+fotografias relacionadas no mesmo grupo em todas as partições, seleciona as
+configurações por validação cruzada estratificada por grupos, adota a
 acurácia balanceada como medida principal, relata intervalos por
 \textit{bootstrap} de grupos e a diferença pareada entre as duas redes, e
-inclui linhas de base que verificam se atributos da fonte bastam para
-prever a classe. Os atributos essenciais do padrão \textit{Data Science}
-da ACM SIGSOFT estão relacionados às partes do trabalho na
+inclui linhas de base que verificam se atributos da fonte bastam para prever
+a classe. Os atributos essenciais do padrão \textit{Data Science} da ACM
+SIGSOFT estão relacionados às partes do trabalho na
 Tabela~\ref{tab:atributos-data-science}.
 
 \section{Limitações}
 \label{sec:limitacoes}
 
-\subsection{Limitações da revisão}
+Na revisão, a \textit{string} booleana retornou 10.818 artigos na Scopus
+mesmo após diversos ajustes, e a busca principal foi feita com o Consensus e
+o Claude, ferramentas que recuperam publicações por similaridade e não
+expõem integralmente seus critérios internos; isso limita a
+reprodutibilidade da busca e pode ter deixado estudos de fora
+(Apêndice~\ref{apend:registro-busca}). As sugestões do Jev Reviewer
+divergiram das decisões em boa parte dos incluídos, e a documentação não
+permite afirmar que os dois pesquisadores avaliaram todos os registros de
+forma independente (Seção~\ref{sec:execucao-busca-selecao}). A formulação
+preservada do critério CI03 está truncada, a extração depende do que os
+artigos relatam, e a heterogeneidade dos estudos permitiu apenas uma síntese
+descritiva, sem metanálise.
 
-\begin{itemize}
-	\item \textbf{Estratégia de busca.} A \textit{string} booleana retornou
-	      10.818 artigos na Scopus mesmo após diversos ajustes, e a busca
-	      principal foi feita com o Consensus e o Claude
-	      (Seção~\ref{subsec:picoc-string-busca}). Essas ferramentas
-	      recuperam publicações por similaridade e não expõem integralmente
-	      seus critérios internos, o que limita a reprodutibilidade da busca
-	      e pode ter deixado estudos relevantes de fora
-	      (Apêndice~\ref{apend:registro-busca}).
-	\item \textbf{Triagem.} As sugestões do Jev Reviewer serviram de apoio,
-	      mas divergiram das decisões em boa parte dos incluídos, e a
-	      documentação não permite afirmar que os dois pesquisadores
-	      avaliaram todos os registros de forma independente
-	      (Seção~\ref{sec:execucao-busca-selecao}).
-	\item \textbf{Critérios de seleção.} A formulação preservada do critério
-	      CI03 está truncada, e o texto integral ainda deve ser confirmado
-	      (Apêndice~\ref{apend:registro-busca}).
-	\item \textbf{Extração.} A extração depende do que os artigos relatam.
-	      Dados não localizados, como o número de pacientes ou a unidade da
-	      divisão, foram registrados como tal, sem que se possa afirmar que
-	      inexistam.
-	\item \textbf{Síntese.} A heterogeneidade de bases, tarefas, classes e
-	      procedimentos permitiu apenas uma síntese descritiva, sem
-	      metanálise.
-\end{itemize}
+No planejamento, o estudo usará uma única coleção pública, com rótulos sem
+confirmação clínica, sem identificação de pacientes e com fontes de origem
+comum a conjuntos da literatura, e o teste será interno a essa coleção. A
+tarefa é binária e não distingue as formas clínicas da hanseníase, e as
+análises por tom de pele e de predição seletiva são exploratórias. As
+demais ameaças estão discutidas na Subseção~\ref{sec:validade-avaliacao-empirica}.
 
-\subsection{Limitações do planejamento}
+\section{Cronograma da segunda etapa da monografia}
+\label{sec:cronograma-segunda-etapa}
 
-\begin{itemize}
-	\item \textbf{Dados.} O estudo usará uma única coleção pública, com
-	      rótulos sem confirmação clínica, sem identificação de pacientes e
-	      com fontes de origem comum a conjuntos usados na literatura. O
-	      teste será interno a essa coleção.
-	\item \textbf{Escopo da tarefa.} A tarefa é binária e não distingue as
-	      formas clínicas da hanseníase nem as condições da classe negativa.
-	\item \textbf{Análises exploratórias.} As análises por tom de pele, de
-	      calibração e de predição seletiva dependem do tamanho da amostra
-	      curada e não sustentam conclusões confirmatórias.
-\end{itemize}
+Na segunda etapa, o estudo planejado no
+Capítulo~\ref{cap:metodologia-experimental} será executado. A
+Figura~\ref{fig:cronograma-segunda-etapa} apresenta a previsão das
+macroatividades para o primeiro semestre de 2027, sujeita ao calendário
+acadêmico e à disponibilidade do equipamento. Se o acesso ao AI4Leprosy for
+concedido, a avaliação no teste reservado será repetida nessa coleção, sem
+alterar o protocolo.
 
-% \section{Continuidade}
-% \label{sec:continuidade}
-
-% Na Monografia~2, estão previstas a curadoria do 32 CSD conforme o
-% protocolo, a geração e o registro das partições, o treinamento e a seleção
-% das duas redes, a definição dos limiares, a abertura do teste reservado e
-% a análise dos resultados frente às questões do GQM. Em seguida, os
-% resultados serão discutidos em relação às evidências da revisão, com
-% atenção às ameaças à validade descritas na
-% Seção~\ref{sec:validade-avaliacao-empirica}. Se o acesso ao AI4Leprosy for
-% concedido, a mesma avaliação será repetida nessa coleção, sem alterar o
-% protocolo, o que permitirá testar os classificadores em fotografias de
-% outra origem.
+\begin{figure}[H]
+	\centering
+	\caption{Cronograma previsto das macroatividades da segunda etapa da monografia (2027.1)}
+	\label{fig:cronograma-segunda-etapa}
+	\begingroup
+	\definecolor{ganttClaro}{HTML}{B8DBEC}
+	\definecolor{ganttMedio}{HTML}{7FC2E3}
+	\definecolor{ganttAzul}{HTML}{2453A6}
+	\definecolor{ganttEscuro}{HTML}{26365B}
+	\pgfcalendardatetojulian{2027-03-01}{\pgfcalendarcurrentjulian}
+	\edef\inicioCronogramaB{\the\pgfcalendarcurrentjulian}
+	\newcommand{\diaCronogramaB}[2]{%
+		\pgfcalendardatetojulian{#1}{\pgfcalendarcurrentjulian}%
+		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronogramaB\relax}%
+	}
+	\begin{tikzpicture}[
+		x=0.00395\linewidth, y=8.5mm,
+		font=\footnotesize, text=ganttEscuro,
+		rotulo/.style={anchor=west, align=left, inner sep=0pt},
+	]
+		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
+			Março/2027-03-01/2027-04-01/ganttClaro/ganttEscuro,
+			Abril/2027-04-01/2027-05-01/ganttMedio/ganttEscuro,
+			Maio/2027-05-01/2027-06-01/ganttAzul/white,
+			Junho/2027-06-01/2027-07-01/ganttEscuro/white,
+			Julho/2027-07-01/2027-08-01/ganttClaro/ganttEscuro%
+		}{
+			\diaCronogramaB{\inicio}{\esquerda}
+			\diaCronogramaB{\limite}{\direita}
+			\ifodd\coluna\relax
+				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-7.5);
+			\fi
+			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
+			\node[font=\footnotesize\bfseries,text=\tinta]
+				at ({(\esquerda+\direita)/2},0) {\mes};
+		}
+		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
+		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (153,-0.5);
+		\foreach \linha in {1,...,7}{
+			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (153,{-\linha-0.5});
+		}
+		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
+			{Curadoria e agrupamento}/{março}/2027-03-01/2027-03-31/ganttMedio,
+			{Partições e linhas de base}/{abril}/2027-04-01/2027-04-15/ganttMedio,
+			{Treino e seleção por validação cruzada}/{abril e maio}/2027-04-01/2027-05-15/ganttAzul,
+			{Retreino, limiares e fixação dos modelos}/{maio}/2027-05-16/2027-05-31/ganttAzul,
+			{Avaliação no teste e análises}/{junho}/2027-06-01/2027-06-20/ganttAzul,
+			{Redação dos resultados e da discussão}/{junho e julho}/2027-06-01/2027-07-10/ganttEscuro,
+			{Revisão e defesa}/{julho}/2027-07-11/2027-07-31/ganttEscuro%
+		}{
+			\diaCronogramaB{\inicio}{\esquerda}
+			\diaCronogramaB{\fim+1}{\direita}
+			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
+				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
+			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
+		}
+	\end{tikzpicture}
+	\endgroup
+	\fonte{Autores.}
+\end{figure}
