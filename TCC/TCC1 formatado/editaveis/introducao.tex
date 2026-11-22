@@ -140,7 +140,6 @@ constitui o contexto de interesse da pesquisa, sem que os resultados
 computacionais sejam, por si só, considerados demonstração de
 efetividade clínica.
 
-
 \section{Problema}\label{problema}
 
 A existência de modelos capazes de reconhecer padrões em imagens não
@@ -218,7 +217,7 @@ das medidas a serem extraídas dos estudos.
 				                 Valor
 			                 \end{minipage}                                   \\ \hline
 			\endhead
-			
+
 			\endlastfoot
 			\textbf{Analisar}                           & Modelos de visão computacional aplicados à
 			identificação de manifestações dermatológicas.                                                \\ \hline
@@ -227,7 +226,7 @@ das medidas a serem extraídas dos estudos.
 			\textbf{Com foco em}                        & Identificação de características patológicas de
 			hanseníase.                                                                                   \\ \hline
 			\textbf{Do ponto de vista de}               & Pesquisadores das áreas de Engenharia de
-			Software e da Medicina.                                                                  \\ \hline
+			Software e da Medicina.                                                                       \\ \hline
 			\textbf{No contexto de}                     & Apoio à triagem de hanseníase na rede pública
 			de saúde do Brasil.                                                                           \\ \hline
 		\end{longtable}
@@ -239,8 +238,8 @@ O GQM adaptado orienta a formulação da questão de pesquisa principal deste tr
 
 \begin{quote}
 	\textbf{\textit{Como avaliar o desempenho de modelos de visão computacional aplicados à
-	identificação de padrões associados à hanseníase em imagens de pele, no
-	contexto da rede pública de saúde do Brasil?}}
+			identificação de padrões associados à hanseníase em imagens de pele, no
+			contexto da rede pública de saúde do Brasil?}}
 \end{quote}
 
 \section{Objetivos}\label{objetivos}
@@ -252,9 +251,6 @@ aplicados à identificação de padrões associados à hanseníase em imagens
 de pele, a partir das evidências observadas na literatura, visando
 fundamentar seu uso em apoio à triagem na rede pública de saúde do
 Brasil.
-
-
-
 
 \subsection{Objetivos específicos}\label{objetivos-especuxedficos}
 
@@ -305,77 +301,77 @@ parágrafos seguintes descrevem as escolhas deste trabalho em cada ponto.
 	\caption{Estrutura de decisão para a escolha do desenho de pesquisa}
 	\label{fig:estrutura-decisao}
 	\resizebox{\textwidth}{!}{%
-	\begin{tikzpicture}[
-		grupo/.style={draw=blue!45!black, thick, fill=blue!7},
-		titulo/.style={font=\footnotesize\bfseries, align=center, inner sep=1pt},
-		opcao/.style={draw=black!55, fill=yellow!10, align=center, font=\footnotesize, inner sep=1.5pt, minimum height=0.5cm, text width=3.20cm},
-		seta/.style={-{Stealth[length=2.5mm]}, very thick, blue!45!black}
-		]
-		\draw[grupo] (0.00,0.00) rectangle (3.50,-2.54);
-		\node[titulo] at (1.75,-0.55) {(1) Resultado\\da pesquisa};
-		\node[opcao] at (1.75,-1.45) {Pesquisa básica};
-		\node[opcao] at (1.75,-2.09) {Pesquisa aplicada};
-		\draw[grupo] (0.00,-3.34) rectangle (3.50,-5.88);
-		\node[titulo] at (1.75,-3.89) {(2) Lógica\\da pesquisa};
-		\node[opcao] at (1.75,-4.79) {Pesquisa indutiva};
-		\node[opcao] at (1.75,-5.43) {Pesquisa dedutiva};
-		\draw[grupo] (3.95,-1.20) rectangle (7.45,-5.02);
-		\node[titulo] at (5.70,-1.75) {(3) Finalidade\\da pesquisa};
-		\node[opcao] at (5.70,-2.65) {Explicativa};
-		\node[opcao] at (5.70,-3.29) {Descritiva};
-		\node[opcao] at (5.70,-3.93) {Exploratória};
-		\node[opcao] at (5.70,-4.57) {Avaliação};
-		\draw[grupo] (7.90,-1.20) rectangle (11.40,-4.38);
-		\node[titulo] at (9.65,-1.75) {(4) Abordagem\\de pesquisa};
-		\node[opcao] at (9.65,-2.65) {Positivista};
-		\node[opcao] at (9.65,-3.29) {Interpretativista};
-		\node[opcao] at (9.65,-3.93) {Crítica};
-		\draw[grupo] (12.15,0.00) rectangle (15.65,-3.18);
-		\node[titulo] at (13.90,-0.55) {(5) Processo\\de pesquisa};
-		\node[opcao] at (13.90,-1.45) {Qualitativo};
-		\node[opcao] at (13.90,-2.09) {Quantitativo};
-		\node[opcao] at (13.90,-2.73) {Abordagem mista};
-		\draw[grupo] (12.15,-3.98) rectangle (15.65,-7.16);
-		\node[titulo] at (13.90,-4.53) {(6) Metodologia\\de pesquisa};
-		\node[opcao] at (13.90,-5.43) {Estudo de caso};
-		\node[opcao] at (13.90,-6.07) {Pesquisa-ação};
-		\node[opcao] at (13.90,-6.71) {\textit{Design science}};
-		\draw[grupo] (16.40,-0.40) rectangle (19.90,-5.50);
-		\node[titulo] at (18.15,-0.95) {(7) Métodos de\\coleta de dados};
-		\node[opcao] at (18.15,-1.85) {Entrevistas};
-		\node[opcao] at (18.15,-2.49) {Observação};
-		\node[opcao] at (18.15,-3.13) {Pesquisa em arquivo};
-		\node[opcao] at (18.15,-3.77) {Levantamento};
-		\node[opcao] at (18.15,-4.41) {Simulação};
-		\node[opcao] at (18.15,-5.05) {Experimento};
-		\draw[grupo] (20.35,-1.20) rectangle (23.85,-5.02);
-		\node[titulo] at (22.10,-1.75) {(8) Métodos de\\análise de dados};
-		\node[opcao] at (22.10,-2.65) {\mbox{Teoria fundamentada}};
-		\node[opcao] at (22.10,-3.29) {Análise temática};
-		\node[opcao] at (22.10,-3.93) {Hermenêutica};
-		\node[opcao] at (22.10,-4.57) {Análise estatística};
-		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (q) at (1.75,0.80) {};
-		\node[font=\small\bfseries, anchor=west] at (2.10,0.80) {Questão de pesquisa};
-		\draw[seta] (q) -- (1.75,0.00);
-		\draw[seta] (1.75,-2.54) -- (1.75,-3.34);
-		\draw[seta] (3.50,-4.61) -- (3.95,-4.61);
-		\draw[seta] (7.45,-2.79) -- (7.90,-2.79);
-		\draw[seta] (11.40,-1.59) -- (12.15,-1.59);
-		\draw[seta, {Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}] (13.90,-3.18) -- (13.90,-3.98);
-		\draw[seta] (15.65,-1.59) -- (16.40,-1.59);
-		\draw[seta] (15.65,-5.57) -- (16.40,-5.57);
-		\draw[seta] (19.90,-3.11) -- (20.35,-3.11);
-		\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (f) at (22.10,-5.82) {};
-		\fill[blue!45!black] (f.center) circle (0.1cm);
-		\draw[seta] (22.10,-5.02) -- (f);
-		\node[font=\small\bfseries, align=center] at (22.10,-6.47) {Resultados da\\pesquisa};
-		\draw[dashed, thick, blue!45!black] (-0.25,1.25) rectangle (24.10,-8.06);
-		\draw[dashed, thick, blue!45!black] (11.78,1.25) -- (11.78,-8.06);
-		\draw[dashed, thick, blue!45!black] (16.03,1.25) -- (16.03,-8.06);
-		\node[font=\small\bfseries] at (5.76,-7.76) {Fase estratégica};
-		\node[font=\small\bfseries] at (13.90,-7.76) {Fase tática};
-		\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
-	\end{tikzpicture}%
+		\begin{tikzpicture}[
+			grupo/.style={draw=blue!45!black, thick, fill=blue!7},
+			titulo/.style={font=\footnotesize\bfseries, align=center, inner sep=1pt},
+			opcao/.style={draw=black!55, fill=yellow!10, align=center, font=\footnotesize, inner sep=1.5pt, minimum height=0.5cm, text width=3.20cm},
+			seta/.style={-{Stealth[length=2.5mm]}, very thick, blue!45!black}
+			]
+			\draw[grupo] (0.00,0.00) rectangle (3.50,-2.54);
+			\node[titulo] at (1.75,-0.55) {(1) Resultado\\da pesquisa};
+			\node[opcao] at (1.75,-1.45) {Pesquisa básica};
+			\node[opcao] at (1.75,-2.09) {Pesquisa aplicada};
+			\draw[grupo] (0.00,-3.34) rectangle (3.50,-5.88);
+			\node[titulo] at (1.75,-3.89) {(2) Lógica\\da pesquisa};
+			\node[opcao] at (1.75,-4.79) {Pesquisa indutiva};
+			\node[opcao] at (1.75,-5.43) {Pesquisa dedutiva};
+			\draw[grupo] (3.95,-1.20) rectangle (7.45,-5.02);
+			\node[titulo] at (5.70,-1.75) {(3) Finalidade\\da pesquisa};
+			\node[opcao] at (5.70,-2.65) {Explicativa};
+			\node[opcao] at (5.70,-3.29) {Descritiva};
+			\node[opcao] at (5.70,-3.93) {Exploratória};
+			\node[opcao] at (5.70,-4.57) {Avaliação};
+			\draw[grupo] (7.90,-1.20) rectangle (11.40,-4.38);
+			\node[titulo] at (9.65,-1.75) {(4) Abordagem\\de pesquisa};
+			\node[opcao] at (9.65,-2.65) {Positivista};
+			\node[opcao] at (9.65,-3.29) {Interpretativista};
+			\node[opcao] at (9.65,-3.93) {Crítica};
+			\draw[grupo] (12.15,0.00) rectangle (15.65,-3.18);
+			\node[titulo] at (13.90,-0.55) {(5) Processo\\de pesquisa};
+			\node[opcao] at (13.90,-1.45) {Qualitativo};
+			\node[opcao] at (13.90,-2.09) {Quantitativo};
+			\node[opcao] at (13.90,-2.73) {Abordagem mista};
+			\draw[grupo] (12.15,-3.98) rectangle (15.65,-7.16);
+			\node[titulo] at (13.90,-4.53) {(6) Metodologia\\de pesquisa};
+			\node[opcao] at (13.90,-5.43) {Estudo de caso};
+			\node[opcao] at (13.90,-6.07) {Pesquisa-ação};
+			\node[opcao] at (13.90,-6.71) {\textit{Design science}};
+			\draw[grupo] (16.40,-0.40) rectangle (19.90,-5.50);
+			\node[titulo] at (18.15,-0.95) {(7) Métodos de\\coleta de dados};
+			\node[opcao] at (18.15,-1.85) {Entrevistas};
+			\node[opcao] at (18.15,-2.49) {Observação};
+			\node[opcao] at (18.15,-3.13) {Pesquisa em arquivo};
+			\node[opcao] at (18.15,-3.77) {Levantamento};
+			\node[opcao] at (18.15,-4.41) {Simulação};
+			\node[opcao] at (18.15,-5.05) {Experimento};
+			\draw[grupo] (20.35,-1.20) rectangle (23.85,-5.02);
+			\node[titulo] at (22.10,-1.75) {(8) Métodos de\\análise de dados};
+			\node[opcao] at (22.10,-2.65) {\mbox{Teoria fundamentada}};
+			\node[opcao] at (22.10,-3.29) {Análise temática};
+			\node[opcao] at (22.10,-3.93) {Hermenêutica};
+			\node[opcao] at (22.10,-4.57) {Análise estatística};
+			\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (q) at (1.75,0.80) {};
+			\node[font=\small\bfseries, anchor=west] at (2.10,0.80) {Questão de pesquisa};
+			\draw[seta] (q) -- (1.75,0.00);
+			\draw[seta] (1.75,-2.54) -- (1.75,-3.34);
+			\draw[seta] (3.50,-4.61) -- (3.95,-4.61);
+			\draw[seta] (7.45,-2.79) -- (7.90,-2.79);
+			\draw[seta] (11.40,-1.59) -- (12.15,-1.59);
+			\draw[seta, {Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}] (13.90,-3.18) -- (13.90,-3.98);
+			\draw[seta] (15.65,-1.59) -- (16.40,-1.59);
+			\draw[seta] (15.65,-5.57) -- (16.40,-5.57);
+			\draw[seta] (19.90,-3.11) -- (20.35,-3.11);
+			\node[circle, draw=blue!45!black, very thick, minimum size=0.4cm] (f) at (22.10,-5.82) {};
+			\fill[blue!45!black] (f.center) circle (0.1cm);
+			\draw[seta] (22.10,-5.02) -- (f);
+			\node[font=\small\bfseries, align=center] at (22.10,-6.47) {Resultados da\\pesquisa};
+			\draw[dashed, thick, blue!45!black] (-0.25,1.25) rectangle (24.10,-8.06);
+			\draw[dashed, thick, blue!45!black] (11.78,1.25) -- (11.78,-8.06);
+			\draw[dashed, thick, blue!45!black] (16.03,1.25) -- (16.03,-8.06);
+			\node[font=\small\bfseries] at (5.76,-7.76) {Fase estratégica};
+			\node[font=\small\bfseries] at (13.90,-7.76) {Fase tática};
+			\node[font=\small\bfseries] at (20.06,-7.76) {Fase operacional};
+		\end{tikzpicture}%
 	}
 	\fonte{Adaptado de \citeonline{wohlin2015}.}
 \end{figure}
@@ -462,8 +458,7 @@ limitações e o cronograma da segunda etapa da monografia. Ao final, são apres
 
 Esta seção descreve as atividades das duas etapas da monografia. Em cada
 etapa, uma figura apresenta o fluxo das atividades e outra as dispõe no
-tempo. As cores indicam o grupo de cada atividade e são as mesmas no fluxo
-e no cronograma.
+tempo.
 
 \subsection{Atividades da primeira etapa}
 \label{subsec:atividades-primeira-etapa}
@@ -471,9 +466,7 @@ e no cronograma.
 Esta subseção descreve as atividades realizadas na Primeira Etapa da
 Monografia, no segundo semestre de 2026. A
 Figura~\ref{fig:fluxo-primeira-etapa} apresenta essas atividades em forma de
-fluxo, e a Figura~\ref{fig:cronograma-tcc1} as dispõe cronologicamente, com
-base nos prazos registrados no
-\href{https://github.com/orgs/HansenSightAI/projects/2/views/4}{GitHub Projects}.
+fluxo, e a Figura~\ref{fig:cronograma-tcc1} as dispõe cronologicamente as atividades realizadas.
 
 \begin{figure}[H]
 	\centering
@@ -486,16 +479,16 @@ base nos prazos registrados no
 	\begin{tikzpicture}[
 		font=\scriptsize, >={Stealth[length=2mm]},
 		ativ/.style={rectangle, rounded corners=2pt, minimum width=2.8cm,
-			minimum height=1.05cm, text width=2.7cm, align=center, inner sep=2pt},
+				minimum height=1.05cm, text width=2.7cm, align=center, inner sep=2pt},
 		grupoA/.style={ativ, fill=ganttMedio, text=ganttEscuro},
 		grupoB/.style={ativ, fill=ganttAzul, text=white},
 		grupoC/.style={ativ, fill=ganttEscuro, text=white},
 		artefato/.style={rectangle, draw=ganttEscuro, fill=white, text=ganttEscuro,
-			font=\tiny, align=center, inner sep=2.5pt, minimum width=2.3cm,
-			double copy shadow={shadow xshift=1.2pt, shadow yshift=-1.2pt, draw=ganttEscuro, fill=white}},
+				font=\tiny, align=center, inner sep=2.5pt, minimum width=2.3cm,
+				double copy shadow={shadow xshift=1.2pt, shadow yshift=-1.2pt, draw=ganttEscuro, fill=white}},
 		seta/.style={->, thick, ganttEscuro},
 		liga/.style={densely dashed, ganttEscuro!70},
-	]
+		]
 		\node[circle, fill=ganttAzul, minimum size=4.5mm, inner sep=0pt] (ini) at (0,0) {};
 		\node[grupoA] (a1) at (1.80,0) {GQM e questões\\de pesquisa};
 		\node[grupoA] (a2) at (4.85,0) {Protocolo\\da revisão};
@@ -526,16 +519,16 @@ base nos prazos registrados no
 		\draw[seta] (a8) -- (a9);
 		\draw[seta] (a9) -- (fim);
 		\foreach \a/\d in {a1/d1, a2/d2, a3/d3, a4/d4, a6/d6}{
-			\draw[liga] (\a) -- (\d);
-		}
+				\draw[liga] (\a) -- (\d);
+			}
 
 		\foreach \cor/\rotulo [count=\i from 0] in {
-			ganttMedio/{Preparação e busca},
-			ganttAzul/{Extração, síntese e planejamento},
-			ganttEscuro/{Redação e apresentação}%
+		ganttMedio/{Preparação e busca},
+		ganttAzul/{Extração, síntese e planejamento},
+		ganttEscuro/{Redação e apresentação}%
 		}{
-			\fill[\cor] ({0.3+5.4*\i},-5.25) rectangle ++(0.35,0.22);
-			\node[anchor=west, text=ganttEscuro] at ({0.75+5.4*\i},-5.14) {\rotulo};
+		\fill[\cor] ({0.3+5.4*\i},-5.25) rectangle ++(0.35,0.22);
+		\node[anchor=west, text=ganttEscuro] at ({0.75+5.4*\i},-5.14) {\rotulo};
 		}
 	\end{tikzpicture}
 	\endgroup
@@ -559,48 +552,48 @@ base nos prazos registrados no
 		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronograma\relax}%
 	}
 	\begin{tikzpicture}[
-		x=0.00495\linewidth, y=8.5mm,
-		font=\footnotesize, text=ganttEscuro,
-		rotulo/.style={anchor=west, align=left, inner sep=0pt},
-	]
+			x=0.00495\linewidth, y=7.5mm,
+			font=\footnotesize, text=ganttEscuro,
+			rotulo/.style={anchor=west, align=left, inner sep=0pt},
+		]
 		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
-			Setembro/2026-09-01/2026-10-01/ganttClaro/ganttEscuro,
-			Outubro/2026-10-01/2026-11-01/ganttMedio/ganttEscuro,
-			Novembro/2026-11-01/2026-12-01/ganttAzul/white,
-			Dezembro/2026-12-01/2027-01-01/ganttEscuro/white%
-		}{
-			\diaCronograma{\inicio}{\esquerda}
-			\diaCronograma{\limite}{\direita}
-			\ifodd\coluna\relax
-				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-9.5);
-			\fi
-			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
-			\node[font=\footnotesize\bfseries,text=\tinta]
+				Setembro/2026-09-01/2026-10-01/ganttClaro/ganttEscuro,
+				Outubro/2026-10-01/2026-11-01/ganttMedio/ganttEscuro,
+				Novembro/2026-11-01/2026-12-01/ganttAzul/white,
+				Dezembro/2026-12-01/2027-01-01/ganttEscuro/white%
+			}{
+				\diaCronograma{\inicio}{\esquerda}
+				\diaCronograma{\limite}{\direita}
+				\ifodd\coluna\relax
+					\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-9.5);
+				\fi
+				\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
+				\node[font=\footnotesize\bfseries,text=\tinta]
 				at ({(\esquerda+\direita)/2},0) {\mes};
-		}
+			}
 
 		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
 		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (122,-0.5);
 		\foreach \linha in {1,...,9}{
-			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (122,{-\linha-0.5});
-		}
+				\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (122,{-\linha-0.5});
+			}
 
 		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
-			{GQM e questões de pesquisa}/{setembro}/2026-09-08/2026-09-11/ganttMedio,
-			{Protocolo da revisão}/{setembro}/2026-09-14/2026-09-25/ganttMedio,
-			{Busca e seleção dos estudos}/{setembro e outubro}/2026-09-25/2026-10-25/ganttMedio,
-			{Leitura e extração dos dados}/{outubro}/2026-10-03/2026-10-29/ganttAzul,
-			{Síntese e revisão das evidências}/{outubro e novembro}/2026-10-26/2026-11-06/ganttAzul,
-			{Planejamento do estudo}/{novembro}/2026-11-06/2026-11-13/ganttAzul,
-			{Redação da monografia}/{novembro e dezembro}/2026-11-16/2026-12-04/ganttEscuro,
-			{Revisão e correções finais}/{dezembro}/2026-12-07/2026-12-14/ganttEscuro,
-			{Apresentação à banca}/{dezembro}/2026-12-15/2026-12-18/ganttEscuro%
+		{GQM e questões de pesquisa}/{setembro}/2026-09-08/2026-09-11/ganttMedio,
+		{Protocolo da revisão}/{setembro}/2026-09-14/2026-09-25/ganttMedio,
+		{Busca e seleção dos estudos}/{setembro e outubro}/2026-09-25/2026-10-25/ganttMedio,
+		{Leitura e extração dos dados}/{outubro}/2026-10-03/2026-10-29/ganttAzul,
+		{Síntese e revisão das evidências}/{outubro e novembro}/2026-10-26/2026-11-06/ganttAzul,
+		{Planejamento do estudo}/{novembro}/2026-11-06/2026-11-13/ganttAzul,
+		{Redação da monografia}/{novembro e dezembro}/2026-11-16/2026-12-04/ganttEscuro,
+		{Revisão e correções finais}/{dezembro}/2026-12-07/2026-12-14/ganttEscuro,
+		{Apresentação à banca}/{dezembro}/2026-12-15/2026-12-18/ganttEscuro%
 		}{
-			\diaCronograma{\inicio}{\esquerda}
-			\diaCronograma{\fim+1}{\direita}
-			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
-				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
-			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
+		\diaCronograma{\inicio}{\esquerda}
+		\diaCronograma{\fim+1}{\direita}
+		\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
+		{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
+		\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
 		}
 	\end{tikzpicture}
 	\endgroup
@@ -608,45 +601,63 @@ base nos prazos registrados no
 \end{figure}
 
 Quando uma linha reúne mais de uma atividade, a barra vai do primeiro
-início ao último prazo registrado. As atividades da primeira etapa foram as
-seguintes:
+início ao último prazo registrado. A Tabela~\ref{tab:atividades-primeira-etapa}
+descreve as atividades realizadas na primeira etapa.
 
-\begin{itemize}
-	\item \textbf{GQM e questões de pesquisa:} definição do objetivo do
-	      trabalho pela abordagem GQM \cite{basili1994}, da questão
-	      norteadora e das questões de pesquisa da revisão
-	      (Seção~\ref{gqm-adaptado-e-questuxe3o-de-pesquisa});
-	\item \textbf{Protocolo da revisão:} elaboração do protocolo conforme
-	      \citeonline{kitchenham2007}, com o modelo PICOC, a \textit{string}
-	      de busca, os critérios de inclusão e exclusão e o formulário de
-	      extração, registrados no Evidentia;
-	\item \textbf{Busca e seleção dos estudos:} busca no Consensus e no
-	      Claude, teste da \textit{string} na Scopus, triagem com apoio do
-	      Jev Reviewer e leitura integral dos selecionados
-	      (Seção~\ref{sec:execucao-busca-selecao});
-	\item \textbf{Leitura e extração dos dados:} leitura dos 26 estudos
-	      incluídos e preenchimento do formulário de extração;
-	\item \textbf{Síntese e revisão das evidências:} síntese descritiva
-	      das respostas a cada questão de pesquisa
-	      (Seção~\ref{sec:resultados-revisao});
-	\item \textbf{Planejamento do estudo:} planejamento do estudo de
-	      ciência de dados segundo o padrão \textit{Data Science} da ACM
-	      SIGSOFT \cite{acmSigsoftDataScience}
-	      (Capítulo~\ref{cap:metodologia-experimental});
-	\item \textbf{Redação da monografia:} escrita do texto na organização
-	      descrita na Seção~\ref{sec:organizacao};
-	\item \textbf{Revisão e correções finais:} revisão do texto e ajustes
-	      pedidos pelos orientadores; e
-	\item \textbf{Apresentação à banca:} apresentação da primeira etapa da
-	      monografia à banca avaliadora.
-\end{itemize}
-
-Euller e Gabriel são responsáveis pela preparação e execução da revisão,
-pela síntese, pela redação e pelas correções finais. Na síntese, Euller
-ficou responsável por técnicas, modelos, procedimentos de avaliação e
-métricas, e Gabriel, por conjuntos de dados, populações, tons de pele e
-generalização. O planejamento do estudo consta no quadro sem responsável
-atribuído.
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{10.8cm}|}
+	\caption{Atividades realizadas na primeira etapa da monografia}\label{tab:atividades-primeira-etapa} \\
+	\hline
+	\textbf{Atividade}               & \textbf{Descrição}                                                \\
+	\hline
+	\endfirsthead
+	\multicolumn{2}{l}{\footnotesize\textit{Tabela~\ref{tab:atividades-primeira-etapa} (continuação)}}   \\
+	\hline
+	\textbf{Atividade}               & \textbf{Descrição}                                                \\
+	\hline
+	\endhead
+	\hline
+	\multicolumn{2}{r}{\footnotesize\textit{continua na próxima página}}                                 \\
+	\endfoot
+	\hline
+	\endlastfoot
+	GQM e questões de pesquisa       & Definição do objetivo do trabalho pela abordagem
+	GQM \cite{basili1994}, da questão norteadora e das questões de pesquisa da
+	revisão (Seção~\ref{gqm-adaptado-e-questuxe3o-de-pesquisa}).                                         \\
+	\hline
+	Protocolo da revisão             & Elaboração do protocolo conforme
+	\citeonline{kitchenham2007}, com o modelo PICOC, a \textit{string} de busca,
+	os critérios de inclusão e exclusão e o formulário de extração, registrados
+	no Evidentia.                                                                                        \\
+	\hline
+	Busca e seleção dos estudos      & Busca no Consensus e no Claude, teste da
+	\textit{string} na Scopus, triagem com apoio do Jev Reviewer e leitura
+	integral dos selecionados (Seção~\ref{sec:execucao-busca-selecao}).                                  \\
+	\hline
+	Leitura e extração dos dados     & Leitura dos 26 estudos incluídos e
+	preenchimento do formulário de extração.                                                             \\
+	\hline
+	Síntese e revisão das evidências & Síntese descritiva das respostas a cada
+	questão de pesquisa (Seção~\ref{sec:resultados-revisao}).                                            \\
+	\hline
+	Planejamento do estudo           & Planejamento do estudo de ciência de dados segundo
+	o padrão \textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}
+	(Capítulo~\ref{cap:metodologia-experimental}).                                                       \\
+	\hline
+	Redação da monografia            & Escrita do texto na organização descrita na
+	Seção~\ref{sec:organizacao}.                                                                         \\
+	\hline
+	Revisão e correções finais       & Revisão do texto e ajustes pedidos pelos
+	orientadores.                                                                                        \\
+	\hline
+	Apresentação à banca             & Apresentação da primeira etapa da monografia à banca
+	avaliadora.                                                                                          \\
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \subsection{Atividades da segunda etapa}
 \label{subsec:atividades-segunda-etapa}
@@ -670,16 +681,16 @@ equipamento.
 	\begin{tikzpicture}[
 		font=\scriptsize, >={Stealth[length=2mm]},
 		ativ/.style={rectangle, rounded corners=2pt, minimum width=2.8cm,
-			minimum height=1.05cm, text width=2.7cm, align=center, inner sep=2pt},
+				minimum height=1.05cm, text width=2.7cm, align=center, inner sep=2pt},
 		grupoA/.style={ativ, fill=ganttMedio, text=ganttEscuro},
 		grupoB/.style={ativ, fill=ganttAzul, text=white},
 		grupoC/.style={ativ, fill=ganttEscuro, text=white},
 		artefato/.style={rectangle, draw=ganttEscuro, fill=white, text=ganttEscuro,
-			font=\tiny, align=center, inner sep=2.5pt, minimum width=2.3cm,
-			double copy shadow={shadow xshift=1.2pt, shadow yshift=-1.2pt, draw=ganttEscuro, fill=white}},
+				font=\tiny, align=center, inner sep=2.5pt, minimum width=2.3cm,
+				double copy shadow={shadow xshift=1.2pt, shadow yshift=-1.2pt, draw=ganttEscuro, fill=white}},
 		seta/.style={->, thick, ganttEscuro},
 		liga/.style={densely dashed, ganttEscuro!70},
-	]
+		]
 		\node[circle, fill=ganttAzul, minimum size=4.5mm, inner sep=0pt] (ini) at (0,0) {};
 		\node[grupoC] (b1) at (1.80,0) {Ajustes pedidos\\pela banca};
 		\node[grupoA] (b2) at (4.85,0) {Curadoria e\\agrupamento};
@@ -697,7 +708,7 @@ equipamento.
 		\node[artefato] (e4) at (10.95,1.55) {Configuração\\de cada rede};
 		\node[artefato] (e5) at (14.00,1.55) {Modelos e\\limiares fixados};
 		\node[ativ, draw=ganttAzul, densely dashed, thick, text=ganttAzul] (opc)
-			at (14.00,-4.15) {Repetição no\\AI4Leprosy, se o\\acesso for concedido};
+		at (14.00,-4.15) {Repetição no\\AI4Leprosy, se o\\acesso for concedido};
 
 		\draw[seta] (ini) -- (b1);
 		\draw[seta] (b1) -- (b2);
@@ -711,16 +722,16 @@ equipamento.
 		\draw[seta, densely dashed] (b6) -- (opc);
 		\draw[seta, densely dashed] (opc.west) -| (b7.south);
 		\foreach \a/\d in {b2/e2, b3/e3, b4/e4, b5/e5}{
-			\draw[liga] (\a) -- (\d);
-		}
+				\draw[liga] (\a) -- (\d);
+			}
 
 		\foreach \cor/\rotulo [count=\i from 0] in {
-			ganttMedio/{Preparação dos dados},
-			ganttAzul/{Modelagem e avaliação},
-			ganttEscuro/{Redação, revisão e defesa}%
+		ganttMedio/{Preparação dos dados},
+		ganttAzul/{Modelagem e avaliação},
+		ganttEscuro/{Redação, revisão e defesa}%
 		}{
-			\fill[\cor] ({0.3+5.0*\i},-5.45) rectangle ++(0.35,0.22);
-			\node[anchor=west, text=ganttEscuro] at ({0.75+5.0*\i},-5.34) {\rotulo};
+		\fill[\cor] ({0.3+5.0*\i},-5.45) rectangle ++(0.35,0.22);
+		\node[anchor=west, text=ganttEscuro] at ({0.75+5.0*\i},-5.34) {\rotulo};
 		}
 	\end{tikzpicture}
 	\endgroup
@@ -743,81 +754,106 @@ equipamento.
 		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronogramaB\relax}%
 	}
 	\begin{tikzpicture}[
-		x=0.00395\linewidth, y=8.5mm,
-		font=\footnotesize, text=ganttEscuro,
-		rotulo/.style={anchor=west, align=left, inner sep=0pt},
-	]
+			x=0.00395\linewidth, y=7.5mm,
+			font=\footnotesize, text=ganttEscuro,
+			rotulo/.style={anchor=west, align=left, inner sep=0pt},
+		]
 		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
-			Março/2027-03-01/2027-04-01/ganttClaro/ganttEscuro,
-			Abril/2027-04-01/2027-05-01/ganttMedio/ganttEscuro,
-			Maio/2027-05-01/2027-06-01/ganttAzul/white,
-			Junho/2027-06-01/2027-07-01/ganttEscuro/white,
-			Julho/2027-07-01/2027-08-01/ganttClaro/ganttEscuro%
-		}{
-			\diaCronogramaB{\inicio}{\esquerda}
-			\diaCronogramaB{\limite}{\direita}
-			\ifodd\coluna\relax
-				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-8.5);
-			\fi
-			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
-			\node[font=\footnotesize\bfseries,text=\tinta]
+				Março/2027-03-01/2027-04-01/ganttClaro/ganttEscuro,
+				Abril/2027-04-01/2027-05-01/ganttMedio/ganttEscuro,
+				Maio/2027-05-01/2027-06-01/ganttAzul/white,
+				Junho/2027-06-01/2027-07-01/ganttEscuro/white,
+				Julho/2027-07-01/2027-08-01/ganttClaro/ganttEscuro%
+			}{
+				\diaCronogramaB{\inicio}{\esquerda}
+				\diaCronogramaB{\limite}{\direita}
+				\ifodd\coluna\relax
+					\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-8.5);
+				\fi
+				\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
+				\node[font=\footnotesize\bfseries,text=\tinta]
 				at ({(\esquerda+\direita)/2},0) {\mes};
-		}
+			}
 		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
 		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (153,-0.5);
 		\foreach \linha in {1,...,8}{
-			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (153,{-\linha-0.5});
-		}
+				\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (153,{-\linha-0.5});
+			}
 		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
-			{Ajustes pedidos pela banca}/{março}/2027-03-01/2027-03-12/ganttEscuro,
-			{Curadoria e agrupamento}/{março}/2027-03-01/2027-03-31/ganttMedio,
-			{Partições e linhas de base}/{abril}/2027-04-01/2027-04-15/ganttMedio,
-			{Treino e seleção por validação cruzada}/{abril e maio}/2027-04-01/2027-05-15/ganttAzul,
-			{Retreino, limiares e fixação dos modelos}/{maio}/2027-05-16/2027-05-31/ganttAzul,
-			{Avaliação no teste e análises}/{junho}/2027-06-01/2027-06-20/ganttAzul,
-			{Redação dos resultados e da discussão}/{junho e julho}/2027-06-01/2027-07-10/ganttEscuro,
-			{Revisão e defesa}/{julho}/2027-07-11/2027-07-31/ganttEscuro%
+		{Ajustes pedidos pela banca}/{março}/2027-03-01/2027-03-12/ganttEscuro,
+		{Curadoria e agrupamento}/{março}/2027-03-01/2027-03-31/ganttMedio,
+		{Partições e linhas de base}/{abril}/2027-04-01/2027-04-15/ganttMedio,
+		{Treino e seleção por validação cruzada}/{abril e maio}/2027-04-01/2027-05-15/ganttAzul,
+		{Retreino, limiares e fixação dos modelos}/{maio}/2027-05-16/2027-05-31/ganttAzul,
+		{Avaliação no teste e análises}/{junho}/2027-06-01/2027-06-20/ganttAzul,
+		{Redação dos resultados e da discussão}/{junho e julho}/2027-06-01/2027-07-10/ganttEscuro,
+		{Revisão e defesa}/{julho}/2027-07-11/2027-07-31/ganttEscuro%
 		}{
-			\diaCronogramaB{\inicio}{\esquerda}
-			\diaCronogramaB{\fim+1}{\direita}
-			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
-				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
-			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
+		\diaCronogramaB{\inicio}{\esquerda}
+		\diaCronogramaB{\fim+1}{\direita}
+		\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
+		{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
+		\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
 		}
 	\end{tikzpicture}
 	\endgroup
 	\fonte{Autores.}
 \end{figure}
 
-As atividades previstas para a segunda etapa são as seguintes:
+A Tabela~\ref{tab:atividades-segunda-etapa} descreve as atividades previstas
+para a segunda etapa.
 
-\begin{itemize}
-	\item \textbf{Ajustes pedidos pela banca:} revisão do texto da primeira
-	      etapa a partir das considerações da banca avaliadora e dos
-	      orientadores;
-	\item \textbf{Curadoria e agrupamento:} obtenção do 32 CSD v2, harmonização
-	      dos rótulos, agrupamento das fotografias relacionadas e
-	      categorização do tom de pele
-	      (Subseção~\ref{subsec:curadoria-procedencia});
-	\item \textbf{Partições e linhas de base:} geração e registro das listas
-	      do teste reservado, da validação cruzada e da partição de limiar,
-	      com semente fixa, e preparação das linhas de base
-	      (Subseções~\ref{subsec:particoes} e~\ref{subsec:linhas-base});
-	\item \textbf{Treino e seleção por validação cruzada:} ajuste fino da
-	      ResNet-50 e da MobileNetV2 e escolha da configuração de cada rede
-	      pela validação cruzada por grupos
-	      (Subseções~\ref{subsec:procedimento-validacao}
-	      e~\ref{subsec:hiperparametros});
-	\item \textbf{Retreino, limiares e fixação dos modelos:} retreino da
-	      configuração escolhida com três sementes, definição dos limiares
-	      na partição própria e fixação dos modelos antes do teste;
-	\item \textbf{Avaliação no teste e análises:} avaliação única no teste
-	      reservado, com as medidas e análises da
-	      Seção~\ref{sec:medidas-avaliacao-empirica}; se o acesso ao
-	      AI4Leprosy for concedido, a avaliação será repetida nessa coleção,
-	      sem alterar o protocolo;
-	\item \textbf{Redação dos resultados e da discussão:} escrita dos
-	      capítulos de resultados, discussão e conclusão; e
-	\item \textbf{Revisão e defesa:} revisão final com os orientadores e
-	      apresentação da monografia à banca avaliadora.
-\end{itemize}
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\setlength{\LTpost}{0pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{10.8cm}|}
+	\caption{Atividades previstas na segunda etapa da monografia}\label{tab:atividades-segunda-etapa} \\
+	\hline
+	\textbf{Atividade}                       & \textbf{Descrição}                                     \\
+	\hline
+	\endfirsthead
+	\multicolumn{2}{l}{\footnotesize\textit{Tabela~\ref{tab:atividades-segunda-etapa} (continuação)}} \\
+	\hline
+	\textbf{Atividade}                       & \textbf{Descrição}                                     \\
+	\hline
+	\endhead
+	\hline
+	\multicolumn{2}{r}{\footnotesize\textit{continua na próxima página}}                              \\
+	\endfoot
+	\hline
+	\endlastfoot
+	Ajustes pedidos pela banca               & Revisão do texto da primeira etapa a partir
+	das considerações da banca avaliadora e dos orientadores.                                         \\
+	\hline
+	Curadoria e agrupamento                  & Obtenção do 32 CSD v2, harmonização dos rótulos,
+	agrupamento das fotografias relacionadas e categorização do tom de pele
+	(Subseção~\ref{subsec:curadoria-procedencia}).                                                    \\
+	\hline
+	Partições e linhas de base               & Geração e registro das listas do teste reservado,
+	da validação cruzada e da partição de limiar, com semente fixa, e preparação
+	das linhas de base (Subseções~\ref{subsec:particoes} e~\ref{subsec:linhas-base}).                 \\
+	\hline
+	Treino e seleção por validação cruzada   & Ajuste fino da ResNet-50 e da
+	MobileNetV2 e escolha da configuração de cada rede pela validação cruzada
+	por grupos (Subseções~\ref{subsec:procedimento-validacao}
+	e~\ref{subsec:hiperparametros}).                                                                  \\
+	\hline
+	Retreino, limiares e fixação dos modelos & Retreino da configuração escolhida
+	com três sementes, definição dos limiares na partição própria e fixação dos
+	modelos antes do teste.                                                                           \\
+	\hline
+	Avaliação no teste e análises            & Avaliação única no teste reservado, com as
+	medidas e análises da Seção~\ref{sec:medidas-avaliacao-empirica}. Se o acesso
+	ao AI4Leprosy for concedido, a avaliação será repetida nessa coleção, sem
+	alterar o protocolo.                                                                              \\
+	\hline
+	Redação dos resultados e da discussão    & Escrita dos capítulos de resultados,
+	discussão e conclusão.                                                                            \\
+	\hline
+	Revisão e defesa                         & Revisão final com os orientadores e apresentação da
+	monografia à banca avaliadora.                                                                    \\
+\end{longtable}
+\endgroup
+\fonte{Autores.}
