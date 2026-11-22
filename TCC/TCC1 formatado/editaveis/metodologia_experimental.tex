@@ -642,49 +642,29 @@ curva ROC de cada configuração em cada dobra serão relatadas.
 \subsection{Linhas de base e comparação com o estado da arte}
 \label{subsec:linhas-base}
 
-O padrão exige uma de três alternativas: discutir as linhas de base do
-estado da arte, com seus pontos fortes, fracos e limitações; explicar por
-que elas não existem; ou argumentar de forma convincente que a comparação
-direta é impraticável \cite{acmSigsoftDataScience}. O planejamento trata
-as três, porque cada uma se aplica a uma parte do problema.
+Entre os estudos incluídos na revisão, não foi identificado um resultado
+diretamente comparável à classificação binária no 32 CSD com partições
+por grupos de fotografias relacionadas
+(Apêndice~\ref{apend:inventario-datasets}). O AI4Leprosy
+\cite{barbieri2022} usa ResNet-50 no ramo visual e combina fotografias
+com dados clínicos indisponíveis no 32 CSD. O classificador da OMS
+\cite{pons2026} conta com validação externa \cite{deps2026}, mas não está
+disponível para execução local. A SkinLesionNet \cite{jaikishore2021}
+usa MobileNetV2 para classificar quatro categorias, com partições por
+imagem.
 
-\begin{description}
-	\item[Linhas de base do estado da arte.] Entre os estudos revisados, três
-	      abordagens são as referências mais próximas. O AI4Leprosy
-	      \cite{barbieri2022} usa a ResNet-50 no ramo visual e combina
-	      imagens com dados clínicos; seu ponto forte é a amostra brasileira
-	      com registro por paciente, e suas limitações, para este estudo, são
-	      o acesso restrito e a dependência de dados clínicos que o 32 CSD não
-	      contém. O classificador do aplicativo da OMS para doenças tropicais
-	      negligenciadas de pele \cite{pons2026} tem a seu favor a validação
-	      externa independente de \citeonline{deps2026}, mas não está
-	      disponível para execução local. A SkinLesionNet
-	      \cite{jaikishore2021} usa a MobileNetV2, o que mostra a viabilidade
-	      de uma rede leve, mas classifica quatro categorias com partições por
-	      imagem. Essas abordagens orientam a escolha das duas redes, sem
-	      servir de comparação numérica.
-	\item[Ausência de linha de base para a tarefa definida.] Nenhum dos
-	      estudos incluídos usa o 32 CSD (Apêndice~\ref{apend:inventario-datasets})
-	      nem relata a distinção binária entre hanseníase e outras condições
-	      de pele com partições por grupos de fotografias relacionadas. Não
-	      há, portanto, um resultado do estado da arte para a mesma tarefa,
-	      nos mesmos dados e com o mesmo controle de vazamento.
-	\item[Impraticabilidade da comparação direta.] Mesmo os valores
-	      publicados não são comparáveis: as coleções, as classes e as
-	      partições diferem, apenas 2 dos 16 estudos que desenvolvem modelos
-	      declaram separar os dados por paciente
-	      (Subseção~\ref{subsec:rq3-metodos}), e há sobreposição de origem
-	      entre o 32 CSD e as imagens usadas por \citeonline{eita2025} e por
-	      \citeonline{lima2024skin}, o que viola a independência entre
-	      dados de comparação. Os valores da literatura serão usados apenas
-	      para discussão qualitativa (questão \hyperlink{questao-q3}{Q3}).
-\end{description}
+As diferenças entre coleções, classes e partições tornam impraticável
+a comparação direta com os resultados publicados
+\cite{acmSigsoftDataScience}. A origem comum entre imagens do 32 CSD e
+dos estudos de \citeonline{eita2025} e \citeonline{lima2024skin} indica
+risco de sobreposição. Os resultados publicados servirão para
+contextualizar os achados do estudo (questão \hyperlink{questao-q3}{Q3}).
 
-Na falta de uma linha de base externa comparável, duas linhas de base
-internas serão treinadas no desenvolvimento e avaliadas no mesmo teste. A
-primeira é um classificador trivial, que atribui sempre a classe
-majoritária ou sorteia classes na proporção do treino, cuja acurácia
-balanceada (\metrica{M11}) esperada é de 0,50 e serve de piso. A segunda é
+Duas linhas de base internas serão avaliadas no mesmo teste que as
+redes. A primeira atribuirá a todas as fotografias a classe mais
+frequente no conjunto de desenvolvimento. Com as duas classes presentes
+no teste, essa regra terá acurácia balanceada (\metrica{M11}) de 0,50,
+referência de desempenho sem discriminação entre as classes. A segunda é
 uma regressão logística que usa apenas atributos do arquivo, como
 dimensões, proporção e tamanho, sem olhar o conteúdo da imagem. Se essa
 regressão superar o acaso, os atributos de origem carregam informação
