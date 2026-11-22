@@ -5,7 +5,7 @@ MAIN_FILE := tcc.tex
 BUILD_DIR := .build
 LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1
 
-.PHONY: all pdf watch clean
+.PHONY: all pdf watch clean rebuild
 
 all: pdf
 
@@ -20,3 +20,7 @@ watch:
 # Remove auxiliares, preservando tcc.pdf e os PDFs das figuras.
 clean:
 	cd "$(TCC_DIR)" && $(LATEXMK) -outdir=$(BUILD_DIR) -c $(MAIN_FILE)
+
+rebuild:
+	cd "$(TCC_DIR)" && rm -rf -- .build
+	$(MAKE) pdf BUILD_DIR=.build

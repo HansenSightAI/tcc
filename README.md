@@ -47,6 +47,7 @@ O `Makefile` da raiz compila em `TCC/TCC1 formatado/.build/`, pasta ignorada pel
 - `make` ou `make pdf`: gera ou atualiza `TCC/TCC1 formatado/.build/tcc.pdf`.
 - `make watch`: acompanha alterações e atualiza o mesmo PDF continuamente.
 - `make clean`: remove auxiliares, preservando o PDF do TCC e os PDFs das figuras.
+- `make rebuild`: apaga a pasta `.build/`, incluindo o PDF anterior, e recompila do zero. Use se a falha de compilação persistir após `make clean` e `make`.
 
 Sem `make`, execute `latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1 tcc.tex` dentro de `TCC/TCC1 formatado/`. O arquivo `.latexmkrc` direciona a saída para `.build/`. No VS Code com LaTeX Workshop, use `%DIR%/.build` em `latex-workshop.latex.outDir` para usar a mesma pasta. Após uma limpeza, compile novamente para reconstruir sumário, citações e referências. Uma execução isolada de `pdflatex` pode deixar esses elementos incompletos.
 
