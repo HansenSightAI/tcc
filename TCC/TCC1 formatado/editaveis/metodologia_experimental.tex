@@ -117,7 +117,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	& Subseções~\ref{subsec:abordagem-modelagem}, \ref{subsec:procedimento-validacao} e~\ref{subsec:hiperparametros} e Algoritmo~\ref{alg:procedimento-experimental} \\ \hline
 	Infraestrutura de hardware e software
 	& Subseção~\ref{subsec:ciencia-de-dados}: disponibilização de materiais para replicação
-	& Subseção~\ref{subsec:infraestrutura}: equipamento, ferramentas de software e preparação do ambiente \\ \hline
+	& Subseção~\ref{subsec:infraestrutura}: equipamento e ferramentas de software \\ \hline
 	Justificativa das estatísticas e das heurísticas
 	& Subseção~\ref{subsec:ciencia-de-dados}: incerteza das estimativas. Seção~\ref{sec:avaliacao-generalizacao}: interpretação conforme o desenho do estudo
 	& Subseção~\ref{subsec:justificativa-estatisticas}: \textit{bootstrap} de grupos, tamanho do teste, validação cruzada, limiares, parada antecipada e limiares de similaridade \\ \hline
@@ -126,7 +126,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	& Tabela~\ref{tab:gqm-questoes-metricas} e Subseção~\ref{subsec:descricao-metricas}: acurácia balanceada como medida principal e medidas complementares \\ \hline
 	Resultados além de valores únicos (variação e incerteza)
 	& Subseção~\ref{subsec:ciencia-de-dados}: relato da variabilidade. Subseção~\ref{subsec:rq4-metricas}: forma como os estudos relatam os resultados
-	& Subseção~\ref{subsec:alem-valores-unicos}: intervalos de 95\%, tamanho do efeito pareado e variação entre dobras e sementes \\ \hline
+	& Subseção~\ref{subsec:justificativa-estatisticas}: intervalos de 95\%, tamanho do efeito pareado e variação entre dobras e sementes \\ \hline
 	Pressupostos técnicos e ameaças à validade específicos de ciência de dados
 	& Subseção~\ref{subsec:ciencia-de-dados} e Seção~\ref{sec:avaliacao-generalizacao}: vazamento, avaliação interna e externa. Subseções~\ref{subsec:rq5-rq6-tom-pele} e~\ref{subsec:rq7-generalizacao}: limites das evidências por tom de pele e em outras bases
 	& Seção~\ref{sec:validade-avaliacao-empirica}: pressupostos técnicos e validade de construto, interna, de conclusão e externa \\ \hline
@@ -375,7 +375,7 @@ pseudocódigo.
 	\caption{Diagrama de fluxo de dados do estudo}
 	\label{fig:dfd-estudo}
 	% Fonte editável: dados/Arquiteturas/dfd-estudo.svg (exportado para PDF com o Inkscape).
-	\includegraphics[angle=90,height=0.80\textheight]{figuras/dfd-estudo.pdf}
+	\includegraphics[width=\textwidth]{figuras/dfd-estudo.pdf}
 	\fonte{Autores, com fotografias do 32 CSD v2 \cite{cahyantoDados2026}, licença CC BY 4.0.}
 \end{figure}
 
@@ -503,54 +503,26 @@ como o rebalanceamento de classes aplicado a eles
 \subsection{Procedimento do estudo e validação cruzada}
 \label{subsec:procedimento-validacao}
 
-O treinamento será por transferência: partindo dos pesos pré-treinados, a
-camada de saída e as camadas liberadas para atualização serão ajustadas às
-fotografias do desenvolvimento (ajuste fino). A validação cruzada servirá
-para escolher a configuração de cada rede, e o teste reservado, usado uma
-única vez, para estimar o desempenho das configurações escolhidas.
+O procedimento separa a escolha dos modelos da estimativa de desempenho,
+como recomenda a literatura de avaliação de modelos
+\cite{raschka2018,varoquaux2023}, e segue as etapas abaixo, detalhadas no
+Algoritmo~\ref{alg:procedimento-experimental}:
 
-\begin{description}
-	\item[Construção das dobras.] A parte do desenvolvimento destinada à
-	      validação cruzada será dividida em $k = 5$ dobras por
-	      validação cruzada estratificada por grupos: cada grupo de
-	      fotografias relacionadas fica inteiro em uma única dobra, e a
-	      proporção de grupos positivos é aproximadamente a mesma em todas.
-	      Cada grupo é usado para validação exatamente uma vez. As dobras
-	      serão geradas uma única vez, com semente fixa, e reutilizadas por
-	      todas as configurações das duas redes, o que torna pareadas as
-	      comparações entre configurações e entre redes. Se alguma dobra
-	      ficar com menos de 20 grupos positivos, $k$ será reduzido para 3
-	      antes de qualquer treinamento.
-	\item[Treino e validação em cada dobra.] Para cada configuração, a rede
-	      é treinada em $k-1$ dobras e avaliada na dobra restante, em
-	      rodízio, até que cada dobra tenha servido de validação. A medida de
-	      seleção é a média da área sob a curva ROC (\metrica{M10}) nas
-	      $k$ dobras. Em cada dobra, o treino parte dos pesos pré-treinados e
-	      termina após cinco épocas consecutivas sem melhora na área sob a
-	      curva ROC da validação ou ao atingir 30 épocas. Para a seleção,
-	      registram-se o maior valor observado na validação e a primeira
-	      época em que esse valor foi atingido.
-	\item[Retreino.] Cada rede é retreinada com a configuração escolhida em
-	      todos os grupos da validação cruzada, pelo número de épocas igual à
-	      mediana das melhores épocas da configuração escolhida nas dobras,
-	      partindo novamente dos pesos pré-treinados. O retreino
-	      é repetido com três sementes, e o escore final de cada fotografia é
-	      a média dos escores das três execuções. As métricas de cada semente
-	      também são relatadas, para mostrar a variação entre execuções.
-	\item[Limiares.] O limiar principal é definido na partição reservada para
-	      esse fim, com os escores médios do modelo retreinado, maximizando a
-	      acurácia balanceada (\metrica{M11}), o que equivale a maximizar o
-	      índice de Youden. Em caso de empate, prevalece o limiar com maior
-	      sensibilidade (\metrica{M1}). Como ponto de operação secundário,
-	      também pré-definido, escolhe-se o limiar de maior especificidade
-	      entre os que atingem sensibilidade de pelo menos 0,90 nessa mesma
-	      partição. Entre candidatos com a mesma especificidade, prevalece
-	      o de maior sensibilidade. O desempenho nesse ponto de operação
-	      será estimado no teste com o limiar já fixado.
-	\item[Abertura do teste.] Os classificadores, os limiares e as linhas de
-	      base são fixados e registrados antes da abertura do teste, que é
-	      avaliado uma única vez.
-\end{description}
+\begin{enumerate}
+	\item divisão da validação cruzada em 5 dobras estratificadas por grupos,
+	      ou 3, se faltarem grupos positivos \cite{roberts2017,raschka2018};
+	\item ajuste fino de cada rede a partir dos pesos do ImageNet
+	      \cite{raghu2019}, com parada antecipada e seleção da configuração
+	      pela área sob a curva ROC (\metrica{M10}) média nas dobras
+	      \cite{raschka2018};
+	\item retreino da configuração escolhida com três sementes e média dos
+	      escores, para expor e reduzir a variação entre execuções
+	      \cite{bouthillier2021};
+	\item definição dos limiares na partição própria, pelo índice de Youden
+	      e pelo ponto com sensibilidade de pelo menos 0,90 \cite{unal2017};
+	\item avaliação única no teste reservado, depois de fixados modelos,
+	      limiares e linhas de base \cite{kapoor2023,varoquaux2023}.
+\end{enumerate}
 
 \begin{algorithm}[H]
 	\caption{Treinamento, seleção e avaliação dos classificadores}
@@ -699,27 +671,11 @@ sobre a classe, e o ganho das redes deve ser interpretado em relação a ela
 \label{sec:instrumentacao}
 
 Seguindo \citeonline{wohlin2024}, a instrumentação reúne os objetos do
-estudo, as diretrizes que orientam sua execução e os instrumentos de
-medição. Como o estudo é computacional, ela inclui também a infraestrutura
-de hardware e software, exigida pelo padrão \textit{Data Science}
-\cite{acmSigsoftDataScience}, descrita com detalhe suficiente para que
-outra equipe monte o ambiente e reexecute o estudo.
-
-\subsection{Objetos e diretrizes}
-\label{subsec:objetos-diretrizes}
-
-\begin{description}
-	\item[Objetos.] A versão 2 do 32 CSD, identificada pelo nome e pelo
-	      SHA-256 de cada arquivo, e os pesos \texttt{IMAGENET1K\_V1} da
-	      ResNet-50 e da MobileNetV2 distribuídos pelo TorchVision.
-	\item[Diretrizes.] O protocolo de curadoria
-	      (Subseção~\ref{subsec:curadoria-procedencia}), com os critérios de
-	      seleção, as regras de harmonização dos rótulos e as regras de
-	      agrupamento; um guia de inspeção manual para os dois revisores, com
-	      as categorias de decisão (incluir, excluir por modalidade, excluir
-	      por rótulo inconclusivo, agrupar) e o registro das divergências; e
-	      este plano, com as decisões fixadas antes da abertura do teste.
-\end{description}
+estudo, que são a versão 2 do 32 CSD e os pesos \texttt{IMAGENET1K\_V1} da
+ResNet-50 e da MobileNetV2 distribuídos pelo TorchVision, e os instrumentos
+de medição. Como o estudo é computacional, ela inclui também a
+infraestrutura de hardware e software exigida pelo padrão \textit{Data
+Science} \cite{acmSigsoftDataScience}.
 
 \subsection{Instrumentos de medição e registro}
 \label{subsec:instrumentos-medicao}
@@ -754,18 +710,11 @@ outra equipe monte o ambiente e reexecute o estudo.
 \subsection{Infraestrutura de hardware e software}
 \label{subsec:infraestrutura}
 
-O equipamento ainda não está definido. A previsão é usar uma máquina com
-placa gráfica NVIDIA obtida com o apoio da coorientação. Estima-se que uma
-placa com ao menos 8 GB de memória seja suficiente para treinar as duas
-redes com lotes de 32 fotografias a $224 \times 224$ pixels; se a memória
-for menor, o tamanho do lote será reduzido igualmente para as duas redes e
-a mudança será registrada. Serão relatados o processador, a placa gráfica,
-a memória, o sistema operacional, as versões do \textit{driver} e das
-bibliotecas e o tempo de treino e de inferência por fotografia em cada
-rede, informação relevante para a MobileNetV2 como alternativa leve. A
-Tabela~\ref{tab:ferramentas-software} lista as ferramentas de software
-previstas; as versões exatas serão fixadas no arquivo de dependências e
-relatadas com os resultados.
+O equipamento ainda não está definido: a previsão é uma máquina com placa
+gráfica NVIDIA de ao menos 8 GB, obtida com a coorientação. As ferramentas
+previstas estão na Tabela~\ref{tab:ferramentas-software}; suas versões, o
+equipamento e o tempo de treino e de inferência por fotografia serão
+relatados com os resultados.
 
 \begingroup
 \footnotesize
@@ -798,26 +747,8 @@ relatadas com os resultados.
 \endgroup
 \fonte{Autores.}
 
-A preparação do ambiente seguirá os passos abaixo, na ordem do diagrama de
-fluxo de dados (Figura~\ref{fig:dfd-estudo}):
-
-\begin{enumerate}
-	\item clonar o repositório do estudo no GitHub, que contém os
-	      \textit{scripts}, os cadernos Jupyter, os arquivos de configuração e
-	      o arquivo de dependências;
-	\item criar o ambiente virtual a partir desse arquivo, instalando o
-	      PyTorch e o TorchVision na versão compatível com o CUDA da máquina;
-	\item baixar a versão 2 do 32 CSD da fonte original e conferir o
-	      SHA-256 de cada arquivo com o inventário;
-	\item executar, na ordem, os \textit{scripts} de curadoria, de
-	      particionamento, de treinamento, de definição dos limiares e de
-	      avaliação, cada um lendo as saídas do anterior;
-	\item executar os cadernos de análise para gerar as tabelas e as figuras.
-\end{enumerate}
-
 As sementes serão fixadas, e as opções determinísticas do PyTorch serão
-ativadas quando disponíveis; as operações que permanecerem não
-determinísticas na placa gráfica serão documentadas.
+ativadas quando disponíveis.
 
 \subsection{Pacote de replicação}
 \label{subsec:pacote-replicacao}
@@ -845,96 +776,64 @@ a área sob a curva ROC (\metrica{M10}), a matriz de confusão e as
 contagens, para os dois classificadores e as duas linhas de base. A
 acurácia (\metrica{M5}), a precisão (\metrica{M3}) e o $F_1$ (\metrica{M4})
 também serão relatados, para situar os resultados em relação à literatura,
-com a ressalva de que dependem da prevalência das classes no teste.
+com a ressalva de que dependem da prevalência das classes no teste. A
+calibração dos escores (questão Q4) será examinada pelo escore de Brier, pelo
+erro esperado de calibração (\metrica{M12}) e pelo diagrama de
+confiabilidade \cite{guo2017calibration}.
 
 \subsection{Justificativa das estatísticas e das heurísticas}
 \label{subsec:justificativa-estatisticas}
-
-O estudo não testará hipóteses estatísticas: as estimativas serão
-descritivas e acompanhadas de intervalos, o que o padrão admite para
-estudos principalmente descritivos \cite{acmSigsoftDataScience}. As
-estatísticas e as heurísticas previstas e suas justificativas são as
-seguintes.
-
-\begin{itemize}
-	\item \textbf{\textit{Bootstrap} de grupos.} Os intervalos de confiança
-	      de 95\% serão calculados com 2.000 reamostragens dos grupos do
-	      teste, estratificadas por classe, por percentis. O método não exige
-	      supor uma distribuição para as métricas, e reamostrar grupos, e não
-	      fotografias, preserva a dependência entre imagens relacionadas.
-	      Duas mil reamostragens bastam para estabilizar os percentis de
-	      2,5\% e 97,5\%.
-	\item \textbf{Tamanho do teste.} A meta de cerca de 100 grupos
-	      positivos no teste limita a semiamplitude do intervalo da
-	      sensibilidade a cerca de 8 pontos percentuais
-	      (Subseção~\ref{subsec:particoes}).
-	\item \textbf{Validação cruzada em cinco dobras.} Cinco dobras
-	      equilibram o número de grupos de validação por dobra e o custo de
-	      treinamento; a redução para três dobras, se alguma ficar com menos
-	      de 20 grupos positivos, evita estimativas de dobra baseadas em
-	      poucos casos (Subseção~\ref{subsec:procedimento-validacao}).
-	\item \textbf{Área sob a curva ROC na seleção.} A seleção de
-	      configurações usa uma medida que independe do limiar, o que evita
-	      fixar limiares provisórios em cada dobra.
-	\item \textbf{Índice de Youden.} O limiar principal maximiza a acurácia
-	      balanceada, o que equivale a maximizar o índice de Youden; o ponto
-	      secundário, com sensibilidade de pelo menos 0,90, reflete a
-	      prioridade de não perder casos na triagem.
-	\item \textbf{Parada antecipada e mediana das épocas.} Interromper o
-	      treino quando a área sob a curva ROC de validação deixa de melhorar
-	      ajuda a limitar o sobreajuste. A mediana das melhores épocas reduz
-	      a influência de dobras atípicas na duração do retreino.
-	\item \textbf{Média dos escores das sementes.} A média reduz a variação
-	      devida à inicialização e à ordem dos lotes.
-	\item \textbf{Limiares de similaridade perceptual.} Não há valor
-	      universal; os limiares serão calibrados por inspeção visual de uma
-	      amostra de pares (Subseção~\ref{subsec:curadoria-procedencia}).
-	\item \textbf{Mínimo de grupos por faixa de ITA.} Exigir ao menos 10
-	      grupos positivos e 10 negativos evita estimativas com
-	      denominadores muito pequenos.
-\end{itemize}
-
-\subsection{Resultados além de valores únicos}
 \label{subsec:alem-valores-unicos}
 
-Nenhum resultado será relatado como valor isolado. Cada métrica no teste
-virá com seu intervalo de 95\% e com as contagens que lhe dão origem. Como
-os dois modelos serão avaliados nas mesmas fotografias, a diferença entre
-suas acurácias balanceadas será relatada com intervalo pareado, em que
-cada reamostragem usa os mesmos grupos para os dois modelos. A diferença e
-seu intervalo expressam o tamanho do efeito, sem teste de hipótese
-adicional, o que evita o antipadrão de relatar significância sem tamanho
-de efeito ou tamanho de efeito sem intervalo \cite{acmSigsoftDataScience}.
+O estudo não testará hipóteses: as estimativas serão descritivas e
+acompanhadas de intervalos, o que o padrão admite para estudos
+principalmente descritivos, e nenhum resultado será relatado como valor
+isolado \cite{acmSigsoftDataScience}. A
+Tabela~\ref{tab:estatisticas-heuristicas} resume as estatísticas e as
+heurísticas previstas.
 
-A repetição do processamento também será relatada: a média e o desvio
-padrão da área sob a curva ROC entre as dobras da validação cruzada, para
-cada configuração, e as métricas de cada uma das três sementes do retreino
-final, além do resultado com o escore médio. Isso evita os antipadrões de
-conduzir várias execuções sem relatar a variação entre elas e de relatar
-medianas sem indicação de dispersão \cite{acmSigsoftDataScience}.
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{5.8cm}|}
+	\caption{Estatísticas e heurísticas do estudo}\label{tab:estatisticas-heuristicas} \\
+	\hline
+	\textbf{Estatística ou heurística} & \textbf{Uso} & \textbf{Justificativa} \\ \hline
+	\endfirsthead
+	\multicolumn{3}{l}{\footnotesize\textit{Tabela~\ref{tab:estatisticas-heuristicas} (continuação)}} \\
+	\hline
+	\textbf{Estatística ou heurística} & \textbf{Uso} & \textbf{Justificativa} \\ \hline
+	\endhead
+	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	\textit{Bootstrap} de grupos & Intervalos de 95\% de todas as métricas, com 2.000 reamostragens estratificadas por classe e percentis & Não supõe distribuição para as métricas; reamostrar grupos preserva a dependência entre fotos relacionadas \\ \hline
+	Diferença pareada & Diferença de acurácia balanceada entre as redes, com os mesmos grupos em cada reamostragem & Expressa o tamanho do efeito com intervalo, sem teste de hipótese \cite{acmSigsoftDataScience} \\ \hline
+	Variação entre execuções & Média e desvio padrão da AUC nas dobras; métricas de cada semente & Mostra a variação entre execuções, em vez de um único valor \cite{bouthillier2021} \\ \hline
+	Tamanho do teste & Cerca de 100 grupos positivos & Semiamplitude de cerca de 8 pontos percentuais na sensibilidade (Subseção~\ref{subsec:particoes}) \\ \hline
+	Validação cruzada em 5 dobras & Seleção de configurações; 3 dobras se alguma tiver menos de 20 grupos positivos & Equilibra o custo de treino e o número de casos por dobra \\ \hline
+	AUC na seleção & Média nas dobras & Independe do limiar, o que evita limiares provisórios por dobra \\ \hline
+	Índice de Youden e sensibilidade $\geq 0{,}90$ & Limiar principal e secundário & Equilíbrio entre as classes; prioridade de não perder casos na triagem \cite{unal2017} \\ \hline
+	Parada antecipada e mediana das épocas & 5 épocas sem melhora, máximo de 30; retreino pela mediana das melhores épocas & Limita o sobreajuste; reduz a influência de dobras atípicas \\ \hline
+	Média dos escores das sementes & Escore final de cada rede & Reduz a variação devida à inicialização e à ordem dos lotes \\ \hline
+	Limiares de similaridade perceptual & Agrupamento de duplicatas & Sem valor universal; calibrados por inspeção visual de uma amostra de pares \\ \hline
+	Mínimo por faixa de tom de pele & Ao menos 10 grupos positivos e 10 negativos & Evita estimativas com denominadores muito pequenos \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
 \subsection{Análises complementares}
 \label{subsec:analises-complementares}
 
-A calibração dos escores será examinada pelo escore de Brier e pelo erro
-esperado de calibração (\metrica{M12}) e pelo diagrama de confiabilidade,
-com intervalos de agrupamento definidos no desenvolvimento
-\cite{guo2017calibration}. A análise exploratória de predição seletiva
-examinará a relação entre cobertura e acurácia balanceada com regras de
-abstenção definidas no desenvolvimento, informando a fração de fotografias
-classificadas e os denominadores por classe. Falsos positivos e falsos
-negativos serão inspecionados por categoria original e, quando possível,
-por fonte.
-
-Em resposta à ausência de resultados por tom de pele observada na revisão,
-será considerada uma análise exploratória da diferença de desempenho entre
-grupos (\metrica{M6}) por faixas do ângulo de tipologia individual (ITA)
-\cite{chardon1991ita}, se houver regiões verificáveis de pele íntegra. A
-região de medição será inspecionada para excluir fundo e objetos, e o ITA
-será interpretado como medida colorimétrica nas condições de captura,
-sujeita a iluminação e câmera. As métricas por faixa só serão estimadas
-quando houver ao menos 10 grupos positivos e 10 negativos na faixa; nos
-demais casos, serão informados apenas os denominadores e as exclusões.
+A análise exploratória de predição seletiva examinará a relação entre
+cobertura e acurácia balanceada com regras de abstenção definidas no
+desenvolvimento, informando a fração de fotografias classificadas por
+classe. A análise por tom de pele (questão Q5), também exploratória, usará
+as faixas de ITA medidas na curadoria
+(Subseção~\ref{subsec:curadoria-procedencia}). O ITA foi preferido à escala
+de Fitzpatrick, que classifica o fototipo pela reação da pele ao sol e não
+é observável em uma fotografia \cite{fitzpatrick1988}, e à escala Monk, de
+dez tons, cuja anotação visual varia entre anotadores \cite{schumann2023}.
 
 \section{Pressupostos técnicos e ameaças à validade}
 \label{sec:validade-avaliacao-empirica}
