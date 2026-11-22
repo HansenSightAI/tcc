@@ -388,53 +388,77 @@ pseudocódigo.
 		node distance=4.5mm,
 		acao/.style={draw, rounded corners=7pt, align=center, execute at begin node={\hyphenpenalty=10000}, minimum height=7mm, text width=5.4cm, inner sep=3pt},
 		acaop/.style={draw, rounded corners=7pt, align=center, execute at begin node={\hyphenpenalty=10000}, minimum height=7mm, text width=4.0cm, inner sep=3pt},
-		decisao/.style={draw, diamond, aspect=2.6, inner sep=1pt, align=center, font=\tiny},
-		barra/.style={fill=black, minimum width=9.6cm, minimum height=1.2mm, inner sep=0pt},
+		decisao/.style={draw, diamond, aspect=2.4, inner sep=1pt, align=center, font=\tiny},
+		juncao/.style={draw, diamond, minimum size=4mm, inner sep=0pt},
+		barra/.style={fill=black, minimum width=9.4cm, minimum height=1.2mm, inner sep=0pt},
 		inicio/.style={circle, fill=black, minimum size=3.2mm, inner sep=0pt},
 		fim/.style={circle, draw, double, double distance=1pt, fill=black, minimum size=3mm, inner sep=0pt},
 		fluxo/.style={-{Latex[length=1.8mm]}},
 		rot/.style={font=\tiny, inner sep=1pt}
 		]
 		\node[inicio] (ini) {};
-		\node[acao, below=of ini] (a1) {Obter o 32 CSD v2 e registrar versão e SHA-256};
-		\node[acao, below=of a1] (a2) {Selecionar fotografias clínicas e harmonizar rótulos};
-		\node[acao, below=of a2] (a3) {Agrupar duplicatas e fotografias relacionadas};
-		\node[decisao, below=of a3] (d1) {Fonte concentra\\uma classe?};
-		\node[acaop, right=7mm of d1] (a3b) {Registrar a associação e\\verificar fontes com as duas classes};
-		\node[acao, below=6mm of d1] (a4) {Dividir por grupos: desenvolvimento, limiar e teste reservado};
-		\node[barra, below=of a4] (fork) {};
-		\node[acaop, below=5mm of fork, xshift=-2.4cm] (r1) {ResNet-50: validação cruzada\\por grupos e busca em grade};
-		\node[acaop, below=5mm of fork, xshift=2.4cm] (m1) {MobileNetV2: validação cruzada\\por grupos e busca em grade};
-		\node[acaop, below=of r1] (r2) {Retreinar com a melhor\\configuração (3 sementes)};
-		\node[acaop, below=of m1] (m2) {Retreinar com a melhor\\configuração (3 sementes)};
+		\node[acao, below=of ini] (a1) {Baixar o 32 CSD v2};
+		\node[acao, below=of a1] (a2) {Inventariar as fotos (SHA-256)};
+		\node[acao, below=of a2] (a3) {Manter as fotos clínicas e rotular\\(hanseníase ou outra condição)};
+		\node[acao, below=of a3] (a4) {Agrupar cópias, recortes\\e fotos da mesma lesão};
+		\node[decisao, below=of a4] (d1) {Uma fonte concentra\\uma das classes?};
+		\node[acaop, right=7mm of d1] (a4b) {Registrar e controlar\\com a linha de base};
+		\node[juncao, below=5mm of d1] (j1) {};
+		\node[acao, below=of j1] (a5) {Dividir os grupos em validação\\cruzada, limiar e teste};
+		\node[barra, below=of a5] (fork) {};
+		\node[acaop, below=5mm of fork, xshift=-2.4cm] (r1) {ResNet-50: escolher a\\configuração (5 dobras)};
+		\node[acaop, below=5mm of fork, xshift=2.4cm] (m1) {MobileNetV2: escolher a\\configuração (5 dobras)};
+		\node[acaop, below=of r1] (r2) {Retreinar\\(3 sementes)};
+		\node[acaop, below=of m1] (m2) {Retreinar\\(3 sementes)};
 		\node[barra, below=5mm of r2, xshift=2.4cm] (join) {};
-		\node[acao, below=of join] (a5) {Definir limiares na partição de limiar e treinar as linhas de base};
-		\node[decisao, below=of a5] (d2) {Modelos e limiares\\fixados e registrados?};
-		\node[acao, below=6mm of d2] (a6) {Abrir o teste reservado e calcular métricas e intervalos};
-		\node[acao, below=of a6] (a7) {Executar as análises exploratórias (calibração, predição seletiva, ITA)};
-		\node[fim, below=of a7] (fimn) {};
+		\node[acao, below=of join] (a6) {Definir os limiares\\e treinar as linhas de base};
+		\node[acao, below=of a6] (a7) {Fixar modelos e limiares};
+		\node[acao, below=of a7] (a8) {Avaliar uma única vez\\no teste reservado};
+		\node[acao, below=of a8] (a9) {Análises exploratórias:\\predição seletiva e tom de pele};
+		\node[fim, below=of a9] (fimn) {};
 		\draw[fluxo] (ini) -- (a1);
 		\draw[fluxo] (a1) -- (a2);
 		\draw[fluxo] (a2) -- (a3);
-		\draw[fluxo] (a3) -- (d1);
-		\draw[fluxo] (d1) -- node[rot, above] {[sim]} (a3b);
-		\draw[fluxo] (a3b) |- (a4.east);
-		\draw[fluxo] (d1) -- node[rot, right] {[não]} (a4);
-		\draw[fluxo] (a4) -- (fork);
+		\draw[fluxo] (a3) -- (a4);
+		\draw[fluxo] (a4) -- (d1);
+		\draw[fluxo] (d1) -- node[rot, above] {[sim]} (a4b);
+		\draw[fluxo] (a4b) |- (j1.east);
+		\draw[fluxo] (d1) -- node[rot, right] {[não]} (j1);
+		\draw[fluxo] (j1) -- (a5);
+		\draw[fluxo] (a5) -- (fork);
 		\draw[fluxo] (fork.south -| r1.north) -- (r1);
 		\draw[fluxo] (fork.south -| m1.north) -- (m1);
 		\draw[fluxo] (r1) -- (r2);
 		\draw[fluxo] (m1) -- (m2);
 		\draw[fluxo] (r2) -- (r2.south |- join.north);
 		\draw[fluxo] (m2) -- (m2.south |- join.north);
-		\draw[fluxo] (join) -- (a5);
-		\draw[fluxo] (a5) -- (d2);
-		\draw[fluxo] (d2) -- node[rot, right] {[sim]} (a6);
-		\draw[fluxo] (d2.west) -- node[rot, above] {[não]} ++(-1.6,0) |- (a5.west);
+		\draw[fluxo] (join) -- (a6);
 		\draw[fluxo] (a6) -- (a7);
-		\draw[fluxo] (a7) -- (fimn);
+		\draw[fluxo] (a7) -- (a8);
+		\draw[fluxo] (a8) -- (a9);
+		\draw[fluxo] (a9) -- (fimn);
 	\end{tikzpicture}
-	\par\vspace{2pt}{\scriptsize Notação UML: círculo cheio, início; círculo duplo, fim; losango, decisão; barras, bifurcação e junção de atividades paralelas.}
+	\par\vspace{4pt}
+	\begin{tikzpicture}[
+		font=\scriptsize,
+		simb/.style={minimum height=4mm},
+		leg/.style={anchor=west, inner sep=1pt}
+		]
+		\node[circle, fill=black, minimum size=3.2mm, inner sep=0pt] (l1) at (0,0) {};
+		\node[leg] at (0.3,0) {Início};
+		\node[circle, draw, double, double distance=1pt, fill=black, minimum size=3mm, inner sep=0pt] at (1.7,0) {};
+		\node[leg] at (2.0,0) {Fim};
+		\node[draw, rounded corners=4pt, minimum width=8mm, minimum height=4mm] at (3.4,0) {};
+		\node[leg] at (3.9,0) {Atividade};
+		\draw (5.85,0) -- (6.25,0.22) -- (6.65,0) -- (6.25,-0.22) -- cycle;
+		\node[leg] at (6.75,0) {Decisão};
+		\node[draw, diamond, minimum size=4mm, inner sep=0pt] at (8.4,0) {};
+		\node[leg] at (8.7,0) {Junção};
+		\fill[black] (9.9,-0.06) rectangle (10.6,0.06);
+		\node[leg] at (10.7,0) {Paralelo};
+		\draw[-{Latex[length=1.8mm]}] (12.2,0) -- (12.9,0);
+		\node[leg] at (13.0,0) {Fluxo};
+	\end{tikzpicture}
 	\fonte{Autores.}
 \end{figure}
 
