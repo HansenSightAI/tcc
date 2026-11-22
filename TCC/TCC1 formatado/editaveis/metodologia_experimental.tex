@@ -374,51 +374,9 @@ pseudocódigo.
 	\centering
 	\caption{Diagrama de fluxo de dados do estudo}
 	\label{fig:dfd-estudo}
-	\begin{tikzpicture}[
-		font=\scriptsize,
-		execute at begin node={\hyphenpenalty=10000},
-		entidade/.style={draw, thick, fill=black!6, align=center, text width=2.4cm, minimum height=9mm},
-		processo/.style={draw, rounded corners=6pt, align=center, text width=3.0cm, minimum height=10mm},
-		deposito/.style={align=left, text width=3.0cm, minimum height=7mm, inner xsep=4pt,
-				append after command={\pgfextra{\draw (\tikzlastnode.north west) -- (\tikzlastnode.north east)
-							(\tikzlastnode.south west) -- (\tikzlastnode.south east)
-							(\tikzlastnode.north west) -- (\tikzlastnode.south west);}}},
-		fluxo/.style={-{Latex[length=1.8mm]}},
-		rot/.style={font=\tiny, align=center, inner sep=1pt, text width=2.0cm}
-		]
-		% Processos (coluna central)
-		\node[processo] (p1) at (5.2,0) {1. Curar e inventariar};
-		\node[processo] (p2) at (5.2,-2.6) {2. Agrupar e particionar};
-		\node[processo] (p3) at (5.2,-5.2) {3. Pré-processar, treinar e selecionar as redes};
-		\node[processo] (p4) at (5.2,-7.8) {4. Definir limiares e treinar linhas de base};
-		\node[processo] (p5) at (5.2,-10.4) {5. Avaliar no teste reservado};
-		% Entidades externas (coluna esquerda)
-		\node[entidade] (repo) at (0,0) {Repositório público do 32 CSD v2};
-		\node[entidade] (rev) at (0,-1.75) {Revisores (inspeção manual)};
-		\node[entidade] (tv) at (0,-5.2) {TorchVision (pesos ImageNet)};
-		% Depósitos de dados (coluna direita)
-		\node[deposito] (d1) at (10.4,0) {D1\enspace Inventário};
-		\node[deposito] (d2) at (10.4,-2.6) {D2\enspace Listas de partição e de dobras};
-		\node[deposito] (d3) at (10.4,-5.2) {D3\enspace Modelos e configurações};
-		\node[deposito] (d4) at (5.2,-12.7) {D4\enspace Predições e métricas};
-		% Fluxos
-		\draw[fluxo] (repo.east |- p1.170) -- node[rot, above] {imagens e rótulos originais} (p1.170);
-		\draw[fluxo] (rev.east) -- node[rot, below, pos=0.45] {decisões de inclusão} (p1.190);
-		\draw[fluxo] (rev.south east) -- node[rot, below left, pos=0.55] {duplicatas confirmadas} (p2.west);
-		\draw[fluxo] (p1) -- node[rot, above] {SHA-256, rótulos e procedência} (d1);
-		\draw[fluxo] (d1.south west) -- node[rot, sloped, above] {fotografias elegíveis} (p2.north east);
-		\draw[fluxo] (p2) -- node[rot, above] {grupos por partição e por dobra} (d2);
-		\draw[fluxo] (d2.south west) -- node[rot, sloped, above] {dobras do desenvolvimento} (p3.north east);
-		\draw[fluxo] (tv) -- node[rot, above] {pesos pré-treinados} (p3);
-		\draw[fluxo] (p3) -- node[rot, above] {configuração escolhida e pesos} (d3);
-		\draw[fluxo] (d3.south west) -- node[rot, sloped, above] {modelos retreinados} (p4.north east);
-		\draw[fluxo] (d2.east) -- ++(0.7,0) |- node[rot, above, pos=0.75] {partição de limiar e metadados} (p4.east);
-		\draw[fluxo] (d2.20) -- ++(1.5,0) |- node[rot, above, pos=0.75] {teste reservado} (p5.east);
-		\draw[fluxo] (p4) -- node[rot, right] {limiares e linhas de base fixados} (p5);
-		\draw[fluxo] (p5) -- node[rot, right] {predições, métricas e intervalos} (d4);
-	\end{tikzpicture}
-	\par\vspace{2pt}{\scriptsize Notação: retângulos sombreados são entidades externas; retângulos arredondados, processos; retângulos abertos, depósitos de dados; setas, fluxos de dados.}
-	\fonte{Autores.}
+	% Fonte editável: dados/Arquiteturas/dfd-estudo.svg (exportado para PDF com o Inkscape).
+	\includegraphics[angle=90,height=0.80\textheight]{figuras/dfd-estudo.pdf}
+	\fonte{Autores, com fotografias do 32 CSD v2 \cite{cahyantoDados2026}, licença CC BY 4.0.}
 \end{figure}
 
 \begin{figure}[H]
