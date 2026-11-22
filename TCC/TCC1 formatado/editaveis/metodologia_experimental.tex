@@ -340,21 +340,37 @@ ocorrerá nas seguintes etapas.
 \label{subsec:particoes}
 
 A divisão entre desenvolvimento e teste usará o grupo de fotografias
-relacionadas como unidade e será estratificada pela categoria original, o
-que preserva a proporção entre as classes e mantém cada condição da classe
-negativa nas duas partes. Cerca de 20\% a 25\% dos grupos irão para o teste
-reservado, com a meta de reunir cerca de 100 grupos positivos: com
-sensibilidade próxima de 0,80, o intervalo de confiança de 95\% teria
-semiamplitude de cerca de 8 pontos percentuais, precisão suficiente para
-distinguir desempenhos como os relatados na revisão. O desenvolvimento será
-dividido pelos mesmos critérios em validação cruzada (cerca de 80\% dos
-grupos) e partição de limiar (cerca de 20\%). As listas serão geradas com
-semente fixa e salvas antes do treino, e será conferido que nenhum
-identificador SHA-256 ou grupo aparece em mais de uma partição. A divisão
-de 80\%, 10\% e 10\% das imagens sugerida na página do 32 CSD
-\cite{cahyantoDados2026} não será adotada, por separar fotografias isoladas
-e não grupos. O teste ficará reservado até a fixação dos classificadores e
-de seus limiares.
+relacionadas como unidade, para que cópias, recortes e fotos da mesma lesão
+não fiquem em partições diferentes e inflem o desempenho por vazamento
+\cite{kapoor2023}. Separar treino e avaliação respeitando a estrutura de
+dependência dos dados, e não as observações isoladas, é a recomendação para
+dados agrupados ou hierárquicos \cite{roberts2017}. A divisão será
+estratificada pela categoria original: a estratificação mantém a proporção
+das classes em cada parte e reduz a variância das estimativas
+\cite{kohavi1995}, além de garantir que cada condição da classe negativa
+apareça no desenvolvimento e no teste.
+
+O tamanho do teste foi definido pela precisão desejada para a sensibilidade.
+A semiamplitude $d$ do intervalo de confiança de 95\% de uma proporção $p$
+estimada em $n$ casos é $d = 1{,}96\sqrt{p(1-p)/n}$ \cite{hajiantilaki2014}:
+com sensibilidade próxima de 0,80 e 100 grupos positivos, $d \approx 0{,}078$,
+cerca de 8 pontos percentuais, precisão suficiente para distinguir
+desempenhos como os relatados na revisão. Estima-se que reunir cerca de 100
+grupos positivos, a partir das 672 fotografias de hanseníase da coleção,
+exija reservar cerca de 20\% a 25\% dos grupos para o teste; a proporção
+final será fixada antes do treino, depois do agrupamento.
+
+O desenvolvimento será dividido pelos mesmos critérios em validação cruzada
+(cerca de 80\% dos grupos) e partição de limiar (cerca de 20\%). Selecionar
+modelos e limiares nos mesmos dados usados para estimar o desempenho torna a
+estimativa otimista \cite{varma2006}; por isso, cada decisão usa uma
+partição própria, e o teste fica reservado até a fixação dos classificadores
+e de seus limiares. As listas serão geradas com semente fixa e salvas antes
+do treino, como parte do pacote de replicação \cite{acmSigsoftDataScience},
+e será conferido que nenhum identificador SHA-256 ou grupo aparece em mais de
+uma partição. A divisão de 80\%, 10\% e 10\% das imagens sugerida na página
+do 32 CSD \cite{cahyantoDados2026} não será adotada, por separar fotografias
+isoladas e não grupos.
 
 \section{Configuração do estudo e modelagem}
 \label{sec:configuracao-avaliacao-empirica}
