@@ -410,8 +410,8 @@ pseudocódigo.
 		\node[acaop, right=7mm of d1] (a3b) {Registrar a associação e\\verificar fontes com as duas classes};
 		\node[acao, below=6mm of d1] (a4) {Dividir por grupos: desenvolvimento, limiar e teste reservado};
 		\node[barra, below=of a4] (fork) {};
-		\node[acaop, below=5mm of fork, xshift=-2.4cm] (r1) {ResNet-50: validação cruzada\\em 5 dobras por grupos e\\busca em grade};
-		\node[acaop, below=5mm of fork, xshift=2.4cm] (m1) {MobileNetV2: validação cruzada\\em 5 dobras por grupos e\\busca em grade};
+		\node[acaop, below=5mm of fork, xshift=-2.4cm] (r1) {ResNet-50: validação cruzada\\por grupos e busca em grade};
+		\node[acaop, below=5mm of fork, xshift=2.4cm] (m1) {MobileNetV2: validação cruzada\\por grupos e busca em grade};
 		\node[acaop, below=of r1] (r2) {Retreinar com a melhor\\configuração (3 sementes)};
 		\node[acaop, below=of m1] (m2) {Retreinar com a melhor\\configuração (3 sementes)};
 		\node[barra, below=5mm of r2, xshift=2.4cm] (join) {};
@@ -529,16 +529,18 @@ para escolher a configuração de cada rede, e o teste reservado, usado uma
 	      ficar com menos de 20 grupos positivos, $k$ será reduzido para 3
 	      antes de qualquer treinamento.
 	\item[Treino e validação em cada dobra.] Para cada configuração, a rede
-	      é treinada em quatro dobras e avaliada na dobra restante, em
+	      é treinada em $k-1$ dobras e avaliada na dobra restante, em
 	      rodízio, até que cada dobra tenha servido de validação. A medida de
-	      seleção é a área sob a curva ROC (\metrica{M10}) média nas cinco
-	      dobras: ela independe do limiar e evita fixar limiares provisórios
-	      em cada dobra. O treino em cada dobra é interrompido quando essa
-	      área não melhora por cinco épocas consecutivas, com limite de 30
-	      épocas, e a época de interrupção é registrada.
+	      seleção é a média da área sob a curva ROC (\metrica{M10}) nas
+	      $k$ dobras. Em cada dobra, o treino parte dos pesos pré-treinados e
+	      termina após cinco épocas consecutivas sem melhora na área sob a
+	      curva ROC da validação ou ao atingir 30 épocas. Para a seleção,
+	      registram-se o maior valor observado na validação e a primeira
+	      época em que esse valor foi atingido.
 	\item[Retreino.] Cada rede é retreinada com a configuração escolhida em
 	      todos os grupos da validação cruzada, pelo número de épocas igual à
-	      mediana das épocas de interrupção observadas nas dobras. O retreino
+	      mediana das melhores épocas da configuração escolhida nas dobras,
+	      partindo novamente dos pesos pré-treinados. O retreino
 	      é repetido com três sementes, e o escore final de cada fotografia é
 	      a média dos escores das três execuções. As métricas de cada semente
 	      também são relatadas, para mostrar a variação entre execuções.
@@ -547,13 +549,70 @@ para escolher a configuração de cada rede, e o teste reservado, usado uma
 	      acurácia balanceada (\metrica{M11}), o que equivale a maximizar o
 	      índice de Youden. Em caso de empate, prevalece o limiar com maior
 	      sensibilidade (\metrica{M1}). Como ponto de operação secundário,
-	      também pré-definido, é registrado o limiar que alcança
-	      sensibilidade de pelo menos 0,90 na mesma partição, pela relevância
-	      de não perder casos na triagem.
+	      também pré-definido, escolhe-se o limiar de maior especificidade
+	      entre os que atingem sensibilidade de pelo menos 0,90 nessa mesma
+	      partição. Entre candidatos com a mesma especificidade, prevalece
+	      o de maior sensibilidade. O desempenho nesse ponto de operação
+	      será estimado no teste com o limiar já fixado.
 	\item[Abertura do teste.] Os classificadores, os limiares e as linhas de
 	      base são fixados e registrados antes da abertura do teste, que é
 	      avaliado uma única vez.
 \end{description}
+
+\begin{algorithm}[H]
+	\caption{Treinamento, seleção e avaliação dos classificadores}
+	\label{alg:procedimento-experimental}
+	\footnotesize
+	\algrenewcommand{\algorithmicif}{\textbf{se}}
+	\algrenewcommand{\algorithmicthen}{\textbf{então}}
+	\begin{algorithmic}[1]
+		\Require coleção curada $C$ com rótulos e grupos, grade $\mathcal{H}$ e três sementes $S$
+		\Ensure predições, métricas e intervalos de 95\% no teste reservado $T$
+		\State $(D,T) \gets$ \Call{DivisãoPorGrupos}{$C$, teste de 20\% a 25\%} \Comment{estratificada}
+		\State $(D_{\mathrm{cv}}, D_{\mathrm{lim}}) \gets$ \Call{DivisãoPorGrupos}{$D$, 20\% para limiar}
+		\State $k \gets 5$ e $(F_1,\ldots,F_k) \gets$ \Call{DobrasPorGrupos}{$D_{\mathrm{cv}}, k$}
+		\If{alguma dobra tiver menos de 20 grupos positivos}
+			\State $k \gets 3$ e $(F_1,\ldots,F_k) \gets$ \Call{DobrasPorGrupos}{$D_{\mathrm{cv}}, k$}
+		\EndIf
+		\ForAll{rede $a \in \{\mbox{ResNet-50}, \mbox{MobileNetV2}\}$}
+			\ForAll{configuração $h \in \mathcal{H}$ e dobra de validação $F_i$}
+				\State Treinar $a$ com $h$ em $D_{\mathrm{cv}} \setminus F_i$, a partir dos pesos pré-treinados
+				\State Medir a AUC em $F_i$ após cada época e parar após 5 sem melhora ou 30 no total
+				\State Registrar a melhor AUC $u_{h,i}$ e a primeira época $e_{h,i}$ que a atingiu
+			\EndFor
+			\State $h_a^* \gets \arg\max_{h \in \mathcal{H}} \frac{1}{k}\sum_{i=1}^{k} u_{h,i}$
+			\State $e_a^* \gets \mathrm{mediana}_{i}(e_{h_a^*,i})$
+			\ForAll{semente $s \in S$}
+				\State Retreinar $a$ com $h_a^*$ em $D_{\mathrm{cv}}$ por $e_a^*$ épocas e obter o modelo $M_{a,s}$
+			\EndFor
+			\State Definir $\bar{p}_a(x) = \frac{1}{|S|}\sum_{s \in S} p_{a,s}(x)$, com $p_{a,s}$ dado pela sigmoide de $M_{a,s}$
+			\State Em $D_{\mathrm{lim}}$, escolher $\tau_a$ pela maior acurácia balanceada
+			\State Em $D_{\mathrm{lim}}$, escolher $\tau'_a$ pela maior especificidade com sensibilidade $\geq 0{,}90$
+		\EndFor
+		\State Ajustar as linhas de base em $D$ e registrar os modelos e limiares fixados
+		\State Avaliar os modelos e as linhas de base no mesmo teste $T$
+		\State Calcular as métricas e os intervalos por \textit{bootstrap} de grupos ($B = 2.000$)
+		\State Usar os mesmos grupos em cada reamostragem para comparar as redes de forma pareada
+	\end{algorithmic}
+	\medskip
+	\noindent\textbf{Legenda das variáveis.}
+	$C$: coleção curada; $D$: conjunto de desenvolvimento;
+	$D_{\mathrm{cv}}$: partição de validação cruzada;
+	$D_{\mathrm{lim}}$: partição de ajuste dos limiares; $T$: teste reservado.
+	$k$: número de dobras; $i$: índice da dobra; $F_i$: dobra de validação $i$.
+	$a$: arquitetura da rede; $\mathcal{H}$: grade de hiperparâmetros;
+	$h$: configuração candidata; $h_a^*$: configuração selecionada.
+	$u_{h,i}$: melhor área sob a curva ROC (AUC) para $h$ na dobra $i$;
+	$e_{h,i}$: primeira época que atingiu esse valor;
+	$e_a^*$: número de épocas do retreino.
+	$S$: conjunto de sementes; $s$: semente;
+	$M_{a,s}$: modelo retreinado com $s$; $x$: fotografia;
+	$p_{a,s}(x)$: escore de $M_{a,s}$ para $x$;
+	$\bar{p}_a(x)$: média dos escores em $S$.
+	$\tau_a$ e $\tau'_a$: limiares principal e secundário, respectivamente;
+	$B$: número de reamostragens no \textit{bootstrap}.
+	\fonte{Autores.}
+\end{algorithm}
 
 A validação cruzada foi preferida a uma única divisão de validação porque
 a revisão mostrou que 14 dos 16 estudos que desenvolvem modelos avaliam o
@@ -565,37 +624,6 @@ validação cruzada aninhada, que repetiria a seleção dentro de cada dobra
 externa, não será adotada pelo custo computacional; o teste reservado, que
 não participa de nenhuma escolha, cumpre o papel de estimativa
 independente da seleção.
-
-\begin{algorithm}[H]
-	\caption{Procedimento do estudo para cada rede}
-	\label{alg:procedimento-experimental}
-	\footnotesize
-	\begin{algorithmic}[1]
-		\Require coleção curada $C$ com grupos; grade de hiperparâmetros $\mathcal{H}$; $k = 5$; sementes $S = \{s_1, s_2, s_3\}$
-		\Ensure predições, métricas e intervalos de 95\% no teste reservado
-		\State $(D, T) \gets$ \Call{DivisãoPorGrupos}{$C$, estratificada, teste de 20\% a 25\%} \Comment{$T$ permanece fechado}
-		\State $(D_{cv}, D_{lim}) \gets$ \Call{DivisãoPorGrupos}{$D$, estratificada, 20\% para limiar}
-		\State $F_1, \dots, F_k \gets$ \Call{DobrasPorGrupos}{$D_{cv}$, $k$} \Comment{mesmas dobras para as duas redes}
-		\ForAll{rede $a \in \{\mbox{ResNet-50}, \mbox{MobileNetV2}\}$}
-		\ForAll{configuração $h \in \mathcal{H}$}
-		\For{$i = 1$ \textbf{até} $k$}
-		\State $M \gets$ \Call{AjusteFino}{$a$, $h$, $D_{cv} \setminus F_i$} \Comment{pesos de classe só no treino}
-		\State $\mathit{AUC}_{h,i} \gets$ \Call{AUC}{$M$, $F_i$};\; $e_{h,i} \gets$ época de interrupção
-		\EndFor
-		\EndFor
-		\State $h^{*}_{a} \gets \arg\max_{h} \frac{1}{k}\sum_{i} \mathit{AUC}_{h,i}$
-		\ForAll{semente $s \in S$}
-		\State $M_{a,s} \gets$ \Call{AjusteFino}{$a$, $h^{*}_{a}$, $D_{cv}$, épocas $= \mathrm{mediana}_i(e_{h^{*}_{a},i})$, $s$}
-		\EndFor
-		\State $\bar{p}_a(x) \gets \frac{1}{|S|}\sum_{s} M_{a,s}(x)$ \Comment{escore médio das sementes}
-		\State $\tau_a \gets$ limiar que maximiza a acurácia balanceada de $\bar{p}_a$ em $D_{lim}$
-		\State $\tau'_a \gets$ limiar com sensibilidade $\geq 0{,}90$ em $D_{lim}$
-		\EndFor
-		\State Treinar as linhas de base em $D$; fixar e registrar modelos e limiares
-		\State Abrir $T$; calcular as métricas e os intervalos por \textit{bootstrap} de grupos ($B = 2.000$)
-	\end{algorithmic}
-	\fonte{Autores.}
-\end{algorithm}
 
 \subsection{Seleção de hiperparâmetros}
 \label{subsec:hiperparametros}
@@ -860,9 +888,9 @@ seguintes.
 	      secundário, com sensibilidade de pelo menos 0,90, reflete a
 	      prioridade de não perder casos na triagem.
 	\item \textbf{Parada antecipada e mediana das épocas.} Interromper o
-	      treino quando a área sob a curva ROC deixa de melhorar evita o
-	      sobreajuste, e a mediana das épocas de interrupção é pouco
-	      sensível a dobras atípicas.
+	      treino quando a área sob a curva ROC de validação deixa de melhorar
+	      ajuda a limitar o sobreajuste. A mediana das melhores épocas reduz
+	      a influência de dobras atípicas na duração do retreino.
 	\item \textbf{Média dos escores das sementes.} A média reduz a variação
 	      devida à inicialização e à ordem dos lotes.
 	\item \textbf{Limiares de similaridade perceptual.} Não há valor
