@@ -100,70 +100,9 @@ demais ameaças estão discutidas na Subseção~\ref{sec:validade-avaliacao-empi
 \label{sec:cronograma-segunda-etapa}
 
 Na segunda etapa, o estudo planejado no
-Capítulo~\ref{cap:metodologia-experimental} será executado. A
-Figura~\ref{fig:cronograma-segunda-etapa} apresenta a previsão das
-macroatividades para o primeiro semestre de 2027, sujeita ao calendário
-acadêmico e à disponibilidade do equipamento. Se o acesso ao AI4Leprosy for
-concedido, a avaliação no teste reservado será repetida nessa coleção, sem
-alterar o protocolo.
-
-\begin{figure}[H]
-	\centering
-	\caption{Cronograma previsto das macroatividades da segunda etapa da monografia (2027.1)}
-	\label{fig:cronograma-segunda-etapa}
-	\begingroup
-	\definecolor{ganttClaro}{HTML}{B8DBEC}
-	\definecolor{ganttMedio}{HTML}{7FC2E3}
-	\definecolor{ganttAzul}{HTML}{2453A6}
-	\definecolor{ganttEscuro}{HTML}{26365B}
-	\pgfcalendardatetojulian{2027-03-01}{\pgfcalendarcurrentjulian}
-	\edef\inicioCronogramaB{\the\pgfcalendarcurrentjulian}
-	\newcommand{\diaCronogramaB}[2]{%
-		\pgfcalendardatetojulian{#1}{\pgfcalendarcurrentjulian}%
-		\edef#2{\the\numexpr\pgfcalendarcurrentjulian-\inicioCronogramaB\relax}%
-	}
-	\begin{tikzpicture}[
-		x=0.00395\linewidth, y=8.5mm,
-		font=\footnotesize, text=ganttEscuro,
-		rotulo/.style={anchor=west, align=left, inner sep=0pt},
-	]
-		\foreach \mes/\inicio/\limite/\fundo/\tinta [count=\coluna from 0] in {
-			Março/2027-03-01/2027-04-01/ganttClaro/ganttEscuro,
-			Abril/2027-04-01/2027-05-01/ganttMedio/ganttEscuro,
-			Maio/2027-05-01/2027-06-01/ganttAzul/white,
-			Junho/2027-06-01/2027-07-01/ganttEscuro/white,
-			Julho/2027-07-01/2027-08-01/ganttClaro/ganttEscuro%
-		}{
-			\diaCronogramaB{\inicio}{\esquerda}
-			\diaCronogramaB{\limite}{\direita}
-			\ifodd\coluna\relax
-				\fill[black!4] (\esquerda,-0.5) rectangle (\direita,-7.5);
-			\fi
-			\fill[\fundo] (\esquerda,0.5) rectangle (\direita,-0.5);
-			\node[font=\footnotesize\bfseries,text=\tinta]
-				at ({(\esquerda+\direita)/2},0) {\mes};
-		}
-		\node[rotulo,xshift=-0.38\linewidth] at (0,0) {\textbf{Macroatividades}};
-		\draw[ganttEscuro] ([xshift=-0.385\linewidth]0,-0.5) -- (153,-0.5);
-		\foreach \linha in {1,...,7}{
-			\draw[black!14] ([xshift=-0.385\linewidth]0,{-\linha-0.5}) -- (153,{-\linha-0.5});
-		}
-		\foreach \nome/\periodo/\inicio/\fim/\cor [count=\linha] in {
-			{Curadoria e agrupamento}/{março}/2027-03-01/2027-03-31/ganttMedio,
-			{Partições e linhas de base}/{abril}/2027-04-01/2027-04-15/ganttMedio,
-			{Treino e seleção por validação cruzada}/{abril e maio}/2027-04-01/2027-05-15/ganttAzul,
-			{Retreino, limiares e fixação dos modelos}/{maio}/2027-05-16/2027-05-31/ganttAzul,
-			{Avaliação no teste e análises}/{junho}/2027-06-01/2027-06-20/ganttAzul,
-			{Redação dos resultados e da discussão}/{junho e julho}/2027-06-01/2027-07-10/ganttEscuro,
-			{Revisão e defesa}/{julho}/2027-07-11/2027-07-31/ganttEscuro%
-		}{
-			\diaCronogramaB{\inicio}{\esquerda}
-			\diaCronogramaB{\fim+1}{\direita}
-			\node[rotulo,xshift=-0.38\linewidth] at (0,-\linha)
-				{\textbf{\nome}\\[-1pt]{\scriptsize\textcolor{black!65}{\periodo}}};
-			\fill[\cor] (\esquerda,{-\linha+0.11}) rectangle (\direita,{-\linha-0.11});
-		}
-	\end{tikzpicture}
-	\endgroup
-	\fonte{Autores.}
-\end{figure}
+Capítulo~\ref{cap:metodologia-experimental} será executado. As atividades
+previstas estão descritas na Subseção~\ref{subsec:atividades-segunda-etapa},
+com o fluxo na Figura~\ref{fig:fluxo-segunda-etapa} e o cronograma, para o
+primeiro semestre de 2027, na Figura~\ref{fig:cronograma-segunda-etapa}. Se
+o acesso ao AI4Leprosy for concedido, a avaliação no teste reservado será
+repetida nessa coleção, sem alterar o protocolo.
