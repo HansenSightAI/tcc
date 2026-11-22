@@ -129,7 +129,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	& Subseção~\ref{subsec:justificativa-estatisticas}: intervalos de 95\%, tamanho do efeito pareado e variação entre dobras e sementes \\ \hline
 	Pressupostos técnicos e ameaças à validade específicos de ciência de dados
 	& Subseção~\ref{subsec:ciencia-de-dados} e Seção~\ref{sec:avaliacao-generalizacao}: vazamento, avaliação interna e externa. Subseções~\ref{subsec:rq5-rq6-tom-pele} e~\ref{subsec:rq7-generalizacao}: limites das evidências por tom de pele e em outras bases
-	& Seção~\ref{sec:validade-avaliacao-empirica}: pressupostos técnicos e validade de construto, interna, de conclusão e externa \\ \hline
+	& Subseção~\ref{sec:validade-avaliacao-empirica}: pressupostos técnicos e validade de construto, interna, de conclusão e externa \\ \hline
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -859,7 +859,7 @@ de Fitzpatrick, que classifica o fototipo pela reação da pele ao sol e não
 é observável em uma fotografia \cite{fitzpatrick1988}, e à escala Monk, de
 dez tons, cuja anotação visual varia entre anotadores \cite{schumann2023}.
 
-\section{Pressupostos técnicos e ameaças à validade}
+\subsection{Ameaças à validade}
 \label{sec:validade-avaliacao-empirica}
 
 A avaliação da validade segue a classificação de \citeonline{wohlin2024}
@@ -869,7 +869,7 @@ dados, como pede o padrão \cite{acmSigsoftDataScience}. Para cada ameaça,
 indica-se a medida prevista para reduzi-la ou o limite que ela impõe à
 interpretação.
 
-\subsection{Pressupostos técnicos}
+\subsubsection*{Pressupostos técnicos}
 \label{subsec:pressupostos-tecnicos}
 
 O estudo supõe que grupos diferentes de fotografias são independentes; como
@@ -885,7 +885,7 @@ fino supõe que as representações aprendidas no ImageNet são úteis para
 fotografias de pele, o que a comparação com as linhas de base permite
 verificar.
 
-\subsection{Validade de construto}
+\subsubsection*{Validade de construto}
 
 A validade de construto trata de quanto as medidas representam o que o
 estudo pretende investigar: a capacidade de distinguir fotografias de
@@ -904,7 +904,7 @@ generaliza para outras coleções ou modalidades. O \textit{mono-method bias}
 balanceada como principal e a sensibilidade, a especificidade, a área sob a
 curva ROC, a calibração e a matriz de confusão como complementares.
 
-\subsection{Validade interna}
+\subsubsection*{Validade interna}
 
 A validade interna trata de fatores que poderiam produzir o desempenho
 observado sem relação com a capacidade das redes. As duas ameaças centrais
@@ -929,7 +929,7 @@ operações não determinísticas da placa gráfica fazem o mesmo código produz
 pesos diferentes; as sementes serão fixadas e o retreino será repetido com
 três sementes, com a variação relatada.
 
-\subsection{Validade externa}
+\subsubsection*{Validade externa}
 
 A validade externa trata da possibilidade de generalizar os resultados. Uma
 ameaça central é a \textit{interaction of selection and treatment}: o teste
@@ -946,7 +946,7 @@ que fotos de celular tiradas na atenção primária, e o uso no SUS exige
 validação externa prospectiva. Por isso, os resultados não serão
 apresentados como evidência de efetividade clínica.
 
-\subsection{Validade de conclusão}
+\subsubsection*{Validade de conclusão}
 
 A validade de conclusão trata da correção das inferências sobre os
 resultados. A principal ameaça é o \textit{low statistical power}: com poucos
