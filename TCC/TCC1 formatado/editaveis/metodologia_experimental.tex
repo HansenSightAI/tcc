@@ -401,8 +401,8 @@ pseudocódigo.
 		\node[acao, below=of a1] (a2) {Inventariar as fotos (SHA-256)};
 		\node[acao, below=of a2] (a3) {Manter as fotos clínicas e rotular\\(hanseníase ou não-hanseníase)};
 		\node[acao, below=of a3] (a4) {Agrupar cópias, recortes\\e fotos da mesma lesão};
-		\node[decisao, below=of a4] (d1) {Uma fonte concentra\\uma das classes?};
-		\node[acaop, right=7mm of d1] (a4b) {Registrar e controlar\\com a linha de base};
+		\node[decisao, below=of a4] (d1) {As fotos de uma classe\\vêm quase todas\\da mesma origem?};
+		\node[acaop, right=7mm of d1] (a4b) {Registrar e medir o atalho\\com a linha de base\\de metadados};
 		\node[juncao, below=5mm of d1] (j1) {};
 		\node[acao, below=of j1] (a5) {Dividir os grupos em validação\\cruzada, limiar e teste};
 		\node[barra, below=of a5] (fork) {};
@@ -862,153 +862,117 @@ dez tons, cuja anotação visual varia entre anotadores \cite{schumann2023}.
 \section{Pressupostos técnicos e ameaças à validade}
 \label{sec:validade-avaliacao-empirica}
 
-A interpretação seguirá as quatro dimensões da validade discutidas por
-\citeonline{wohlin2024}, precedidas pelos pressupostos técnicos próprios
-de estudos de ciência de dados, que o padrão pede que sejam explicitados
-\cite{acmSigsoftDataScience}. Para cada ameaça, indica-se a medida prevista
-para reduzi-la ou o limite que ela impõe à interpretação.
+A avaliação da validade segue a classificação de \citeonline{wohlin2024}
+em validade de construto, interna, externa e de conclusão. Antes dela, são
+explicitados os pressupostos técnicos próprios de estudos de ciência de
+dados, como pede o padrão \cite{acmSigsoftDataScience}. Para cada ameaça,
+indica-se a medida prevista para reduzi-la ou o limite que ela impõe à
+interpretação.
 
 \subsection{Pressupostos técnicos}
 \label{subsec:pressupostos-tecnicos}
 
-\begin{enumerate}
-	\item \textbf{Independência entre grupos.} As estimativas e os
-	      intervalos supõem que grupos diferentes são independentes. Como a
-	      coleção não identifica pacientes, fotografias da mesma pessoa que
-	      não sejam detectadas como relacionadas podem cair em grupos
-	      distintos. O agrupamento por similaridade reduz, mas não elimina,
-	      essa dependência residual.
-	\item \textbf{Rótulos como referência.} O estudo supõe que os rótulos da
-	      coleção representam a condição fotografada. Erros de rótulo afetam
-	      treino e teste da mesma forma e não são detectáveis apenas pelos
-	      dados; a inspeção manual de amostras estima sua ocorrência.
-	\item \textbf{Prevalência da coleção.} A proporção de hanseníase no
-	      teste, cerca de 13\%, decorre da composição da coleção e não da
-	      prevalência em um serviço de saúde. Medidas dependentes da
-	      prevalência, como precisão, $F_1$ e acurácia, e os limiares
-	      definidos na partição de limiar não se transferem diretamente para
-	      outro contexto.
-	\item \textbf{Adequação do pré-treinamento.} O ajuste fino supõe que as
-	      representações aprendidas no ImageNet são úteis para fotografias de
-	      pele. A comparação com as linhas de base mostra se as redes de fato
-	      extraem informação do conteúdo das imagens.
-\end{enumerate}
+O estudo supõe que grupos diferentes de fotografias são independentes; como
+a coleção não identifica pacientes, fotos da mesma pessoa não detectadas
+como relacionadas podem cair em grupos distintos, e o agrupamento por
+similaridade reduz, mas não elimina, essa dependência. Supõe também que os
+rótulos da coleção representam a condição fotografada, o que a inspeção
+manual de amostras verifica apenas em parte. A proporção de hanseníase,
+cerca de 13\% da coleção, decorre da composição do 32 CSD e não da
+prevalência em um serviço de saúde, de modo que precisão, $F_1$, acurácia e
+limiares não se transferem diretamente para outro contexto. Por fim, o ajuste
+fino supõe que as representações aprendidas no ImageNet são úteis para
+fotografias de pele, o que a comparação com as linhas de base permite
+verificar.
 
 \subsection{Validade de construto}
 
-\begin{itemize}
-	\item \textbf{Referência sem confirmação clínica.} O desempenho expressa a
-	      concordância com os rótulos da coleção, que não foram confirmados
-	      por exame clínico, baciloscopia ou biópsia neste estudo. Os
-	      resultados serão descritos como concordância com a anotação da
-	      coleção, e não como acurácia diagnóstica.
-	\item \textbf{Definição das classes.} O agrupamento das três formas de
-	      hanseníase em uma classe positiva e das demais condições em uma
-	      classe negativa delimita o que a medida representa. A
-	      sensibilidade será também relatada por categoria original de
-	      hanseníase, e os erros, por categoria da classe negativa.
-	\item \textbf{Viés de operação única.} O construto ``capacidade de
-	      distinguir hanseníase'' é medido em uma só coleção e com uma só
-	      modalidade de imagem. Por isso, o estudo não generaliza o construto
-	      para outras coleções nem para outras modalidades.
-	\item \textbf{Escolha das métricas.} Uma única métrica não descreve o
-	      desempenho na triagem. A acurácia balanceada é a medida principal,
-	      mas a sensibilidade, a especificidade, a área sob a curva ROC e a
-	      calibração serão relatadas em conjunto, com a matriz de confusão.
-\end{itemize}
+A validade de construto trata de quanto as medidas representam o que o
+estudo pretende investigar: a capacidade de distinguir fotografias de
+hanseníase de fotografias de outras condições. Uma primeira ameaça é a
+\textit{inadequate preoperational explication of constructs}: o desempenho
+expressa a concordância com os rótulos da coleção, não confirmados por exame
+clínico, baciloscopia ou biópsia, e o agrupamento das três formas de
+hanseníase em uma classe delimita o que a medida representa. Por isso, os
+resultados serão descritos como concordância com a anotação, e a
+sensibilidade será relatada também por forma clínica.
+
+Outra ameaça é o \textit{mono-operation bias}: o construto é medido em uma
+única coleção e em uma única modalidade de imagem, e o estudo não o
+generaliza para outras coleções ou modalidades. O \textit{mono-method bias}
+é atenuado pelo uso de várias medidas em conjunto, com a acurácia
+balanceada como principal e a sensibilidade, a especificidade, a área sob a
+curva ROC, a calibração e a matriz de confusão como complementares.
 
 \subsection{Validade interna}
 
-\begin{itemize}
-	\item \textbf{Vazamento entre partições.} Duplicatas, recortes e
-	      fotografias da mesma lesão em partições diferentes inflariam o
-	      desempenho \cite{kapoor2023}. O agrupamento por hash, similaridade
-	      perceptual e inspeção visual e a divisão por grupos em todas as
-	      etapas, inclusive nas dobras, controlam esse risco.
-	\item \textbf{Atalhos ligados à fonte.} Bordas, marcas d'água,
-	      resolução ou estilo de captura associados a uma fonte podem
-	      permitir prever a classe sem olhar a lesão. A auditoria de
-	      procedência, a resolução fixa, a linha de base com metadados e a
-	      inspeção dos erros por fonte tratam esse risco.
-	\item \textbf{Sobreposição com o pré-treinamento.} Os pesos do ImageNet e
-	      as imagens públicas da coleção podem ter origem comum. A procedência
-	      dos pesos será examinada quando suas informações permitirem.
-	\item \textbf{Comparação desigual entre redes.} Uma rede poderia ser
-	      favorecida por um espaço de busca ou um orçamento maiores. As duas
-	      redes terão a mesma grade, as mesmas dobras, o mesmo preparo das
-	      imagens e o mesmo número de sementes.
-	\item \textbf{Uso indevido do teste.} Consultar o teste durante o
-	      desenvolvimento tornaria a estimativa otimista. O teste ficará
-	      fechado até que modelos, limiares e linhas de base sejam fixados e
-	      registrados, e será avaliado uma única vez.
-	\item \textbf{Erros de instrumentação.} Falhas nos \textit{scripts}
-	      poderiam produzir métricas incorretas. Os \textit{scripts} de
-	      avaliação serão verificados com casos de resultado conhecido, e o
-	      código será revisado pelo outro autor antes da abertura do teste.
-	\item \textbf{Aleatoriedade e restrições do hardware.} A inicialização
-	      da camada de saída, a ordem dos lotes e operações não
-	      determinísticas da placa gráfica fazem com que o mesmo código
-	      produza pesos diferentes em execuções repetidas, e o equipamento
-	      disponível limita a memória, o tamanho do lote, a resolução e o
-	      número de configurações que cabem no orçamento. As sementes serão
-	      fixadas, o retreino será repetido com três sementes, com a
-	      variação relatada, e qualquer ajuste imposto pelo equipamento
-	      valerá igualmente para as duas redes e será registrado.
-\end{itemize}
+A validade interna trata de fatores que poderiam produzir o desempenho
+observado sem relação com a capacidade das redes. As duas ameaças centrais
+são próprias de ciência de dados. A primeira é o vazamento de dados
+(\textit{data leakage}): duplicatas, recortes e fotos da mesma lesão em
+partições diferentes inflariam o desempenho \cite{kapoor2023}, o que o
+agrupamento por hash, similaridade e inspeção visual e a divisão por grupos
+em todas as etapas controlam. A segunda é o aprendizado por atalho
+(\textit{shortcut learning}): bordas, marcas d'água, resolução ou estilo de
+captura associados a uma fonte podem permitir prever a classe sem olhar a
+lesão \cite{geirhos2020}; a auditoria de procedência, a resolução fixa, a
+linha de base com metadados e a análise sem a pele normal tratam esse risco.
 
-\subsection{Validade de conclusão}
-
-\begin{itemize}
-	\item \textbf{Baixo número de grupos positivos.} Com poucos grupos de
-	      hanseníase no teste, os intervalos ficam largos e diferenças
-	      pequenas entre redes não podem ser distinguidas. A meta de cerca de
-	      100 grupos positivos no teste foi definida para limitar a
-	      semiamplitude a cerca de 8 pontos percentuais, e os denominadores
-	      serão sempre relatados.
-	\item \textbf{Comparações múltiplas.} Muitas métricas, análises por faixa
-	      e pontos de operação aumentam a chance de achados ao acaso. A
-	      acurácia balanceada é definida de antemão como medida principal e
-	      a diferença pareada entre as redes como comparação principal; as
-	      análises de calibração, de predição seletiva e por faixa de ITA são
-	      exploratórias e não sustentam conclusões confirmatórias.
-	\item \textbf{Pressupostos do \textit{bootstrap}.} O \textit{bootstrap}
-	      por percentis pode subestimar a incerteza com poucos grupos ou
-	      métricas próximas de zero ou de um. Nesses casos, os intervalos
-	      serão interpretados com cautela e as contagens absolutas serão
-	      apresentadas.
-	\item \textbf{Confiabilidade das medidas.} O ITA depende da iluminação e
-	      da câmera, e os rótulos podem conter erros. Por isso, as faixas de
-	      ITA são tratadas como medida colorimétrica aproximada, e as análises
-	      por faixa só serão feitas com ao menos 10 grupos de cada classe.
-\end{itemize}
+Há também a ameaça de \textit{instrumentation}: erros nos \textit{scripts}
+poderiam produzir métricas incorretas. Os \textit{scripts} de avaliação
+serão verificados com casos de resultado conhecido e revisados pelo outro
+autor antes da abertura do teste. Para evitar que uma rede seja favorecida,
+as duas terão a mesma grade de hiperparâmetros, as mesmas dobras e o mesmo
+preparo das imagens, e o teste permanecerá fechado até que modelos e
+limiares sejam fixados. Por fim, a aleatoriedade do treinamento e as
+operações não determinísticas da placa gráfica fazem o mesmo código produzir
+pesos diferentes; as sementes serão fixadas e o retreino será repetido com
+três sementes, com a variação relatada.
 
 \subsection{Validade externa}
 
-\begin{itemize}
-	\item \textbf{Coleção única.} O teste será interno à coleção pública. A
-	      combinação de fontes, a composição das categorias e as condições de
-	      captura delimitam o conjunto de fotografias ao qual os resultados
-	      se aplicam.
-	\item \textbf{Condições de captura.} Imagens de atlas e de coleções
-	      curadas tendem a ter enquadramento e iluminação melhores que
-	      fotografias de celular feitas em serviços de atenção primária. O
-	      desempenho pode cair nessas condições, que não são avaliadas.
-	\item \textbf{População representada.} A distribuição de tons de pele,
-	      idades e formas clínicas na coleção não é documentada. Se a
-	      análise por ITA for viável, ela apenas descreverá a variação nas
-	      faixas com amostra suficiente.
-	\item \textbf{Acesso a outras coleções.} O acesso ao AI4Leprosy, da
-	      Fiocruz, que permitiria testar os classificadores em fotografias de
-	      outra origem e com registro por paciente, não foi concedido até o
-	      momento. Esse é um risco conhecido e assumido: o estudo foi
-	      planejado para ser executado apenas com o 32 CSD e, se o acesso for
-	      concedido, a mesma avaliação poderá ser repetida nessa coleção sem
-	      alterar o protocolo.
-	\item \textbf{Contexto de uso.} A transferência para novas coleções e
-	      para o atendimento no SUS é uma questão de avaliação posterior,
-	      que exige validação externa prospectiva. Os resultados não serão
-	      apresentados como evidência de efetividade clínica.
-\end{itemize}
+A validade externa trata da possibilidade de generalizar os resultados. Uma
+ameaça central é a \textit{interaction of selection and treatment}: o teste
+é interno a uma coleção pública que combina atlas e bases da internet, sem
+documentação de tom de pele, idade ou origem dos pacientes, e os resultados
+se aplicam a esse conjunto de fotografias. O acesso ao AI4Leprosy, que
+permitiria testar as redes em fotografias de outra origem, não foi concedido
+até o momento; esse é um risco conhecido e assumido, e, se o acesso ocorrer,
+a mesma avaliação poderá ser repetida sem alterar o protocolo.
+
+Outra ameaça é a \textit{interaction of setting and treatment}: fotos de
+atlas e de coleções curadas tendem a ter enquadramento e iluminação melhores
+que fotos de celular tiradas na atenção primária, e o uso no SUS exige
+validação externa prospectiva. Por isso, os resultados não serão
+apresentados como evidência de efetividade clínica.
+
+\subsection{Validade de conclusão}
+
+A validade de conclusão trata da correção das inferências sobre os
+resultados. A principal ameaça é o \textit{low statistical power}: com poucos
+grupos de hanseníase no teste, os intervalos ficam largos e diferenças
+pequenas entre as redes não podem ser distinguidas; a meta de cerca de 100
+grupos positivos limita a semiamplitude a cerca de 8 pontos percentuais
+(Subseção~\ref{subsec:particoes}), e os denominadores serão sempre
+relatados. A ameaça de \textit{fishing and the error rate}, decorrente de
+muitas métricas, faixas e pontos de operação, é tratada pela definição
+prévia da acurácia balanceada como medida principal e da diferença pareada
+como comparação principal; as demais análises são exploratórias.
+
+Quanto aos \textit{violated assumptions of statistical tests}, o estudo não
+aplica testes de hipótese, mas o \textit{bootstrap} por percentis pode
+subestimar a incerteza com poucos grupos ou métricas próximas de zero ou de
+um, casos em que as contagens absolutas serão apresentadas. A
+\textit{reliability of measures} é limitada pelo ITA, que depende da
+iluminação e da câmera e só será analisado em faixas com ao menos 10 grupos
+de cada classe.
+
+Em resumo, o estudo está sujeito a ameaças em todas as categorias de
+validade, sobretudo às ligadas aos dados: rótulos sem confirmação clínica,
+vazamento, atalhos pela fonte e uma única coleção. O planejamento as torna
+explícitas e, quando possível, as reduz por meio do agrupamento, das linhas
+de base e do relato da incerteza; as ameaças restantes são reconhecidas como
+limitações e serão consideradas na interpretação dos resultados.
 
 \clearpage
 \endgroup
