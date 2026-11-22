@@ -202,7 +202,7 @@ coleção e a tarefa é de classificação.
 	Q2. O desempenho difere entre ResNet-50 e MobileNetV2?
 	& Diferença pareada da acurácia balanceada (\metrica{M11}), da sensibilidade (\metrica{M1}) e da especificidade (\metrica{M2}), com intervalo de 95\%
 	& Não há comparação pareada no mesmo teste \\ \hline
-	Q3. Os resultados podem ser situados em relação aos relatados na literatura?
+	\hypertarget{questao-q3}{Q3}. Os resultados podem ser situados em relação aos relatados na literatura?
 	& Acurácia (\metrica{M5}), precisão (\metrica{M3}) e $F_1$ (\metrica{M4}), relatadas para discussão qualitativa
 	& Acurácia: 15; precisão: 10; $F_1$: 10 \\ \hline
 	Q4. Os escores dos classificadores estão calibrados?
@@ -211,7 +211,7 @@ coleção e a tarefa é de classificação.
 	Q5. O desempenho varia entre faixas de tom de pele?
 	& Diferença de desempenho entre grupos (\metrica{M6}) na sensibilidade, na especificidade e na acurácia balanceada, entre faixas de ITA, de forma exploratória
 	& Diferença entre grupos de tom de pele: 0 \\ \hline
-	Q6. Atributos da fonte bastam para prever a classe?
+	\hypertarget{questao-q6}{Q6}. Atributos da fonte bastam para prever a classe?
 	& Acurácia balanceada (\metrica{M11}) da linha de base com metadados, comparada à dos classificadores
 	& Não avaliado nos estudos \\ \hline
 \end{longtable}
@@ -660,7 +660,7 @@ as três, porque cada uma se aplica a uma parte do problema.
 	      entre o 32 CSD e as imagens usadas por \citeonline{eita2025} e por
 	      \citeonline{lima2024skin}, o que viola a independência entre
 	      dados de comparação. Os valores da literatura serão usados apenas
-	      para discussão qualitativa (questão Q3).
+	      para discussão qualitativa (questão \hyperlink{questao-q3}{Q3}).
 \end{description}
 
 Na falta de uma linha de base externa comparável, duas linhas de base
@@ -672,7 +672,7 @@ uma regressão logística que usa apenas atributos do arquivo, como
 dimensões, proporção e tamanho, sem olhar o conteúdo da imagem. Se essa
 regressão superar o acaso, os atributos de origem carregam informação
 sobre a classe, e o ganho das redes deve ser interpretado em relação a ela
-(questão Q6).
+(questão \hyperlink{questao-q6}{Q6}).
 
 \section{Instrumentação}
 \label{sec:instrumentacao}
