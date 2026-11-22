@@ -82,11 +82,22 @@
 \setsecnumdepth{subsubsection}
 \settocdepth{subsubsection}
 \bibliographystyle{abntex2-alf}
+% Lista de trechos de código (quadros com código ou prompt e algoritmos),
+% no formato das demais listas do abnTeX2.
+\newlistof{listofcodigos}{loc}{Lista de trechos de código}
+\newlistentry{codigo}{loc}{0}
+\setlength{\cftcodigoindent}{0pt}
+\newcommand{\registrarcodigo}[1]{\addcontentsline{loc}{codigo}{#1}}
 \begin{document}
 \frenchspacing
 \imprimircapa
 \imprimirfolhaderosto*{\folhaderostoname}
-% Os demais elementos pré-textuais foram omitidos porque não constam da fonte.
+\input{editaveis/resumo}
+\input{editaveis/abstract}
+\input{fixos/listasAutomaticas}
+\pdfbookmark[0]{Lista de trechos de código}{loc}
+\listofcodigos*
+\cleardoublepage
 \input{fixos/indiceAutomatico}
 \textual
 \input{editaveis/introducao}
