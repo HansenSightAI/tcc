@@ -224,57 +224,81 @@ coleção e a tarefa é de classificação.
 \subsection{Como e por que os dados foram selecionados}
 \label{subsec:justificativa-colecao}
 
-O estudo utilizará o \textit{32 Curated Categories of Skin Disease
-	Images} (32 CSD), versão 2, identificado em busca complementar por dados
-públicos. O arquivo distribuído nessa versão contém 5.034 imagens em 32
-categorias, das quais 672 estão distribuídas entre três categorias de
-hanseníase. A coleção reúne imagens de \textit{31 Classes of Skin Disease}
-e \textit{Our Normal Skin} e, por meio do primeiro conjunto, incorpora
-imagens do Atlas Dermatológico e do ISIC 2019
-\cite{cahyantoDados2026,atlasHanseniaseDimorfa,isicChallenge2019}. Ela foi
-escolhida por ser de acesso aberto, por conter fotografias de hanseníase e
-de várias outras dermatoses, o que permite formar as duas classes na mesma
-coleção, e por documentar a origem de parte das imagens.
+A coleção foi escolhida entre os conjuntos identificados na revisão
+(Apêndice~\ref{apend:inventario-datasets}) e em busca complementar, por
+cinco critérios: fotografias clínicas, hanseníase e outras condições de pele
+na mesma coleção, acesso aberto, versão e licença identificáveis e origem
+documentada. A Tabela~\ref{tab:selecao-colecao} compara as coleções
+consideradas.
 
-As demais coleções identificadas não atendem a esse desenho. O
-CO2Wounds-V2 contém fotografias de feridas crônicas em pessoas com
-hanseníase, com máscaras da região da ferida, e carece de exemplos de
-outras condições de pele \cite{co2woundsDados2024}. O AI4Leprosy tem
-acesso condicionado a cadastro e validação \cite{barbieri2022}, que não foi
-concedido pelos responsáveis.
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.4cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{3.4cm}|>{\raggedright\arraybackslash}p{3.6cm}|}
+	\caption{Coleções consideradas e critérios de seleção}\label{tab:selecao-colecao} \\
+	\hline
+	\textbf{Coleção} & \textbf{Hanseníase e outras condições} & \textbf{Acesso} & \textbf{Decisão} \\ \hline
+	\endfirsthead
+	\multicolumn{4}{l}{\footnotesize\textit{Tabela~\ref{tab:selecao-colecao} (continuação)}} \\
+	\hline
+	\textbf{Coleção} & \textbf{Hanseníase e outras condições} & \textbf{Acesso} & \textbf{Decisão} \\ \hline
+	\endhead
+	\multicolumn{4}{r}{\footnotesize\textit{continua na próxima página}} \\
+	\endfoot
+	\endlastfoot
+	32 CSD, versão 2 \cite{cahyantoDados2026} & Sim: 3 categorias de hanseníase, 28 de outras dermatoses e pele normal & Aberto (Mendeley Data, CC BY 4.0) & Selecionada \\ \hline
+	AI4Leprosy \cite{barbieri2022} & Sim: pessoas com suspeita de hanseníase e outras dermatoses & Mediante registro e validação, não concedidos até o momento & Não utilizada; candidata a teste externo \\ \hline
+	CO2Wounds-V2 \cite{co2woundsDados2024} & Não: só feridas crônicas de pessoas com hanseníase & Aberto (Mendeley Data) & Descartada: sem classe negativa \\ \hline
+	\textit{Fredrick Skin Disease Dataset} \cite{fredrickSkinDisease2025} & Sim: 6 classes, preparadas para detecção por caixas & Aberto (Roboflow) & Descartada: 1.101 imagens e sobreposição com o Atlas Dermatológico \\ \hline
+	Atlas Dermatológico \cite{atlasHanseniaseDimorfa} & Sim, em galerias por doença & Página pública, sem pacote versionado para download & Não utilizado diretamente; já incorporado ao 32 CSD \\ \hline
+	Coleções de \citeonline{deps2026}, \citeonline{yotsu2023}, \citeonline{jitendra2024deep}, \citeonline{banerjee2023} e \citeonline{nyatte2022} & Variável & Mediante solicitação aos responsáveis & Não utilizadas \\ \hline
+\end{longtable}
+\endgroup
+\fonte{Autores.}
 
-A origem comum das imagens exige cautela. Uma verificação preliminar
-encontrou a mesma fotografia de hanseníase dimorfa do Atlas Dermatológico
-no 32 CSD e no \textit{Fredrick Skin Disease Dataset}
-\cite{atlasHanseniaseDimorfa,fredrickSkinDisease2025}, usado por
-\citeonline{eita2025}, e \citeonline{lima2024skin} também empregaram imagens
-do Atlas. Por isso, os resultados deste estudo não serão comparados
-numericamente com os da literatura como se viessem de dados independentes,
-e a procedência será auditada na curadoria.
+O 32 CSD, versão 2 \cite{cahyantoDados2026}, é distribuído em um único
+arquivo compactado, com uma pasta por categoria, cujo identificador SHA-256
+será registrado no inventário. Suas 5.034 imagens incluem 672 de hanseníase
+(\textit{borderline}, 145; lepromatosa, 293; tuberculoide, 234) e 124 de
+pele normal, de modo que a classe negativa reúne pele sem lesão e doenças
+que fazem diagnóstico diferencial com a hanseníase. As imagens vêm do
+\textit{31 Classes of Skin Disease}, que incorpora o Atlas Dermatológico e o
+ISIC 2019, e do \textit{Our Normal Skin}
+\cite{cahyantoDados2026,atlasHanseniaseDimorfa,isicChallenge2019}. Como o
+Atlas também alimenta o conjunto usado por \citeonline{eita2025}, no qual
+uma verificação por correspondência geométrica encontrou um recorte da
+mesma fotografia de hanseníase dimorfa \cite{fredrickSkinDisease2025}, e
+foi usado por \citeonline{lima2024skin}, os resultados não serão
+comparados numericamente com os da literatura.
 
-Nos termos do suplemento de Amostragem, a seleção é intencional: a coleção
-foi escolhida pelos critérios acima, e não sorteada entre as disponíveis,
-e as fotografias analisadas são as que atendem aos critérios de
-elegibilidade da curadoria. Essa escolha delimita o conjunto ao qual os
-resultados se aplicam (Seção~\ref{sec:validade-avaliacao-empirica}).
+Nos termos do suplemento de Amostragem, a seleção é intencional e não há
+sorteio de fotografias: a unidade amostral é a fotografia, entram todas as
+que atendem aos critérios de elegibilidade da curadoria, as exclusões são
+relatadas por motivo, e a aleatoriedade fica restrita à divisão entre
+partições.
 
 \subsection{Pré-processamento, filtragem e categorização dos dados}
 \label{subsec:curadoria-procedencia}
 
 O inventário registrará a versão, o nome do arquivo, o identificador
-SHA-256, a modalidade, o rótulo original, o rótulo binário, a procedência
-conhecida, o grupo de fotografias relacionadas e o motivo de exclusão,
-quando houver. A curadoria ocorrerá nas seguintes etapas.
+SHA-256, a modalidade, a categoria original, o rótulo binário, a
+procedência conhecida, o grupo de fotografias relacionadas, a faixa de tom
+de pele, quando medida, e o motivo de exclusão, quando houver. A curadoria
+ocorrerá nas seguintes etapas.
 
 \begin{enumerate}
 	\item \textbf{Selecionar fotografias e harmonizar rótulos.} Serão
 	      consideradas fotografias clínicas RGB. As três categorias de
-	      hanseníase formarão a classe positiva e as demais condições de pele
-	      elegíveis, a classe negativa. As imagens
-	      de dermatoscopia e os arquivos corrompidos ficarão fora da análise
-	      principal. Dois revisores inspecionarão uma amostra por categoria e
-	      fonte conhecida, registrarão divergências e documentarão casos
-	      excluídos por modalidade ou rótulo inconclusivo.
+	      hanseníase formarão a classe positiva, e as demais condições de pele
+	      elegíveis, incluindo a pele normal, a classe negativa; a categoria
+	      original de cada fotografia é mantida no inventário. As imagens de
+	      dermatoscopia, provenientes do ISIC 2019 e identificáveis pelo
+	      prefixo \texttt{ISIC\_} no nome do arquivo e por inspeção, e os
+	      arquivos corrompidos ficarão fora da análise principal; como essas
+	      exclusões podem retirar categorias inteiras, a composição final da
+	      classe negativa será relatada. Dois revisores inspecionarão uma
+	      amostra por categoria e fonte conhecida, registrarão divergências e
+	      documentarão casos excluídos por modalidade ou rótulo inconclusivo.
 	\item \textbf{Agrupar fotografias relacionadas.} Hashes criptográficos
 	      localizarão cópias exatas, e a similaridade perceptual levantará
 	      candidatos a duplicatas transformadas. Os limiares de similaridade
@@ -285,38 +309,52 @@ quando houver. A curadoria ocorrerá nas seguintes etapas.
 	      reduzidas a um representante, e conflitos binários sem resolução
 	      serão excluídos. Fotos derivadas e registros da mesma lesão ou
 	      pessoa, quando identificáveis, serão mantidos no mesmo grupo
-	      \cite{kapoor2023}.
+	      \cite{kapoor2023}. O grupo, e não a fotografia isolada, é a unidade
+	      usada na divisão entre partições.
 	\item \textbf{Investigar a associação entre fonte e classe.} Será
 	      examinado o cruzamento entre procedência documentada e rótulo, bem
-	      como diferenças de formato, bordas e marcas visuais. Se houver
-	      concentração de rótulos por fonte, será verificada a disponibilidade
-	      de fotografias de ambas as classes nas mesmas fontes. O controle
-	      com atributos do arquivo, descrito na
+	      como diferenças de formato, resolução, bordas e marcas visuais. Na
+	      amostra inspecionada, boa parte das fotografias de doenças traz a
+	      marca do Atlas Dermatológico, enquanto as de pele normal, vindas de
+	      outra coleção, não a trazem; a pele normal é, portanto, o caso em que
+	      a fonte pode denunciar a classe. Por isso, além da análise
+	      principal, haverá uma análise secundária sem a pele normal. Se
+	      houver concentração de rótulos por fonte, será verificada a
+	      disponibilidade de fotografias de ambas as classes nas mesmas
+	      fontes. O controle com atributos do arquivo, descrito na
 	      Subseção~\ref{subsec:linhas-base}, indicará se esses atributos
 	      bastam para prever a classe.
+	\item \textbf{Categorizar o tom de pele.} A coleção não informa tom de
+	      pele nem fototipo. Para a questão Q5, os autores medirão o ângulo de
+	      tipologia individual (ITA) \cite{chardon1991ita} em uma região de
+	      pele íntegra marcada manualmente em cada fotografia elegível, de
+	      ambas as classes, e atribuirão a faixa correspondente, de muito
+	      clara a escura. Fotografias sem região verificável de pele íntegra
+	      ficarão sem faixa, o que será registrado. Como a medida depende da
+	      iluminação e da câmera, ela será tratada como colorimetria nas
+	      condições de captura, e não como fototipo
+	      (Subseção~\ref{subsec:analises-complementares}).
 \end{enumerate}
 
 \subsection{Partições e unidade de agrupamento}
 \label{subsec:particoes}
 
-Após a curadoria, uma divisão estratificada por classe e agrupada por
-fotografias relacionadas reservará grupos distintos para desenvolvimento e
-teste. Prevê-se reservar cerca de 20\% a 25\% dos dados elegíveis para
-teste, e a meta de planejamento é reunir cerca de 100 grupos positivos no
-teste, se a coleção curada permitir. Com 100 grupos positivos e
+A divisão entre desenvolvimento e teste usará o grupo de fotografias
+relacionadas como unidade e será estratificada pela categoria original, o
+que preserva a proporção entre as classes e mantém cada condição da classe
+negativa nas duas partes. Cerca de 20\% a 25\% dos grupos irão para o teste
+reservado, com a meta de reunir cerca de 100 grupos positivos: com
 sensibilidade próxima de 0,80, o intervalo de confiança de 95\% teria
-semiamplitude de cerca de 8 pontos percentuais, precisão considerada
-suficiente para distinguir desempenhos como os relatados na revisão. A
-proporção final será escolhida antes do treino, considerando a quantidade
-de grupos positivos e a distribuição das condições da classe negativa.
-
-O desenvolvimento será então dividido, também por grupos e com
-estratificação por classe, em duas partes: cerca de 80\% dos grupos para a
-validação cruzada e cerca de 20\% para a definição dos limiares. Serão
-relatados os totais de fotografias e de grupos por partição e por classe.
-As listas de grupos de cada partição serão geradas com semente fixa,
-salvas antes de qualquer treinamento e não serão alteradas depois. O teste
-ficará reservado até a fixação dos classificadores e de seus limiares.
+semiamplitude de cerca de 8 pontos percentuais, precisão suficiente para
+distinguir desempenhos como os relatados na revisão. O desenvolvimento será
+dividido pelos mesmos critérios em validação cruzada (cerca de 80\% dos
+grupos) e partição de limiar (cerca de 20\%). As listas serão geradas com
+semente fixa e salvas antes do treino, e será conferido que nenhum
+identificador SHA-256 ou grupo aparece em mais de uma partição. A divisão
+de 80\%, 10\% e 10\% das imagens sugerida na página do 32 CSD
+\cite{cahyantoDados2026} não será adotada, por separar fotografias isoladas
+e não grupos. O teste ficará reservado até a fixação dos classificadores e
+de seus limiares.
 
 \section{Configuração do estudo e modelagem}
 \label{sec:configuracao-avaliacao-empirica}
