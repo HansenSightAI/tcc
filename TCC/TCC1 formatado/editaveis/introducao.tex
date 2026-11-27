@@ -431,9 +431,9 @@ apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
 limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
 procedimentos de avaliação e à generalização, fundamentam a formulação da
 questão específica e o planejamento apresentado no
-Capítulo~\ref{cap:metodologia-experimental}. A ResNet-50 e a MobileNetV2
-serão treinadas por transferência no desenvolvimento e avaliadas nas mesmas fotografias
-do teste reservado.
+Capítulo~\ref{cap:metodologia-experimental}. Os modelos de fundação DINOv3 e
+PanDerm serão adaptados no desenvolvimento e avaliados, ao lado de duas
+linhas de base, nas mesmas fotografias do teste reservado.
 
 \section{Organização do trabalho}
 \label{sec:organizacao}
@@ -667,7 +667,7 @@ planejado no Capítulo~\ref{cap:metodologia-experimental}. A
 Figura~\ref{fig:fluxo-segunda-etapa} apresenta essas atividades em forma de
 fluxo, e a Figura~\ref{fig:cronograma-segunda-etapa} as dispõe em um
 cronograma previsto, sujeito ao calendário acadêmico e à disponibilidade do
-equipamento.
+equipamento. A curadoria inclui a versão 2 da coleção \textit{32 Curated Categories of Skin Disease Images} (32 CSD v2) \cite{cahyantoDados2026}.
 
 \begin{figure}[H]
 	\centering
@@ -826,17 +826,18 @@ para a segunda etapa.
 	Ajustes pedidos pela banca               & Revisão do texto da primeira etapa a partir
 	das considerações da banca avaliadora e dos orientadores.                                         \\
 	\hline
-	Curadoria e agrupamento                  & Obtenção do 32 CSD v2, harmonização dos rótulos,
-	agrupamento das fotografias relacionadas e categorização do tom de pele
+	Curadoria e agrupamento                  & Obtenção do 32 CSD v2 e do subconjunto de hanseníase
+	do Derm1M, harmonização dos rótulos, agrupamento das fotografias relacionadas,
+	máscara da marca d'água e categorização do tom de pele
 	(Subseção~\ref{subsec:curadoria-procedencia}).                                                    \\
 	\hline
 	Partições e linhas de base               & Geração e registro das listas do teste reservado,
 	da validação cruzada e da partição de limiar, com semente fixa, e preparação
 	das linhas de base (Subseções~\ref{subsec:particoes} e~\ref{subsec:linhas-base}).                 \\
 	\hline
-	Treino e seleção por validação cruzada   & Ajuste fino da ResNet-50 e da
-	MobileNetV2 e escolha da configuração de cada rede pela validação cruzada
-	por grupos (Subseções~\ref{subsec:procedimento-validacao}
+	Treino e seleção por validação cruzada   & Adaptação do DINOv3 (ViT-S, ViT-B e
+	ConvNeXt-B) e do PanDerm-Base, reprodução da abordagem de Lima et al. e escolha
+	da configuração de cada modelo pela validação cruzada por grupos (Subseções~\ref{subsec:procedimento-validacao}
 	e~\ref{subsec:hiperparametros}).                                                                  \\
 	\hline
 	Retreino, limiares e fixação dos modelos & Retreino da configuração escolhida

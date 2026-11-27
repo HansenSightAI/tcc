@@ -6,11 +6,17 @@
 \raggedbottom
 
 Este capítulo planeja um estudo observacional que utiliza ciência de
-dados para avaliar dois classificadores binários de fotografias clínicas
-de pele, implementados com ResNet-50 e MobileNetV2. O estudo empregará
-dados secundários de uma coleção pública, obtidos por pesquisa em arquivo,
-com partições separadas por grupos de fotografias, e os dois
-classificadores serão avaliados nas mesmas fotografias do teste reservado.
+dados para avaliar modelos de fundação na distinção entre hanseníase e
+outras doenças dermatológicas em fotografias clínicas. Serão avaliados o
+DINOv3, nas versões ViT-S, ViT-B e ConvNeXt-B \cite{simeoni2025dinov3}, e o
+PanDerm-Base, pré-treinado em imagens de pele \cite{yan2025panderm}, ao lado
+de duas linhas de base: um classificador trivial e a reprodução da
+abordagem de \citeonline{lima2024skin}. O estudo empregará dados
+secundários de duas fontes públicas, o 32 CSD v2 e um subconjunto de
+fotografias de hanseníase do Derm1M, obtidos por pesquisa em arquivo, com
+partições separadas por grupos de fotografias. Todas as abordagens serão
+avaliadas nas mesmas fotografias do teste reservado, composto apenas por
+fotografias do 32 CSD.
 O capítulo segue a estrutura do padrão \textit{Data Science} da ACM
 SIGSOFT \cite{acmSigsoftDataScience}: cada atributo essencial do padrão é
 tratado em uma seção ou subseção própria. A definição do objetivo e a
@@ -28,9 +34,12 @@ Capítulo~\ref{cap:revisao-literatura}: apenas 2 dos 16 estudos que
 desenvolvem modelos declaram separar os dados por paciente, só um testa o
 modelo em outra base, nenhum dos 17 estudos com dados reporta desempenho
 por tom de pele, e os estudos que isolam a hanseníase relatam
-sensibilidade bem inferior aos indicadores globais. A disponibilidade de
-coleções públicas com imagens de hanseníase e de outras dermatoses e de
-redes pré-treinadas torna viável examinar essas questões com um protocolo
+sensibilidade bem inferior aos indicadores globais. Nos estudos revisados
+também não foram encontrados modelos de fundação aplicados à hanseníase,
+embora esses modelos já tenham sido avaliados em outras doenças de pele
+\cite{yan2025panderm}. A disponibilidade de coleções públicas com imagens de
+hanseníase e de outras dermatoses e de modelos de fundação com pesos
+públicos torna viável examinar essas questões com um protocolo
 reprodutível.
 
 \subsection{Aplicabilidade do padrão e suplementos}
@@ -41,16 +50,17 @@ existentes por meio de modelagem preditiva, preventiva ou corretiva
 \cite{acmSigsoftDataScience}. Este estudo se enquadra nesse escopo: os
 dados já existem, não há intervenção sobre participantes nem manipulação
 controlada de tratamentos, e a análise consiste em ajustar modelos
-preditivos a fotografias de uma coleção pública e medir seu desempenho em
+preditivos a fotografias de coleções públicas e medir seu desempenho em
 fotografias não usadas no ajuste. Por isso, ele não é tratado como
 experimento nem como estudo de caso, mas como estudo observacional que
 utiliza ciência de dados.
 
 O padrão também indica outros padrões e suplementos conforme as
 características do estudo. Dois se aplicam aqui. O suplemento de
-Amostragem se aplica porque o estudo analisa um subconjunto dos dados
-disponíveis: uma coleção entre as identificadas na revisão e, dentro dela,
-apenas as fotografias clínicas elegíveis, divididas em partições
+Amostragem se aplica porque o estudo analisa subconjuntos dos dados
+disponíveis: uma coleção entre as identificadas na revisão, o 32 CSD v2, e
+as fotografias de hanseníase do Derm1M, das quais entram apenas as
+fotografias clínicas elegíveis, divididas em partições
 (Subseções~\ref{subsec:justificativa-colecao} a~\ref{subsec:particoes}).
 O suplemento de Visualização de Informação se aplica porque o estudo
 apresentará imagens de exemplo, curvas ROC, diagramas de confiabilidade,
@@ -65,8 +75,8 @@ O padrão organiza seus critérios em atributos essenciais, que todo estudo
 do tipo deve atender, desejáveis, que o fortalecem sem ser obrigatórios, e
 extraordinários. Entre os desejáveis, o planejamento adota o pacote de
 replicação, o uso de mais de um tipo de modelo, a repetição do
-processamento com dobras e sementes diferentes, com a comparação expressa
-por tamanho de efeito, a seleção criteriosa de hiperparâmetros e a
+processamento com dobras e sementes diferentes, a seleção criteriosa de
+hiperparâmetros e a
 inspeção manual de parte dos dados. Entre os extraordinários, a
 triangulação com outras fontes de dados será possível se o acesso ao
 AI4Leprosy for concedido, pois a mesma avaliação poderá ser repetida nessa
@@ -97,24 +107,24 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	\endlastfoot
 	Por que é oportuno investigar o problema com o método proposto
 	& Seções~\ref{contexto} e~\ref{problema}: relevância da hanseníase e problema de pesquisa. Subseções~\ref{subsec:rq3-metodos}, \ref{subsec:rq5-rq6-tom-pele} e~\ref{subsec:rq7-generalizacao}: lacunas de separação por paciente, de resultados por tom de pele e de teste em outras bases
-	& Subseção~\ref{subsec:oportunidade}: lacunas que motivam o estudo e disponibilidade de coleções públicas e de redes pré-treinadas. Subseção~\ref{subsec:aplicabilidade}: aplicabilidade do padrão e suplementos \\ \hline
+	& Subseção~\ref{subsec:oportunidade}: lacunas que motivam o estudo e disponibilidade de coleções públicas e de modelos de fundação. Subseção~\ref{subsec:aplicabilidade}: aplicabilidade do padrão e suplementos \\ \hline
 	Como e por que os dados foram selecionados
 	& Subseção~\ref{subsec:rq2-datasets} e Apêndice~\ref{apend:inventario-datasets}: conjuntos usados na literatura, origem e condições de acesso
-	& Subseção~\ref{subsec:justificativa-colecao}: escolha do 32 CSD v2 e descarte do CO2Wounds-V2 e do AI4Leprosy \\ \hline
+	& Subseção~\ref{subsec:justificativa-colecao}: escolha do 32 CSD v2 e do subconjunto de hanseníase do Derm1M e descarte do CO2Wounds-V2 e do AI4Leprosy \\ \hline
 	Configuração experimental, por exemplo com diagrama de fluxo de dados
 	& Seção~\ref{gqm-adaptado-e-questuxe3o-de-pesquisa}: GQM. Subseção~\ref{subsec:ciencia-de-dados}: papéis da validação e do teste reservado
 	& Seção~\ref{sec:objetivo-avaliacao-empirica} e Subseção~\ref{subsec:configuracao-estudo}, com o diagrama de fluxo de dados (Figura~\ref{fig:dfd-estudo}) e o diagrama de atividades (Figura~\ref{fig:atividades-estudo}) \\ \hline
 	Engenharia de atributos e transformações aplicadas
 	& Seção~\ref{sec:ia-visao-computacional}: representações aprendidas por redes convolucionais. Subseção~\ref{subsec:rq1-tecnicas}: preparo das imagens, aumento de dados e atributos usados nos estudos
-	& Subseção~\ref{subsec:preprocessamento-arquiteturas}: redimensionamento, normalização, atributos das camadas convolucionais e decisão sobre o aumento de dados \\ \hline
+	& Subseção~\ref{subsec:preprocessamento-arquiteturas}: máscara da marca d'água, redimensionamento, normalização, atributos dos modelos pré-treinados e decisão sobre o aumento de dados \\ \hline
 	Pré-processamento, filtragem e categorização dos dados
 	& Subseção~\ref{subsec:ciencia-de-dados}: unidade de agrupamento e vazamento entre treino e teste. Subseções~\ref{subsec:rq2-datasets} e~\ref{subsec:rq3-metodos}: unidades de amostra e divisão por imagem na literatura
-	& Subseção~\ref{subsec:curadoria-procedencia}: seleção, harmonização dos rótulos e agrupamento de duplicatas. Subseção~\ref{subsec:particoes}: divisão por grupos \\ \hline
+	& Subseção~\ref{subsec:curadoria-procedencia}: seleção, harmonização dos rótulos, agrupamento de duplicatas e máscara da marca d'água. Subseção~\ref{subsec:particoes}: divisão por grupos \\ \hline
 	Linhas de base do estado da arte, ou justificativa de sua ausência ou da impraticabilidade da comparação direta
 	& Subseção~\ref{subsec:ciencia-de-dados}: exigência do padrão. Subseções~\ref{subsec:rq4-metricas} e~\ref{subsec:rq6-modelos} e Apêndice~\ref{apend:inventario-modelos}: modelos e resultados relatados nos estudos
-	& Subseção~\ref{subsec:linhas-base}: discussão das três alternativas do padrão, classificador trivial e regressão com metadados \\ \hline
+	& Subseção~\ref{subsec:linhas-base}: reprodução da abordagem de Lima et al., classificador trivial e impraticabilidade da comparação direta com os demais estudos \\ \hline
 	Definição da abordagem de modelagem, em geral com pseudocódigo
-	& Seção~\ref{sec:ia-visao-computacional}: aprendizado profundo e tarefas de análise de imagens. Subseção~\ref{subsec:rq6-modelos} e Apêndice~\ref{apend:inventario-modelos}: uso da ResNet-50 e da MobileNetV2 nos estudos
+	& Seção~\ref{sec:ia-visao-computacional}: aprendizado profundo e tarefas de análise de imagens. Subseção~\ref{subsec:rq6-modelos} e Apêndice~\ref{apend:inventario-modelos}: abordagem de \citeonline{lima2024skin} (Inception V3 e Random Forest) e ausência de modelos de fundação nos estudos
 	& Subseções~\ref{subsec:abordagem-modelagem}, \ref{subsec:procedimento-validacao} e~\ref{subsec:hiperparametros} e Algoritmo~\ref{alg:procedimento-experimental} \\ \hline
 	Infraestrutura de hardware e software
 	& Subseção~\ref{subsec:ciencia-de-dados}: disponibilização de materiais para replicação
@@ -127,7 +137,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	& Tabela~\ref{tab:gqm-questoes-metricas} e Subseção~\ref{subsec:descricao-metricas}: acurácia balanceada como medida principal e medidas complementares \\ \hline
 	Resultados além de valores únicos (variação e incerteza)
 	& Subseção~\ref{subsec:ciencia-de-dados}: relato da variabilidade. Subseção~\ref{subsec:rq4-metricas}: forma como os estudos relatam os resultados
-	& Subseção~\ref{subsec:justificativa-estatisticas}: intervalos de 95\%, tamanho do efeito pareado e variação entre dobras e sementes \\ \hline
+	& Subseção~\ref{subsec:justificativa-estatisticas}: intervalos de 95\% e variação entre dobras e sementes \\ \hline
 	Pressupostos técnicos e ameaças à validade específicos de ciência de dados
 	& Subseção~\ref{subsec:ciencia-de-dados} e Seção~\ref{sec:avaliacao-generalizacao}: vazamento, avaliação interna e externa. Subseções~\ref{subsec:rq5-rq6-tom-pele} e~\ref{subsec:rq7-generalizacao}: limites das evidências por tom de pele e em outras bases
 	& Subseção~\ref{sec:validade-avaliacao-empirica}: pressupostos técnicos e validade de construto, interna, de conclusão e externa \\ \hline
@@ -139,10 +149,9 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 \label{sec:objetivo-avaliacao-empirica}
 
 \begin{quote}
-	Qual é o desempenho dos classificadores baseados em ResNet-50 e MobileNetV2
-	para distinguir fotografias anotadas como hanseníase de fotografias anotadas
-	como outras condições de pele, quando avaliados no mesmo conjunto de teste
-	reservado?
+	Qual o desempenho de modelos de fundação na distinção entre hanseníase e
+	outras doenças dermatológicas em imagens fotográficas para apoio à
+	triagem?
 \end{quote}
 
 O objetivo segue os cinco campos do GQM apresentado na
@@ -165,11 +174,11 @@ para o desempenho.
 	\multicolumn{2}{r}{\footnotesize\textit{continua na próxima página}} \\
 	\endfoot
 	\endlastfoot
-	Objeto      & Classificadores binários baseados em ResNet-50 e MobileNetV2, aplicados a fotografias clínicas de pele.                 \\ \hline
-	Propósito   & Estimar e comparar o desempenho dos dois classificadores no mesmo teste reservado.                                      \\ \hline
-	Foco        & Distinção entre fotografias anotadas como hanseníase e fotografias anotadas como outras condições de pele.              \\ \hline
+	Objeto      & Modelos de fundação (DINOv3 ViT-S, ViT-B e ConvNeXt-B; PanDerm-Base) e duas linhas de base (classificador trivial e abordagem de Lima et al.), aplicados a fotografias clínicas de pele. \\ \hline
+	Propósito   & Estimar o desempenho de cada abordagem no mesmo teste reservado. \\ \hline
+	Foco        & Distinção entre fotografias anotadas como hanseníase e fotografias anotadas como outras doenças dermatológicas. \\ \hline
 	Perspectiva & Pesquisadores de engenharia de software e da área da saúde interessados na avaliação de modelos de visão computacional. \\ \hline
-	Contexto    & Estudo computacional retrospectivo com dados públicos. O apoio à triagem no SUS motiva o estudo.                        \\ \hline
+	Contexto    & Estudo computacional retrospectivo com dados públicos (32 CSD v2 e Derm1M). O apoio à triagem no SUS motiva o estudo. \\ \hline
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -181,7 +190,7 @@ uma hiperligação para essa definição.
 A Tabela~\ref{tab:gqm-questoes-metricas} conecta essas métricas ao seu uso
 na literatura revisada (Tabela~\ref{tab:metricas-codigos}). A variação de desempenho entre bases
 (\metrica{M7}), a sobreposição espacial (\metrica{M8}) e a precisão média
-na detecção (\metrica{M9}) não se aplicam, porque o estudo usa uma única
+na detecção (\metrica{M9}) não se aplicam, porque o teste usa uma única
 coleção e a tarefa é de classificação.
 
 \begingroup
@@ -197,23 +206,23 @@ coleção e a tarefa é de classificação.
 	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}} \\
 	\endfoot
 	\endlastfoot
-	Q1. Qual é a capacidade de cada classificador de distinguir fotografias de hanseníase das demais?
+	Q1. Qual é a capacidade de cada abordagem de distinguir fotografias de hanseníase das demais?
 	& Acurácia balanceada (\metrica{M11}, principal), sensibilidade (\metrica{M1}), especificidade (\metrica{M2}) e área sob a curva ROC (\metrica{M10}), com intervalos de 95\%
 	& Acurácia balanceada: 0; sensibilidade: 15; especificidade: 6; área sob a curva ROC: 4 \\ \hline
-	Q2. O desempenho difere entre ResNet-50 e MobileNetV2?
-	& Diferença pareada da acurácia balanceada (\metrica{M11}), da sensibilidade (\metrica{M1}) e da especificidade (\metrica{M2}), com intervalo de 95\%
-	& Não há comparação pareada no mesmo teste \\ \hline
+	Q2. Como o desempenho se distribui entre os modelos de fundação e as linhas de base?
+	& Acurácia balanceada (\metrica{M11}), sensibilidade (\metrica{M1}), especificidade (\metrica{M2}) e área sob a curva ROC (\metrica{M10}) de cada abordagem, com intervalos de 95\%, apresentadas lado a lado
+	& Modelos de fundação não avaliados em hanseníase nos estudos revisados \\ \hline
 	\hypertarget{questao-q3}{Q3}. Os resultados podem ser situados em relação aos relatados na literatura?
 	& Acurácia (\metrica{M5}), precisão (\metrica{M3}) e $F_1$ (\metrica{M4}), relatadas para discussão qualitativa
 	& Acurácia: 15; precisão: 10; $F_1$: 10 \\ \hline
-	Q4. Os escores dos classificadores estão calibrados?
+	Q4. Os escores das abordagens estão calibrados?
 	& Escore de Brier e erro esperado de calibração (\metrica{M12}), com diagrama de confiabilidade
 	& Brier ou erro esperado de calibração: 0 \\ \hline
 	Q5. O desempenho varia entre faixas de tom de pele?
 	& Diferença de desempenho entre grupos (\metrica{M6}) na sensibilidade, na especificidade e na acurácia balanceada, entre faixas de ITA, de forma exploratória
 	& Diferença entre grupos de tom de pele: 0 \\ \hline
-	\hypertarget{questao-q6}{Q6}. Atributos da fonte bastam para prever a classe?
-	& Acurácia balanceada (\metrica{M11}) da linha de base com metadados, comparada à dos classificadores
+	\hypertarget{questao-q6}{Q6}. A inclusão das fotografias do Derm1M no treino altera o desempenho no teste?
+	& Acurácia balanceada (\metrica{M11}) do modelo com melhor resultado na validação, treinado com e sem as fotografias do Derm1M, cada uma com intervalo de 95\%
 	& Não avaliado nos estudos \\ \hline
 \end{longtable}
 \endgroup
@@ -248,6 +257,7 @@ consideradas.
 	\endfoot
 	\endlastfoot
 	32 CSD, versão 2 \cite{cahyantoDados2026} & Sim: 3 categorias de hanseníase, 28 de outras dermatoses e pele normal & Aberto (Mendeley Data, CC BY 4.0) & Selecionada \\ \hline
+	Derm1M, subconjunto de hanseníase \cite{yan2025derm1m} & Só hanseníase: 371 imagens com diagnóstico confirmado pela legenda, das quais 343 fotografias clínicas & Aberto (Hugging Face, CC BY-NC 4.0) & Selecionado, apenas para o treino \\ \hline
 	AI4Leprosy \cite{barbieri2022} & Sim: pessoas com suspeita de hanseníase e outras dermatoses & Mediante registro e validação, não concedidos até o momento & Não utilizada; candidata a teste externo \\ \hline
 	CO2Wounds-V2 \cite{co2woundsDados2024} & Não: só feridas crônicas de pessoas com hanseníase & Aberto (Mendeley Data) & Descartada: sem classe negativa \\ \hline
 	\textit{Fredrick Skin Disease Dataset} \cite{fredrickSkinDisease2025} & Sim: 6 classes, preparadas para detecção por caixas & Aberto (Roboflow) & Descartada: 1.101 imagens e sobreposição com o Atlas Dermatológico \\ \hline
@@ -269,8 +279,20 @@ ISIC 2019, e do \textit{Our Normal Skin}
 Atlas também alimenta o conjunto usado por \citeonline{eita2025}, no qual
 uma verificação por correspondência geométrica encontrou um recorte da
 mesma fotografia de hanseníase dimorfa \cite{fredrickSkinDisease2025}, e
-foi usado por \citeonline{lima2024skin}, os resultados não serão
-comparados numericamente com os da literatura.
+foi usado por \citeonline{lima2024skin}, os resultados publicados não
+serão comparados numericamente com os deste estudo; a comparação com a
+literatura se fará pela reprodução da abordagem de Lima nos mesmos dados
+(Subseção~\ref{subsec:linhas-base}).
+
+O Derm1M \cite{yan2025derm1m} reúne pares de imagem e texto de livros,
+artigos, vídeos e fóruns de dermatologia. Dele foram extraídas as imagens
+cujo rótulo é hanseníase e cuja legenda, escrita pelos autores de livros ou
+artigos, confirma o diagnóstico sem marcadores de incerteza. Das 371
+imagens assim confirmadas, 343 são fotografias clínicas; as demais, de
+dermatoscopia, histopatologia ou ilustração, ficam fora. Como esse
+subconjunto contém apenas casos positivos, ele será usado somente no
+treino, para ampliar a classe de hanseníase, e nunca no teste. Sua licença
+(CC BY-NC 4.0) restringe o uso a fins não comerciais.
 
 Nos termos do suplemento de Amostragem, a seleção é intencional e não há
 sorteio de fotografias: a unidade amostral é a fotografia, entram todas as
@@ -300,6 +322,8 @@ ocorrerá nas seguintes etapas.
 	      classe negativa será relatada. Dois revisores inspecionarão uma
 	      amostra por categoria e fonte conhecida, registrarão divergências e
 	      documentarão casos excluídos por modalidade ou rótulo inconclusivo.
+	      As fotografias do Derm1M passam pelos mesmos critérios e entram
+	      todas na classe positiva.
 	\item \textbf{Agrupar fotografias relacionadas.} Hashes criptográficos
 	      localizarão cópias exatas, e a similaridade perceptual levantará
 	      candidatos a duplicatas transformadas. Os limiares de similaridade
@@ -310,21 +334,20 @@ ocorrerá nas seguintes etapas.
 	      reduzidas a um representante, e conflitos binários sem resolução
 	      serão excluídos. Fotos derivadas e registros da mesma lesão ou
 	      pessoa, quando identificáveis, serão mantidos no mesmo grupo
-	      \cite{kapoor2023}. O grupo, e não a fotografia isolada, é a unidade
+	      \cite{kapoor2023}. A busca de duplicatas também cruza as duas
+	      fontes, pois o Derm1M e o 32 CSD podem conter imagens dos mesmos
+	      livros e atlas. O grupo, e não a fotografia isolada, é a unidade
 	      usada na divisão entre partições.
-	\item \textbf{Investigar a associação entre fonte e classe.} Será
-	      examinado o cruzamento entre procedência documentada e rótulo, bem
-	      como diferenças de formato, resolução, bordas e marcas visuais. Na
-	      amostra inspecionada, boa parte das fotografias de doenças traz a
-	      marca do Atlas Dermatológico, enquanto as de pele normal, vindas de
-	      outra coleção, não a trazem; a pele normal é, portanto, o caso em que
-	      a fonte pode denunciar a classe. Por isso, além da análise
-	      principal, haverá uma análise secundária sem a pele normal. Se
-	      houver concentração de rótulos por fonte, será verificada a
-	      disponibilidade de fotografias de ambas as classes nas mesmas
-	      fontes. O controle com atributos do arquivo, descrito na
-	      Subseção~\ref{subsec:linhas-base}, indicará se esses atributos
-	      bastam para prever a classe.
+	\item \textbf{Mascarar a marca d'água.} Na amostra inspecionada, boa
+	      parte das fotografias de doenças traz a marca do Atlas
+	      Dermatológico em um canto, enquanto as de pele normal, vindas de
+	      outra coleção, não a trazem, de modo que a marca poderia denunciar
+	      a fonte e, com ela, a classe. Por isso, um retângulo preto será
+	      aplicado na mesma região de todas as fotografias, com ou sem marca,
+	      para que nenhuma delas carregue essa informação. Será examinado
+	      também o cruzamento entre procedência documentada e rótulo, bem
+	      como diferenças de formato, resolução e bordas, e, além da análise
+	      principal, haverá uma análise secundária sem a pele normal.
 	\item \textbf{Categorizar o tom de pele.} A coleção não informa tom de
 	      pele nem fototipo. Para a questão Q5, os autores medirão o ângulo de
 	      tipologia individual (ITA) \cite{chardon1991ita} em uma região de
@@ -352,7 +375,10 @@ limiar (cerca de 20\%), pois escolher modelos e limiares nos dados de
 avaliação torna a estimativa otimista \cite{varoquaux2023}. As listas serão
 geradas com semente fixa e salvas antes do treino; a divisão de 80\%, 10\% e
 10\% por imagem sugerida pelo 32 CSD \cite{cahyantoDados2026} não será
-adotada, por ignorar os grupos.
+adotada, por ignorar os grupos. As fotografias do Derm1M entram apenas na
+parcela de treino de cada dobra; as dobras de validação, a partição de
+limiar e o teste reservado contêm apenas grupos do 32 CSD, aos quais se
+refere a meta de 100 grupos positivos.
 
 \section{Configuração do estudo e modelagem}
 \label{sec:configuracao-avaliacao-empirica}
@@ -367,7 +393,8 @@ cada processo, que dados ele produz e onde ficam armazenados, como sugere o
 padrão \textit{Data Science} para descrever a configuração
 \cite{acmSigsoftDataScience}. O diagrama de atividades da
 Figura~\ref{fig:atividades-estudo} mostra a ordem das etapas, os pontos de
-decisão e as atividades executadas em paralelo para as duas redes. O
+decisão e os laços que repetem o treino para cada configuração e cada
+abordagem. O
 Algoritmo~\ref{alg:procedimento-experimental} detalha o procedimento em
 pseudocódigo.
 
@@ -375,8 +402,8 @@ pseudocódigo.
 	\centering
 	\caption{Diagrama de fluxo de dados do estudo}
 	\label{fig:dfd-estudo}
-	% Fonte editável: dados/Arquiteturas/dfd-estudo.svg (exportado para PDF com o Inkscape).
-	\includegraphics[width=\textwidth]{figuras/dfd-estudo.pdf}
+	% Fonte editável: dados/Arquiteturas/dataflow-tcc2/dataflow-tcc2.tex (TikZ, compilar com pdflatex).
+	\includegraphics[width=\textwidth]{figuras/dataflow-tcc2.pdf}
 	\fonte{Autores, com fotografias do 32 CSD v2 \cite{cahyantoDados2026}, licença CC BY 4.0.}
 \end{figure}
 
@@ -384,103 +411,106 @@ pseudocódigo.
 	\centering
 	\caption{Diagrama de atividades do estudo}
 	\label{fig:atividades-estudo}
+	\begingroup
+	\definecolor{fluxCard}{HTML}{DAE8FC}
+	\definecolor{fluxBorda}{HTML}{6C8EBF}
+	\definecolor{fluxDecisao}{HTML}{BAC8D3}
+	\definecolor{fluxDecBorda}{HTML}{23445D}
 	\begin{tikzpicture}[
 		font=\scriptsize,
-		node distance=3.0mm,
-		acao/.style={draw, rounded corners=7pt, align=center, execute at begin node={\hyphenpenalty=10000}, minimum height=7mm, text width=5.4cm, inner sep=3pt},
-		acaop/.style={draw, rounded corners=7pt, align=center, execute at begin node={\hyphenpenalty=10000}, minimum height=7mm, text width=4.0cm, inner sep=3pt},
-		decisao/.style={draw, diamond, aspect=2.4, inner sep=1pt, align=center, font=\tiny},
-		juncao/.style={draw, diamond, minimum size=4mm, inner sep=0pt},
-		barra/.style={fill=black, minimum width=9.4cm, minimum height=1.2mm, inner sep=0pt},
-		inicio/.style={circle, fill=black, minimum size=3.2mm, inner sep=0pt},
-		fim/.style={circle, draw, double, double distance=1pt, fill=black, minimum size=3mm, inner sep=0pt},
-		fluxo/.style={-{Latex[length=1.8mm]}},
-		rot/.style={font=\tiny, inner sep=1pt}
+		node distance=3.2mm,
+		card/.style={rectangle, rounded corners=3pt, draw=fluxBorda, fill=fluxCard, semithick,
+			align=center, text width=4.8cm, minimum height=7.5mm, inner sep=2.5pt, font=\scriptsize,
+			execute at begin node={\hyphenpenalty=10000}},
+		cardlado/.style={card, text width=3.0cm},
+		decisao/.style={diamond, draw=fluxDecBorda, fill=fluxDecisao, semithick, aspect=2.3,
+			align=center, inner sep=0.5pt, font=\tiny},
+		terminal/.style={ellipse, fill=black, text=white, font=\tiny\bfseries,
+			minimum width=12mm, minimum height=5.5mm, inner sep=1pt},
+		fluxo/.style={-{Latex[length=1.8mm]}, semithick},
+		rot/.style={font=\tiny\bfseries, inner sep=1pt, fill=white},
 		]
-		\node[inicio] (ini) {};
-		\node[acao, below=of ini] (a1) {Baixar o 32 CSD v2};
-		\node[acao, below=of a1] (a2) {Inventariar as fotos (SHA-256)};
-		\node[acao, below=of a2] (a3) {Manter as fotos clínicas e rotular\\(hanseníase ou não-hanseníase)};
-		\node[acao, below=of a3] (a4) {Agrupar cópias, recortes\\e fotos da mesma lesão};
-		\node[decisao, below=of a4] (d1) {As fotos de uma classe\\vêm quase todas\\da mesma origem?};
-		\node[acaop, right=7mm of d1] (a4b) {Registrar e medir o atalho\\com a linha de base\\de metadados};
-		\node[juncao, below=5mm of d1] (j1) {};
-		\node[acao, below=of j1] (a5) {Dividir os grupos em validação\\cruzada, limiar e teste};
-		\node[barra, below=of a5] (fork) {};
-		\node[acaop, below=5mm of fork, xshift=-2.4cm] (r1) {ResNet-50: escolher a\\configuração (5 dobras)};
-		\node[acaop, below=5mm of fork, xshift=2.4cm] (m1) {MobileNetV2: escolher a\\configuração (5 dobras)};
-		\node[acaop, below=of r1] (r2) {Retreinar\\(3 sementes)};
-		\node[acaop, below=of m1] (m2) {Retreinar\\(3 sementes)};
-		\node[barra, below=5mm of r2, xshift=2.4cm] (join) {};
-		\node[acao, below=of join] (a6) {Definir os limiares\\e treinar as linhas de base};
-		\node[acao, below=of a6] (a7) {Fixar modelos e limiares};
-		\node[acao, below=of a7] (a8) {Avaliar uma única vez\\no teste reservado};
-		\node[acao, below=of a8] (a9) {Análises exploratórias:\\predição seletiva e tom de pele};
-		\node[fim, below=of a9] (fimn) {};
+		\node[terminal] (ini) {INÍCIO};
+		\node[card, below=of ini] (a1) {Reunir as imagens do 32 CSD v2\\e do Derm1M-Leprosy};
+		\node[card, below=of a1] (a2) {Manter as fotografias clínicas e rotular\\(hanseníase ou não hanseníase)};
+		\node[card, below=of a2] (a3) {Agrupar cópias, recortes\\e fotos da mesma lesão};
+		\node[card, below=of a3] (a4) {Aplicar a máscara da marca d'água\\em todas as fotografias};
+		\node[card, below=of a4] (a5) {Dividir os grupos em desenvolvimento\\(5 dobras e limiar) e teste reservado};
+
+		% ramo de desenvolvimento
+		\node[card, below=11mm of a5] (b1) {Executar a validação cruzada\\com uma configuração da abordagem};
+		\node[decisao, below=4mm of b1] (d1) {Foram testadas todas\\as configurações?};
+		\node[cardlado, left=9mm of d1] (nc) {Definir nova\\configuração};
+		\node[card, below=4mm of d1] (b2) {Retreinar com a melhor configuração\\(3 sementes)};
+		\node[card, below=of b2] (b3) {Definir os limiares\\na partição de limiar};
+		\node[decisao, below=4mm of b3] (d2) {Foram avaliadas todas\\as abordagens?};
+		\node[cardlado, right=9mm of d2, text width=3.3cm] (na) {Definir nova abordagem\\(Lima; DINOv3 ViT-S, ViT-B\\e ConvNeXt-B; PanDerm-Base)};
+
+		% final
+		\node[card, below=5mm of d2] (c1) {Avaliar todas as abordagens uma\\única vez no teste reservado};
+		\node[card, below=of c1] (c2) {Analisar os resultados e as\\análises complementares};
+		\node[terminal, below=of c2] (fim) {FIM};
+
+		% fluxo principal
 		\draw[fluxo] (ini) -- (a1);
 		\draw[fluxo] (a1) -- (a2);
 		\draw[fluxo] (a2) -- (a3);
 		\draw[fluxo] (a3) -- (a4);
-		\draw[fluxo] (a4) -- (d1);
-		\draw[fluxo] (d1) -- node[rot, above] {[sim]} (a4b);
-		\draw[fluxo] (a4b) |- (j1.east);
-		\draw[fluxo] (d1) -- node[rot, right] {[não]} (j1);
-		\draw[fluxo] (j1) -- (a5);
-		\draw[fluxo] (a5) -- (fork);
-		\draw[fluxo] (fork.south -| r1.north) -- (r1);
-		\draw[fluxo] (fork.south -| m1.north) -- (m1);
-		\draw[fluxo] (r1) -- (r2);
-		\draw[fluxo] (m1) -- (m2);
-		\draw[fluxo] (r2) -- (r2.south |- join.north);
-		\draw[fluxo] (m2) -- (m2.south |- join.north);
-		\draw[fluxo] (join) -- (a6);
-		\draw[fluxo] (a6) -- (a7);
-		\draw[fluxo] (a7) -- (a8);
-		\draw[fluxo] (a8) -- (a9);
-		\draw[fluxo] (a9) -- (fimn);
+		\draw[fluxo] (a4) -- (a5);
+		\draw[fluxo] (a5) -- node[rot, left=1pt] {DESENVOLVIMENTO} (b1);
+		\draw[fluxo] (b1) -- (d1);
+		\draw[fluxo] (d1) -- node[rot, right=1pt] {SIM} (b2);
+		\draw[fluxo] (d1) -- node[rot, above] {NÃO} (nc);
+		\draw[fluxo] (nc) |- (b1.west);
+		\draw[fluxo] (b2) -- (b3);
+		\draw[fluxo] (b3) -- (d2);
+		\draw[fluxo] (d2) -- node[rot, right=1pt] {SIM} (c1);
+		\draw[fluxo] (d2) -- node[rot, above] {NÃO} (na);
+		\draw[fluxo] (na) |- (b1.east);
+		\draw[fluxo] (c1) -- (c2);
+		\draw[fluxo] (c2) -- (fim);
+
+		% ramo do teste reservado, por fora
+		\coordinate (xt) at ($(na.east)+(6mm,0)$);
+		\draw[fluxo] (a5.east) -| node[rot, pos=0.2, above] {TESTE RESERVADO} (xt |- c1.east) -- (c1.east);
 	\end{tikzpicture}
-	\par\vspace{4pt}
-	\begin{tikzpicture}[
-		font=\scriptsize,
-		simb/.style={minimum height=4mm},
-		leg/.style={anchor=west, inner sep=1pt}
-		]
-		\node[circle, fill=black, minimum size=3.2mm, inner sep=0pt] (l1) at (0,0) {};
-		\node[leg] at (0.3,0) {Início};
-		\node[circle, draw, double, double distance=1pt, fill=black, minimum size=3mm, inner sep=0pt] at (1.7,0) {};
-		\node[leg] at (2.0,0) {Fim};
-		\node[draw, rounded corners=4pt, minimum width=8mm, minimum height=4mm] at (3.4,0) {};
-		\node[leg] at (3.9,0) {Atividade};
-		\draw (5.85,0) -- (6.25,0.22) -- (6.65,0) -- (6.25,-0.22) -- cycle;
-		\node[leg] at (6.75,0) {Decisão};
-		\node[draw, diamond, minimum size=4mm, inner sep=0pt] at (8.4,0) {};
-		\node[leg] at (8.7,0) {Junção};
-		\fill[black] (9.9,-0.06) rectangle (10.6,0.06);
-		\node[leg] at (10.7,0) {Paralelo};
-		\draw[-{Latex[length=1.8mm]}] (12.2,0) -- (12.9,0);
-		\node[leg] at (13.0,0) {Fluxo};
-	\end{tikzpicture}
+	\endgroup
 	\fonte{Autores.}
 \end{figure}
 
 \subsection{Abordagem de modelagem}
 \label{subsec:abordagem-modelagem}
 
-A ResNet-50 emprega blocos residuais \cite{he2016resnet} e foi usada no
-ramo visual do AI4Leprosy por \citeonline{barbieri2022}. A MobileNetV2 usa
-blocos com resíduos invertidos e gargalos lineares
-\cite{sandler2018mobilenetv2} e foi empregada na SkinLesionNet para
-classificar quatro categorias \cite{jaikishore2021}. A escolha reúne uma
-rede de referência na literatura revisada e uma rede leve, adequada a
-dispositivos com poucos recursos, como os da atenção primária. Usar duas
-arquiteturas de famílias diferentes, ao lado de uma regressão logística
-como linha de base, atende ao atributo desejável de processar os dados com
-mais de um tipo de modelo, já que a conclusão sobre um classificador pode
-mudar com a técnica e com os dados \cite{ghotra2015}.
+A linha de base da literatura reproduz o modelo final de
+\citeonline{lima2023dissertacao}, também publicado em
+\citeonline{lima2024skin}. A Inception V3 \cite{szegedy2016inception},
+pré-treinada no ImageNet e congelada, extrai 2.048 atributos de cada
+fotografia, redimensionada para $256 \times 256$ pixels; o SMOTE ($k = 3$)
+\cite{chawla2002smote} equilibra as classes apenas no treino; e uma Random
+Forest de 100 árvores \cite{breiman2001randomforest}, com 12 atributos
+sorteados por nó, faz a classificação.
+
+Os modelos avaliados são modelos de fundação, pré-treinados em grandes
+volumes de imagens e depois adaptados à tarefa. O DINOv3
+\cite{simeoni2025dinov3} é pré-treinado de forma autossupervisionada em
+cerca de 1,7 bilhão de imagens gerais e será usado em três versões: os
+transformadores visuais \cite{dosovitskiy2020} ViT-S/16, com 21 milhões de
+parâmetros, e ViT-B/16, com 86 milhões, e a ConvNeXt-B
+\cite{liu2022convnext}, rede convolucional de 89 milhões de parâmetros
+destilada a partir do maior modelo do DINOv3. O PanDerm-Base
+\cite{yan2025panderm} é um ViT-B/16 pré-treinado em imagens dermatológicas,
+incluindo fotografias clínicas. A escolha reúne um modelo geral em dois
+tamanhos, uma arquitetura convolucional com o mesmo pré-treino e um modelo
+do domínio, e atende ao atributo desejável de processar os dados com mais
+de um tipo de modelo, já que a conclusão sobre um classificador pode mudar
+com a técnica e com os dados \cite{ghotra2015}.
 
 A abordagem é a classificação binária supervisionada com transferência de
-aprendizado. Em cada rede, a saída original será substituída por uma
-camada linear com uma unidade, que produzirá um \textit{logit}. O
+aprendizado. Nos três ViTs, a adaptação usará LoRA \cite{hu2022lora}, que
+treina matrizes de baixo posto acrescentadas às projeções de atenção e
+mantém congelados os demais pesos; na ConvNeXt-B, todos os pesos serão
+ajustados. Em cada modelo, uma camada linear com uma unidade produzirá um
+\textit{logit}. O
 treinamento minimizará a entropia cruzada binária, ponderada pela
 frequência das classes na parcela de treino. Na inferência, a função
 sigmoide produzirá um escore entre zero e um, convertido em classe pela
@@ -491,24 +521,25 @@ Algoritmo~\ref{alg:procedimento-experimental}.
 \subsection{Engenharia de atributos e transformações}
 \label{subsec:preprocessamento-arquiteturas}
 
-As duas redes serão inicializadas com os pesos \texttt{IMAGENET1K\_V1} do
-TorchVision e receberão o mesmo preparo das imagens. Cada fotografia será
-redimensionada preservando a proporção, com preenchimento das bordas até
-uma resolução quadrada fixa, e normalizada com os valores documentados
-para esses pesos. A resolução de partida será de $224 \times 224$ pixels,
-a mesma do pré-treinamento; uma resolução maior só será adotada se um
-piloto no desenvolvimento mostrar ganho na validação cruzada e for viável
-no equipamento, e valerá para as duas redes. A resolução fixa também evita
-que o tamanho original do arquivo, associado à fonte, seja visto pela rede
-como pista para a classe. O preparo será determinístico na validação e no
-teste.
+Cada modelo usará os pesos pré-treinados de sua origem: os do DINOv3,
+treinados no LVD-1689M, os do PanDerm-Base e, na linha de base, os da
+Inception V3 no ImageNet. Antes do preparo, todas as fotografias recebem a
+máscara da marca d'água (Subseção~\ref{subsec:curadoria-procedencia}). Cada
+fotografia será então redimensionada preservando a proporção, com
+preenchimento das bordas até uma resolução quadrada fixa, e normalizada com
+os valores documentados para os pesos de cada modelo. A resolução será de
+$224 \times 224$ pixels nos modelos de fundação e de $256 \times 256$ pixels
+na linha de base, como no trabalho original; uma resolução maior só será
+adotada se um piloto no desenvolvimento mostrar ganho na validação cruzada.
+A resolução fixa também evita que o tamanho original do arquivo, associado
+à fonte, seja visto pelo modelo como pista para a classe. O preparo será
+determinístico na validação e no teste.
 
-A extração de características é feita pelas camadas convolucionais
-pré-treinadas, sem atributos manuais: a agregação por média global
-converterá os mapas de características em um vetor de comprimento fixo
-por fotografia. A regressão logística usada como linha de base
-(Subseção~\ref{subsec:linhas-base}) recebe apenas atributos do arquivo,
-como dimensões, proporção e tamanho.
+A extração de características é feita pelas camadas pré-treinadas, sem
+atributos manuais. Na linha de base, a agregação por média global da
+Inception V3 gera o vetor de 2.048 atributos que alimenta a Random Forest;
+nos modelos de fundação, o vetor de saída do modelo alimenta a camada de
+classificação, e a adaptação ajusta também as representações.
 
 A configuração principal não usará aumento de dados. Transformações
 sintéticas geram versões quase idênticas de uma mesma fotografia e podem
@@ -519,7 +550,7 @@ Dermatológico (Subseção~\ref{subsec:justificativa-colecao}). A decisão será
 confirmada com a coorientação antes do treinamento. Se o aumento de dados
 for adotado, ele será aplicado apenas na parcela de treino de cada dobra,
 nunca na validação, na partição de limiar ou no teste, e valerá igualmente
-para as duas redes. A ponderação de classes e quaisquer parâmetros
+para todos os modelos. A ponderação de classes e quaisquer parâmetros
 estimados a partir das imagens seguem a mesma regra. O padrão classifica
 como antipadrão o pré-processamento que altera também os dados de teste,
 como o rebalanceamento de classes aplicado a eles
@@ -536,15 +567,17 @@ Algoritmo~\ref{alg:procedimento-experimental}:
 \begin{enumerate}
 	\item divisão da validação cruzada em 5 dobras estratificadas por grupos,
 	      ou 3, se faltarem grupos positivos \cite{roberts2017,raschka2018};
-	\item ajuste fino de cada rede a partir dos pesos do ImageNet
-	      \cite{raghu2019}, com parada antecipada e seleção da configuração
-	      pela área sob a curva ROC (\metrica{M10}) média nas dobras
-	      \cite{raschka2018};
+	\item adaptação de cada modelo de fundação a partir dos pesos
+	      pré-treinados \cite{raghu2019}, por LoRA ou ajuste fino, com parada
+	      antecipada e seleção da configuração pela área sob a curva ROC
+	      (\metrica{M10}) média nas dobras \cite{raschka2018};
 	\item retreino da configuração escolhida com três sementes e média dos
 	      escores, para expor e reduzir a variação entre execuções
 	      \cite{bouthillier2021};
 	\item definição dos limiares na partição própria, pelo índice de Youden
 	      e pelo ponto com sensibilidade de pelo menos 0,90 \cite{unal2017};
+	\item ajuste da linha de base de Lima, com o SMOTE aplicado apenas ao
+	      treino, e do classificador trivial;
 	\item avaliação única no teste reservado, depois de fixados modelos,
 	      limiares e linhas de base \cite{kapoor2023,varoquaux2023}.
 \end{enumerate}
@@ -557,7 +590,7 @@ Algoritmo~\ref{alg:procedimento-experimental}:
 	\algrenewcommand{\algorithmicif}{\textbf{se}}
 	\algrenewcommand{\algorithmicthen}{\textbf{então}}
 	\begin{algorithmic}[1]
-		\Require coleção curada $C$ com rótulos e grupos, grade $\mathcal{H}$ e três sementes $S$
+		\Require coleção curada $C$ com rótulos e grupos, modelos $\mathcal{A}$, grades $\mathcal{H}_a$ e três sementes $S$
 		\Ensure predições, métricas e intervalos de 95\% no teste reservado $T$
 		\State $(D,T) \gets$ \Call{DivisãoPorGrupos}{$C$, teste de 20\% a 25\%} \Comment{estratificada}
 		\State $(D_{\mathrm{cv}}, D_{\mathrm{lim}}) \gets$ \Call{DivisãoPorGrupos}{$D$, 20\% para limiar}
@@ -565,13 +598,13 @@ Algoritmo~\ref{alg:procedimento-experimental}:
 		\If{alguma dobra tiver menos de 20 grupos positivos}
 			\State $k \gets 3$ e $(F_1,\ldots,F_k) \gets$ \Call{DobrasPorGrupos}{$D_{\mathrm{cv}}, k$}
 		\EndIf
-		\ForAll{rede $a \in \{\mbox{ResNet-50}, \mbox{MobileNetV2}\}$}
-			\ForAll{configuração $h \in \mathcal{H}$ e dobra de validação $F_i$}
-				\State Treinar $a$ com $h$ em $D_{\mathrm{cv}} \setminus F_i$, a partir dos pesos pré-treinados
+		\ForAll{modelo $a \in \mathcal{A}$} \Comment{DINOv3 ViT-S, ViT-B e ConvNeXt-B; PanDerm-Base}
+			\ForAll{configuração $h \in \mathcal{H}_a$ e dobra de validação $F_i$}
+				\State Adaptar $a$ com $h$ (LoRA ou ajuste fino) em $D_{\mathrm{cv}} \setminus F_i$, a partir dos pesos pré-treinados
 				\State Medir a AUC em $F_i$ após cada época e parar após 5 sem melhora ou 30 no total
 				\State Registrar a melhor AUC $u_{h,i}$ e a primeira época $e_{h,i}$ que a atingiu
 			\EndFor
-			\State $h_a^* \gets \arg\max_{h \in \mathcal{H}} \frac{1}{k}\sum_{i=1}^{k} u_{h,i}$
+			\State $h_a^* \gets \arg\max_{h \in \mathcal{H}_a} \frac{1}{k}\sum_{i=1}^{k} u_{h,i}$
 			\State $e_a^* \gets \mathrm{mediana}_{i}(e_{h_a^*,i})$
 			\ForAll{semente $s \in S$}
 				\State Retreinar $a$ com $h_a^*$ em $D_{\mathrm{cv}}$ por $e_a^*$ épocas e obter o modelo $M_{a,s}$
@@ -580,10 +613,10 @@ Algoritmo~\ref{alg:procedimento-experimental}:
 			\State Em $D_{\mathrm{lim}}$, escolher $\tau_a$ pela maior acurácia balanceada
 			\State Em $D_{\mathrm{lim}}$, escolher $\tau'_a$ pela maior especificidade com sensibilidade $\geq 0{,}90$
 		\EndFor
-		\State Ajustar as linhas de base em $D$ e registrar os modelos e limiares fixados
+		\State Ajustar a linha de base de Lima (SMOTE só no treino) e o classificador trivial em $D$
+		\State Registrar os modelos e os limiares fixados
 		\State Avaliar os modelos e as linhas de base no mesmo teste $T$
-		\State Calcular as métricas e os intervalos por \textit{bootstrap} de grupos ($B = 2.000$)
-		\State Usar os mesmos grupos em cada reamostragem para comparar as redes de forma pareada
+		\State Calcular as métricas de cada abordagem e os intervalos por \textit{bootstrap} de grupos ($B = 2.000$)
 	\end{algorithmic}
 	\medskip
 	\noindent\textbf{Legenda das variáveis.}
@@ -591,7 +624,7 @@ Algoritmo~\ref{alg:procedimento-experimental}:
 	$D_{\mathrm{cv}}$: partição de validação cruzada;
 	$D_{\mathrm{lim}}$: partição de ajuste dos limiares; $T$: teste reservado.
 	$k$: número de dobras; $i$: índice da dobra; $F_i$: dobra de validação $i$.
-	$a$: arquitetura da rede; $\mathcal{H}$: grade de hiperparâmetros;
+	$\mathcal{A}$: conjunto de modelos de fundação; $a$: modelo; $\mathcal{H}_a$: grade de hiperparâmetros de $a$;
 	$h$: configuração candidata; $h_a^*$: configuração selecionada.
 	$u_{h,i}$: melhor área sob a curva ROC (AUC) para $h$ na dobra $i$;
 	$e_{h,i}$: primeira época que atingiu esse valor;
@@ -623,20 +656,23 @@ O padrão \textit{Data Science} lista entre os atributos desejáveis a
 seleção criteriosa dos hiperparâmetros dos modelos, seja a partir de
 trabalhos relacionados, seja por um otimizador automático, como a busca em
 grade \cite{acmSigsoftDataScience}. A seleção é pertinente neste estudo
-por dois motivos. Primeiro, no ajuste fino, a taxa de aprendizado e a
-quantidade de camadas liberadas alteram o quanto a rede se afasta dos pesos
-pré-treinados, e valores inadequados podem subajustar ou memorizar uma
-coleção pequena. Segundo, comparar as duas redes com valores escolhidos
-para apenas uma delas favoreceria essa rede; dar a ambas o mesmo espaço de
-busca e o mesmo orçamento reduz esse viés.
+por dois motivos. Primeiro, na adaptação, a taxa de aprendizado e a
+capacidade dos parâmetros treináveis alteram o quanto o modelo se afasta dos
+pesos pré-treinados, e valores inadequados podem subajustar ou memorizar
+uma coleção pequena. Segundo, como arquiteturas diferentes convergem de
+formas diferentes, cada uma terá uma grade própria, mas todas com o mesmo
+número de configurações, o que evita favorecer um modelo pela quantidade de
+tentativas.
 
-Para conter o custo, apenas três hiperparâmetros serão buscados, em grade:
-a taxa de aprendizado ($10^{-4}$, $3 \times 10^{-4}$ e $10^{-3}$), o
-decaimento de pesos ($10^{-4}$ e $10^{-2}$) e as camadas liberadas (apenas
-a camada de saída, o último bloco convolucional ou toda a rede), em 18
-configurações por rede. Os demais serão fixados com base nas
-recomendações dos pesos do TorchVision e nos estudos revisados: otimizador
-AdamW, lotes de 32 fotografias e resolução de $224 \times 224$ pixels.
+Para conter o custo, dois hiperparâmetros serão buscados em grade, em nove
+configurações por modelo. Nos ViTs adaptados com LoRA, a taxa de
+aprendizado ($10^{-4}$, $3 \times 10^{-4}$ e $10^{-3}$) e o posto das
+matrizes de adaptação (4, 8 e 16); na ConvNeXt-B, ajustada por inteiro, a
+taxa de aprendizado ($10^{-5}$, $3 \times 10^{-5}$ e $10^{-4}$) e o
+decaimento de pesos ($10^{-4}$, $10^{-3}$ e $10^{-2}$). Os demais serão
+fixados: otimizador AdamW, lotes de 32 fotografias e resolução de
+$224 \times 224$ pixels. A linha de base mantém a configuração do trabalho
+original, sem busca. Esses valores ainda serão validados com a orientação.
 A busca usará somente as dobras da validação cruzada; a partição de limiar
 e o teste não participam. A grade, a configuração escolhida e a área sob a
 curva ROC de cada configuração em cada dobra serão relatadas.
@@ -644,41 +680,50 @@ curva ROC de cada configuração em cada dobra serão relatadas.
 \subsection{Linhas de base e comparação com o estado da arte}
 \label{subsec:linhas-base}
 
-Entre os estudos incluídos na revisão, não foi identificado um resultado
-diretamente comparável à classificação binária no 32 CSD com partições
-por grupos de fotografias relacionadas
-(Apêndice~\ref{apend:inventario-datasets}). O AI4Leprosy
-\cite{barbieri2022} usa ResNet-50 no ramo visual e combina fotografias
-com dados clínicos indisponíveis no 32 CSD. O classificador da OMS
-\cite{pons2026} conta com validação externa \cite{deps2026}, mas não está
-disponível para execução local. A SkinLesionNet \cite{jaikishore2021}
-usa MobileNetV2 para classificar quatro categorias, com partições por
-imagem.
+O padrão exige discutir as linhas de base do estado da arte, explicar por
+que elas não existem ou argumentar que a comparação direta é impraticável
+\cite{acmSigsoftDataScience}. Este estudo adota a primeira alternativa. A
+linha de base principal reproduz a abordagem de
+\citeonline{lima2023dissertacao}, também publicada em
+\citeonline{lima2024skin}, o estudo de hanseníase com a configuração mais
+detalhada entre os revisados: atributos da Inception V3, balanceamento por
+SMOTE e Random Forest (Subseção~\ref{subsec:abordagem-modelagem}). Seu
+ponto forte é tratar o diagnóstico diferencial da hanseníase com uma
+configuração totalmente descrita, e o próprio autor indica, como trabalho
+futuro, avaliar outras arquiteturas de redes profundas. Suas limitações
+são a ausência de separação por paciente, o uso de uma única coleção e a
+presença de várias fotografias da mesma lesão, o que pode inflar os
+resultados publicados. Por isso, a abordagem será reimplementada e avaliada
+nas mesmas partições, sementes e teste reservado dos modelos de fundação,
+com três adaptações: o SMOTE é aplicado apenas ao treino de cada dobra,
+para evitar vazamento; a tarefa é binária, como no cenário com duas
+classes do trabalho original; e a máscara da marca d'água é aplicada a
+todas as fotografias.
 
-As diferenças entre coleções, classes e partições tornam impraticável
-a comparação direta com os resultados publicados
-\cite{acmSigsoftDataScience}. A origem comum entre imagens do 32 CSD e
-dos estudos de \citeonline{eita2025} e \citeonline{lima2024skin} indica
-risco de sobreposição. Os resultados publicados servirão para
-contextualizar os achados do estudo (questão \hyperlink{questao-q3}{Q3}).
+A segunda linha de base atribuirá a todas as fotografias a classe mais
+frequente no conjunto de desenvolvimento. Com as duas classes presentes no
+teste, essa regra terá acurácia balanceada (\metrica{M11}) de 0,50,
+referência de desempenho sem discriminação entre as classes.
 
-Duas linhas de base internas serão avaliadas no mesmo teste que as
-redes. A primeira atribuirá a todas as fotografias a classe mais
-frequente no conjunto de desenvolvimento. Com as duas classes presentes
-no teste, essa regra terá acurácia balanceada (\metrica{M11}) de 0,50,
-referência de desempenho sem discriminação entre as classes. A segunda é
-uma regressão logística que usa apenas atributos do arquivo, como
-dimensões, proporção e tamanho, sem olhar o conteúdo da imagem. Se essa
-regressão superar o acaso, os atributos de origem carregam informação
-sobre a classe, e o ganho das redes deve ser interpretado em relação a ela
-(questão \hyperlink{questao-q6}{Q6}).
+Para os demais estudos, a comparação direta é impraticável. O AI4Leprosy
+\cite{barbieri2022} usa ResNet-50 no ramo visual e combina fotografias com
+dados clínicos indisponíveis nas coleções deste estudo; o classificador da
+OMS \cite{pons2026} conta com validação externa \cite{deps2026}, mas não
+está disponível para execução local; e a LeprosyNet \cite{baweja2023} não
+descreve a arquitetura por completo. As diferenças entre coleções, classes
+e partições impedem comparar numericamente esses resultados com os deste
+estudo, e a origem comum entre imagens do 32 CSD e as de
+\citeonline{eita2025} e \citeonline{lima2024skin} indica risco de
+sobreposição. Os resultados publicados servirão para contextualizar os
+achados (questão \hyperlink{questao-q3}{Q3}).
 
 \section{Instrumentação}
 \label{sec:instrumentacao}
 
 Seguindo \citeonline{wohlin2024}, a instrumentação reúne os objetos do
-estudo, que são a versão 2 do 32 CSD e os pesos \texttt{IMAGENET1K\_V1} da
-ResNet-50 e da MobileNetV2 distribuídos pelo TorchVision, e os instrumentos
+estudo, que são a versão 2 do 32 CSD, o subconjunto de hanseníase do
+Derm1M e os pesos pré-treinados do DINOv3, do PanDerm-Base e da Inception
+V3, e os instrumentos
 de medição. Como o estudo é computacional, ela inclui também a
 infraestrutura de hardware e software exigida pelo padrão \textit{Data
 Science} \cite{acmSigsoftDataScience}.
@@ -690,8 +735,9 @@ Science} \cite{acmSigsoftDataScience}.
 	\item[Inventário.] Tabela com um registro por arquivo, com os campos
 	      descritos na Subseção~\ref{subsec:curadoria-procedencia}.
 	\item[\textit{Scripts} de curadoria.] Calculam os hashes criptográficos e
-	      perceptuais, propõem os pares candidatos a duplicata e verificam os
-	      candidatos a recorte por correspondência local.
+	      perceptuais, propõem os pares candidatos a duplicata, verificam os
+	      candidatos a recorte por correspondência local e aplicam a máscara
+	      da marca d'água.
 	\item[\textit{Scripts} de particionamento.] Geram, com semente fixa, as
 	      listas de grupos por partição e por dobra.
 	\item[\textit{Scripts} de treinamento e inferência.] Registram
@@ -716,8 +762,9 @@ Science} \cite{acmSigsoftDataScience}.
 \subsection{Infraestrutura de hardware e software}
 \label{subsec:infraestrutura}
 
-O equipamento ainda não está definido: a previsão é uma máquina com placa
-gráfica NVIDIA de ao menos 8 GB, obtida com a coorientação. As ferramentas
+O treinamento e a inferência serão executados no Google Colab Pro, com
+placa gráfica NVIDIA A100 e 51 GB de memória RAM; o modelo exato da placa e
+a memória disponível em cada sessão serão registrados. As ferramentas
 previstas estão na Tabela~\ref{tab:ferramentas-software}; suas versões, o
 equipamento e o tempo de treino e de inferência por fotografia serão
 relatados com os resultados.
@@ -738,16 +785,19 @@ relatados com os resultados.
 	\endlastfoot
 	Python 3 & Linguagem de todos os \textit{scripts} e cadernos \\ \hline
 	Ambiente virtual (conda ou venv) & Isolamento do ambiente, com arquivo de dependências e versões fixadas \\ \hline
-	PyTorch e TorchVision & Definição das redes, pesos \texttt{IMAGENET1K\_V1}, preparo das imagens, treinamento e inferência \\ \hline
+	PyTorch e timm (1.0.20 ou posterior) & Carregamento dos modelos e dos pesos pré-treinados, preparo das imagens, treinamento e inferência \\ \hline
+	PEFT & Adaptação dos ViTs por LoRA \\ \hline
 	CUDA e cuDNN & Execução do treinamento e da inferência na placa gráfica \\ \hline
-	scikit-learn & Validação cruzada estratificada por grupos, regressão logística, classificador trivial, área sob a curva ROC, matriz de confusão e escore de Brier \\ \hline
+	scikit-learn & Validação cruzada estratificada por grupos, Random Forest, classificador trivial, área sob a curva ROC, matriz de confusão e escore de Brier \\ \hline
+	imbalanced-learn & SMOTE aplicado apenas ao treino de cada dobra na linha de base \\ \hline
 	NumPy e pandas & Inventário, listas de partição, tabelas de resultados e reamostragem \textit{bootstrap} \\ \hline
-	Pillow e hashlib & Leitura das imagens, atributos do arquivo (dimensões, proporção e tamanho) e cálculo do SHA-256 \\ \hline
+	Pillow e hashlib & Leitura das imagens, aplicação da máscara da marca d'água e cálculo do SHA-256 \\ \hline
 	ImageHash & Hashes perceptuais para levantar candidatos a duplicatas transformadas \\ \hline
 	OpenCV & Correspondência local e verificação de consistência geométrica de candidatos a recortes \\ \hline
 	scikit-image & Conversão de cor para o espaço CIELAB e cálculo do ITA \\ \hline
 	Matplotlib & Curvas ROC, diagramas de confiabilidade, matrizes de confusão e demais figuras \\ \hline
 	Jupyter Notebook & Inspeção visual das amostras, análise exploratória e geração de tabelas e figuras \\ \hline
+	Google Colab Pro e Google Drive & Execução dos treinos na A100 e armazenamento de dados, \textit{checkpoints} e registros \\ \hline
 	Git e GitHub & Controle de versão, revisão do código entre os autores e publicação do pacote de replicação \\ \hline
 \end{longtable}
 \endgroup
@@ -759,11 +809,12 @@ ativadas quando disponíveis.
 \subsection{Pacote de replicação}
 \label{subsec:pacote-replicacao}
 
-Serão disponibilizados, em repositório público, o inventário, as listas de
-fotografias por partição e por dobra, as regras de seleção, o guia de
+Serão disponibilizados, em repositório público, o inventário, com a lista
+das fotografias do Derm1M usadas, as listas de fotografias por partição e
+por dobra, as regras de seleção, o guia de
 inspeção, os arquivos de configuração, o arquivo de dependências e os
 \textit{scripts} de curadoria, de treinamento e de avaliação, o que permite
-reexecutar o estudo a partir da versão pública da coleção
+reexecutar o estudo a partir das versões públicas das coleções
 \cite{acmSigsoftDataScience,wohlin2024}.
 
 \section{Medidas de desempenho e análise dos resultados}
@@ -779,7 +830,7 @@ e não é inflada pelo desequilíbrio da coleção, em que a hanseníase
 corresponde a cerca de 13\% das imagens. Serão relatadas também a
 sensibilidade, com destaque pela finalidade de triagem, a especificidade,
 a área sob a curva ROC (\metrica{M10}), a matriz de confusão e as
-contagens, para os dois classificadores e as duas linhas de base. A
+contagens, para os quatro modelos de fundação e as duas linhas de base. A
 acurácia (\metrica{M5}), a precisão (\metrica{M3}) e o $F_1$ (\metrica{M4})
 também serão relatados, para situar os resultados em relação à literatura,
 com a ressalva de que dependem da prevalência das classes no teste. A
@@ -814,14 +865,13 @@ heurísticas previstas.
 	\endfoot
 	\endlastfoot
 	\textit{Bootstrap} de grupos & Intervalos de 95\% de todas as métricas, com 2.000 reamostragens estratificadas por classe e percentis & Não supõe distribuição para as métricas; reamostrar grupos preserva a dependência entre fotos relacionadas \\ \hline
-	Diferença pareada & Diferença de acurácia balanceada entre as redes, com os mesmos grupos em cada reamostragem & Expressa o tamanho do efeito com intervalo, sem teste de hipótese \cite{acmSigsoftDataScience} \\ \hline
 	Variação entre execuções & Média e desvio padrão da AUC nas dobras; métricas de cada semente & Mostra a variação entre execuções, em vez de um único valor \cite{bouthillier2021} \\ \hline
 	Tamanho do teste & Cerca de 100 grupos positivos & Semiamplitude de cerca de 8 pontos percentuais na sensibilidade (Subseção~\ref{subsec:particoes}) \\ \hline
 	Validação cruzada em 5 dobras & Seleção de configurações; 3 dobras se alguma tiver menos de 20 grupos positivos & Equilibra o custo de treino e o número de casos por dobra \\ \hline
 	AUC na seleção & Média nas dobras & Independe do limiar, o que evita limiares provisórios por dobra \\ \hline
 	Índice de Youden e sensibilidade $\geq 0{,}90$ & Limiar principal e secundário & Equilíbrio entre as classes; prioridade de não perder casos na triagem \cite{unal2017} \\ \hline
 	Parada antecipada e mediana das épocas & 5 épocas sem melhora, máximo de 30; retreino pela mediana das melhores épocas & Limita o sobreajuste; reduz a influência de dobras atípicas \\ \hline
-	Média dos escores das sementes & Escore final de cada rede & Reduz a variação devida à inicialização e à ordem dos lotes \\ \hline
+	Média dos escores das sementes & Escore final de cada modelo & Reduz a variação devida à inicialização e à ordem dos lotes \\ \hline
 	Limiares de similaridade perceptual & Agrupamento de duplicatas & Sem valor universal; calibrados por inspeção visual de uma amostra de pares \\ \hline
 	Mínimo por faixa de tom de pele & Ao menos 10 grupos positivos e 10 negativos & Evita estimativas com denominadores muito pequenos \\ \hline
 \end{longtable}
@@ -862,10 +912,13 @@ rótulos da coleção representam a condição fotografada, o que a inspeção
 manual de amostras verifica apenas em parte. A proporção de hanseníase,
 cerca de 13\% da coleção, decorre da composição do 32 CSD e não da
 prevalência em um serviço de saúde, de modo que precisão, $F_1$, acurácia e
-limiares não se transferem diretamente para outro contexto. Por fim, o ajuste
-fino supõe que as representações aprendidas no ImageNet são úteis para
-fotografias de pele, o que a comparação com as linhas de base permite
-verificar.
+limiares não se transferem diretamente para outro contexto. Supõe-se
+também que as fotografias do Derm1M, vindas de livros e artigos e todas
+positivas, representam a hanseníase de forma compatível com as do 32 CSD;
+a avaliação com e sem elas (questão \hyperlink{questao-q6}{Q6}) verifica
+esse efeito. Por fim, a adaptação supõe que as representações aprendidas no
+pré-treino, em imagens gerais ou dermatológicas, são úteis para fotografias
+de hanseníase, o que a comparação com as linhas de base permite verificar.
 
 \subsubsection*{Validade de construto}
 
@@ -889,7 +942,7 @@ curva ROC, a calibração e a matriz de confusão como complementares.
 \subsubsection*{Validade interna}
 
 A validade interna trata de fatores que poderiam produzir o desempenho
-observado sem relação com a capacidade das redes. As duas ameaças centrais
+observado sem relação com a capacidade dos modelos. As duas ameaças centrais
 são próprias de ciência de dados. A primeira é o vazamento de dados
 (\textit{data leakage}): duplicatas, recortes e fotos da mesma lesão em
 partições diferentes inflariam o desempenho \cite{kapoor2023}, o que o
@@ -897,19 +950,25 @@ agrupamento por hash, similaridade e inspeção visual e a divisão por grupos
 em todas as etapas controlam. A segunda é o aprendizado por atalho
 (\textit{shortcut learning}): bordas, marcas d'água, resolução ou estilo de
 captura associados a uma fonte podem permitir prever a classe sem olhar a
-lesão \cite{geirhos2020}; a auditoria de procedência, a resolução fixa, a
-linha de base com metadados e a análise sem a pele normal tratam esse risco.
+lesão \cite{geirhos2020}; a máscara da marca d'água em todas as
+fotografias, a auditoria de procedência, a resolução fixa e a análise sem a
+pele normal tratam esse risco. Como as fotografias do Derm1M são todas
+positivas, o estilo de figura de livro também poderia servir de atalho, o
+que a avaliação com e sem elas permite detectar.
 
 Há também a ameaça de \textit{instrumentation}: erros nos \textit{scripts}
 poderiam produzir métricas incorretas. Os \textit{scripts} de avaliação
 serão verificados com casos de resultado conhecido e revisados pelo outro
-autor antes da abertura do teste. Para evitar que uma rede seja favorecida,
-as duas terão a mesma grade de hiperparâmetros, as mesmas dobras e o mesmo
-preparo das imagens, e o teste permanecerá fechado até que modelos e
-limiares sejam fixados. Por fim, a aleatoriedade do treinamento e as
+autor antes da abertura do teste. Para evitar que um modelo seja
+favorecido, todos terão as mesmas dobras, as mesmas sementes e o mesmo
+preparo das imagens, com grades próprias de mesmo tamanho, e o teste
+permanecerá fechado até que modelos e limiares sejam fixados. Por fim, a aleatoriedade do treinamento e as
 operações não determinísticas da placa gráfica fazem o mesmo código produzir
 pesos diferentes; as sementes serão fixadas e o retreino será repetido com
-três sementes, com a variação relatada.
+três sementes, com a variação relatada. As sessões do Colab têm duração
+limitada e podem ser interrompidas, o que será tratado com
+\textit{checkpoints} salvos no Google Drive e com o registro do ambiente de
+cada execução.
 
 \subsubsection*{Validade externa}
 
@@ -918,13 +977,14 @@ ameaça central é a \textit{interaction of selection and treatment}: o teste
 é interno a uma coleção pública que combina atlas e bases da internet, sem
 documentação de tom de pele, idade ou origem dos pacientes, e os resultados
 se aplicam a esse conjunto de fotografias. O acesso ao AI4Leprosy, que
-permitiria testar as redes em fotografias de outra origem, não foi concedido
+permitiria testar os modelos em fotografias de outra origem, não foi concedido
 até o momento; esse é um risco conhecido e assumido, e, se o acesso ocorrer,
 a mesma avaliação poderá ser repetida sem alterar o protocolo.
 
 Outra ameaça é a \textit{interaction of setting and treatment}: fotos de
 atlas e de coleções curadas tendem a ter enquadramento e iluminação melhores
-que fotos de celular tiradas na atenção primária, e o uso no SUS exige
+que fotos de celular tiradas na atenção primária, diferença que as
+fotografias de livros e artigos do Derm1M reforçam, e o uso no SUS exige
 validação externa prospectiva. Por isso, os resultados não serão
 apresentados como evidência de efetividade clínica.
 
@@ -933,13 +993,14 @@ apresentados como evidência de efetividade clínica.
 A validade de conclusão trata da correção das inferências sobre os
 resultados. A principal ameaça é o \textit{low statistical power}: com poucos
 grupos de hanseníase no teste, os intervalos ficam largos e diferenças
-pequenas entre as redes não podem ser distinguidas; a meta de cerca de 100
+pequenas entre os modelos não podem ser distinguidas; a meta de cerca de 100
 grupos positivos limita a semiamplitude a cerca de 8 pontos percentuais
 (Subseção~\ref{subsec:particoes}), e os denominadores serão sempre
 relatados. A ameaça de \textit{fishing and the error rate}, decorrente de
 muitas métricas, faixas e pontos de operação, é tratada pela definição
-prévia da acurácia balanceada como medida principal e da diferença pareada
-como comparação principal; as demais análises são exploratórias.
+prévia da acurácia balanceada como medida principal e pela apresentação
+dos resultados de todas as abordagens, sem seleção posterior das mais
+favoráveis; as demais análises são exploratórias.
 
 Quanto aos \textit{violated assumptions of statistical tests}, o estudo não
 aplica testes de hipótese, mas o \textit{bootstrap} por percentis pode

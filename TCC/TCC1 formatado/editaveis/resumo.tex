@@ -1,35 +1,37 @@
 % !TeX root = ../tcc.tex
 \begin{resumo}
-A hanseníase é uma doença tropical negligenciada cujo diagnóstico se
-baseia principalmente na avaliação clínica, e a semelhança de suas lesões
-com outras condições dermatológicas dificulta a detecção precoce. Modelos de
-visão computacional têm sido propostos para apoiar a identificação dessas
-lesões, mas a forma como seu desempenho é avaliado ainda é pouco examinada.
-Este trabalho analisa a avaliação de desempenho de modelos de visão
-computacional aplicados à identificação de padrões associados à hanseníase
-em imagens de pele e, com base nas evidências reunidas, planeja um estudo de
-ciência de dados. Foi conduzida uma revisão estruturada da literatura,
-adaptada do protocolo de revisão sistemática, com busca assistida por
-ferramentas de inteligência artificial, que incluiu 26 estudos, dos quais 17
-apresentam dados próprios. Predominam as redes convolucionais treinadas por
-transferência e a avaliação em uma única divisão da própria base: dos 16
-estudos que desenvolvem e avaliam modelos, 14 usam essa divisão, apenas 2
-declaram separar as imagens por paciente e só 1 testa o modelo em outra
-base. A acurácia e a sensibilidade são as métricas mais relatadas, nenhum
-estudo reporta o desempenho por tom de pele, e as diferenças entre bases,
-classes e procedimentos impedem comparar numericamente os resultados. Com
-base nessas lacunas, foi planejado, segundo o padrão \textit{Data Science}
-da ACM SIGSOFT, um estudo que comparará a ResNet-50 e a MobileNetV2 na
-classificação de fotografias clínicas da coleção pública 32 CSD v2, com
-partições por grupos de fotografias relacionadas, seleção por validação
-cruzada, acurácia balanceada como medida principal, intervalos de confiança
-por \textit{bootstrap} e linhas de base de metadados. O estudo será
-executado na segunda etapa da monografia.
+	A hanseníase é uma doença tropical negligenciada cujo diagnóstico se
+	baseia principalmente na avaliação clínica, e a semelhança de suas lesões
+	com outras condições dermatológicas dificulta a detecção precoce. Modelos de
+	visão computacional têm sido propostos para apoiar a identificação dessas
+	lesões, mas a forma como seu desempenho é avaliado ainda é pouco examinada.
+	Este trabalho analisa a avaliação de desempenho de modelos de visão
+	computacional aplicados à identificação de padrões associados à hanseníase
+	em imagens de pele e, com base nas evidências reunidas, planeja um estudo de
+	ciência de dados. Foi conduzida uma revisão estruturada da literatura,
+	adaptada do protocolo de revisão sistemática, com busca assistida por
+	ferramentas de inteligência artificial, que incluiu 26 estudos, dos quais 17
+	apresentam dados próprios. Predominam as redes convolucionais treinadas por
+	transferência e a avaliação em uma única divisão da própria base: dos 16
+	estudos que desenvolvem e avaliam modelos, 14 usam essa divisão, apenas 2
+	declaram separar as imagens por paciente e só 1 testa o modelo em outra
+	base. A acurácia e a sensibilidade são as métricas mais relatadas, nenhum
+	estudo reporta o desempenho por tom de pele, e as diferenças entre bases,
+	classes e procedimentos impedem comparar numericamente os resultados. Com
+	base nessas lacunas, foi planejado, segundo o padrão \textit{Data Science}
+	da ACM SIGSOFT, um estudo que avaliará os modelos de fundação DINOv3 e
+	PanDerm na distinção entre hanseníase e outras doenças dermatológicas em
+	fotografias clínicas da coleção pública \textit{32 Curated Categories of Skin Disease Images} (32 CSD v2), ao lado de um
+	classificador trivial e da reprodução de uma abordagem da literatura, com
+	partições por grupos de fotografias relacionadas, seleção por validação
+	cruzada, acurácia balanceada como medida principal e intervalos de
+	confiança por \textit{bootstrap}. O estudo será
+	executado na segunda etapa da monografia.
 
-\vspace{\onelineskip}
+	\vspace{\onelineskip}
 
-\noindent
-\textbf{Palavras-chave}: hanseníase. visão computacional. avaliação de
-desempenho. aprendizado profundo. revisão estruturada da literatura.
-ciência de dados.
+	\noindent
+	\textbf{Palavras-chave}: hanseníase. visão computacional. avaliação de
+	desempenho. aprendizado profundo. revisão estruturada da literatura.
+	ciência de dados.
 \end{resumo}
