@@ -294,10 +294,9 @@ por paciente. As quantidades iniciais e restantes após a seleção serão
 registradas no inventário. Sua divisão será feita neste estudo
 (Subseção~\ref{subsec:particoes}) \cite{ourNormalSkin2023}.
 
-As versões e condições de uso serão registradas por fonte. A licença
-CC BY-SA 4.0 é a declarada para o 31 CSD; ela não será atribuída ao Our
-Normal Skin. A redistribuição de imagens dessa segunda fonte dependerá do
-esclarecimento de suas condições de uso.
+A licença CC BY-SA 4.0 declarada para o 31 CSD não será atribuída ao Our
+Normal Skin, cuja redistribuição de imagens dependerá do esclarecimento
+de suas condições de uso.
 
 Como o Atlas também alimenta o
 conjunto usado por \citeonline{eita2025}, no qual uma verificação por
@@ -315,7 +314,7 @@ artigos, confirma o diagnóstico sem marcadores de incerteza. Das 371
 imagens assim confirmadas, 343 são fotografias clínicas; as demais, de
 dermatoscopia, histopatologia ou ilustração, ficam fora. Como esse
 subconjunto contém apenas casos positivos, ele será usado somente no
-treino, para ampliar a classe de hanseníase, e nunca no teste. Sua licença
+treino e nunca no teste. Sua licença
 (CC BY-NC 4.0) restringe o uso a fins não comerciais.
 
 \subsection{Pré-processamento, filtragem e categorização dos dados}
@@ -420,7 +419,7 @@ com margem aproximada de 8 pontos percentuais para cada lado da estimativa
 atingir essa quantidade. Serão informadas as contagens efetivas e a
 limitação de precisão quando houver menos grupos.
 
-O Derm1M entrará somente no treino. Em cada rodada, serão excluídas as
+Para o Derm1M, em cada rodada, serão excluídas as
 imagens relacionadas à validação, à partição de limiar ou ao teste. No
 retreino final, a exclusão considerará a partição de limiar e o teste. Por
 exemplo, um recorte do Derm1M relacionado a uma foto de validação ficará
@@ -533,7 +532,7 @@ A linha de base da literatura reproduz o modelo final de
 \citeonline{lima2023dissertacao}, também publicado em
 \citeonline{lima2024skin}. A Inception V3,
 pré-treinada no ImageNet e congelada, extrai 2.048 atributos de cada
-fotografia, redimensionada para $256 \times 256$ pixels; o SMOTE ($k = 3$) equilibra as classes apenas no treino; e uma Random
+fotografia; o SMOTE ($k = 3$) equilibra as classes apenas no treino; e uma Random
 Forest de 100 árvores, com 12 atributos
 sorteados por nó, faz a classificação.
 
@@ -548,8 +547,8 @@ destilada a partir do maior modelo do DINOv3. O PanDerm-Base
 incluindo fotografias clínicas. A escolha reúne um modelo geral em dois
 tamanhos, uma arquitetura convolucional com o mesmo pré-treino e um modelo
 do domínio, e atende ao atributo desejável de processar os dados com mais
-de um tipo de modelo, já que a conclusão sobre um classificador pode mudar
-com a técnica e com os dados \cite{ghotra2015}.
+de um tipo de modelo \cite{ghotra2015}, discutido na
+Subseção~\ref{subsec:ciencia-de-dados}.
 
 A abordagem é a classificação binária supervisionada com transferência de
 aprendizado. Nos três ViTs, a adaptação usará LoRA \cite{hu2022lora}, que
@@ -575,7 +574,7 @@ fotografia será então redimensionada preservando a proporção, com
 preenchimento das bordas até uma resolução quadrada fixa, e normalizada com
 os valores documentados para os pesos de cada modelo. A resolução será de
 $224 \times 224$ pixels nos modelos de fundação e de $256 \times 256$ pixels
-na linha de base, como no trabalho original;
+na linha de base, como no trabalho original.
 A resolução fixa também evita que o tamanho original do arquivo, associado
 à fonte, seja visto pelo modelo como pista para a classe. O preparo será
 determinístico na validação, na partição de limiar e no teste.
@@ -589,12 +588,11 @@ desenvolvimento e registradas antes da abertura do teste. A política será
 comum às fontes e às classes de treino, incluindo o Derm1M elegível, e será
 mantida no retreino final e nas duas condições da \hyperlink{questao-q5}{Q5}.
 As versões geradas permanecerão vinculadas à fotografia e ao grupo de
-origem; não serão contadas como novos grupos independentes. Validação,
-partição de limiar e teste não receberão aumento de dados.
+origem; não serão contadas como novos grupos independentes.
 
 A extração de características é feita pelas camadas pré-treinadas, sem
-atributos manuais. Na linha de base, a agregação por média global da
-Inception V3 gera o vetor de 2.048 atributos que alimenta a Random Forest;
+atributos manuais. Na linha de base, o vetor de atributos obtido pela
+agregação por média global da Inception V3 alimenta a Random Forest;
 nos modelos de fundação, o vetor de saída do modelo alimenta a camada de
 classificação, e a adaptação ajusta também as representações.
 
@@ -603,8 +601,7 @@ classificação, e a adaptação ajusta também as representações.
 
 O treinamento seguirá a separação entre desenvolvimento e teste descrita
 na Subseção~\ref{subsec:particoes}. A validação cruzada será usada para
-escolher a configuração de cada modelo, e o teste reservado servirá apenas
-para a avaliação final \cite{raschka2018,varoquaux2023}.
+escolher a configuração de cada modelo \cite{raschka2018,varoquaux2023}.
 
 A explicação das dobras segue a sequência apresentada por
 \citeonline{lima2023dissertacao}, adaptada à divisão por grupos deste estudo:
@@ -625,9 +622,7 @@ para todas as abordagens; nesse caso, cada rodada treinará em duas e
 validará na terceira. A validação cruzada permite observar a variação
 entre divisões, ao contrário de uma única divisão de validação, usada em
 14 dos 16 estudos que desenvolvem modelos na revisão
-(Subseção~\ref{subsec:rq3-metodos}). Repetir o processamento com diferentes
-partes dos dados é também um atributo desejável do padrão
-\textit{Data Science} \cite{acmSigsoftDataScience}.
+(Subseção~\ref{subsec:rq3-metodos}).
 
 Após a seleção, cada modelo será retreinado com a configuração escolhida.
 Os critérios de duração, repetição e escolha de limiares estão na
@@ -701,8 +696,8 @@ aprendizado ($10^{-4}$, $3 \times 10^{-4}$ e $10^{-3}$) e o posto das
 matrizes de adaptação (4, 8 e 16); na ConvNeXt-B, ajustada por inteiro, a
 taxa de aprendizado ($10^{-5}$, $3 \times 10^{-5}$ e $10^{-4}$) e o
 decaimento de pesos ($10^{-4}$, $10^{-3}$ e $10^{-2}$). Os demais serão
-fixados: otimizador AdamW, lotes de 32 fotografias e resolução de
-$224 \times 224$ pixels. A linha de base mantém a configuração do trabalho
+fixados: otimizador AdamW, lotes de 32 fotografias e resolução dos
+modelos de fundação (Subseção~\ref{subsec:preprocessamento-arquiteturas}). A linha de base mantém a configuração do trabalho
 original, sem busca. Esses valores ainda serão validados com a orientação.
 A busca usará somente as dobras da validação cruzada; a partição de limiar
 e o teste não participam. A grade, a configuração escolhida e a área sob a
@@ -728,14 +723,12 @@ fechado durante todas essas escolhas.
 \subsection{Linhas de base e comparação com o estado da arte}
 \label{subsec:linhas-base}
 
-O padrão exige discutir as linhas de base do estado da arte, explicar por
-que elas não existem ou argumentar que a comparação direta é impraticável
-\cite{acmSigsoftDataScience}. Este estudo adota a primeira alternativa. A
-linha de base principal reproduz a abordagem de
-\citeonline{lima2023dissertacao}, também publicada em
-\citeonline{lima2024skin}, o estudo de hanseníase com a configuração mais
-detalhada entre os revisados: atributos da Inception V3, balanceamento por
-SMOTE e Random Forest (Subseção~\ref{subsec:abordagem-modelagem}). Seu
+Conforme o padrão (Subseção~\ref{subsec:ciencia-de-dados}), este estudo
+discute as linhas de base do estado da arte, em vez de justificar sua
+ausência \cite{acmSigsoftDataScience}. A linha de base principal reproduz a
+abordagem de \citeonline{lima2023dissertacao}, descrita na
+Subseção~\ref{subsec:abordagem-modelagem}, o estudo de hanseníase com a
+configuração mais detalhada entre os revisados. Seu
 ponto forte é tratar o diagnóstico diferencial da hanseníase com uma
 configuração totalmente descrita, e o próprio autor indica, como trabalho
 futuro, avaliar outras arquiteturas de redes profundas. Suas limitações
@@ -773,9 +766,8 @@ OMS \cite{pons2026} conta com validação externa \cite{deps2026}, mas não
 está disponível para execução local; e a LeprosyNet \cite{baweja2023} não
 descreve a arquitetura por completo. As diferenças entre coleções, classes
 e partições impedem comparar numericamente esses resultados com os deste
-estudo, e a origem comum entre imagens do 31 CSD e as de
-\citeonline{eita2025} e \citeonline{lima2024skin} indica risco de
-sobreposição. Os resultados publicados servirão para contextualizar os
+estudo, e a origem comum com o Atlas Dermatológico, tratada na
+Subseção~\ref{subsec:justificativa-colecao}, agrava essa limitação. Os resultados publicados servirão para contextualizar os
 achados (questão \hyperlink{questao-q3}{Q3}).
 
 \section{Instrumentação}
@@ -802,12 +794,8 @@ infraestrutura de hardware e software exigida pelo padrão \textit{Data
 	      listas de grupos por partição e por dobra.
 	\item[\textit{Scripts} de treinamento e inferência.] Registram
 	      configuração, semente, épocas e escores por fotografia.
-	\item[\textit{Scripts} de avaliação.] Calculam a sensibilidade
-	      (\metrica{M1}), a especificidade (\metrica{M2}), a precisão
-	      (\metrica{M3}), o $F_1$ (\metrica{M4}), a acurácia (\metrica{M5}), a
-	      área sob a curva ROC
-	      (\metrica{M10}), a acurácia balanceada (\metrica{M11}), o escore de
-	      Brier e o erro esperado de calibração (\metrica{M12}), a matriz de
+	\item[\textit{Scripts} de avaliação.] Calculam as métricas da
+	      Subseção~\ref{subsec:descricao-metricas}, a matriz de
 	      confusão e os intervalos por \textit{bootstrap} de grupos. Esses \textit{scripts}
 	      serão verificados com casos de teste de resultado conhecido antes
 	      do uso.
@@ -967,8 +955,7 @@ chamado \textit{bootstrap} pareado por grupos.
 
 O intervalo descreve a incerteza do teste para os modelos já ajustados;
 a variação do treinamento será relatada separadamente por semente. A
-análise se limita ao modelo e à configuração escolhidos com Derm1M, com
-ajuste de limiar em cada condição. Ela não representa uma nova seleção do
+análise se limita ao modelo e à configuração escolhidos com Derm1M. Ela não representa uma nova seleção do
 melhor modelo em cada condição.
 
 A análise exploratória de predição seletiva examinará a relação entre
@@ -1023,8 +1010,7 @@ Outra ameaça é o \textit{mono-operation bias}: o construto é medido em uma
 base composta e em uma única modalidade de imagem. O teste é interno ao
 31 CSD e ao Our Normal Skin e não constitui validação externa. O \textit{mono-method bias}
 é atenuado pelo uso de várias medidas em conjunto, com a acurácia
-balanceada como principal e a sensibilidade, a especificidade, a área sob a
-curva ROC, a calibração e a matriz de confusão como complementares.
+balanceada como principal (Subseção~\ref{subsec:descricao-metricas}).
 
 \subsubsection*{Validade interna}
 
