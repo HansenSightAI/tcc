@@ -104,7 +104,7 @@ usou o Consensus, buscador de literatura científica baseado em
 inteligência artificial, e o Claude, assistente de uso geral da Anthropic,
 ambos com o mesmo \textit{prompt} construído a partir da questão de
 pesquisa e do PICOC. Essa escolha decorreu de uma limitação da busca
-booleana: mesmo após diversos ajustes, a \textit{string} retornou 10.818
+booleana: mesmo após diversos ajustes, a \textit{string} retornou 1.342
 artigos na Scopus (Seção~\ref{subsec:picoc-string-busca}), enquanto os
 trabalhos sobre inteligência artificial aplicada à hanseníase são poucos,
 o que dificulta separá-los dos demais apenas pela formulação booleana. Na
@@ -199,7 +199,7 @@ componentes aplicáveis, por \texttt{AND}:
 \end{center}
 
 Na Scopus, com os filtros da Tabela~\ref{tab:protocolo-busca}, a
-\textit{string} retornou 10.818 artigos. O limite inicial de 2020
+\textit{string} retornou 1.342 artigos. O limite inicial de 2020
 (critério CE02) se justifica porque as técnicas de aprendizado profundo
 usadas hoje em imagens médicas são recentes, porque o \textit{Vision
 	Transformer}, termo da \textit{string}, foi publicado em 2020
@@ -484,10 +484,10 @@ estudos primários com resultados formam a base das contagens desta seção.
 	\multicolumn{7}{l}{\scriptsize\textit{Tabela~\ref{tab:estudos-incluidos} (continua\c{c}\~ao)}}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
 	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\ \hline
 	\endhead
-	
-	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ 
+
+	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\
 	\endfoot
-	
+
 	\endlastfoot
 	\hypertarget{estudo:E01}{}E01 & \citeonline{fernandes2024}         & Artificial Intelligence on Diagnostic Aid of Leprosy: A Systematic Literature Review                                                                                                                                & Journal of Clinical Medicine                                                                       & Revista       & B            & \href{https://doi.org/10.3390/jcm13010180}{\nolinkurl{10.3390/jcm13010180}}                             \\ \hline
 	\hypertarget{estudo:E02}{}E02 & \citeonline{andrade2025}           & On the usage of artificial intelligence in leprosy care: A systematic literature review                                                                                                                             & PLOS Computational Biology                                                                         & Revista       & B            & \href{https://doi.org/10.1371/journal.pcbi.1012550}{\nolinkurl{10.1371/journal.pcbi.1012550}}           \\ \hline
@@ -544,10 +544,10 @@ disponibilidade. Os estudos secundários (grupo B) não têm coleta própria, e
 	\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:datasets-sintese} (continuação)}}                                                                                                                \\ \hline
 	\textbf{Estudo e conjunto}                    & \textbf{Origem}                                            & \textbf{Amostra descrita}                                                                 \\ \hline
 	\endhead
-	
-	\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}                                                                                                                                     \\ 
+
+	\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}                                                                                                                                     \\
 	\endfoot
-	
+
 	\endlastfoot
 	\estudo{E04} Conjunto externo                 & Curadoria UFES--OMS; coleta não localizada                 & 439 imagens iniciais de 208 casos; 423 imagens analisadas após exclusões.                 \\ \hline
 	\estudo{E05} Coleção clínica                  & Costa do Marfim e Gana                                     & 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes com hanseníase.                \\ \hline
@@ -624,7 +624,7 @@ que não se descarta nesses 14 estudos.
 	\caption[]{Procedimento de avaliação e separação por paciente (continuação)}                                                                                                                                                                                                                                                                                                    \\ \hline
 	\textbf{Estudo} & \textbf{Unidade da divisão} & \textbf{Procedimento}                                                                                                                                                                            & \textbf{Separação por paciente}                                                                                              \\ \hline
 	\endhead
-	
+
 	\endlastfoot
 	\estudo{E05}    & Paciente                    & \textit{Hold-out} aleatório treino/teste, com $k$ de 30 a 70\%; sem $k$-fold; sem teste externo descrito                                                                                         & Adotada (sem sobreposição de pacientes)                                                                                      \\ \hline
 	\estudo{E13}    & Paciente (teste)            & \textit{Hold-out} de 182/40 pacientes e 5-\textit{fold} nos 182; o modelo de interpretação usa 10-\textit{fold} repetido no conjunto completo (222), incluindo os 40 de teste; sem teste externo & Adotada no \textit{hold-out} de teste (40 pacientes); unidade das dobras do 5-\textit{fold} não detalhada no texto principal \\ \hline
@@ -677,7 +677,7 @@ diferem.
 	\caption[]{Métricas e resultados reportados nos estudos de classificação (continuação)} \\ \hline
 	\textbf{Estudo} & \textbf{Métricas utilizadas} & \textbf{Resultado reportado} & \textbf{Escopo e valores ausentes} \\ \hline
 	\endhead
-	
+
 	\endlastfoot
 	\estudo{E05} & Acurácia Top-1 e MCC & Top-1 de 76,61 a 84,63\% (Tabela 2, $k$ de 30 a 70\%). Classe hanseníase: acerto de 12,0\% e 13,0\% (Fig. 1, Tarefa 2) & Global e hanseníase; sem sensibilidade, especificidade, F1 nem Grad-CAM \\ \hline
 	\estudo{E13} & Acurácia, AUC, sensibilidade e especificidade & Só imagem (ResNet-50, \textit{close-up}, validação cruzada): acurácia 0,6660 e AUC 0,7456. Teste em 40 pacientes, \textit{elastic-net} com saídas do Modelo 2 e informações do paciente (sem saídas de imagem): acurácia 90\%, AUC 96,46\%, sensibilidade 89 e especificidade 91; floresta aleatória só com informações do paciente: AUC 98,74\% & Binário, nível de paciente; erros-padrão no teste: $\pm 0,047$ (acurácia), $\pm 0,074$ (sensibilidade) e $\pm 0,061$ (especificidade) \\ \hline

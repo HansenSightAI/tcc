@@ -1,5 +1,5 @@
 % Diagrama de fluxo de dados ilustrativo do estudo (segunda etapa da monografia).
-% Fotos: 32 CSD v2 (Cahyanto et al.), licença CC BY 4.0.
+% Elementos ilustrativos esquemáticos desenhados pelos autores; sem fotografias.
 % Compilar com: pdflatex dataflow-tcc2.tex
 \documentclass[tikz,border=8pt]{standalone}
 \usepackage[T1]{fontenc}
@@ -39,24 +39,25 @@
 \draw[cinza, dashed, rounded corners=6pt] (0.3,-0.1) rectangle (16.7,-2.95);
 \node[font=\scriptsize\bfseries, text=cinza, fill=white, inner sep=2pt, anchor=west] at (0.6,-0.1) {FONTES DE DADOS};
 
-\node[base, fill=claro] (csd) at (1.65,-1.45) {32 CSD v2};
-\node[foto] (f1) at (4.0,-1.3) {\includegraphics[width=19mm]{foto00}};
-\node[foto] (f2) at (6.1,-1.3) {\includegraphics[width=19mm]{foto05}};
-\node[foto] (f3) at (8.2,-1.3) {\includegraphics[width=19mm]{foto08}};
-\node[font=\scriptsize, text=cinza, align=center] at (6.1,-2.45)
-	{672 hanseníase · 124 pele normal · demais condições};
+\node[base, fill=claro] (csd) at (1.65,-1.45) {31 CSD};
+\node[font=\footnotesize, align=center, text=cinza] at (4.8,-1.3) {fotografias clínicas\\de doenças dermatológicas};
+
+\node[base, fill=claro, font=\footnotesize\bfseries] (normal) at (8.3,-1.45) {Our Normal\\Skin};
+\node[font=\scriptsize, text=cinza, align=center] at (4.0,-2.45)
+	{hanseníase · demais condições};
 
 \node[base, fill=dermclaro, draw=derm] (dm) at (11.1,-1.45) {Derm1M-\\Leprosy};
 \node[align=left, font=\footnotesize, anchor=west] at (12.45,-1.45)
-	{\textbf{343 fotos clínicas}\\de livros e artigos\\{\color{derm}só hanseníase · só treino}};
+	{\textbf{343 fotos clínicas iniciais}\\de livros e artigos\\{\color{derm}só hanseníase · só treino}};
 
 % =============== 2. CURADORIA ===============
 \node[proc, minimum width=164mm, minimum height=11mm, text width=158mm, align=center] (cur) at (8.5,-4.3)
-	{\textbf{Curadoria}\qquad {\footnotesize só fotos clínicas
-	 \enspace·\enspace duplicatas entre as bases (hash perceptual)
-	 \enspace·\enspace agrupamento por paciente ou figura}};
-\coordinate (xcsd) at (6.1,0);
-\draw[fluxo] (6.1,-2.95) -- node[rot, right=1pt] {imagens + rótulos} (xcsd |- cur.north);
+	{\textbf{Preparo dos dados}\qquad {\footnotesize selecionar fotos clínicas
+	 \enspace·\enspace organizar rótulos
+	 \enspace·\enspace agrupar imagens relacionadas}};
+\coordinate (xcsd) at (3.5,0);
+\draw[fluxo] (3.5,-2.95) -- node[rot, right=1pt] {imagens + rótulos} (xcsd |- cur.north);
+\draw[fluxo] (8.3,-2.95) -- (8.3,-3.75);
 \draw[fluxo] (11.1,-2.95) -- node[rot, right=1pt] {imagens + rótulos} (11.1,-3.75);
 
 % =============== 3. TRATAMENTO ===============
@@ -66,8 +67,12 @@
 	 \footnotesize
 	 \textbullet\ máscara preta na região da marca d'água, em todas as imagens\\[1pt]
 	 \textbullet\ redimensionamento e normalização por modelo};
-\node[foto] (antes) at (11.75,-7.1) {\includegraphics[width=24mm]{foto02}};
-\node[foto] (depois) at (15.0,-7.1) {\includegraphics[width=24mm]{foto02_mascara}};
+\node[foto, minimum width=24mm, minimum height=18mm, fill=claro] (antes) at (11.75,-7.1) {};
+\fill[medio] (11.75,-7.1) ellipse (0.45 and 0.27);
+\fill[cinza] ($(antes.south west)+(0.04,0.04)$) rectangle ++(0.45,0.20);
+\node[foto, minimum width=24mm, minimum height=18mm, fill=claro] (depois) at (15.0,-7.1) {};
+\fill[medio] (15.0,-7.1) ellipse (0.45 and 0.27);
+\fill[black] ($(depois.south west)+(0.04,0.04)$) rectangle ++(0.45,0.20);
 \draw[fluxo] (antes.east) -- (depois.west);
 \node[font=\scriptsize, text=cinza, below=1pt of antes] {antes};
 \node[font=\scriptsize, text=cinza, below=1pt of depois] {depois};
@@ -77,7 +82,7 @@
 \fill[claro] (0.3,-9.75) rectangle (16.7,-11.65);
 \draw[escuro, thick] (16.7,-9.75) -- (0.3,-9.75) -- (0.3,-11.65) -- (16.7,-11.65);
 \node[anchor=west, align=left] at (0.65,-10.7)
-	{\textbf{Partições por grupos}\\{\footnotesize semente fixa · mesmas para todos}};
+	{\textbf{Base principal}\\{\footnotesize 31 CSD + Our Normal Skin}};
 \foreach \i/\x in {1/6.3,2/7.62,3/8.94,4/10.26,5/11.58}{
 	\node[rectangle, fill=medio, draw=white, line width=1pt, minimum width=13.2mm, minimum height=7mm,
 		font=\scriptsize\bfseries, anchor=west] at (\x,-10.45) {Dobra \i};
@@ -85,9 +90,9 @@
 \node[rectangle, fill=azul!70, draw=white, line width=1pt, minimum width=13mm, minimum height=7mm,
 	font=\scriptsize\bfseries, text=white, anchor=west] at (12.9,-10.45) {Limiar};
 \node[rectangle, fill=escuro, draw=white, line width=1pt, minimum width=24mm, minimum height=7mm,
-	font=\scriptsize\bfseries, text=white, anchor=west, align=center] (teste) at (14.2,-10.45) {Teste reservado\\[-2pt]só 32 CSD};
+	font=\scriptsize\bfseries, text=white, anchor=west, align=center] (teste) at (14.2,-10.45) {Teste reservado};
 \draw[cinza, semithick] (6.3,-10.95) -- (14.2,-10.95);
-\node[font=\scriptsize, text=cinza] at (10.25,-11.2) {desenvolvimento: 32 CSD + Derm1M-Leprosy};
+\node[font=\scriptsize, text=cinza] at (10.25,-11.2) {alternar treino e validação nas dobras};
 \draw[fluxo] (tra.south) -- node[rot, right=1pt] {imagens tratadas} (8.5,-9.75);
 
 % =============== 5. ABORDAGENS ===============
@@ -95,7 +100,8 @@
 \draw[thick, escuro] (8.5,-11.65) -- (8.5,-12.25);
 \draw[thick, escuro] (2.0,-12.25) -- (13.2,-12.25);
 \foreach \x in {2.0,6.7,13.2}{ \draw[fluxo] (\x,-12.25) -- (\x,-12.8); }
-\node[rot, anchor=west] at (8.65,-11.95) {dobras de treino e validação};
+\node[font=\scriptsize, text=derm, align=center, fill=white] at (8.5,-12.03)
+	{Derm1M só no treino; excluir imagens relacionadas às reservadas para avaliação};
 
 % Grupo 1: piso
 \node[grupo=cinza, minimum width=34mm, minimum height=56mm, anchor=north west] (g1) at (0.3,-12.8) {};
@@ -132,7 +138,7 @@
 % =============== 7. AVALIAÇÃO ===============
 \node[proc, minimum width=164mm, minimum height=17mm, align=center] (ava) at (8.5,-21.45)
 	{\textbf{Avaliação no teste reservado}\\[2pt]
-	 \footnotesize acurácia balanceada (principal) · sensibilidade · especificidade · AUC-ROC · AUC-PR · F1 · calibração\\
+	 \footnotesize acurácia balanceada (principal) · sensibilidade · especificidade · AUC-ROC · F1 · calibração\\
 	 \footnotesize resultados de cada abordagem lado a lado, com IC 95\% por bootstrap de grupos};
 \draw[fluxo] (sai.south) -- node[rot, right=1pt] {escores} (sai.south |- ava.north);
 
@@ -142,7 +148,8 @@
 
 % =============== 8. RESULTADO ===============
 \node[rectangle, rounded corners=9pt, fill=escuro, text=white, minimum width=80mm, minimum height=9mm,
-	font=\small\bfseries] (res) at (8.5,-23.55) {Resultados por abordagem};
+	font=\small\bfseries, align=center] (res) at (8.5,-23.55)
+	{Resultados por abordagem\\{\footnotesize Q5: diferença com e sem Derm1M, com IC 95\%}};
 \draw[fluxo] (ava.south) -- (res.north);
 
 \end{tikzpicture}

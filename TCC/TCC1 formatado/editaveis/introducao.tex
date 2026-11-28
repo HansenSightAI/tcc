@@ -404,7 +404,7 @@ a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
 literatura estruturado, com questões de pesquisa, protocolo, estratégia de
 busca, critérios explícitos de seleção e formulário de extração
 \cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
-uma coleção pública de imagens já coletadas e anotadas por terceiros. A análise dos dados
+fontes de imagens já coletadas e anotadas por terceiros. A análise dos dados
 é estatística: descritiva, por contagens, tabelas e classificação dos estudos
 por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
 medidas de desempenho no segundo, com a variabilidade das estimativas relatada
@@ -667,7 +667,7 @@ planejado no Capítulo~\ref{cap:metodologia-experimental}. A
 Figura~\ref{fig:fluxo-segunda-etapa} apresenta essas atividades em forma de
 fluxo, e a Figura~\ref{fig:cronograma-segunda-etapa} as dispõe em um
 cronograma previsto, sujeito ao calendário acadêmico e à disponibilidade do
-equipamento. A curadoria inclui a versão 2 da coleção \textit{32 Curated Categories of Skin Disease Images} (32 CSD v2) \cite{cahyantoDados2026}.
+equipamento. A base de dados principal será composta pelo \textit{31 Classes of Skin Disease} (31 CSD) e pelo \textit{Our Normal Skin} \cite{kelixo31CSD2025,ourNormalSkin2023}.
 
 \begin{figure}[H]
 	\centering
@@ -702,7 +702,7 @@ equipamento. A curadoria inclui a versão 2 da coleção \textit{32 Curated Cate
 		\node[circle, draw=ganttEscuro, thick, minimum size=5mm, inner sep=0pt] (fim) at (5.4,-2.5) {};
 		\node[circle, fill=ganttEscuro, minimum size=3mm, inner sep=0pt] at (fim) {};
 
-		\node[artefato] (e2) at (4.85,1.55) {32 CSD v2 curado\\e agrupado};
+		\node[artefato] (e2) at (4.85,1.55) {31 CSD + pele normal\\curados e agrupados};
 		\node[artefato] (e3) at (7.90,1.55) {Listas de partição\\com semente fixa};
 		\node[artefato] (e4) at (10.95,1.55) {Configuração\\de cada rede};
 		\node[artefato] (e5) at (14.00,1.55) {Modelos e\\limiares fixados};
@@ -826,9 +826,9 @@ para a segunda etapa.
 	Ajustes pedidos pela banca               & Revisão do texto da primeira etapa a partir
 	das considerações da banca avaliadora e dos orientadores.                                         \\
 	\hline
-	Curadoria e agrupamento                  & Obtenção do 32 CSD v2 e do subconjunto de hanseníase
-	do Derm1M, harmonização dos rótulos, agrupamento das fotografias relacionadas,
-	máscara da marca d'água e categorização do tom de pele
+	Curadoria e agrupamento                  & Obtenção do 31 CSD, do Our Normal Skin e do subconjunto de hanseníase
+	do Derm1M, harmonização dos rótulos, agrupamento das fotografias relacionadas
+	e aplicação da máscara da marca d'água
 	(Subseção~\ref{subsec:curadoria-procedencia}).                                                    \\
 	\hline
 	Partições e linhas de base               & Geração e registro das listas do teste reservado,
