@@ -11,8 +11,7 @@ critérios de seleção e procedimentos de extração e síntese segue
 relato segue o capítulo 4 de \citeonline{wohlin2024}, que trata a revisão
 sistemática como estudo secundário. As evidências reunidas fundamentam o
 planejamento do estudo de ciência de dados apresentado no
-Capítulo~\ref{cap:metodologia-experimental}, conduzido segundo o padrão
-\textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}.
+Capítulo~\ref{cap:metodologia-experimental}.
 
 \section{Planejamento e protocolo}
 \label{sec:planejamento-protocolo}
@@ -21,9 +20,8 @@ A Tabela~\ref{tab:protocolo-busca} resume o protocolo registrado no
 Evidentia: questões de pesquisa, estratégia e fontes de busca, filtros,
 critérios de seleção e campos do formulário de extração. Como as questões
 de pesquisa orientam os dados a serem extraídos e sintetizados
-\cite{kitchenham2007}, a questão principal, sobre como avaliar o
-desempenho desses modelos no contexto da rede pública de saúde do Brasil,
-foi desdobrada em oito questões secundárias (RQ1 a RQ8).
+\cite{kitchenham2007}, a questão principal foi desdobrada em oito
+questões secundárias (RQ1 a RQ8).
 
 \begingroup
 \footnotesize
@@ -104,8 +102,8 @@ usou o Consensus, buscador de literatura científica baseado em
 inteligência artificial, e o Claude, assistente de uso geral da Anthropic,
 ambos com o mesmo \textit{prompt} construído a partir da questão de
 pesquisa e do PICOC. Essa escolha decorreu de uma limitação da busca
-booleana: mesmo após diversos ajustes, a \textit{string} retornou 10.818
-artigos na Scopus (Seção~\ref{subsec:picoc-string-busca}), enquanto os
+booleana: mesmo após diversos ajustes, a \textit{string} retornou um
+número elevado de artigos na Scopus (Seção~\ref{subsec:picoc-string-busca}), enquanto os
 trabalhos sobre inteligência artificial aplicada à hanseníase são poucos,
 o que dificulta separá-los dos demais apenas pela formulação booleana. Na
 triagem, o Jev Reviewer (\texttt{jev-1.13.0}) sugeriu inclusão, exclusão
@@ -180,8 +178,8 @@ termos usados na busca.
 \endgroup
 \fonte{Autores.}
 
-Os termos de cada componente foram unidos por \texttt{OR}, e os quatro
-componentes aplicáveis, por \texttt{AND}:
+Os termos de cada componente foram unidos por \texttt{OR}, e os
+componentes, por \texttt{AND}:
 
 \begin{center}
 	\fbox{
@@ -199,7 +197,7 @@ componentes aplicáveis, por \texttt{AND}:
 \end{center}
 
 Na Scopus, com os filtros da Tabela~\ref{tab:protocolo-busca}, a
-\textit{string} retornou 10.818 artigos. O limite inicial de 2020
+\textit{string} retornou 1.342 artigos. O limite inicial de 2020
 (critério CE02) se justifica porque as técnicas de aprendizado profundo
 usadas hoje em imagens médicas são recentes, porque o \textit{Vision
 	Transformer}, termo da \textit{string}, foi publicado em 2020
@@ -484,10 +482,10 @@ estudos primários com resultados formam a base das contagens desta seção.
 	\multicolumn{7}{l}{\scriptsize\textit{Tabela~\ref{tab:estudos-incluidos} (continua\c{c}\~ao)}}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
 	\textbf{ID}                   & \textbf{Publicação}                & \textbf{T\'itulo}                                                                                                                                                                                                   & \textbf{Ve\'iculo}                                                                                 & \textbf{Tipo} & \textbf{Gr.} & \textbf{DOI}                                                                                            \\ \hline
 	\endhead
-	
-	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ 
+
+	\multicolumn{7}{r}{\scriptsize\textit{continua na pr\'oxima p\'agina}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\
 	\endfoot
-	
+
 	\endlastfoot
 	\hypertarget{estudo:E01}{}E01 & \citeonline{fernandes2024}         & Artificial Intelligence on Diagnostic Aid of Leprosy: A Systematic Literature Review                                                                                                                                & Journal of Clinical Medicine                                                                       & Revista       & B            & \href{https://doi.org/10.3390/jcm13010180}{\nolinkurl{10.3390/jcm13010180}}                             \\ \hline
 	\hypertarget{estudo:E02}{}E02 & \citeonline{andrade2025}           & On the usage of artificial intelligence in leprosy care: A systematic literature review                                                                                                                             & PLOS Computational Biology                                                                         & Revista       & B            & \href{https://doi.org/10.1371/journal.pcbi.1012550}{\nolinkurl{10.1371/journal.pcbi.1012550}}           \\ \hline
@@ -544,10 +542,10 @@ disponibilidade. Os estudos secundários (grupo B) não têm coleta própria, e
 	\multicolumn{3}{l}{\scriptsize\textit{Tabela~\ref{tab:datasets-sintese} (continuação)}}                                                                                                                \\ \hline
 	\textbf{Estudo e conjunto}                    & \textbf{Origem}                                            & \textbf{Amostra descrita}                                                                 \\ \hline
 	\endhead
-	
-	\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}                                                                                                                                     \\ 
+
+	\multicolumn{3}{r}{\scriptsize\textit{continua na próxima página}}                                                                                                                                     \\
 	\endfoot
-	
+
 	\endlastfoot
 	\estudo{E04} Conjunto externo                 & Curadoria UFES--OMS; coleta não localizada                 & 439 imagens iniciais de 208 casos; 423 imagens analisadas após exclusões.                 \\ \hline
 	\estudo{E05} Coleção clínica                  & Costa do Marfim e Gana                                     & 1.709 imagens de 506 pacientes; 131 imagens e 38 pacientes com hanseníase.                \\ \hline
@@ -572,9 +570,8 @@ disponibilidade. Os estudos secundários (grupo B) não têm coleta própria, e
 A base de \citeonline{deps2026}, curada em acordo entre UFES e OMS, não
 informa quantos dos 208 casos restaram após a exclusão de 16 imagens. O
 AI4Leprosy \cite{barbieri2022} reúne pessoas com suspeita de hanseníase e
-outras dermatoses, com acesso aos dados mediante registro e validação. O
-Co2Wounds-V2, coletado na Colômbia \cite{sanchez2024} e reutilizado por
-\citeonline{mehta2026}, tem no repositório 607 imagens anotadas e 157 de
+outras dermatoses, com acesso aos dados mediante registro e validação. No
+Co2Wounds-V2 \cite{sanchez2024}, o repositório tem 607 imagens anotadas e 157 de
 teste sem anotação \cite{co2woundsDados2024}. O conjunto da OMS
 \cite{pons2026} combina 5.760 imagens de doenças tropicais negligenciadas
 cutâneas, 16.577 do \textit{Fitzpatrick 17k}, 2.469 recortes de pele sã e
@@ -609,9 +606,9 @@ informam a unidade da divisão, o que não equivale a não separar; sete
 descrevem divisão por imagem ou microfotografia
 \cite{vargasclavijo2025,baweja2023,pons2026,gawali2024,eita2025,jaikishore2021,banerjee2023},
 unidade inferida em \citeonline{pons2026} e \citeonline{banerjee2023}. Se
-fotos do mesmo paciente caem no treino e no teste, iluminação, tom de pele
-e artefatos de câmera podem inflar o desempenho \cite{kapoor2023}, risco
-que não se descarta nesses 14 estudos.
+fotos do mesmo paciente caem no treino e no teste, o desempenho pode ficar
+inflado por vazamento (Subseção~\ref{subsec:ciencia-de-dados})
+\cite{kapoor2023}, risco que não se descarta nesses 14 estudos.
 
 \begingroup
 \footnotesize
@@ -624,7 +621,7 @@ que não se descarta nesses 14 estudos.
 	\caption[]{Procedimento de avaliação e separação por paciente (continuação)}                                                                                                                                                                                                                                                                                                    \\ \hline
 	\textbf{Estudo} & \textbf{Unidade da divisão} & \textbf{Procedimento}                                                                                                                                                                            & \textbf{Separação por paciente}                                                                                              \\ \hline
 	\endhead
-	
+
 	\endlastfoot
 	\estudo{E05}    & Paciente                    & \textit{Hold-out} aleatório treino/teste, com $k$ de 30 a 70\%; sem $k$-fold; sem teste externo descrito                                                                                         & Adotada (sem sobreposição de pacientes)                                                                                      \\ \hline
 	\estudo{E13}    & Paciente (teste)            & \textit{Hold-out} de 182/40 pacientes e 5-\textit{fold} nos 182; o modelo de interpretação usa 10-\textit{fold} repetido no conjunto completo (222), incluindo os 40 de teste; sem teste externo & Adotada no \textit{hold-out} de teste (40 pacientes); unidade das dobras do 5-\textit{fold} não detalhada no texto principal \\ \hline
@@ -677,7 +674,7 @@ diferem.
 	\caption[]{Métricas e resultados reportados nos estudos de classificação (continuação)} \\ \hline
 	\textbf{Estudo} & \textbf{Métricas utilizadas} & \textbf{Resultado reportado} & \textbf{Escopo e valores ausentes} \\ \hline
 	\endhead
-	
+
 	\endlastfoot
 	\estudo{E05} & Acurácia Top-1 e MCC & Top-1 de 76,61 a 84,63\% (Tabela 2, $k$ de 30 a 70\%). Classe hanseníase: acerto de 12,0\% e 13,0\% (Fig. 1, Tarefa 2) & Global e hanseníase; sem sensibilidade, especificidade, F1 nem Grad-CAM \\ \hline
 	\estudo{E13} & Acurácia, AUC, sensibilidade e especificidade & Só imagem (ResNet-50, \textit{close-up}, validação cruzada): acurácia 0,6660 e AUC 0,7456. Teste em 40 pacientes, \textit{elastic-net} com saídas do Modelo 2 e informações do paciente (sem saídas de imagem): acurácia 90\%, AUC 96,46\%, sensibilidade 89 e especificidade 91; floresta aleatória só com informações do paciente: AUC 98,74\% & Binário, nível de paciente; erros-padrão no teste: $\pm 0,047$ (acurácia), $\pm 0,074$ (sensibilidade) e $\pm 0,061$ (especificidade) \\ \hline
@@ -927,8 +924,8 @@ de forma equitativa no SUS (Figura~\ref{fig:vazio-tom-pele}).
 \label{subsec:rq6-modelos}
 \label{subsec:rq-modelos-abordagens}
 
-As contagens usam os 17 estudos com dados; cada publicação conta uma vez
-por modelo ou componente, incluindo comparadores testados. A
+Cada publicação conta uma vez por modelo ou componente, incluindo
+comparadores testados. A
 Tabela~\ref{tab:tarefas-ia} liga tarefas e etapas aos estudos; em
 \citeonline{mehta2026}, um classificador sucede a segmentação, e em
 \citeonline{jaikishore2021} a classificação de gravidade abrange só eczema
