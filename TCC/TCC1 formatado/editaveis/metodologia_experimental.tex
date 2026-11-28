@@ -932,31 +932,23 @@ heurísticas previstas.
 \label{subsec:analises-complementares}
 
 A questão \hyperlink{questao-q5}{Q5} examinará se acrescentar o Derm1M ao
-treino altera o desempenho. Será escolhido o modelo de fundação com maior
-AUC média na validação cruzada com Derm1M; em caso de empate, o de menor
-número de parâmetros. Esse modelo será treinado novamente sem Derm1M,
-usando somente os dados da base principal destinados ao retreino final.
+treino altera o desempenho. O modelo de fundação com maior AUC média na
+validação cruzada com Derm1M (no empate, o de menos parâmetros) será
+retreinado sem Derm1M, só com a parte da base principal destinada ao
+retreino final. As duas condições manterão pesos iniciais, sementes,
+hiperparâmetros, resolução e épocas, sem nova busca de configurações;
+somente os pesos das classes serão recalculados a partir do treino de cada
+condição, e os limiares serão escolhidos separadamente na mesma partição de
+limiar.
 
-As duas condições terão os mesmos pesos iniciais, três sementes,
-hiperparâmetros, resolução e número de épocas. Não haverá nova busca de
-configurações. A regra de ponderação das classes será mantida, com pesos
-recalculados a partir do treino de cada condição. Os escores serão
-combinados pela média, e os limiares serão escolhidos separadamente na
-mesma partição de limiar, pelas regras já definidas.
-
-Serão apresentadas a acurácia balanceada de cada condição no limiar
-principal e a diferença entre elas, calculada como o resultado com Derm1M
-menos o resultado sem Derm1M. Para obter os intervalos de 95\%, serão
-sorteadas 2.000 amostras de grupos do teste, com reposição e estratificação
-por classe. Em cada sorteio, os mesmos grupos e suas fotografias, com as
-mesmas repetições, serão usados nas duas condições. Os percentis 2,5 e 97,5
-das diferenças formarão o intervalo da diferença. Esse procedimento é
-chamado \textit{bootstrap} pareado por grupos.
-
-O intervalo descreve a incerteza do teste para os modelos já ajustados;
-a variação do treinamento será relatada separadamente por semente. A
-análise se limita ao modelo e à configuração escolhidos com Derm1M. Ela não representa uma nova seleção do
-melhor modelo em cada condição.
+Serão relatadas a acurácia balanceada de cada condição no limiar principal
+e a diferença entre elas (com Derm1M menos sem Derm1M). O intervalo de 95\%
+da diferença virá do \textit{bootstrap} pareado por grupos
+(Tabela~\ref{tab:estatisticas-heuristicas}), que sorteia os mesmos grupos do
+teste para as duas condições. Esse intervalo descreve a incerteza do teste
+para os modelos já ajustados; a variação do treino será relatada por
+semente. A análise não é uma nova seleção do melhor modelo em cada
+condição.
 
 A análise exploratória de predição seletiva examinará a relação entre
 cobertura e acurácia balanceada com regras de abstenção definidas no
