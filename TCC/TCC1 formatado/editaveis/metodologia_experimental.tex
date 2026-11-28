@@ -528,18 +528,16 @@ resume o treinamento, a seleção e o teste.
 
 A linha de base da literatura reproduz o modelo final de
 \citeonline{lima2023dissertacao}, também publicado em
-\citeonline{lima2024skin}. A Inception V3 \cite{szegedy2016inception},
+\citeonline{lima2024skin}. A Inception V3,
 pré-treinada no ImageNet e congelada, extrai 2.048 atributos de cada
-fotografia, redimensionada para $256 \times 256$ pixels; o SMOTE ($k = 3$)
-\cite{chawla2002smote} equilibra as classes apenas no treino; e uma Random
-Forest de 100 árvores \cite{breiman2001randomforest}, com 12 atributos
+fotografia, redimensionada para $256 \times 256$ pixels; o SMOTE ($k = 3$) equilibra as classes apenas no treino; e uma Random
+Forest de 100 árvores, com 12 atributos
 sorteados por nó, faz a classificação.
 
 Os modelos avaliados são modelos de fundação, pré-treinados em grandes
-volumes de imagens e depois adaptados à tarefa. O DINOv3
-\cite{simeoni2025dinov3} é pré-treinado de forma autossupervisionada em
+volumes de imagens e depois adaptados à tarefa. De acordo com \citeonline{simeoni2025dinov3}, o DINOv3 é pré-treinado de forma autossupervisionada em
 cerca de 1,7 bilhão de imagens gerais e será usado em três versões: os
-transformadores visuais \cite{dosovitskiy2020} ViT-S/16, com 21 milhões de
+transformadores visuais ViT-S/16, com 21 milhões de
 parâmetros, e ViT-B/16, com 86 milhões, e a ConvNeXt-B
 \cite{liu2022convnext}, rede convolucional de 89 milhões de parâmetros
 destilada a partir do maior modelo do DINOv3. O PanDerm-Base
