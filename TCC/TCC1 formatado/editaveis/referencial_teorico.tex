@@ -108,12 +108,10 @@ exigem pressupostos e evidências sobre como os dados foram gerados
 \cite{dhar2013}.
 
 O padrão \textit{Data Science} da ACM SIGSOFT estabelece critérios para a
-condução e o relato de estudos de engenharia de software que empregam
-análise centrada em dados, incluindo modelagem preditiva
-\cite{acmSigsoftDataScience}. O padrão funciona como referencial de
-condução e relato. O protocolo específico do estudo define como curar
-as fotografias, adaptar os quatro modelos de fundação e avaliar esses
-modelos e as duas linhas de base no teste reservado. Essas decisões são apresentadas no
+condução e o relato desses estudos, incluindo modelagem preditiva
+\cite{acmSigsoftDataScience}. O protocolo específico do estudo, que define
+como curar as fotografias, adaptar os modelos e avaliá-los no teste
+reservado, é apresentado no
 Capítulo~\ref{cap:metodologia-experimental}.
 
 Entre os critérios essenciais estão a justificativa da seleção dos dados,
@@ -142,8 +140,7 @@ estimativas e discutir as ameaças à validade
 quando imagens de um mesmo paciente aparecem nos dados de treino e de teste,
 as estimativas de desempenho podem ser infladas, sendo essa situação
 classificada como vazamento de dados por falta de independência entre as
-amostras de treino e de teste: o modelo deveria ser avaliado em pacientes novos, mas é
-testado com dados de pacientes já vistos no treino. Como exemplo, os autores
+amostras de treino e de teste. Como exemplo, os autores
 citam um estudo de histopatologia que usou observações do mesmo paciente nos
 dois conjuntos. O mesmo risco se aplica a fotografias de pele de um mesmo
 paciente. A origem e a qualidade dos dados
@@ -264,9 +261,7 @@ com valores mais altos em regiões como o Nordeste, e a redução observada em
 Além das consequências clínicas, as pessoas acometidas enfrentam
 discriminação e exclusão social, redução da qualidade de vida e, em muitos
 casos, deformidades permanentes \cite{fernandes2024}. O estigma associado à
-doença contribui também para a subnotificação \cite{lima2024skin} e, segundo
-\citeonline{barbieri2022}, é reforçado pelas sequelas neurológicas decorrentes
-do diagnóstico tardio.
+doença contribui também para a subnotificação \cite{lima2024skin}.
 
 \subsection{Diagnóstico e triagem}
 
@@ -292,9 +287,7 @@ iniciais e a semelhança com outras dermatoses podem tornar o diagnóstico
 inconclusivo e atrasar o tratamento \cite{fernandes2024}.
 
 Nesse cenário, a triagem consiste em identificar casos suspeitos para
-encaminhamento à avaliação clínica, e não em estabelecer o diagnóstico. Em
-países de baixa e média renda, os profissionais da linha de frente muitas
-vezes não têm formação em dermatologia \cite{pons2026}. Uma fotografia de pele,
+encaminhamento à avaliação clínica, e não em estabelecer o diagnóstico. Uma fotografia de pele,
 porém, representa somente parte das informações usadas na avaliação clínica:
 a perda de sensibilidade, o acometimento neural e a baciloscopia não são
 observáveis na imagem.
@@ -342,12 +335,7 @@ Essas classificações também aparecem nos rótulos de bases de imagens. Há
 conjuntos que usam as quatro formas de Madri como classes
 \cite{lima2024skin}, e a semelhança entre a hanseníase e as dermatoses do
 diagnóstico diferencial explica por que muitos estudos incluem essas
-condições como classes de comparação. No contexto desta pesquisa, a análise
-computacional de imagens é tratada como possível apoio à triagem. Seu
-desempenho em uma base de imagens não demonstra, isoladamente, que o sistema
-possa estabelecer um diagnóstico ou melhorar o atendimento em um serviço de
-saúde. Por isso, é necessário relacionar os resultados reportados à tarefa
-realizada, aos dados utilizados e à forma de validação \cite{fernandes2024}.
+condições como classes de comparação.
 
 \section{Inteligência artificial e visão computacional}
 \label{sec:ia-visao-computacional}
@@ -418,9 +406,9 @@ automaticamente diagnóstico por paciente.
 	}
 
 A classe positiva pode representar hanseníase ou uma manifestação
-definida no protocolo do estudo. Essas tarefas devem ser distinguidas:
-reconhecer uma ferida em paciente com hanseníase não equivale a
-diagnosticar a doença.
+definida no protocolo do estudo, como uma ferida em paciente com hanseníase,
+cujo reconhecimento não equivale ao diagnóstico da doença
+(Seção~\ref{sec:ia-visao-computacional}).
 
 \subsection{Métricas relacionadas à avaliação de modelos}\label{muxe9tricas-relacionadas-uxe0-questuxe3o-de-pesquisa}\label{subsec:metricas-avaliacao}
 
