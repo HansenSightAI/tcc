@@ -585,21 +585,6 @@ Inception V3 gera o vetor de 2.048 atributos que alimenta a Random Forest;
 nos modelos de fundação, o vetor de saída do modelo alimenta a camada de
 classificação, e a adaptação ajusta também as representações.
 
-A configuração principal não usará aumento de dados. Transformações
-sintéticas geram versões quase idênticas de uma mesma fotografia e podem
-reforçar características de captura de uma fonte, risco ilustrado pela
-verificação preliminar do \textit{Fredrick Skin Disease Dataset}, que
-contém um recorte de fotografia identificada no Atlas
-Dermatológico (Subseção~\ref{subsec:justificativa-colecao}). A decisão será
-confirmada com a coorientação antes do treinamento. Se o aumento de dados
-for adotado, ele será aplicado apenas na parcela de treino de cada dobra,
-nunca na validação, na partição de limiar ou no teste, e valerá igualmente
-para todos os modelos. A ponderação de classes e quaisquer parâmetros
-estimados a partir das imagens seguem a mesma regra. O padrão classifica
-como antipadrão o pré-processamento que altera também os dados de teste,
-como o rebalanceamento de classes aplicado a eles
-\cite{acmSigsoftDataScience}.
-
 \subsection{Procedimento do estudo e validação cruzada}
 \label{subsec:procedimento-validacao}
 
