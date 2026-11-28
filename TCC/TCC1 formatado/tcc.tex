@@ -49,6 +49,19 @@
 \usepackage{pgf-pie}
 
 \usepackage{etoolbox}
+% O abntex2cite cria os destinos bibliográficos em modo vertical, antes
+% de compor a entrada. Vincule a âncora à primeira linha da referência:
+% assim ela acompanha o texto inclusive quando há uma quebra de página.
+\makeatletter
+\patchcmd{\@lbibitem}
+  {\hyper@anchorstart{cite.#2}\relax\hyper@anchorend}
+  {\AddToHookNext{para/begin}{\Hy@raisedlink{\hyper@anchorstart{cite.#2}\relax\hyper@anchorend}}}
+  {}{\PackageError{tcc}{Falha ao ajustar o destino bibliografico com rotulo}{Verifique a definicao de abntex2cite.}}
+\patchcmd{\@bibitem}
+  {\hyper@anchorstart{cite.#1}\relax\hyper@anchorend}
+  {\AddToHookNext{para/begin}{\Hy@raisedlink{\hyper@anchorstart{cite.#1}\relax\hyper@anchorend}}}
+  {}{\PackageError{tcc}{Falha ao ajustar o destino bibliografico sem rotulo}{Verifique a definicao de abntex2cite.}}
+\makeatother
 % Identificadores (IDs) com hiperligação interna para a linha da tabela de estudos
 % (\hypertarget{estudo:ID}{ID}). Aceita vários IDs: \estudo{E05,E06}.
 \makeatletter
