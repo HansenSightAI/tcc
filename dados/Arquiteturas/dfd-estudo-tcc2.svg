@@ -1,0 +1,386 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1390" viewBox="0 0 1700 1390">
+<rect id="fundo" width="1700" height="1390" fill="#ffffff"/>
+<g id="fluxos">
+<path d="M280.0 95.0 L362.0 95.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="378.0,95.0 362.0,102.0 362.0,88.0" fill="#34424c"/>
+<path d="M280.0 230.0 L362.0 230.0" fill="none" stroke="#b4532a" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="378.0,230.0 362.0,237.0 362.0,223.0" fill="#b4532a"/>
+<path d="M670.0 195.0 L860.0 195.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="876.0,195.0 860.0,202.0 860.0,188.0" fill="#34424c"/>
+<path d="M155.0 410.0 L155.0 452.0 L775.0 452.0 L775.0 250.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="775.0,234.0 782.0,250.0 768.0,250.0" fill="#34424c"/>
+<path d="M1290.0 200.0 L1475.0 200.0 L1475.0 400.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1475.0,416.0 1468.0,400.0 1482.0,400.0" fill="#34424c"/>
+<path d="M1270.0 530.0 L820.0 530.0 L820.0 620.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="820.0,636.0 813.0,620.0 827.0,620.0" fill="#34424c"/>
+<path d="M310.0 820.0 L340.0 820.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="356.0,820.0 340.0,827.0 340.0,813.0" fill="#34424c"/>
+<path d="M1180.0 790.0 L1230.0 790.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1246.0,790.0 1230.0,797.0 1230.0,783.0" fill="#34424c"/>
+<path d="M1360.0 890.0 L1360.0 1010.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1360.0,1026.0 1353.0,1010.0 1367.0,1010.0" fill="#34424c"/>
+<path d="M1530.0 610.0 L1530.0 1010.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1530.0,1026.0 1523.0,1010.0 1537.0,1010.0" fill="#34424c"/>
+<path d="M1210.0 1135.0 L1130.0 1135.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1114.0,1135.0 1130.0,1128.0 1130.0,1142.0" fill="#34424c"/>
+<path d="M430.0 1140.0 L400.0 1140.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="384.0,1140.0 400.0,1133.0 400.0,1147.0" fill="#34424c"/>
+<path d="M1660.0 493.0 L1684.0 493.0 L1684.0 1282.0 L770.0 1282.0 L770.0 1275.0" fill="none" stroke="#c77d14" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="770.0,1259.0 777.0,1275.0 763.0,1275.0" fill="#c77d14"/>
+</g>
+<g id="rotulos-dos-fluxos">
+<rect x="293" y="66" width="73" height="22" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="329" y="82">download</tspan></text>
+<rect x="293" y="201" width="73" height="22" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#b4532a" text-anchor="middle"><tspan x="329" y="217">download</tspan></text>
+<rect x="272" y="453" width="395" height="25" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="470" y="471">inclusões, rótulos e duplicatas confirmadas</tspan></text>
+<rect x="847" y="518" width="395" height="25" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="1045" y="536">dobras do desenvolvimento + Derm1M elegível</tspan></text>
+<rect x="308" y="789" width="49" height="22" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="333" y="805">pesos</tspan></text>
+<rect x="1181" y="759" width="65" height="22" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="1213" y="775">modelos</tspan></text>
+<rect x="1535" y="703" width="86" height="44" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1540" y="720">partição</tspan><tspan x="1540" y="740">de limiar</tspan></text>
+<rect x="1365" y="943" width="102" height="44" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1370" y="960">modelos</tspan><tspan x="1370" y="980">retreinados</tspan></text>
+<rect x="1123" y="1091" width="77" height="44" fill="#ffffff"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="1162" y="1108">limiares</tspan><tspan x="1162" y="1128">fixados</tspan></text>
+<g id="icone-cadeado" transform="translate(852 1294) scale(0.5833)" fill="none" stroke="#c77d14" stroke-width="4.46" stroke-linecap="round" stroke-linejoin="round">
+<path d="M14 21h20a3 3 0 0 1 3 3v14a3 3 0 0 1 -3 3h-20a3 3 0 0 1 -3 -3v-14a3 3 0 0 1 3 -3z"/>
+<path d="M16 21v-6a8 8 0 0 1 16 0v6"/>
+<path d="M24 29v5"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#a5650c" text-anchor="start"><tspan x="888" y="1313">teste reservado: aberto uma única vez, depois de fixar modelos e limiares</tspan></text>
+</g>
+<g id="fonte-kaggle">
+<rect x="30" y="40" width="250" height="110" rx="8" fill="#eef3fa" stroke="#0b3f7b" stroke-width="3"/>
+<g id="icone-nuvem" transform="translate(40 67.0) scale(1.1667)" fill="none" stroke="#0b3f7b" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 33h23a8 8 0 0 0 0-16 11 11 0 0 0-21-3A8.5 8.5 0 0 0 13 33z"/>
+<path d="M24 22v14M19 31l5 5 5-5"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" fill="#0b3f7b" text-anchor="start"><tspan x="104" y="81.0">Kaggle</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#3d5268" text-anchor="start"><tspan x="104" y="105.0">31 CSD, versão 1</tspan><tspan x="104" y="125.0">Our Normal Skin, v. 2</tspan></text>
+</g>
+<g id="fonte-hugging-face">
+<rect x="30" y="175" width="250" height="110" rx="8" fill="#fbeae2" stroke="#b4532a" stroke-width="3"/>
+<g id="icone-nuvem" transform="translate(40 202.0) scale(1.1667)" fill="none" stroke="#b4532a" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 33h23a8 8 0 0 0 0-16 11 11 0 0 0-21-3A8.5 8.5 0 0 0 13 33z"/>
+<path d="M24 22v14M19 31l5 5 5-5"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" fill="#b4532a" text-anchor="start"><tspan x="104" y="216.0">Hugging Face</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#3d5268" text-anchor="start"><tspan x="104" y="240.0">Derm1M, subconjunto</tspan><tspan x="104" y="260.0">de hanseníase</tspan></text>
+</g>
+<g id="fonte-revisores">
+<rect x="30" y="315" width="250" height="95" rx="8" fill="#eef3fa" stroke="#0b3f7b" stroke-width="3"/>
+<g id="icone-pessoas" transform="translate(40 334.5) scale(1.1667)" fill="none" stroke="#0b3f7b" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round">
+<path d="M17 9a6 6 0 1 0 0.01 0z"/>
+<path d="M5 38c0-7.5 5.4-12.5 12-12.5S29 30.5 29 38"/>
+<path d="M33 12a5 5 0 1 0 0.01 0z"/>
+<path d="M27.5 27.5c1.6-1.3 3.4-2 5.5-2 5.4 0 9.5 4.4 9.5 11"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" fill="#0b3f7b" text-anchor="start"><tspan x="104" y="358.5">Revisores</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#3d5268" text-anchor="start"><tspan x="104" y="382.5">inspeção manual</tspan></text>
+</g>
+<g id="fonte-pesos">
+<rect x="30" y="760" width="280" height="125" rx="8" fill="#eef3fa" stroke="#0b3f7b" stroke-width="3"/>
+<g id="icone-cubo" transform="translate(40 794.5) scale(1.1667)" fill="none" stroke="#0b3f7b" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round">
+<path d="M24 5l17 8.5v21L24 43 7 34.5v-21z"/>
+<path d="M7 13.5l17 8.5 17-8.5M24 22v21"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" fill="#0b3f7b" text-anchor="start"><tspan x="104" y="797.5">Pesos</tspan><tspan x="104" y="819.5">pré-treinados</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#3d5268" text-anchor="start"><tspan x="104" y="843.5">DINOv3 · PanDerm-Base</tspan><tspan x="104" y="863.5">Inception V3 (ImageNet)</tspan></text>
+</g>
+<g id="colecoes-originais">
+<path d="M380 70 V370 A145 22 0 0 0 670 370 V70" fill="#f7f9fc" stroke="#34424c" stroke-width="3"/>
+<ellipse cx="525" cy="70" rx="145" ry="22" fill="#ffffff" stroke="#34424c" stroke-width="3"/>
+<path d="M380 86 A145 22 0 0 0 670 86" fill="none" stroke="#34424c" stroke-width="2"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#1d2a33" text-anchor="middle"><tspan x="525" y="124">Coleções originais</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="525" y="150">31 CSD · 31 categorias</tspan></text>
+<rect x="420" y="158" width="64" height="44" rx="2" fill="#e3b48e"/>
+<ellipse cx="455.2" cy="177.8" rx="16.64" ry="10.559999999999999" fill="#f2d7bd" fill-opacity="0.75" stroke="#b8604a" stroke-width="2"/>
+<rect x="423" y="190.2" width="15.36" height="8.8" rx="1" fill="#ffffff" fill-opacity="0.65"/>
+<rect x="494" y="158" width="64" height="44" rx="2" fill="#c98f68"/>
+<circle cx="513.2" cy="173.4" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="522.8000000000001" cy="183.08" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="532.4000000000001" cy="171.20000000000002" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="540.72" cy="181.32000000000002" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="547.12" cy="175.60000000000002" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="527.9200000000001" cy="177.8" r="2.88" fill="#c4504a" fill-opacity="0.8"/>
+<rect x="497" y="190.2" width="15.36" height="8.8" rx="1" fill="#ffffff" fill-opacity="0.65"/>
+<rect x="568" y="158" width="64" height="44" rx="2" fill="#d6a27c"/>
+<ellipse cx="603.2" cy="177.8" rx="19.2" ry="9.68" fill="#d9c3b4" stroke="#b56b5e" stroke-width="1.5"/>
+<path d="M590.4000000000001 175.8h25.6M593.6 182.8h19.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>
+<rect x="571" y="190.2" width="15.36" height="8.8" rx="1" fill="#ffffff" fill-opacity="0.65"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="525" y="222">Our Normal Skin · pele normal</tspan></text>
+<rect x="420" y="230" width="64" height="44" rx="2" fill="#edc6a3"/>
+<path d="M429.6 245.4q22.4 -4.4 44.8 0M429.6 256.4q22.4 -4.4 44.8 0" fill="none" stroke="#000000" stroke-opacity="0.12" stroke-width="1.2"/>
+<rect x="494" y="230" width="64" height="44" rx="2" fill="#b77a55"/>
+<path d="M503.6 245.4q22.4 -4.4 44.8 0M503.6 256.4q22.4 -4.4 44.8 0" fill="none" stroke="#000000" stroke-opacity="0.12" stroke-width="1.2"/>
+<rect x="568" y="230" width="64" height="44" rx="2" fill="#8f5b3d"/>
+<path d="M577.6 245.4q22.4 -4.4 44.8 0M577.6 256.4q22.4 -4.4 44.8 0" fill="none" stroke="#000000" stroke-opacity="0.12" stroke-width="1.2"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#b4532a" text-anchor="middle"><tspan x="525" y="294">Derm1M · 343 fotos clínicas</tspan></text>
+<rect x="420" y="302" width="64" height="44" rx="2" fill="#c98f68"/>
+<ellipse cx="455.2" cy="321.8" rx="19.2" ry="11.88" fill="none" stroke="#a9443a" stroke-width="5" stroke-opacity="0.8"/>
+<rect x="494" y="302" width="64" height="44" rx="2" fill="#e3b48e"/>
+<circle cx="517.6800000000001" cy="318.28000000000003" r="5.12" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="532.4000000000001" cy="326.2" r="6.4" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="542.0" cy="316.52000000000004" r="4.48" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="527.9200000000001" cy="313.0" r="3.84" fill="#9c4a3c" fill-opacity="0.85"/>
+<rect x="568" y="302" width="64" height="44" rx="2" fill="#a46a48"/>
+<ellipse cx="603.2" cy="321.8" rx="16.64" ry="10.559999999999999" fill="#f2d7bd" fill-opacity="0.75" stroke="#b8604a" stroke-width="2"/>
+</g>
+<g id="processo-1-curar">
+<rect x="690.0" y="160.0" width="170" height="70" rx="35.0" fill="#1a904d"/>
+<circle cx="694.0" cy="164.0" r="17" fill="#0e6b38" stroke="#ffffff" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="694.0" y="171.0">1</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="775" y="190">Curar e</tspan><tspan x="775" y="212">mascarar</tspan></text>
+</g>
+<g id="d1-inventario">
+<rect x="880" y="74" width="410" height="306" rx="6" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>
+<path d="M880 80V46a6 6 0 0 1 6-6H1284a6 6 0 0 1 6 6V80z" fill="#2f6db3"/>
+<g id="icone-cil" transform="translate(890 43) scale(0.5833)" fill="none" stroke="#ffffff" stroke-width="4.80" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 10a15 5.5 0 1 0 30 0a15 5.5 0 1 0 -30 0z"/>
+<path d="M9 10v28c0 3 6.7 5.5 15 5.5S39 41 39 38V10"/>
+<path d="M9 24c0 3 6.7 5.5 15 5.5S39 27 39 24"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="start"><tspan x="924" y="64">D1 · Inventário curado</tspan></text>
+<rect x="892" y="88" width="132" height="24" rx="12.0" fill="#b42318"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="958.0" y="105.0">Hanseníase</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="start"><tspan x="1034" y="106">31 CSD (3 categorias) + Derm1M</tspan></text>
+<rect x="893" y="119" width="98" height="68" rx="4" fill="#b42318"/>
+<rect x="896" y="122" width="92" height="62" rx="2" fill="#e3b48e"/>
+<ellipse cx="946.6" cy="149.9" rx="23.92" ry="14.879999999999999" fill="#f2d7bd" fill-opacity="0.75" stroke="#b8604a" stroke-width="2"/>
+<rect x="899" y="168.6" width="22.08" height="12.4" fill="#000000"/>
+<rect x="997" y="119" width="98" height="68" rx="4" fill="#b42318"/>
+<rect x="1000" y="122" width="92" height="62" rx="2" fill="#c98f68"/>
+<ellipse cx="1050.6" cy="149.9" rx="27.599999999999998" ry="16.740000000000002" fill="none" stroke="#a9443a" stroke-width="5" stroke-opacity="0.8"/>
+<rect x="1003" y="168.6" width="22.08" height="12.4" fill="#000000"/>
+<rect x="1101" y="119" width="98" height="68" rx="4" fill="#b42318"/>
+<rect x="1104" y="122" width="92" height="62" rx="2" fill="#a46a48"/>
+<circle cx="1138.04" cy="144.94" r="7.36" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="1159.1999999999998" cy="156.1" r="9.200000000000001" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="1173.0" cy="142.46" r="6.44" fill="#9c4a3c" fill-opacity="0.85"/>
+<circle cx="1152.76" cy="137.5" r="5.52" fill="#9c4a3c" fill-opacity="0.85"/>
+<rect x="1107" y="168.6" width="22.08" height="12.4" fill="#000000"/>
+<rect x="892" y="202" width="168" height="24" rx="12.0" fill="#56636e"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="976.0" y="219.0">Outras condições</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="start"><tspan x="1070" y="220">28 categorias + pele normal</tspan></text>
+<rect x="893" y="233" width="92" height="64" rx="4" fill="#56636e"/>
+<rect x="896" y="236" width="86" height="58" rx="2" fill="#c98f68"/>
+<circle cx="921.8" cy="256.3" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="934.6999999999999" cy="269.06" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="947.5999999999999" cy="253.40000000000003" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="958.78" cy="266.74" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="967.38" cy="259.20000000000005" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<circle cx="941.5799999999999" cy="262.1" r="3.8699999999999997" fill="#c4504a" fill-opacity="0.8"/>
+<rect x="899" y="279.4" width="20.64" height="11.600000000000001" fill="#000000"/>
+<rect x="991" y="233" width="92" height="64" rx="4" fill="#56636e"/>
+<rect x="994" y="236" width="86" height="58" rx="2" fill="#d6a27c"/>
+<ellipse cx="1041.3" cy="262.1" rx="25.8" ry="12.76" fill="#d9c3b4" stroke="#b56b5e" stroke-width="1.5"/>
+<path d="M1024.1 260.1h34.4M1028.3999999999999 267.1h25.8" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>
+<rect x="997" y="279.4" width="20.64" height="11.600000000000001" fill="#000000"/>
+<rect x="1089" y="233" width="92" height="64" rx="4" fill="#56636e"/>
+<rect x="1092" y="236" width="86" height="58" rx="2" fill="#e3b48e"/>
+<path d="M1122.1 262.1q8.6 -17.4 25.8 -8.7t10.32 14.5t-21.5 8.7z" fill="#5c3a2a" fill-opacity="0.8"/>
+<rect x="1095" y="279.4" width="20.64" height="11.600000000000001" fill="#000000"/>
+<rect x="1187" y="233" width="92" height="64" rx="4" fill="#56636e"/>
+<rect x="1190" y="236" width="86" height="58" rx="2" fill="#b77a55"/>
+<path d="M1202.9 256.3q30.099999999999998 -5.800000000000001 60.199999999999996 0M1202.9 270.8q30.099999999999998 -5.800000000000001 60.199999999999996 0" fill="none" stroke="#000000" stroke-opacity="0.12" stroke-width="1.2"/>
+<rect x="1193" y="279.4" width="20.64" height="11.600000000000001" fill="#000000"/>
+<rect x="896" y="318" width="22" height="14" fill="#000000"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="start"><tspan x="926" y="330">máscara da marca d’água em todas as fotos</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="start"><tspan x="896" y="356">rótulo binário · procedência · grupo · exclusões</tspan></text>
+</g>
+<g id="processo-2-agrupar">
+<rect x="1390.0" y="262.0" width="170" height="70" rx="35.0" fill="#1a904d"/>
+<circle cx="1394.0" cy="266.0" r="17" fill="#0e6b38" stroke="#ffffff" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1394.0" y="273.0">2</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1475" y="292">Agrupar e</tspan><tspan x="1475" y="314">particionar</tspan></text>
+</g>
+<g id="d2-particoes">
+<rect x="1270" y="454" width="390" height="156" rx="6" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>
+<path d="M1270 460V426a6 6 0 0 1 6-6H1654a6 6 0 0 1 6 6V460z" fill="#2f6db3"/>
+<g id="icone-cil" transform="translate(1280 423) scale(0.5833)" fill="none" stroke="#ffffff" stroke-width="4.80" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 10a15 5.5 0 1 0 30 0a15 5.5 0 1 0 -30 0z"/>
+<path d="M9 10v28c0 3 6.7 5.5 15 5.5S39 41 39 38V10"/>
+<path d="M9 24c0 3 6.7 5.5 15 5.5S39 27 39 24"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="start"><tspan x="1314" y="444">D2 · Partições por grupos</tspan></text>
+<rect x="1288" y="470" width="38" height="46" rx="4" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1307" y="499">1</tspan></text>
+<rect x="1329" y="470" width="38" height="46" rx="4" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1348" y="499">2</tspan></text>
+<rect x="1370" y="470" width="38" height="46" rx="4" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1389" y="499">3</tspan></text>
+<rect x="1411" y="470" width="38" height="46" rx="4" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1430" y="499">4</tspan></text>
+<rect x="1452" y="470" width="38" height="46" rx="4" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1471" y="499">5</tspan></text>
+<rect x="1496" y="470" width="50" height="46" rx="4" fill="#1a904d"/>
+<rect x="1549" y="470" width="93" height="46" rx="4" fill="#c77d14"/>
+<g id="icone-cadeado" transform="translate(1580 478) scale(0.6250)" fill="none" stroke="#ffffff" stroke-width="4.48" stroke-linecap="round" stroke-linejoin="round">
+<path d="M14 21h20a3 3 0 0 1 3 3v14a3 3 0 0 1 -3 3h-20a3 3 0 0 1 -3 -3v-14a3 3 0 0 1 3 -3z"/>
+<path d="M16 21v-6a8 8 0 0 1 16 0v6"/>
+<path d="M24 29v5"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1390" y="536">5 dobras</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1521" y="536">limiar</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1595" y="536">teste</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1465" y="564">base principal: 31 CSD + Our Normal Skin</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#b4532a" text-anchor="middle"><tspan x="1465" y="590">Derm1M só no treino de cada dobra</tspan></text>
+</g>
+<g id="processo-3-treinar">
+<rect x="360" y="640" width="820" height="335" rx="18" fill="#e8f5ee" stroke="#1a904d" stroke-width="3"/>
+<circle cx="364" cy="644" r="17" fill="#0e6b38" stroke="#ffffff" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="364" y="651">3</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#14532d" text-anchor="middle"><tspan x="770.0" y="676">Pré-processar, treinar e selecionar</tspan></text>
+<rect x="380" y="692" width="150" height="220" fill="#ffffff" stroke="#6b7487" stroke-width="2"/>
+<rect x="380" y="692" width="150" height="46" fill="#6b7487"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="455" y="711">Piso de</tspan><tspan x="455" y="729">sanidade</tspan></text>
+<rect x="392" y="790" width="126" height="64" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="middle"><tspan x="455" y="812">Classificador</tspan><tspan x="455" y="830">trivial</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="455" y="880">classe</tspan><tspan x="455" y="897">majoritária</tspan></text>
+<rect x="542" y="692" width="260" height="220" fill="#ffffff" stroke="#26365b" stroke-width="2"/>
+<rect x="542" y="692" width="260" height="46" fill="#26365b"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="672" y="711">Linha de base da literatura</tspan><tspan x="672" y="729">Lima et al. (2024)</tspan></text>
+<rect x="562" y="750" width="220" height="40" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="middle"><tspan x="672" y="767">Inception V3</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="672" y="784">congelada · 2.048 atributos</tspan></text>
+<rect x="562" y="808" width="220" height="40" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="middle"><tspan x="672" y="825">SMOTE (k = 3)</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="672" y="842">só no treino</tspan></text>
+<rect x="562" y="866" width="220" height="40" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="middle"><tspan x="672" y="883">Random Forest</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="672" y="900">100 árvores</tspan></text>
+<path d="M672.0 790.0 L672.0 799.0" fill="none" stroke="#34424c" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="672.0,808.0 667.0,799.0 677.0,799.0" fill="#34424c"/>
+<path d="M672.0 848.0 L672.0 857.0" fill="none" stroke="#34424c" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="672.0,866.0 667.0,857.0 677.0,857.0" fill="#34424c"/>
+<rect x="814" y="692" width="346" height="220" fill="#ffffff" stroke="#2f6db3" stroke-width="2"/>
+<rect x="814" y="692" width="346" height="46" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="987" y="711">Modelos de fundação</tspan><tspan x="987" y="729">avaliados neste estudo</tspan></text>
+<rect x="826" y="748" width="322" height="34" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<circle cx="840" cy="765" r="3.2" fill="#1a904d"/>
+<circle cx="849" cy="765" r="3.2" fill="#1a904d"/>
+<circle cx="858" cy="765" r="3.2" fill="#1a904d"/>
+<path d="M840 765H858" stroke="#1a904d" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="868" y="770">DINOv3 ViT-S/16</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="end"><tspan x="1140" y="770">LoRA · 21M</tspan></text>
+<rect x="826" y="788" width="322" height="34" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<circle cx="840" cy="805" r="3.2" fill="#1a904d"/>
+<circle cx="849" cy="805" r="3.2" fill="#1a904d"/>
+<circle cx="858" cy="805" r="3.2" fill="#1a904d"/>
+<path d="M840 805H858" stroke="#1a904d" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="868" y="810">DINOv3 ViT-B/16</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="end"><tspan x="1140" y="810">LoRA · 86M</tspan></text>
+<rect x="826" y="828" width="322" height="34" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<circle cx="840" cy="845" r="3.2" fill="#1a904d"/>
+<circle cx="849" cy="845" r="3.2" fill="#1a904d"/>
+<circle cx="858" cy="845" r="3.2" fill="#1a904d"/>
+<path d="M840 845H858" stroke="#1a904d" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="868" y="850">DINOv3 ConvNeXt-B</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="end"><tspan x="1140" y="850">ajuste fino · 89M</tspan></text>
+<rect x="826" y="868" width="322" height="34" rx="4" fill="#ffffff" stroke="#34424c" stroke-width="1.5"/>
+<circle cx="840" cy="885" r="3.2" fill="#1a904d"/>
+<circle cx="849" cy="885" r="3.2" fill="#1a904d"/>
+<circle cx="858" cy="885" r="3.2" fill="#1a904d"/>
+<path d="M840 885H858" stroke="#1a904d" stroke-width="1.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="868" y="890">PanDerm-Base ViT-B/16</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#4a5863" text-anchor="end"><tspan x="1140" y="890">LoRA · pele</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="770" y="940">validação cruzada em 5 dobras · configuração escolhida pela AUC média</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="middle"><tspan x="770" y="962">retreino com 3 sementes · 224×224 nos modelos de fundação · 256×256 em Lima</tspan></text>
+</g>
+<g id="d3-modelos">
+<rect x="1250" y="724" width="220" height="166" rx="6" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>
+<path d="M1250 730V696a6 6 0 0 1 6-6H1464a6 6 0 0 1 6 6V730z" fill="#2f6db3"/>
+<g id="icone-cil" transform="translate(1260 693) scale(0.5833)" fill="none" stroke="#ffffff" stroke-width="4.80" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 10a15 5.5 0 1 0 30 0a15 5.5 0 1 0 -30 0z"/>
+<path d="M9 10v28c0 3 6.7 5.5 15 5.5S39 41 39 38V10"/>
+<path d="M9 24c0 3 6.7 5.5 15 5.5S39 27 39 24"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="start"><tspan x="1294" y="714">D3 · Modelos</tspan></text>
+<rect x="1310" y="746" width="100" height="70" rx="6" fill="#ffffff" stroke="#2f6db3" stroke-width="2.5"/>
+<path d="M1322 746V736H1398V746M1322 816V826H1398V816M1310 758H1298V804H1310M1410 758H1422V804H1410" fill="none" stroke="#2f6db3" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1360" y="777">modelos</tspan><tspan x="1360" y="795">treinados</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1360" y="852">configuração e pesos</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="1360" y="872">por abordagem</tspan></text>
+</g>
+<g id="processo-4-limiares">
+<rect x="1210" y="1030" width="350" height="190" rx="18" fill="#e8f5ee" stroke="#1a904d" stroke-width="3"/>
+<circle cx="1214" cy="1034" r="17" fill="#0e6b38" stroke="#ffffff" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="1214" y="1041">4</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#14532d" text-anchor="middle"><tspan x="1385.0" y="1066">Definir limiares</tspan></text>
+<g id="icone-limiar" transform="translate(1226 1078) scale(1.2500)" fill="none" stroke="#1a904d" stroke-width="2.08" stroke-linecap="round" stroke-linejoin="round">
+<path d="M7 34a17 17 0 0 1 34 0"/>
+<path d="M24 34l9-12"/>
+<path d="M11 22l2.5 2M24 17v3M37 22l-2.5 2"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1296" y="1102">principal: índice de Youden</tspan><tspan x="1296" y="1124">secundário: sensibilidade ≥ 0,90</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="start"><tspan x="1230" y="1182">média dos escores das 3 sementes,</tspan><tspan x="1230" y="1200">na partição de limiar</tspan></text>
+</g>
+<g id="processo-5-avaliar">
+<rect x="430" y="1030" width="680" height="225" rx="18" fill="#e8f5ee" stroke="#1a904d" stroke-width="3"/>
+<circle cx="434" cy="1034" r="17" fill="#0e6b38" stroke="#ffffff" stroke-width="2.5"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="434" y="1041">5</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#14532d" text-anchor="middle"><tspan x="770.0" y="1066">Avaliar no teste reservado</tspan></text>
+<rect x="453" y="1079" width="110" height="72" rx="4" fill="#ffffff"/>
+<rect x="456" y="1082" width="104" height="66" rx="2" fill="#d6a27c"/>
+<ellipse cx="513.2" cy="1111.7" rx="27.04" ry="15.84" fill="#f2d7bd" fill-opacity="0.75" stroke="#b8604a" stroke-width="2"/>
+<rect x="459" y="1131.8" width="24.96" height="13.200000000000001" fill="#000000"/>
+<rect x="578" y="1098" width="150" height="28" rx="14.0" fill="#b42318"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="653.0" y="1117.0">Hanseníase</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="653" y="1144">escore ≥ limiar</tspan></text>
+<rect x="453" y="1163" width="110" height="72" rx="4" fill="#ffffff"/>
+<rect x="456" y="1166" width="104" height="66" rx="2" fill="#c98f68"/>
+<ellipse cx="513.2" cy="1195.7" rx="31.2" ry="14.52" fill="#d9c3b4" stroke="#b56b5e" stroke-width="1.5"/>
+<path d="M492.40000000000003 1193.7h41.6M497.6 1200.7h31.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>
+<rect x="459" y="1215.8" width="24.96" height="13.200000000000001" fill="#000000"/>
+<rect x="578" y="1180" width="170" height="28" rx="14.0" fill="#56636e"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle"><tspan x="663.0" y="1199.0">Outra condição</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#4a5863" text-anchor="middle"><tspan x="663" y="1228">escore &lt; limiar</tspan></text>
+<path d="M800 1082V1240" stroke="#b9c9bf" stroke-width="2"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#14532d" text-anchor="start"><tspan x="818" y="1098">métricas de cada abordagem</tspan></text>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="818" y="1124">acurácia balanceada (principal)</tspan><tspan x="818" y="1145">sensibilidade · especificidade</tspan><tspan x="818" y="1166">AUC-ROC · F1</tspan><tspan x="818" y="1187">Brier e erro de calibração</tspan><tspan x="818" y="1208">condição sem Derm1M (Q5)</tspan></text>
+</g>
+<g id="d4-resultados">
+<rect x="60" y="1084" width="324" height="156" rx="6" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>
+<path d="M60 1090V1056a6 6 0 0 1 6-6H378a6 6 0 0 1 6 6V1090z" fill="#2f6db3"/>
+<g id="icone-cil" transform="translate(70 1053) scale(0.5833)" fill="none" stroke="#ffffff" stroke-width="4.80" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 10a15 5.5 0 1 0 30 0a15 5.5 0 1 0 -30 0z"/>
+<path d="M9 10v28c0 3 6.7 5.5 15 5.5S39 41 39 38V10"/>
+<path d="M9 24c0 3 6.7 5.5 15 5.5S39 27 39 24"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="start"><tspan x="104" y="1074">D4 · Resultados</tspan></text>
+<g id="icone-graf" transform="translate(74 1104) scale(1.3333)" fill="none" stroke="#1a904d" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round">
+<path d="M6 42h36"/>
+<path d="M10 27h5a1 1 0 0 1 1 1v14h-7v-14a1 1 0 0 1 1-1z"/>
+<path d="M21.5 19h5a1 1 0 0 1 1 1v22h-7v-22a1 1 0 0 1 1-1z"/>
+<path d="M33 11h5a1 1 0 0 1 1 1v30h-7v-30a1 1 0 0 1 1-1z"/>
+</g>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="150" y="1112">predições e métricas</tspan><tspan x="150" y="1134">por abordagem,</tspan><tspan x="150" y="1156">lado a lado</tspan><tspan x="150" y="1178">IC 95% por bootstrap</tspan><tspan x="150" y="1200">de grupos</tspan></text>
+</g>
+<g id="legenda">
+<path d="M30 1342H1670" stroke="#d3dce3" stroke-width="2"/>
+<rect x="40" y="1354" width="36" height="26" rx="4" fill="#eef3fa" stroke="#0b3f7b" stroke-width="3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="86" y="1373">Fonte externa</tspan></text>
+<rect x="220" y="1354" width="36" height="26" rx="8" fill="#e8f5ee" stroke="#1a904d" stroke-width="3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="266" y="1373">Processo (1 a 5)</tspan></text>
+<rect x="420" y="1354" width="36" height="26" rx="4" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>
+<rect x="420" y="1354" width="36" height="9" fill="#2f6db3"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="466" y="1373">Depósito de dados (D1 a D4)</tspan></text>
+<path d="M705.0 1367.0 L745.0 1367.0" fill="none" stroke="#34424c" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="761.0,1367.0 745.0,1374.0 745.0,1360.0" fill="#34424c"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="771" y="1373">Fluxo de dados</tspan></text>
+<path d="M905.0 1367.0 L945.0 1367.0" fill="none" stroke="#c77d14" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="961.0,1367.0 945.0,1374.0 945.0,1360.0" fill="#c77d14"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="971" y="1373">Teste reservado</tspan></text>
+<rect x="1125" y="1355" width="24" height="24" rx="4" fill="#b42318"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1157" y="1373">Hanseníase</tspan></text>
+<rect x="1270" y="1355" width="24" height="24" rx="4" fill="#56636e"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1302" y="1373">Outras condições</tspan></text>
+<rect x="1462" y="1355" width="24" height="24" rx="4" fill="#b4532a"/>
+<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1494" y="1373">Derm1M (só treino)</tspan></text>
+</g>
+</svg>
