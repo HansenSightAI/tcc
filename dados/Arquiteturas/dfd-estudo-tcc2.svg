@@ -285,8 +285,6 @@
 <text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1230" y="741">Brier e calibração</tspan></text>
 <text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="1218" y="762">•</tspan></text>
 <text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1230" y="762">IC 95% por bootstrap</tspan><tspan x="1230" y="783">de grupos</tspan></text>
-<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#2b3640" text-anchor="start"><tspan x="1218" y="804">•</tspan></text>
-<text font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#2b3640" text-anchor="start"><tspan x="1230" y="804">Q5: condição sem Derm1M</tspan></text>
 </g>
 <g id="d4-resultados">
 <rect x="1490" y="634" width="170" height="146" rx="6" fill="#f3f7fd" stroke="#2f6db3" stroke-width="3"/>

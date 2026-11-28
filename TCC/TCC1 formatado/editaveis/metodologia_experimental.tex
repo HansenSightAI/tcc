@@ -219,9 +219,6 @@ detecção (\metrica{M9}) não se aplicam à tarefa de classificação.
 	\hypertarget{questao-q4}{Q4}. Os escores das abordagens estão calibrados?
 	                 & Escore de Brier e erro esperado de calibração (\metrica{M12}), com diagrama de confiabilidade
 	                 & Brier ou erro esperado de calibração: 0                                                                                                                                                                                                         \\ \hline
-	\hypertarget{questao-q5}{Q5}. A inclusão das fotografias do Derm1M no treino altera o desempenho no teste?
-	                 & Acurácia balanceada (\metrica{M11}) com e sem Derm1M e diferença pareada entre as condições, com intervalos de 95\%, para o modelo escolhido na validação e configuração fixa
-	                 & Não avaliado nos estudos                                                                                                                                                                                                                        \\ \hline
 \end{longtable}
 \endgroup
 \fonte{Autores.}
@@ -493,8 +490,8 @@ resume o treinamento, a seleção e o teste.
 		\node[cardlado, right=9mm of d2, text width=3.3cm] (na) {Definir nova abordagem\\(Lima; DINOv3 ViT-S, ViT-B\\e ConvNeXt-B; PanDerm-Base)};
 
 		% final
-		\node[card, below=5mm of d2] (q5) {Preparar a condição sem Derm1M (\hyperlink{questao-q5}{Q5})\\e o classificador trivial};
-		\node[card, below=of q5] (c1) {Fixar modelos e limiares e avaliar\\uma única vez no teste reservado};
+		\node[card, below=5mm of d2] (triv) {Preparar o classificador trivial};
+		\node[card, below=of triv] (c1) {Fixar modelos e limiares e avaliar\\uma única vez no teste reservado};
 		\node[card, below=of c1] (c2) {Analisar os resultados e as\\análises complementares};
 		\node[terminal, below=of c2] (fim) {FIM};
 
@@ -511,8 +508,8 @@ resume o treinamento, a seleção e o teste.
 		\draw[fluxo] (nc) |- (b1.west);
 		\draw[fluxo] (b2) -- (b3);
 		\draw[fluxo] (b3) -- (d2);
-		\draw[fluxo] (d2) -- node[rot, right=1pt] {SIM} (q5);
-		\draw[fluxo] (q5) -- (c1);
+		\draw[fluxo] (d2) -- node[rot, right=1pt] {SIM} (triv);
+		\draw[fluxo] (triv) -- (c1);
 		\draw[fluxo] (d2) -- node[rot, above] {NÃO} (na);
 		\draw[fluxo] (na) |- (b1.east);
 		\draw[fluxo] (c1) -- (c2);
@@ -548,8 +545,8 @@ versão ViT-B/16 do PanDerm, modelo de fundação dermatológico cuja versão
 maior foi pré-treinada em cerca de 2,1 milhões de imagens de quatro
 modalidades \cite{yan2025panderm}; os autores não detalham os dados de
 pré-treino da versão Base. Não será usado o DermLIP, que adota a mesma
-arquitetura, mas foi treinado no Derm1M \cite{yan2025derm1m}, o que
-confundiria a avaliação da questão \hyperlink{questao-q5}{Q5}. A escolha reúne um modelo geral em dois
+arquitetura, mas foi treinado no Derm1M \cite{yan2025derm1m}, o que sobreporia o
+pré-treino às fotografias usadas no treino deste estudo. A escolha reúne um modelo geral em dois
 tamanhos, uma arquitetura convolucional com o mesmo pré-treino e um modelo
 do domínio, e atende ao atributo desejável de processar os dados com mais
 de um tipo de modelo \cite{ghotra2015}, discutido na
@@ -591,7 +588,7 @@ rotações, para apresentar variações das imagens durante o ajuste dos
 modelos. As operações, intensidades e probabilidades serão definidas no
 desenvolvimento e registradas antes da abertura do teste. A política será
 comum às fontes e às classes de treino, incluindo o Derm1M elegível, e será
-mantida no retreino final e nas duas condições da \hyperlink{questao-q5}{Q5}.
+mantida no retreino final.
 As versões geradas permanecerão vinculadas à fotografia e ao grupo de
 origem; não serão contadas como novos grupos independentes.
 
@@ -631,9 +628,8 @@ entre divisões, ao contrário de uma única divisão de validação, usada em
 
 Após a seleção, cada modelo será retreinado com a configuração escolhida.
 Os critérios de duração, repetição e escolha de limiares estão na
-Subseção~\ref{subsec:hiperparametros}; o ajuste das linhas de base, na
-Subseção~\ref{subsec:linhas-base}; e a condição sem Derm1M da \hyperlink{questao-q5}{Q5}, na
-Subseção~\ref{subsec:analises-complementares}. O
+Subseção~\ref{subsec:hiperparametros}, e o ajuste das linhas de base, na
+Subseção~\ref{subsec:linhas-base}. O
 Algoritmo~\ref{alg:procedimento-experimental} resume essa sequência.
 
 \begin{algorithm}[H]
@@ -670,12 +666,9 @@ Algoritmo~\ref{alg:procedimento-experimental} resume essa sequência.
 		\EndFor
 		\State Ajustar as linhas de base nas mesmas parcelas de treino, com SMOTE apenas no treino de Lima
 		\State Combinar as três execuções de Lima e escolher seus limiares na partição própria
-		\State Para a \hyperlink{questao-q5}{Q5}, escolher o modelo com maior AUC média; em empate, o de menos parâmetros
-		\State Retreiná-lo sem Derm1M, mantendo hiperparâmetros, épocas, sementes e aumento de dados
-		\State Combinar seus escores e escolher novos limiares na mesma partição de limiar
 		\State Fixar e registrar modelos e limiares antes de abrir o teste
-		\State Avaliar todas as abordagens, incluindo a condição sem Derm1M, no mesmo teste reservado
-		\State Calcular métricas e IC 95\% por \textit{bootstrap} de grupos; na \hyperlink{questao-q5}{Q5}, calcular também a diferença pareada
+		\State Avaliar todas as abordagens no mesmo teste reservado
+		\State Calcular métricas e IC 95\% por \textit{bootstrap} de grupos
 	\end{algorithmic}
 	\fonte{Autores.}
 \end{algorithm}
@@ -920,7 +913,7 @@ heurísticas previstas.
 	\multicolumn{3}{r}{\footnotesize\textit{continua na próxima página}}                                                                                                                                                                                                                \\
 	\endfoot
 	\endlastfoot
-	\textit{Bootstrap} de grupos                   & IC 95\% das métricas e da diferença da \hyperlink{questao-q5}{Q5}; 2.000 reamostragens estratificadas por classe e percentis & Preserva os grupos de fotos relacionadas e o pareamento das condições da \hyperlink{questao-q5}{Q5} \\ \hline
+	\textit{Bootstrap} de grupos                   & IC 95\% das métricas; 2.000 reamostragens estratificadas por classe e percentis & Preserva os grupos de fotos relacionadas \\ \hline
 	Variação entre execuções                       & Média e desvio padrão da AUC nas dobras; métricas de cada semente                                                            & Mostra a variação entre execuções, em vez de um único valor \cite{bouthillier2021}                  \\ \hline
 	Referência de precisão do teste                & Cerca de 100 grupos positivos, sem alterar o teste para atingir esse número                                                  & Semiamplitude de cerca de 8 pontos percentuais na sensibilidade (Subseção~\ref{subsec:particoes})   \\ \hline
 	Validação cruzada em 5 dobras                  & Seleção de configurações; 3 dobras se alguma tiver menos de 20 grupos positivos                                              & Equilibra o custo de treino e o número de casos por dobra                                           \\ \hline
@@ -935,25 +928,6 @@ heurísticas previstas.
 
 \subsection{Análises complementares}
 \label{subsec:analises-complementares}
-
-A questão \hyperlink{questao-q5}{Q5} examinará se acrescentar o Derm1M ao
-treino altera o desempenho. O modelo de fundação com maior AUC média na
-validação cruzada com Derm1M (no empate, o de menos parâmetros) será
-retreinado sem Derm1M, só com a parte da base principal destinada ao
-retreino final. As duas condições manterão pesos iniciais, sementes,
-hiperparâmetros, resolução e épocas, sem nova busca de configurações;
-somente os pesos das classes serão recalculados a partir do treino de cada
-condição, e os limiares serão escolhidos separadamente na mesma partição de
-limiar.
-
-Serão relatadas a acurácia balanceada de cada condição no limiar principal
-e a diferença entre elas (com Derm1M menos sem Derm1M). O intervalo de 95\%
-da diferença virá do \textit{bootstrap} pareado por grupos
-(Tabela~\ref{tab:estatisticas-heuristicas}), que sorteia os mesmos grupos do
-teste para as duas condições. Esse intervalo descreve a incerteza do teste
-para os modelos já ajustados; a variação do treino será relatada por
-semente. A análise não é uma nova seleção do melhor modelo em cada
-condição.
 
 A análise exploratória de predição seletiva examinará a relação entre
 cobertura e acurácia balanceada com regras de abstenção definidas no
@@ -983,13 +957,10 @@ decorre da composição do 31 CSD e do Our Normal Skin e será recalculada após
 saúde, de modo que precisão, $F_1$, acurácia e
 limiares não se transferem diretamente para outro contexto. Supõe-se
 também que as fotografias do Derm1M, vindas de livros e artigos e todas
-positivas, podem contribuir para o treino na base principal;
-a avaliação com e sem elas (questão \hyperlink{questao-q5}{Q5}) estima o
-impacto dessa inclusão no teste interno. Como os dados de pré-treino do
-PanDerm-Base não são detalhados, não se pode descartar que incluam imagens
-do Derm1M ou de fontes comuns ao 31 CSD; nesse caso, a
-\hyperlink{questao-q5}{Q5} subestimaria o efeito do Derm1M nesse modelo, e
-seu desempenho no teste poderia ser otimista. Por fim, a adaptação supõe que as representações aprendidas no
+positivas, podem contribuir para o treino na base principal. Como os
+dados de pré-treino do PanDerm-Base não são detalhados, não se pode
+descartar que incluam imagens do Derm1M ou de fontes comuns ao 31 CSD;
+nesse caso, seu desempenho no teste poderia ser otimista. Por fim, a adaptação supõe que as representações aprendidas no
 pré-treino, em imagens gerais ou dermatológicas, são úteis para fotografias
 de hanseníase, o que a comparação com as linhas de base permite verificar.
 
@@ -1027,11 +998,8 @@ captura associados a uma fonte podem permitir prever a classe sem olhar a
 lesão \cite{geirhos2020}; a máscara da marca d'água em todas as
 fotografias, a auditoria de procedência, a resolução fixa e a análise sem a
 pele normal tratam esse risco. Como as fotografias do Derm1M são todas
-positivas, o estilo de figura de livro também poderia servir de atalho.
-A avaliação com e sem elas mede o impacto conjunto da inclusão da fonte,
-que também altera a quantidade e a diversidade de positivos e os pesos
-das classes no treino. Ela não identifica isoladamente o uso de pistas de
-procedência, e uma diferença nula não exclui aprendizado por atalho.
+positivas, o estilo de figura de livro também poderia servir de atalho;
+esse risco não será medido separadamente.
 
 Há também a ameaça de \textit{instrumentation}: erros nos \textit{scripts}
 poderiam produzir métricas incorretas. Os \textit{scripts} de avaliação
