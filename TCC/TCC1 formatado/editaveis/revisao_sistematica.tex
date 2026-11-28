@@ -11,8 +11,7 @@ critérios de seleção e procedimentos de extração e síntese segue
 relato segue o capítulo 4 de \citeonline{wohlin2024}, que trata a revisão
 sistemática como estudo secundário. As evidências reunidas fundamentam o
 planejamento do estudo de ciência de dados apresentado no
-Capítulo~\ref{cap:metodologia-experimental}, conduzido segundo o padrão
-\textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}.
+Capítulo~\ref{cap:metodologia-experimental}.
 
 \section{Planejamento e protocolo}
 \label{sec:planejamento-protocolo}
@@ -21,9 +20,8 @@ A Tabela~\ref{tab:protocolo-busca} resume o protocolo registrado no
 Evidentia: questões de pesquisa, estratégia e fontes de busca, filtros,
 critérios de seleção e campos do formulário de extração. Como as questões
 de pesquisa orientam os dados a serem extraídos e sintetizados
-\cite{kitchenham2007}, a questão principal, sobre como avaliar o
-desempenho desses modelos no contexto da rede pública de saúde do Brasil,
-foi desdobrada em oito questões secundárias (RQ1 a RQ8).
+\cite{kitchenham2007}, a questão principal foi desdobrada em oito
+questões secundárias (RQ1 a RQ8).
 
 \begingroup
 \footnotesize
@@ -104,8 +102,8 @@ usou o Consensus, buscador de literatura científica baseado em
 inteligência artificial, e o Claude, assistente de uso geral da Anthropic,
 ambos com o mesmo \textit{prompt} construído a partir da questão de
 pesquisa e do PICOC. Essa escolha decorreu de uma limitação da busca
-booleana: mesmo após diversos ajustes, a \textit{string} retornou 1.342
-artigos na Scopus (Seção~\ref{subsec:picoc-string-busca}), enquanto os
+booleana: mesmo após diversos ajustes, a \textit{string} retornou um
+número elevado de artigos na Scopus (Seção~\ref{subsec:picoc-string-busca}), enquanto os
 trabalhos sobre inteligência artificial aplicada à hanseníase são poucos,
 o que dificulta separá-los dos demais apenas pela formulação booleana. Na
 triagem, o Jev Reviewer (\texttt{jev-1.13.0}) sugeriu inclusão, exclusão
@@ -180,8 +178,8 @@ termos usados na busca.
 \endgroup
 \fonte{Autores.}
 
-Os termos de cada componente foram unidos por \texttt{OR}, e os quatro
-componentes aplicáveis, por \texttt{AND}:
+Os termos de cada componente foram unidos por \texttt{OR}, e os
+componentes, por \texttt{AND}:
 
 \begin{center}
 	\fbox{
@@ -572,9 +570,8 @@ disponibilidade. Os estudos secundários (grupo B) não têm coleta própria, e
 A base de \citeonline{deps2026}, curada em acordo entre UFES e OMS, não
 informa quantos dos 208 casos restaram após a exclusão de 16 imagens. O
 AI4Leprosy \cite{barbieri2022} reúne pessoas com suspeita de hanseníase e
-outras dermatoses, com acesso aos dados mediante registro e validação. O
-Co2Wounds-V2, coletado na Colômbia \cite{sanchez2024} e reutilizado por
-\citeonline{mehta2026}, tem no repositório 607 imagens anotadas e 157 de
+outras dermatoses, com acesso aos dados mediante registro e validação. No
+Co2Wounds-V2 \cite{sanchez2024}, o repositório tem 607 imagens anotadas e 157 de
 teste sem anotação \cite{co2woundsDados2024}. O conjunto da OMS
 \cite{pons2026} combina 5.760 imagens de doenças tropicais negligenciadas
 cutâneas, 16.577 do \textit{Fitzpatrick 17k}, 2.469 recortes de pele sã e
@@ -609,9 +606,9 @@ informam a unidade da divisão, o que não equivale a não separar; sete
 descrevem divisão por imagem ou microfotografia
 \cite{vargasclavijo2025,baweja2023,pons2026,gawali2024,eita2025,jaikishore2021,banerjee2023},
 unidade inferida em \citeonline{pons2026} e \citeonline{banerjee2023}. Se
-fotos do mesmo paciente caem no treino e no teste, iluminação, tom de pele
-e artefatos de câmera podem inflar o desempenho \cite{kapoor2023}, risco
-que não se descarta nesses 14 estudos.
+fotos do mesmo paciente caem no treino e no teste, o desempenho pode ficar
+inflado por vazamento (Subseção~\ref{subsec:ciencia-de-dados})
+\cite{kapoor2023}, risco que não se descarta nesses 14 estudos.
 
 \begingroup
 \footnotesize
@@ -927,8 +924,8 @@ de forma equitativa no SUS (Figura~\ref{fig:vazio-tom-pele}).
 \label{subsec:rq6-modelos}
 \label{subsec:rq-modelos-abordagens}
 
-As contagens usam os 17 estudos com dados; cada publicação conta uma vez
-por modelo ou componente, incluindo comparadores testados. A
+Cada publicação conta uma vez por modelo ou componente, incluindo
+comparadores testados. A
 Tabela~\ref{tab:tarefas-ia} liga tarefas e etapas aos estudos; em
 \citeonline{mehta2026}, um classificador sucede a segmentação, e em
 \citeonline{jaikishore2021} a classificação de gravidade abrange só eczema
