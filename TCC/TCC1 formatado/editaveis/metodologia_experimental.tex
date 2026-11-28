@@ -9,7 +9,8 @@ Este capítulo planeja um estudo observacional que utiliza ciência de
 dados para avaliar modelos de fundação na distinção entre hanseníase e
 outras doenças dermatológicas em fotografias clínicas. Serão avaliados o
 DINOv3, nas versões ViT-S, ViT-B e ConvNeXt-B \cite{simeoni2025dinov3}, e o
-PanDerm-Base, pré-treinado em imagens de pele \cite{yan2025panderm}, ao lado
+PanDerm-Base, versão menor de um modelo de fundação dermatológico
+\cite{yan2025panderm}, ao lado
 de duas linhas de base: um classificador trivial e a reprodução da
 abordagem de \citeonline{lima2024skin}. O estudo empregará dados
 secundários de três fontes públicas: o 31 CSD, o Our Normal Skin e um
@@ -542,9 +543,13 @@ cerca de 1,7 bilhão de imagens gerais e será usado em três versões: os
 transformadores visuais ViT-S/16, com 21 milhões de
 parâmetros, e ViT-B/16, com 86 milhões, e a ConvNeXt-B
 \cite{liu2022convnext}, rede convolucional de 89 milhões de parâmetros
-destilada a partir do maior modelo do DINOv3. O PanDerm-Base
-\cite{yan2025panderm} é um ViT-B/16 pré-treinado em imagens dermatológicas,
-incluindo fotografias clínicas. A escolha reúne um modelo geral em dois
+destilada a partir do maior modelo do DINOv3. O PanDerm-Base é a
+versão ViT-B/16 do PanDerm, modelo de fundação dermatológico cuja versão
+maior foi pré-treinada em cerca de 2,1 milhões de imagens de quatro
+modalidades \cite{yan2025panderm}; os autores não detalham os dados de
+pré-treino da versão Base. Não será usado o DermLIP, que adota a mesma
+arquitetura, mas foi treinado no Derm1M \cite{yan2025derm1m}, o que
+confundiria a avaliação da questão \hyperlink{questao-q5}{Q5}. A escolha reúne um modelo geral em dois
 tamanhos, uma arquitetura convolucional com o mesmo pré-treino e um modelo
 do domínio, e atende ao atributo desejável de processar os dados com mais
 de um tipo de modelo \cite{ghotra2015}, discutido na
@@ -980,7 +985,11 @@ limiares não se transferem diretamente para outro contexto. Supõe-se
 também que as fotografias do Derm1M, vindas de livros e artigos e todas
 positivas, podem contribuir para o treino na base principal;
 a avaliação com e sem elas (questão \hyperlink{questao-q5}{Q5}) estima o
-impacto dessa inclusão no teste interno. Por fim, a adaptação supõe que as representações aprendidas no
+impacto dessa inclusão no teste interno. Como os dados de pré-treino do
+PanDerm-Base não são detalhados, não se pode descartar que incluam imagens
+do Derm1M ou de fontes comuns ao 31 CSD; nesse caso, a
+\hyperlink{questao-q5}{Q5} subestimaria o efeito do Derm1M nesse modelo, e
+seu desempenho no teste poderia ser otimista. Por fim, a adaptação supõe que as representações aprendidas no
 pré-treino, em imagens gerais ou dermatológicas, são úteis para fotografias
 de hanseníase, o que a comparação com as linhas de base permite verificar.
 
