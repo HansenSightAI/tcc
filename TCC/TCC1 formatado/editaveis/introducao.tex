@@ -115,9 +115,7 @@ apresentaram o CO2Wounds-V2, um conjunto de fotografias de feridas
 crônicas de pacientes com hanseníase, acompanhado de experimentos de
 segmentação semântica. Nesse caso, a tarefa consiste em delimitar
 regiões de ferida nas imagens, e não em determinar se o paciente
-apresenta hanseníase. Essa distinção é necessária para organizar a
-literatura e evitar que medidas de segmentação sejam interpretadas como
-evidências de desempenho diagnóstico.
+apresenta hanseníase.
 
 A caracterização das populações representadas nos dados também integra a
 avaliação dos modelos. \citeonline{yotsu2023} utilizaram fotografias
@@ -136,9 +134,7 @@ avaliação compreende os resultados preditivos relativos à tarefa, os
 procedimentos empregados para obtê-los e as evidências disponíveis sobre
 sua aplicação a novos dados e a diferentes grupos de tom de pele. A
 utilização futura em apoio à triagem na rede pública de saúde do Brasil
-constitui o contexto de interesse da pesquisa, sem que os resultados
-computacionais sejam, por si só, considerados demonstração de
-efetividade clínica.
+constitui o contexto de interesse da pesquisa.
 
 \section{Problema}\label{problema}
 
@@ -167,11 +163,9 @@ desempenho global do sistema.
 A relação entre os resultados obtidos e os tons de pele constitui outra
 dimensão do problema. A presença de imagens de pele escura em um
 conjunto de dados não demonstra que o modelo apresente comportamento
-equivalente entre diferentes tons. No estudo de \citeonline{yotsu2023}, a
-população é caracterizada por um intervalo de fototipos, mas não são
-fornecidos resultados separados por esses grupos. Já \citeonline{eita2025}
-reconhecem limitações de representatividade e a necessidade de ampliar a
-diversidade dos dados. Essas observações sustentam a necessidade de
+equivalente entre diferentes tons. Como exposto na Seção~\ref{contexto},
+\citeonline{yotsu2023} não apresentam resultados separados por fototipo e
+\citeonline{eita2025} reconhecem limitações de representatividade. Essas observações sustentam a necessidade de
 examinar a caracterização populacional e a avaliação por grupos, sem
 permitir concluir, a partir dessas evidências isoladas, que todos os
 modelos tenham desempenho inferior em pele negra.
@@ -285,7 +279,7 @@ revisão estruturada da literatura, que reúne as evidências sobre a avaliaçã
 modelos de visão computacional aplicados à identificação de padrões associados
 à hanseníase em imagens de pele. O segundo é um estudo observacional que
 utiliza ciência de dados para avaliar esses modelos, conduzido segundo o
-padrão \textit{Data Science} da ACM SIGSOFT e fundamentado nas lacunas identificadas no primeiro. A seção apresenta a
+padrão \textit{Data Science} da ACM SIGSOFT. A seção apresenta a
 classificação do trabalho e os estudos que o compõem.
 
 \subsection{Classificação do estudo}
@@ -397,13 +391,10 @@ metodologia não se aplica: nenhuma das metodologias previstas na estrutura
 (estudo de caso, pesquisa-ação ou \textit{design science}) é adotada, caminho
 admitido por \citeonline{wohlin2015}. O segundo estudo é conduzido segundo o
 padrão \textit{Data Science} da ACM SIGSOFT \cite{acmSigsoftDataScience}, que
-não corresponde a uma dessas metodologias, mas estabelece critérios para estudos
-de engenharia de software baseados em análise centrada em dados. Seus
+não corresponde a uma dessas metodologias (Subseção~\ref{subsec:ciencia-de-dados}). Seus
 procedimentos se refletem nos pontos de coleta e de análise de dados, descritos
 a seguir. Na coleta de dados, o primeiro estudo emprega um estudo de
-literatura estruturado, com questões de pesquisa, protocolo, estratégia de
-busca, critérios explícitos de seleção e formulário de extração
-\cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
+literatura estruturado \cite{kitchenham2007}, e o segundo emprega pesquisa em arquivo, ao analisar
 fontes de imagens já coletadas e anotadas por terceiros. A análise dos dados
 é estatística: descritiva, por contagens, tabelas e classificação dos estudos
 por tarefa, modelo e procedimento de avaliação, no primeiro estudo, e das
@@ -415,25 +406,20 @@ conforme o padrão \textit{Data Science}.
 O primeiro estudo é uma revisão estruturada da literatura baseada no protocolo
 de revisão sistemática proposto por \citeonline{kitchenham2007}, que orientou a
 definição das questões de pesquisa, da estratégia de busca, dos critérios de
-seleção e do formulário de extração. Nele são examinados as tarefas realizadas,
-os modelos empregados, as características dos conjuntos de dados, os
-procedimentos de avaliação, as métricas, os resultados e as informações
-disponíveis sobre tons de pele e generalização. A ausência de avaliação por
+seleção e do formulário de extração. Nele são examinados os aspectos definidos
+nos objetivos específicos (Seção~\ref{objetivos}). A ausência de avaliação por
 grupo é registrada como limitação das evidências disponíveis, sem ser tomada
 como demonstração de equidade ou de desigualdade de desempenho. O protocolo e
 os resultados são apresentados no Capítulo~\ref{cap:revisao-literatura}, e as
 atividades realizadas, na Subseção~\ref{subsec:etapas-revisao}.
 
-O segundo estudo é um estudo observacional que utiliza ciência de dados
-para avaliar modelos de visão computacional, conduzido segundo o padrão
-\textit{Data Science} da ACM SIGSOFT,
+O segundo estudo segue o padrão \textit{Data Science} da ACM SIGSOFT,
 apresentado na Subseção~\ref{subsec:ciencia-de-dados}. As evidências e as
 limitações reunidas no primeiro estudo, em especial as relativas aos dados, aos
 procedimentos de avaliação e à generalização, fundamentam a formulação da
 questão específica e o planejamento apresentado no
-Capítulo~\ref{cap:metodologia-experimental}. Os modelos de fundação DINOv3 e
-PanDerm serão adaptados no desenvolvimento e avaliados, ao lado de duas
-linhas de base, nas mesmas fotografias do teste reservado.
+Capítulo~\ref{cap:metodologia-experimental}, que descreve os modelos de
+fundação e as linhas de base avaliados.
 
 \section{Organização do trabalho}
 \label{sec:organizacao}
@@ -448,10 +434,10 @@ de busca, a seleção dos estudos, a extração e a síntese das evidências e o
 resultados, organizados pelas questões de pesquisa. O quarto descreve o
 planejamento do estudo utilizando ciência de dados, incluindo a curadoria e o
 particionamento por grupos, a configuração experimental, a validação cruzada
-e a seleção dos classificadores no desenvolvimento, as linhas de base, a
-instrumentação, a avaliação de ambos no teste reservado e as ameaças à
-validade. O quinto apresenta as atividades realizadas, os resultados obtidos, as
-limitações e o cronograma da segunda etapa da monografia. Ao final, são apresentadas as referências e os apêndices.
+e a seleção dos modelos no desenvolvimento, as linhas de base, a
+instrumentação, a avaliação de todas as abordagens no teste reservado e as ameaças à
+validade. O quinto apresenta as atividades realizadas, os resultados obtidos e as
+limitações. Ao final, são apresentadas as referências e os apêndices.
 
 \section{Cronograma e fluxo de atividades}
 \label{sec:cronograma-fluxo}
@@ -466,7 +452,7 @@ tempo.
 Esta subseção descreve as atividades realizadas na Primeira Etapa da
 Monografia, no segundo semestre de 2026. A
 Figura~\ref{fig:fluxo-primeira-etapa} apresenta essas atividades em forma de
-fluxo, e a Figura~\ref{fig:cronograma-tcc1} as dispõe cronologicamente as atividades realizadas.
+fluxo, e a Figura~\ref{fig:cronograma-tcc1} as dispõe cronologicamente.
 
 \begin{figure}[H]
 	\centering
@@ -667,7 +653,7 @@ planejado no Capítulo~\ref{cap:metodologia-experimental}. A
 Figura~\ref{fig:fluxo-segunda-etapa} apresenta essas atividades em forma de
 fluxo, e a Figura~\ref{fig:cronograma-segunda-etapa} as dispõe em um
 cronograma previsto, sujeito ao calendário acadêmico e à disponibilidade do
-equipamento. A base de dados principal será composta pelo \textit{31 Classes of Skin Disease} (31 CSD) e pelo \textit{Our Normal Skin} \cite{kelixo31CSD2025,ourNormalSkin2023}.
+equipamento.
 
 \begin{figure}[H]
 	\centering
@@ -826,7 +812,7 @@ para a segunda etapa.
 	Ajustes pedidos pela banca               & Revisão do texto da primeira etapa a partir
 	das considerações da banca avaliadora e dos orientadores.                                         \\
 	\hline
-	Curadoria e agrupamento                  & Obtenção do 31 CSD, do Our Normal Skin e do subconjunto de hanseníase
+	Curadoria e agrupamento                  & Obtenção do \textit{31 Classes of Skin Disease} (31 CSD), do Our Normal Skin e do subconjunto de hanseníase
 	do Derm1M, harmonização dos rótulos, agrupamento das fotografias relacionadas
 	e aplicação da máscara da marca d'água
 	(Subseção~\ref{subsec:curadoria-procedencia}).                                                    \\
