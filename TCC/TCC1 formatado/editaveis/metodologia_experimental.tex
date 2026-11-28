@@ -111,7 +111,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	                            & Subseção~\ref{subsec:justificativa-colecao}: escolha do 31 CSD, do Our Normal Skin e do subconjunto de hanseníase do Derm1M e descarte do CO2Wounds-V2 e do AI4Leprosy                                                                                                                                                                                               \\ \hline
 	Configuração experimental, por exemplo com diagrama de fluxo de dados
 	                            & Seção~\ref{gqm-adaptado-e-questuxe3o-de-pesquisa}: GQM. Subseção~\ref{subsec:ciencia-de-dados}: papéis da validação e do teste reservado
-	                            & Seção~\ref{sec:objetivo-avaliacao-empirica} e Subseção~\ref{subsec:configuracao-estudo}, com o diagrama de fluxo de dados (Figura~\ref{fig:dfd-estudo}) e o diagrama de atividades (Figura~\ref{fig:atividades-estudo})                                                                                                                                              \\ \hline
+	                            & Seção~\ref{sec:objetivo-avaliacao-empirica} e Subseção~\ref{subsec:configuracao-estudo}, com o diagrama de fluxo de dados na forma de arquitetura do \textit{pipeline} (Figura~\ref{fig:dfd-estudo}) e o diagrama de atividades (Figura~\ref{fig:atividades-estudo})                                                                                                                                              \\ \hline
 	Engenharia de atributos e transformações aplicadas
 	                            & Seção~\ref{sec:ia-visao-computacional}: representações aprendidas por redes convolucionais. Subseção~\ref{subsec:rq1-tecnicas}: preparo das imagens, aumento de dados e atributos usados nos estudos
 	                            & Subseção~\ref{subsec:preprocessamento-arquiteturas}: máscara da marca d'água, redimensionamento, normalização, atributos dos modelos pré-treinados e aumento de dados apenas no treino                                                                                                                                                                               \\ \hline
@@ -435,15 +435,17 @@ exclusões serão registradas por execução.
 \subsection{Configuração do estudo}
 \label{subsec:configuracao-estudo}
 
-A Figura~\ref{fig:dfd-estudo} apresenta as fontes de dados, os modelos e a
-avaliação, conforme o padrão \textit{Data Science}
-\cite{acmSigsoftDataScience}. A Figura~\ref{fig:atividades-estudo} mostra a
+A Figura~\ref{fig:dfd-estudo} apresenta a arquitetura do \textit{pipeline}
+de aprendizado de máquina do estudo, que serve como diagrama de fluxo de
+dados do padrão \textit{Data Science} \cite{acmSigsoftDataScience}: as etapas
+de dados e de treinamento e avaliação, os artefatos produzidos em cada etapa
+e os serviços de plataforma que apoiam a reprodutibilidade. A Figura~\ref{fig:atividades-estudo} mostra a
 ordem das atividades, e o Algoritmo~\ref{alg:procedimento-experimental}
 resume o treinamento, a seleção e o teste.
 
 \begin{figure}[H]
 	\centering
-	\caption{Diagrama de fluxo de dados do estudo}
+	\caption{Arquitetura do \textit{pipeline} de aprendizado de máquina do estudo}
 	\label{fig:dfd-estudo}
 	% Fonte editável: dados/Arquiteturas/dfd-estudo-tcc2.svg (importável no Figma);
 	% o PDF foi exportado do SVG com: inkscape dfd-estudo-tcc2.svg --export-type=pdf
