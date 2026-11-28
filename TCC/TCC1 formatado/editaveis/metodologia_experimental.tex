@@ -114,7 +114,7 @@ coluna da direita, a seção ou subseção deste capítulo que o atende.
 	                            & Seção~\ref{sec:objetivo-avaliacao-empirica} e Subseção~\ref{subsec:configuracao-estudo}, com o diagrama de fluxo de dados (Figura~\ref{fig:dfd-estudo}) e o diagrama de atividades (Figura~\ref{fig:atividades-estudo})                                                                                                                                              \\ \hline
 	Engenharia de atributos e transformações aplicadas
 	                            & Seção~\ref{sec:ia-visao-computacional}: representações aprendidas por redes convolucionais. Subseção~\ref{subsec:rq1-tecnicas}: preparo das imagens, aumento de dados e atributos usados nos estudos
-	                            & Subseção~\ref{subsec:preprocessamento-arquiteturas}: máscara da marca d'água, redimensionamento, normalização, atributos dos modelos pré-treinados e decisão sobre o aumento de dados                                                                                                                                                                                \\ \hline
+	                            & Subseção~\ref{subsec:preprocessamento-arquiteturas}: máscara da marca d'água, redimensionamento, normalização, atributos dos modelos pré-treinados e aumento de dados apenas no treino                                                                                                                                                                               \\ \hline
 	Pré-processamento, filtragem e categorização dos dados
 	                            & Subseção~\ref{subsec:ciencia-de-dados}: unidade de agrupamento e vazamento entre treino e teste. Subseções~\ref{subsec:rq2-datasets} e~\ref{subsec:rq3-metodos}: unidades de amostra e divisão por imagem na literatura
 	                            & Subseção~\ref{subsec:curadoria-procedencia}: seleção, harmonização dos rótulos, agrupamento de duplicatas e máscara da marca d'água. Subseção~\ref{subsec:particoes}: divisão por grupos                                                                                                                                                                             \\ \hline
@@ -428,6 +428,7 @@ fora do treino daquela rodada. Imagens sem correspondência na base
 principal poderão participar de todos os treinos. As quantidades e
 exclusões serão registradas por execução.
 
+\clearpage
 \section{Configuração do estudo e modelagem}
 \label{sec:configuracao-avaliacao-empirica}
 
@@ -440,7 +441,7 @@ avaliação, conforme o padrão \textit{Data Science}
 ordem das atividades, e o Algoritmo~\ref{alg:procedimento-experimental}
 resume o treinamento, a seleção e o teste.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\centering
 	\caption{Diagrama de fluxo de dados do estudo}
 	\label{fig:dfd-estudo}
@@ -450,7 +451,7 @@ resume o treinamento, a seleção e o teste.
 	\fonte{Autores. Representação esquemática}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\centering
 	\caption{Diagrama de atividades do estudo}
 	\label{fig:atividades-estudo}
@@ -481,7 +482,7 @@ resume o treinamento, a seleção e o teste.
 		\node[card, below=of a4] (a5) {Dividir os grupos da base principal\\em dobras, limiar e teste};
 
 		% ramo de desenvolvimento
-		\node[card, below=11mm of a5] (b1) {Treinar e validar nas dobras\\(Derm1M apenas no treino)};
+		\node[card, below=11mm of a5] (b1) {Treinar e validar nas dobras\\(Derm1M e aumento apenas no treino)};
 		\node[decisao, below=4mm of b1] (d1) {Foram testadas todas\\as configurações?};
 		\node[cardlado, left=9mm of d1] (nc) {Definir nova\\configuração};
 		\node[card, below=4mm of d1] (b2) {Treinar a configuração escolhida\\(Lima mantém configuração fixa)};
@@ -575,7 +576,19 @@ $224 \times 224$ pixels nos modelos de fundação e de $256 \times 256$ pixels
 na linha de base, como no trabalho original;
 A resolução fixa também evita que o tamanho original do arquivo, associado
 à fonte, seja visto pelo modelo como pista para a classe. O preparo será
-determinístico na validação e no teste.
+determinístico na validação, na partição de limiar e no teste.
+
+Será aplicado aumento de dados (\textit{data augmentation}) exclusivamente
+às fotografias de treino, após a definição dos grupos e das partições.
+Serão usadas transformações geométricas, como espelhamentos e
+rotações, para apresentar variações das imagens durante o ajuste dos
+modelos. As operações, intensidades e probabilidades serão definidas no
+desenvolvimento e registradas antes da abertura do teste. A política será
+comum às fontes e às classes de treino, incluindo o Derm1M elegível, e será
+mantida no retreino final e nas duas condições da \hyperlink{questao-q5}{Q5}.
+As versões geradas permanecerão vinculadas à fotografia e ao grupo de
+origem; não serão contadas como novos grupos independentes. Validação,
+partição de limiar e teste não receberão aumento de dados.
 
 A extração de características é feita pelas camadas pré-treinadas, sem
 atributos manuais. Na linha de base, a agregação por média global da
@@ -598,7 +611,8 @@ A explicação das dobras segue a sequência apresentada por
 	      dobras, mantendo os grupos juntos e buscando preservar as
 	      proporções das categorias.
 	\item Treinar o modelo em quatro dobras e validar na que ficou de fora.
-	      Somente o treino receberá as imagens elegíveis do Derm1M.
+	      Somente o treino receberá as imagens elegíveis do Derm1M e o
+	      aumento de dados.
 	\item Repetir as rodadas, alternando a dobra de validação até que todas
 	      tenham sido usadas uma vez.
 	\item Escolher a configuração de cada modelo pela AUC média das dobras.
@@ -625,24 +639,41 @@ Algoritmo~\ref{alg:procedimento-experimental} resume essa sequência.
 	\label{alg:procedimento-experimental}
 	\registrarcodigo{Algoritmo~\protect\ref*{alg:procedimento-experimental} -- Treinamento, seleção e avaliação dos classificadores}
 	\small
+	\renewcommand{\algorithmicif}{\textbf{se}}
+	\renewcommand{\algorithmicthen}{\textbf{então}}
 	\begin{algorithmic}[1]
-		\Require fotografias preparadas e agrupadas, modelos e configurações previstas
-		\Ensure predições, métricas e intervalos no teste reservado
-		\State Auditar a divisão publicada e separar desenvolvimento e teste por grupos
-		\State Dividir o desenvolvimento em dobras e partição de limiar
+		\Require base principal (31 CSD e Our Normal Skin) preparada e agrupada, Derm1M e modelos previstos
+		\Ensure escores, classes, métricas e intervalos no teste reservado
+		\State Auditar a divisão publicada e separar desenvolvimento e teste, mantendo os grupos juntos
+		\State Reservar cerca de 20\% do desenvolvimento para limiares e 80\% para validação cruzada
+		\State Formar cinco dobras na parte de validação cruzada, preservando grupos e proporções das categorias
+		\If{alguma dobra tiver menos de 20 grupos de hanseníase}
+		\State Refazer essa divisão em três dobras para todas as abordagens
+		\EndIf
 		\ForAll{modelo de fundação}
-		\ForAll{configuração prevista para o modelo}
-		\State Treinar e validar nas dobras, acrescentando Derm1M elegível apenas ao treino
+		\ForAll{uma das nove combinações de hiperparâmetros previstas para o modelo}
+		\ForAll{dobra, alternando a validação até usar cada uma uma vez}
+		\State Reiniciar o modelo com os pesos pré-treinados de sua origem
+		\State Usar quatro dobras no treino e uma na validação; com três dobras, treinar em duas
+		\State Acrescentar ao treino o Derm1M sem imagens relacionadas à validação, ao limiar ou ao teste
+		\State Aplicar aumento de dados somente ao treino
+		\State Treinar, medir a AUC na dobra de validação e registrar a melhor AUC e sua época
 		\EndFor
-		\State Escolher a configuração pela AUC média nas dobras
-		\State Retreinar a configuração escolhida e combinar os escores das execuções
-		\State Escolher os limiares na partição própria
 		\EndFor
-		\State Ajustar as linhas de base nas mesmas parcelas de treino e definir os limiares de Lima
-		\State Preparar a condição sem Derm1M para a \hyperlink{questao-q5}{Q5}
-		\State Fixar e registrar todos os modelos e limiares
-		\State Avaliar todas as abordagens e a condição da \hyperlink{questao-q5}{Q5} no mesmo teste reservado
-		\State Calcular as métricas, a diferença da \hyperlink{questao-q5}{Q5} e seus intervalos
+		\State Escolher a combinação de hiperparâmetros com maior AUC média nas dobras
+		\State Reunir toda a parte de validação cruzada e o Derm1M elegível para o retreino, com aumento no treino
+		\State Reiniciar com os pesos pré-treinados e retreinar com três sementes, pela mediana das melhores épocas
+		\State Combinar os escores das três execuções pela média
+		\State Escolher os dois limiares na partição própria, pelas regras da Subseção~\ref{subsec:hiperparametros}
+		\EndFor
+		\State Ajustar as linhas de base nas mesmas parcelas de treino, com SMOTE apenas no treino de Lima
+		\State Combinar as três execuções de Lima e escolher seus limiares na partição própria
+		\State Para a \hyperlink{questao-q5}{Q5}, escolher o modelo com maior AUC média; em empate, o de menos parâmetros
+		\State Retreiná-lo sem Derm1M, mantendo hiperparâmetros, épocas, sementes e aumento de dados
+		\State Combinar seus escores e escolher novos limiares na mesma partição de limiar
+		\State Fixar e registrar modelos e limiares antes de abrir o teste
+		\State Avaliar todas as abordagens, incluindo a condição sem Derm1M, no mesmo teste reservado
+		\State Calcular métricas e IC 95\% por \textit{bootstrap} de grupos; na \hyperlink{questao-q5}{Q5}, calcular também a diferença pareada
 	\end{algorithmic}
 	\fonte{Autores.}
 \end{algorithm}
@@ -722,7 +753,8 @@ Subseção~\ref{subsec:hiperparametros}. Essa partição não será usada para
 ajustar a Random Forest ou o SMOTE. A tarefa binária e a
 configuração de atributos e classificador seguem o cenário de duas classes
 do trabalho original; a separação por grupos, a inclusão do Derm1M elegível,
-a máscara da marca d'água, a média entre sementes e o ajuste de limiares são
+a máscara da marca d'água, o aumento de dados no treino, a média entre
+sementes e o ajuste de limiares são
 adaptações ao protocolo deste estudo.
 
 A segunda linha de base atribuirá a todas as fotografias a classe mais
